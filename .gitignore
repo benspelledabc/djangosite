@@ -1,5 +1,7 @@
 # Project exclude paths
 /venv/
 .idea/*
+__pycache__/*
+*.pyc
 
 /imrunicorn/static/
