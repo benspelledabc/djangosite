@@ -1,0 +1,18 @@
+asgiref==3.2.3
+coverage==5.0.1
+Django==3.0.2
+django-model-utils==4.0.0
+djangorestframework==3.11.0
+gunicorn==20.0.4
+mysqlclient==1.4.6
+PyMySQL==0.9.3
+pytz==2019.3
+sqlparse==0.3.0
+uWSGI==2.0.18
+
+
+brew install mysql-client
+# mysql-client is not on the `PATH` by default
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+# openssl is not on the link path by default
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"

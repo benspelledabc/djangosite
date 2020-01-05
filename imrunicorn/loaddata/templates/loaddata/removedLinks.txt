@@ -1,0 +1,17 @@
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rolls On Demand</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <!-- <a class="dropdown-item" href="#">Safe For Work</a><br /> -->
+                            <a class="dropdown-item" href="{% url 'singleroll_sfw' %}" target="_blank">Random SFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_home_sfw' %}" target="_blank">Home SFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_work_sfw' %}" target="_blank">Work SFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_both_sfw' %}" target="_blank">Both SFW</a><br />
+
+                            <!-- <a class="dropdown-item" href="#">Not Safe For Work</a><br /> -->
+                            <a class="dropdown-item" href="{% url 'singleroll' %}" target="_blank">Random NSFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_home' %}" target="_blank">Home NSFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_work' %}" target="_blank">Work NSFW</a><br />
+                            <a class="dropdown-item" href="{% url 'singleroll_both' %}" target="_blank">Both NSFW</a><br />
+                        </div>
+                    </li>

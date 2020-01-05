@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>DBZ - Divide By Zero </title>
+
+    {% load static %}
+    <link href="{% static 'app/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'app/content/site.css' %}" rel="stylesheet" type="text/css"/>
+
+    {% if request.user.is_authenticated %}
+    <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png"/>
+    {% endif %}
+
+
+    <SCRIPT language="JavaScript">
+        var grav = 32.175;
+
+        function fix(num) {
+            string = "" + num;
+            if (string.indexOf('.') == -1)
+                return string + '.00';
+            seperation = string.length - string.indexOf('.');
+            if (seperation > 3)
+                return string.substring(0, string.length - seperation + 3);
+            else if (seperation == 2)
+                return string + '0';
+            return string;
+        }
+
+        function calcit() {
+            window.document.calform.nrg01.value = fix(.5 * window.document.calform.wt01.value / 7000 / grav * window.document.calform.ve01.value * window.document.calform.ve01.value);
+            window.document.calform.nrg02.value = fix(.5 * window.document.calform.wt02.value / 7000 / grav * window.document.calform.ve02.value * window.document.calform.ve02.value);
+            window.document.calform.nrg03.value = fix(.5 * window.document.calform.wt03.value / 7000 / grav * window.document.calform.ve03.value * window.document.calform.ve03.value);
+            window.document.calform.nrg04.value = fix(.5 * window.document.calform.wt04.value / 7000 / grav * window.document.calform.ve04.value * window.document.calform.ve04.value);
+        }
+    </SCRIPT>
+
+
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/">DBZ - Divide By Zero</a>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!-- <li><a href="{% url 'home' %}">Home</a></li> -->
+
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Master Po (2.0)</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'knownloads' %}">Load Data</a><br/>
+                        <a class="dropdown-item" href="{% url 'page_avg_and_sd_calc' %}">Avg &amp; SD
+                            Calculator</a><br/>
+                    </div>
+                </li>
+
+                {% if request.user.is_authenticated %}
+
+                {% ifequal user.groups.all.0.name "AFKLady" %}
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Task List</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'singleroll_automated' %}">Random Assignment</a><br/>
+                        <a class="dropdown-item" href="{% url 'singleroll_reward' %}">Random Reward</a><br/>
+                        <a class="dropdown-item" href="{% url 'singleroll_boilerplate' %}">Random Boilerplate</a><br/>
+                        <a class="dropdown-item" href="{% url 'singleroll_punishment' %}">Random Punishment</a><br/>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Lists By Location</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'rollhome' %}">Home Only</a><br/>
+                        <a class="dropdown-item" href="{% url 'rollwork' %}">Work Only</a><br/>
+                        <a class="dropdown-item" href="{% url 'rollboth' %}">Home &amp; Work</a><br/>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Behavior List</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'goodboy' %}">Reward</a><br/>
+                        <a class="dropdown-item" href="{% url 'avgjoe' %}">Boilerplate</a><br/>
+                        <a class="dropdown-item" href="{% url 'badboy' %}">Punishment</a><br/>
+                    </div>
+                </li>
+                <!-- end of if in correct group -->
+                {% endifequal %}
+
+                {% else %}
+                <!-- conditional menu construction -->
+
+                {% endif %}
+
+            </ul>
+            {% include 'app/loginpartial.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="container body-content">
+    {% block content %}{% endblock %}
+    <hr/>
+    <footer>
+
+        {% if request.user.is_authenticated %}
+        <p>&copy; {{ year }} - Drunken Dwarves, Irate Gnomes and {{ release.author }} <br/>
+            Version: {{ release.version }} - Build Date: {{ release.build_date }}
+        </p>
+        {% else %}
+        <p>&copy; {{ year }} - Avg Joe, Sally and {{ release.author }} <br/>
+            Version: {{ release.version }} - Build Date: {{ release.build_date }}
+        </p>
+        {% endif %}
+
+    </footer>
+</div>
+
+<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+<script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+<script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>
