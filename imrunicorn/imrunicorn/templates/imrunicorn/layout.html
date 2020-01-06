@@ -58,11 +58,8 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
-                {% if request.user.is_authenticated %}
                     <li><a href="{% url 'loads' %}">Loads</a></li>
                     <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>
-                {% endif %}
 
                 {% ifequal user.groups.all.0.name "LoadLady" %}
 
