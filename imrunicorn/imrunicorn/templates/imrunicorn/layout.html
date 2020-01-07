@@ -86,15 +86,9 @@
     <hr/>
     <footer>
 
-        {% if request.user.is_authenticated %}
         <p>&copy; {{ year }} - Drunken Dwarves, Irate Gnomes and {{ release.author }} <br/>
             Version: {{ release.version }} - Build Date: {{ release.build_date }}
         </p>
-        {% else %}
-        <p>&copy; {{ year }} - Avg Joe, Sally and {{ release.author }} <br/>
-            Version: {{ release.version }} - Build Date: {{ release.build_date }}
-        </p>
-        {% endif %}
 
     </footer>
 </div>
