@@ -1,0 +1,49 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{ blurb }} Load PK_ID: {{ load_id }} (all <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a>)</h4>
+    </div>
+</div>
+<hr/>
+<div class="row">
+
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            The load data on this page is a static listing. Do your own research, don't use this load data. It might be
+            a pipe bomb in your firearm.
+        </p>
+
+        <table width="85%" border="1" align="center">
+            <tr bgcolor="#808080">
+                <th bgcolor="808080" style="text-align: center">
+                 Distance
+             </th>
+            <th bgcolor="808080" style="text-align: center">
+                MOA Adjustment
+            </th>
+        </tr>
+
+          {% if all_loads != None %}
+              {% for load in all_loads %}
+              <tr bgcolor="#F5F5F5">
+                  <td id="td-ocw">100</td>
+                  <td id="td-ocw">0</td>
+
+
+              </tr>
+              {% endfor %}
+          {% endif %}
+
+      </table>
+
+   </div>
+</div>
+
+
+</div>
+{% endblock %}
