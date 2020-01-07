@@ -37,6 +37,7 @@
             window.document.calform.nrg03.value = fix(.5 * window.document.calform.wt03.value / 7000 / grav * window.document.calform.ve03.value * window.document.calform.ve03.value);
             window.document.calform.nrg04.value = fix(.5 * window.document.calform.wt04.value / 7000 / grav * window.document.calform.ve04.value * window.document.calform.ve04.value);
         }
+
     </SCRIPT>
 
 
@@ -58,19 +59,19 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="{% url 'loads' %}">Loads</a></li>
-                    <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>
+                <li><a href="{% url 'loads' %}">Loads</a></li>
 
                 {% ifequal user.groups.all.0.name "LoadLady" %}
+                <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                           data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Disabled Menu</a>
-                        <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Restricted</a><br/>
-                            <a class="dropdown-item" href="#">Restricted</a><br/>
-                        </div>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Disabled Menu</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Restricted</a><br/>
+                        <a class="dropdown-item" href="#">Restricted</a><br/>
+                    </div>
+                </li>
 
                 {% endifequal %}
 
