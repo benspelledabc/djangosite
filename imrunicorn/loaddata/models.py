@@ -41,7 +41,7 @@ class HandLoad(models.Model):
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
-        return "%s (%sgr %s %s {%s [%sgr of %s]})" % (self.Chamber,
+        return "[PK: %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.Chamber,
                                                       self.projectile.WeightGR,
                                                       self.projectile.Manufacture,
                                                       self.projectile.Name,
