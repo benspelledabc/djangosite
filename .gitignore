@@ -5,5 +5,5 @@ __pycache__/*
 *.pyc
 .DS_Store/*
 ../.DS_Store
-
+/venv-2.7/
 /imrunicorn/static/
