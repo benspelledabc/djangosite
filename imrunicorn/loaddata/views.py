@@ -20,7 +20,7 @@ def page_loads(request):
     context = {
         # "roll_list": queryset,
         'release': get_version_json(request),
-        "title": "Master Po (2.0) Load Data",
+        "title": "Master Po: Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
         # changed this from tabledata
         "table_data": 'This should be from the database... jackle.',
