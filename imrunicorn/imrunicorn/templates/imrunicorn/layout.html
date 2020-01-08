@@ -54,12 +54,24 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="/">IMRUnicorn - Django</a>
+            <a class="navbar-brand" href="/">IMRUnicorn v{{ release.version }}</a>
 
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'loads' %}">Loads</a></li>
+                <!-- <li><a href="#">Removed</a></li> -->
+
+
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Master Po</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a><br/>
+                        <a class="dropdown-item" href="{% url 'page_avg_and_sd_calc' %}">Avg &amp; SD
+                            Calculator</a><br/>
+                    </div>
+                </li>
+
 
                 {% ifequal user.groups.all.0.name "LoadLady" %}
                 <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>
@@ -94,9 +106,9 @@
     </footer>
 </div>
 
-<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-<script src="{% static 'app/scripts/bootstrap.js' %}"></script>
-<script src="{% static 'app/scripts/respond.js' %}"></script>
+<script src="{% static 'imrunicorn/scripts/jquery-1.10.2.js' %}"></script>
+<script src="{% static 'imrunicorn/scripts/bootstrap.js' %}"></script>
+<script src="{% static 'imrunicorn/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
 
 </body>

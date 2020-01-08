@@ -2,6 +2,7 @@
 {% block content %}
 {% load humanize %}
 <h2>{{ title }}</h2>
+
 <div class="row">
     <div class="col-md-12">
         <p>
@@ -41,6 +42,9 @@
             <th bgcolor="808080" style="text-align: center">
                 Sheriff
             </th>
+            <th bgcolor="808080" style="text-align: center">
+                DOPE
+            </th>
         </tr>
 
           {% if all_loads != None %}
@@ -57,6 +61,7 @@
               <td id="td-sheriff">{{ load.Is_Shamus_OCW }}</td>
               <td id="td-sheriff">{{ load.Is_Sven_OCW }}</td>
               <td id="td-sheriff">{{ load.Is_Sheriff_Load }}</td>
+              <td id="td-sheriff">Not Tracked</td>
           </tr>
           {% else %}
           <tr bgcolor="#F5F5F5">
@@ -70,6 +75,7 @@
               <td id="td-ocw">{{ load.Is_Shamus_OCW }}</td>
               <td id="td-ocw">{{ load.Is_Sven_OCW }}</td>
               <td id="td-ocw">{{ load.Is_Sheriff_Load }}</td>
+              <td id="td-ocw"><a href="{% url 'page_estimated_dope' %}{{ load.pk }}">DOPE</a></td>
           </tr>
           {% endif %}
           {% endfor %}
@@ -79,6 +85,7 @@
 
    </div>
 </div>
+
 <div class="row">
    </br>
    </br>

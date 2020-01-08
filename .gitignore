@@ -7,3 +7,4 @@ __pycache__/*
 ../.DS_Store
 /venv-2.7/
 /imrunicorn/static/
+/imrunicorn/loaddata/migrations/

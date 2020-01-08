@@ -1,0 +1,241 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-12">
+        {% if load_details != None %}
+        <h4>{{ load_details.hand_load.Chamber }} -
+                {{ load_details.hand_load.projectile.WeightGR }}
+                {{ load_details.hand_load.projectile.Manufacture }}
+                {{ load_details.hand_load.projectile.Name }}
+                ( {{ load_details.hand_load.Velocity }} FPS
+                 via {{ load_details.hand_load.Powder_Charge }}gr
+                of {{ load_details.hand_load.powder.name }}
+                )
+             - all <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a>
+        </h4>
+        {% else %}
+        <h4>No estimated dope listed... - all <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a></h4>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+                {% if load_details != None %}
+            <table width="150" border="1" align="center">
+                <tr bgcolor="#808080">
+                    <th bgcolor="808080" style="text-align: center">
+                        Distance
+                    </th>
+                    <th bgcolor="808080" style="text-align: center">
+                        MOA
+                    </th>
+                </tr>
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">100</td>
+                    <td id="td-ocw">{{ load_details.moa_100 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">125</td>
+                    <td id="td-ocw">{{ load_details.moa_125 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">150</td>
+                    <td id="td-ocw">{{ load_details.moa_150 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">175</td>
+                    <td id="td-ocw">{{ load_details.moa_175 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">200</td>
+                    <td id="td-ocw">{{ load_details.moa_200 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">225</td>
+                    <td id="td-ocw">{{ load_details.moa_225 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">250</td>
+                    <td id="td-ocw">{{ load_details.moa_250 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">275</td>
+                    <td id="td-ocw">{{ load_details.moa_275 }}</td>
+                </tr>
+
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">300</td>
+                    <td id="td-ocw">{{ load_details.moa_300 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">325</td>
+                    <td id="td-ocw">{{ load_details.moa_325 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">350</td>
+                    <td id="td-ocw">{{ load_details.moa_350 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">375</td>
+                    <td id="td-ocw">{{ load_details.moa_375 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">400</td>
+                    <td id="td-ocw">{{ load_details.moa_400 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">425</td>
+                    <td id="td-ocw">{{ load_details.moa_425 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">450</td>
+                    <td id="td-ocw">{{ load_details.moa_450 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">475</td>
+                    <td id="td-ocw">{{ load_details.moa_475 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">500</td>
+                    <td id="td-ocw">{{ load_details.moa_500 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">525</td>
+                    <td id="td-ocw">{{ load_details.moa_525 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">550</td>
+                    <td id="td-ocw">{{ load_details.moa_550 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">575</td>
+                    <td id="td-ocw">{{ load_details.moa_575 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">600</td>
+                    <td id="td-ocw">{{ load_details.moa_600 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">625</td>
+                    <td id="td-ocw">{{ load_details.moa_625 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">650</td>
+                    <td id="td-ocw">{{ load_details.moa_650 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">675</td>
+                    <td id="td-ocw">{{ load_details.moa_675 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">700</td>
+                    <td id="td-ocw">{{ load_details.moa_700 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">725</td>
+                    <td id="td-ocw">{{ load_details.moa_725 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">750</td>
+                    <td id="td-ocw">{{ load_details.moa_750 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">775</td>
+                    <td id="td-ocw">{{ load_details.moa_775 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">800</td>
+                    <td id="td-ocw">{{ load_details.moa_800 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">825</td>
+                    <td id="td-ocw">{{ load_details.moa_825 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">850</td>
+                    <td id="td-ocw">{{ load_details.moa_850 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">875</td>
+                    <td id="td-ocw">{{ load_details.moa_875 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">900</td>
+                    <td id="td-ocw">{{ load_details.moa_900 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">925</td>
+                    <td id="td-ocw">{{ load_details.moa_925 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">950</td>
+                    <td id="td-ocw">{{ load_details.moa_950 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">975</td>
+                    <td id="td-ocw">{{ load_details.moa_975 }}</td>
+                </tr>
+
+
+
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">1000</td>
+                    <td id="td-ocw">{{ load_details.moa_1000 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">1025</td>
+                    <td id="td-ocw">{{ load_details.moa_1025 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">1050</td>
+                    <td id="td-ocw">{{ load_details.moa_1050 }}</td>
+                </tr>
+                <tr bgcolor="#F5F5F5">
+                    <td id="td-ocw">1075</td>
+                    <td id="td-ocw">{{ load_details.moa_1075 }}</td>
+                </tr>
+
+
+            </table>
+
+                {% endif %}
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
