@@ -24,3 +24,30 @@ def get_version_json(request):
     data = open(os.path.join(settings.BASE_DIR, 'release.json')).read()
     json_data = json.loads(data)  # converts to a json structure
     return json_data
+
+
+def handler404(request, exception):
+    context = {
+        'release': get_version_json(request),
+        "title": "Page Not Found",
+        "blurb": "The requested page wasn't found. (404)",
+        "fullbody": "",
+        "year": datetime.now().year
+    }
+    # going to try sending an email on 404 error.. hahaha bad idea in production
+    # self.email_test(request)
+
+    return render(request, "errors/error.html", context)
+
+
+def handler500(request):
+    # return HttpResponse("Hello world 500.")
+    context = {
+        'release': get_version_json(request),
+        "title": "Page Not Found",
+        "blurb": "The requested page wasn't found. (500)",
+        "fullbody": "",
+        "year": datetime.now().year
+    }
+    return render(request, "errors/error.html", context)
+

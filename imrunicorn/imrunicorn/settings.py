@@ -22,8 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
 
-if socket.gethostname().startswith('nifi') \
-        or socket.gethostname().startswith('ben') \
+if socket.gethostname().startswith('nifi22') \
         or socket.gethostname().startswith('Thermaltake') \
         or socket.gethostname().startswith('svenMacBook'):
     DEBUG = True
