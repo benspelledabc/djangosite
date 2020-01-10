@@ -1,0 +1,49 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>IMRUnicorn v{{ release.version }}</h1>
+    <p class="lead">The robot is gone. It needed some work done.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12" align="center">
+        Days since input date to today:
+
+
+        <script type="text/javascript">
+            // JavaScript program to illustrate
+            // calculation of no. of days between two date
+
+            // To set two dates to two variables
+            var date1 = new Date("{{ input_date }}");
+            //var date2 = new Date("07/30/2020");
+            var date2 = new Date(Date.now())
+
+            // To calculate the time difference of two dates
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+
+            // To calculate the no. of days between two dates
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+            //To display the final no. of days (result)
+            //document.write("Total number of days between dates  <br>"
+            //    + date1 + "<br> and <br>"
+            //    + date2 + " is: <br> "
+            //    + Difference_In_Days.toFixed(0));
+
+            //document.write("Days since: ");
+            //document.write(Difference_In_Days.toFixed(0) + " days.");
+            document.write("<h3>" + Difference_In_Days.toFixed(0) + " days</h3>");
+
+
+        </script>
+
+
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}
