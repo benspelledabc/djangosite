@@ -87,8 +87,8 @@
 
                 {% endifequal %}
                 
-                <li><a href="#shamus">Shamus</a></li>
-                <li><a href="#sven">Sven</a></li>
+                <li><a href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
+                <li><a href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}

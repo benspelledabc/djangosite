@@ -23,6 +23,9 @@ from . import forms, views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
+
+    path('days_since', views.page_days_since, name='days_since'),
+
     path('loaddata/', include('loaddata.urls')),
 
     # path('contact/', views.contact, name='contact'),

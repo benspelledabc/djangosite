@@ -51,3 +51,15 @@ def handler500(request):
     }
     return render(request, "errors/error.html", context)
 
+
+def page_days_since(request):
+    input_date = request.GET.get('input_date')
+    context = {
+        'release': get_version_json(request),
+        "title": "Master Po (2.0) Load Data",
+        "blurb": "I'll move it to a database setup in a bit.",
+        "table_data": 'This should be from the database... jackle.',
+        "input_date": input_date,
+        "year": datetime.now().year
+    }
+    return render(request, "imrunicorn/days_since.html", context)
