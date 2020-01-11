@@ -72,6 +72,15 @@
                     </div>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Days Since</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a><br/>
+                        <a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a><br/>
+                    </div>
+                </li>
+
 
                 {% ifequal user.groups.all.0.name "LoadLady" %}
                 <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>
@@ -86,9 +95,7 @@
                 </li>
 
                 {% endifequal %}
-                
-                <li><a href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
-                <li><a href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
+
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
