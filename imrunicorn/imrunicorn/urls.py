@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.page_home, name='home'),
 
     path('days_since', views.page_days_since, name='days_since'),
+    path('batf/', views.fetch_estimated_batf_days, name='fetch_estimated_batf_days'),
 
     path('loaddata/', include('loaddata.urls')),
 
