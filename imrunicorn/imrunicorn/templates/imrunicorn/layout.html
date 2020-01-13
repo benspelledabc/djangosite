@@ -81,6 +81,19 @@
                     </div>
                 </li>
 
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Blog Coming</a>
+                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'blog_read' %}">Read Blog</a><br/>
+                        {% ifequal user.groups.all.0.name "blogger" %}
+                        <a class="dropdown-item" href="{% url 'blog_add' %}">Add Blog Entry</a><br/>
+                        {% endifequal %}
+                    </div>
+                </li>
+                {% endif %}
+
 
                 {% ifequal user.groups.all.0.name "LoadLady" %}
                 <li><a href="{% url 'page_avg_and_sd_calc' %}">Page avg &amp; SD Calc</a></li>

@@ -120,3 +120,18 @@ def fetch_estimated_batf_days():
     return batf_data
     # return total
 
+
+def page_blog_add(request):
+    context = {
+        'body': 'no body to share',
+        'header': 'add',
+    }
+    return JsonResponse(context)
+
+
+def page_blog_read(request):
+    context = {
+        'body': 'no body to share',
+        'header': 'read',
+    }
+    return JsonResponse(context)

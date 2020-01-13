@@ -27,6 +27,9 @@ urlpatterns = [
     path('days_since', views.page_days_since, name='days_since'),
     path('batf/', views.fetch_estimated_batf_days, name='fetch_estimated_batf_days'),
 
+    path('blog/', views.page_blog_read, name='blog_read'),
+    path('blog/add/', views.page_blog_add, name='blog_add'),
+
     path('loaddata/', include('loaddata.urls')),
 
     # path('contact/', views.contact, name='contact'),
