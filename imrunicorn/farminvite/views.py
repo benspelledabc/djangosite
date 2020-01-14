@@ -3,9 +3,11 @@ import os
 from datetime import datetime
 
 from django.conf import settings
+from django.db.models import F, ExpressionWrapper
 from django.http import JsonResponse
 from django.shortcuts import render
 
+from .models import InviteListing
 
 # Create your views here.
 
@@ -37,12 +39,19 @@ def unused_page_farm_invites_view(request):
 
 
 def page_farm_invites_view(request):
+    # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+    #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+    #                            output_field=FloatField()))
+    all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
+
     context = {
+        # "roll_list": queryset,
         'release': get_version_json(request),
-        "title": "Coming Soon",
-        "blurb": "This page is a place holder for what's to come soon.",
-        "table_data": 'Shake it like it\'s going out of style!',
+        "title": "Farm Range Invites",
+        "blurb": "Something might have gone wrong.",
+        'all_invites': all_invites,
         "year": datetime.now().year
+        # "year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 
