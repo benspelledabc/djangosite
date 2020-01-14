@@ -70,9 +70,8 @@ def page_days_since(request):
         'batf_stamp_received': stamp_received,
         'batf_total': total,
         'release': get_version_json(request),
-        "title": "Master Po (2.0) Load Data",
-        "blurb": "I'll move it to a database setup in a bit.",
-        "table_data": 'This should be from the database... jackle.',
+        "title": "Days since " + input_date,
+        "blurb": "How many times has the sun gone up and down since then?",
         "input_date": input_date,
         "year": datetime.now().year
     }
