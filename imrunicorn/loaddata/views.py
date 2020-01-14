@@ -60,7 +60,7 @@ def page_estimated_dope(request, load_pk='3'):
             "year": datetime.now().year,
         }
 
-    return render(request, "loaddata/estimated_dope.html", context)
+    return render(request, "loaddata/calendar_list.html", context)
 
 
 def page_avg_and_sd_calc(request):

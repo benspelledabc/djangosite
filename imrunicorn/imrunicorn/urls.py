@@ -31,6 +31,7 @@ urlpatterns = [
     path('blog/add/', views.page_blog_add, name='blog_add'),
 
     path('loaddata/', include('loaddata.urls')),
+    path('farminvite/', include('farminvite.urls')),
 
     # path('contact/', views.contact, name='contact'),
     # path('about/', views.about, name='about'),
