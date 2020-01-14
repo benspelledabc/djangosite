@@ -50,8 +50,7 @@ def page_farm_invites_view(request):
 def page_farm_invites_map(request):
     context = {
         'release': get_version_json(request),
-        "title": "Coming Soon",
-        "blurb": "I'm making a map to make it easier for people to understand where to go.",
+        "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
         "year": datetime.now().year
     }
