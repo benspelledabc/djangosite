@@ -15,8 +15,10 @@ class InviteListing(models.Model):
     Invite_PM = models.BooleanField(default=False)
     Invite_Secondary = models.BooleanField(default=False, blank=True, null=True)
     MDShooters_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
+    Real_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Phone_Number = models.CharField(max_length=20, default=None, blank=True, null=True)
     EMail = models.CharField(max_length=150, default=None, blank=True, null=True)
+
 
     def __str__(self):
         return "%s %s %s" % (self.Invite_Date, self.MDShooters_Name, self.Phone_Number)
