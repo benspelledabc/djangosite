@@ -56,3 +56,13 @@ def page_farm_invites_map(request):
     }
     return render(request, "farminvite/farm_map.html", context)
 
+
+def page_farm_invites_map_fake(request):
+    context = {
+        'release': get_version_json(request),
+        "title": "Coming Soon",
+        "blurb": "This page is a place holder for what's to come soon.",
+        "table_data": 'Shake it like it\'s going out of style!',
+        "year": datetime.now().year
+    }
+    return render(request, "farminvite/fake_map.html", context)
