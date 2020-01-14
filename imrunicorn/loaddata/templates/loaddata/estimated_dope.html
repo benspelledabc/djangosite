@@ -5,10 +5,11 @@
 <div class="row">
     <div class="col-md-12">
         {% if load_details != None %}
-        <h4>{{ load_details.hand_load.Chamber }} -
+        <h4>{{ load_details.hand_load.Barrel_Length }}" {{ load_details.hand_load.Chamber }} -
                 {{ load_details.hand_load.projectile.WeightGR }}
                 {{ load_details.hand_load.projectile.Manufacture }}
                 {{ load_details.hand_load.projectile.Name }}
+            <br />
                 ( {{ load_details.hand_load.Velocity }} FPS
                  via {{ load_details.hand_load.Powder_Charge }}gr
                 of {{ load_details.hand_load.powder.name }}
