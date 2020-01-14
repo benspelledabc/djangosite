@@ -42,13 +42,13 @@ class HandLoad(models.Model):
 
     def __str__(self):
         return "[PK: %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.Chamber,
-                                                      self.projectile.WeightGR,
-                                                      self.projectile.Manufacture,
-                                                      self.projectile.Name,
-                                                      self.Velocity,
-                                                      self.Powder_Charge,
-                                                      self.powder.name,
-                                                      )
+                                                               self.projectile.WeightGR,
+                                                               self.projectile.Manufacture,
+                                                               self.projectile.Name,
+                                                               self.Velocity,
+                                                               self.Powder_Charge,
+                                                               self.powder.name,
+                                                               )
 
     class Meta:
         ordering = ('Chamber', '-projectile', '-Velocity')
@@ -101,4 +101,4 @@ class EstimatedDope(models.Model):
         return str(self.hand_load)
 
     # class Meta:
-        # ordering = ('hand_load.Velocity', 'hand_load.projectile')
+    # ordering = ('hand_load.Velocity', 'hand_load.projectile')

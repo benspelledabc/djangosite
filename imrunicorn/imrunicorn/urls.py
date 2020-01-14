@@ -52,5 +52,6 @@ urlpatterns = [
 
 # # https://docs.djangoproject.com/en/2.0/topics/http/views/#customizing-error-views
 # handler404 = 'YOUR_APP_NAME.views.handler404'
+
 handler404 = 'imrunicorn.views.handler404'
 handler500 = 'imrunicorn.views.handler500'
