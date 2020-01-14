@@ -8,3 +8,4 @@ __pycache__/*
 /venv-2.7/
 /imrunicorn/static/
 /imrunicorn/loaddata/migrations/
+/imrunicorn/farminvite/migrations/
