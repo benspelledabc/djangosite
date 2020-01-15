@@ -1,13 +1,15 @@
 import json
 import os
 from datetime import datetime
-
 from django.conf import settings
+from django.db.models import Q
 from django.db.models import F, ExpressionWrapper
 from django.http import JsonResponse
 from django.shortcuts import render
+from model_utils.models import now
 
 from .models import InviteListing
+
 
 # Create your views here.
 
@@ -39,10 +41,11 @@ def unused_page_farm_invites_view(request):
 
 
 def page_farm_invites_view(request):
-    # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
-    #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
-    #                            output_field=FloatField()))
-    all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
+    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
+    this_moment = datetime.now()
+    all_invites = InviteListing.objects.filter(
+        Q(Invite_Date=this_moment.date()) |
+        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date')
 
     context = {
         # "roll_list": queryset,
