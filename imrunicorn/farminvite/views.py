@@ -43,9 +43,10 @@ def unused_page_farm_invites_view(request):
 def page_farm_invites_view(request):
     # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
+    # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Invite_Date=this_moment.date()) |
-        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date')
+        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
 
     context = {
         # "roll_list": queryset,
