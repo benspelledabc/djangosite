@@ -1,0 +1,23 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+<h2>{{ title }}</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{ blurb }}</h4>
+    </div>
+</div><hr />
+<br />
+<div class="row">
+    <div class="col-md-12" align="left">
+    {% autoescape off %}
+    <p>{{ table_data }}</p>
+    {% endautoescape %}
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}

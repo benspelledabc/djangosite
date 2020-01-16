@@ -79,3 +79,27 @@ def page_farm_invites_map_fake(request):
         "year": datetime.now().year
     }
     return render(request, "farminvite/fake_map.html", context)
+
+
+def page_farm_check_list(request):
+    context = {
+        'release': get_version_json(request),
+        "title": "Event Check List",
+        "blurb": "What items should I bring?",
+        "table_data": 'Strongly recommended items'
+                      '<li>Ear protection</li>'
+                      '<li>Eye protection</li>'
+                      '<li>Chair to sit?</li>'
+                      '<li>Shooting mat? Keeps you out of the dirt/mud/snow.</li>'
+                      '<li>Firearm (and ammo for said firearm)</li>'
+                      '<li>Snacks/Drinks for yourself.</li>'
+                      '<li>Sense of humor</li>'
+                      '<br />'
+                      'Extras if you want...'
+                      '<li>Shotgun clays (great targets at range)</li>'
+                      '<li>AR500 steel plates, someone\'s bound to damage one eventually</li>'
+                      '<li>Donations of brass (i\'ll use it or give it away to someone that can)</li>'
+        ,
+        "year": datetime.now().year
+    }
+    return render(request, "farminvite/simple_use_variables.html", context)
