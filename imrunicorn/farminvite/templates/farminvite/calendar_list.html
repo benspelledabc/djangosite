@@ -30,13 +30,29 @@
               {% if invite.Invite_AM %}
             <tr bgcolor="#F5F5F5">
               <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
-              <td id="td-ocw">{{ invite.MDShooters_Name }}</td>
+
+                {% if request.user|has_group:"farminvite_editor" %}
+              <td id="td-ocw" data-toggle="tooltip"
+                  title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
+                  {{ invite.MDShooters_Name }}</td>
+                {% else %}
+                <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                {% endif %}
+
               <td id="td-ocw">{{ invite.Invite_Secondary }}</td>
                 </tr>
               {% else %}
             <tr bgcolor="#BEBEBE">
               <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
-              <td id="td-sheriff">{{ invite.MDShooters_Name }}</td>
+
+              {% if request.user|has_group:"farminvite_editor" %}
+              <td id="td-sheriff" data-toggle="tooltip"
+                  title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
+                  {{ invite.MDShooters_Name }}</td>
+                {% else %}
+                <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                {% endif %}
+
               <td id="td-sheriff">{{ invite.Invite_Secondary }}</td>
             </tr>
               {% endif %}
