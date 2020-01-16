@@ -13,56 +13,84 @@
         <table width="65%" border="1" align="center">
             <tr bgcolor="#808080">
                 <th bgcolor="808080" style="text-align: center">
-                 Invite Slot
-             </th>
-             </th>
+                    Invite Slot
+                </th>
+                </th>
                 <th bgcolor="808080" style="text-align: center">
-                 MDShooters Name
-             </th>
+                    MDShooters Name
+                </th>
                 <th bgcolor="808080" style="text-align: center">
-                 Is Secondary
-             </th>
+                    Is Secondary
+                </th>
+                <th bgcolor="808080" style="text-align: center">
+                    Registration Completion
+                </th>
 
-        </tr>
+            </tr>
 
-          {% if all_invites != None %}
-          {% for invite in all_invites %}
-              {% if invite.Invite_AM %}
+            {% if all_invites != None %}
+            {% for invite in all_invites %}
+            {% if invite.Invite_AM %}
             <tr bgcolor="#F5F5F5">
-              <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
+                <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
 
                 {% if request.user|has_group:"farminvite_editor" %}
-              <td id="td-ocw" data-toggle="tooltip"
-                  title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                  {{ invite.MDShooters_Name }}</td>
+                <td id="td-ocw" data-toggle="tooltip"
+                    title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
+                    {{ invite.MDShooters_Name }}
+                </td>
                 {% else %}
                 <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
                 {% endif %}
 
-              <td id="td-ocw">{{ invite.Invite_Secondary }}</td>
-                </tr>
-              {% else %}
-            <tr bgcolor="#BEBEBE">
-              <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
+                <td id="td-ocw">{{ invite.Invite_Secondary }}</td>
 
-              {% if request.user|has_group:"farminvite_editor" %}
-              <td id="td-sheriff" data-toggle="tooltip"
-                  title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                  {{ invite.MDShooters_Name }}</td>
+                {% if invite.Phone_Number and invite.EMail%}
+                <td id="td-ocw"> {{ contact_good }}</td>
+                {% elif invite.Phone_Number %}
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a></td>
+                {% elif invite.EMail %}
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a></td>
+                {% else %}
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a></td>
+                {% endif %}
+
+            </tr>
+            {% else %}
+            <tr bgcolor="#BEBEBE">
+                <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
+
+                {% if request.user|has_group:"farminvite_editor" %}
+                <td id="td-sheriff" data-toggle="tooltip"
+                    title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
+                    {{ invite.MDShooters_Name }}
+                </td>
                 {% else %}
                 <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
                 {% endif %}
 
-              <td id="td-sheriff">{{ invite.Invite_Secondary }}</td>
+                <td id="td-sheriff">{{ invite.Invite_Secondary }}</td>
+
+                {% if invite.Phone_Number and invite.EMail%}
+                <td id="td-sheriff"> {{ contact_good }}</td>
+                {% elif invite.Phone_Number %}
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a></td>
+                {% elif invite.EMail %}
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a></td>
+                {% else %}
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a></td>
+                {% endif %}
+
+
             </tr>
-              {% endif %}
+            {% endif %}
 
-          {% endfor %}
-          {% endif %}
+            {% endfor %}
+            {% endif %}
 
-      </table>
+        </table>
 
-   </div>
+    </div>
 </div>
 
 

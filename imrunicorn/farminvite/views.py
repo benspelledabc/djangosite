@@ -50,6 +50,10 @@ def page_farm_invites_view(request):
 
     context = {
         # "roll_list": queryset,
+        'contact_good': '100%',
+        'contact_okay': '75%',
+        'contact_poor': '40%',
+        'contact_bad': '5%',
         'release': get_version_json(request),
         "title": "Farm Range Invites",
         "blurb": "Something might have gone wrong.",
@@ -123,7 +127,8 @@ def page_missing_contact_info(request):
                  "sent to the secondary person for that day.<br /><br />"
                  "I don't need both email and phone but it makes life much easier to have a phone listed on file. My "
                  "cellphone service isn't great at the farm and I might not be able to email you. The text messages "
-                 "on the other hand will go thru, eventually.<br />"
+                 "on the other hand will go thru, eventually.<br /><br />"
+                 "Your invite registration completion will update as the additional info is entered into the system."
                  ""
         ,
         'all_invites': all_invites,
