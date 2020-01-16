@@ -84,8 +84,8 @@ def page_farm_invites_map_fake(request):
 def page_farm_check_list(request):
     context = {
         'release': get_version_json(request),
-        "title": "Event Check List",
-        "blurb": "What items should I bring?",
+        "title": "What should I bring?",
+        "blurb": "",
         "table_data": 'Strongly recommended items'
                       '<li>Ear protection</li>'
                       '<li>Eye protection</li>'
