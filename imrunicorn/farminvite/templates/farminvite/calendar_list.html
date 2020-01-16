@@ -7,7 +7,9 @@
 <div class="row">
     <div class="col-md-12">
         <p>
-            Invites sorted by date, am/pm then primary/secondary. Forgive the clunky look.
+            {% autoescape off %}
+            {{ blurb }}
+            {% endautoescape %}
         </p>
 
         <table width="65%" border="1" align="center">
@@ -74,11 +76,14 @@
                 {% if invite.Phone_Number and invite.EMail%}
                 <td id="td-sheriff"> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a></td>
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                </td>
                 {% elif invite.EMail %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a></td>
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                </td>
                 {% else %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a></td>
+                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                </td>
                 {% endif %}
 
 

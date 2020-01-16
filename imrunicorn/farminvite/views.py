@@ -49,14 +49,25 @@ def page_farm_invites_view(request):
         Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
 
     context = {
-        # "roll_list": queryset,
         'contact_good': 'COMPLETE',
-        'contact_okay': '75%',
-        'contact_poor': '40%',
+        'contact_okay': '85%',
+        'contact_poor': '66%',
         'contact_bad': '5%',
         'release': get_version_json(request),
         "title": "Farm Range Invites",
-        "blurb": "Something might have gone wrong.",
+        "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters "
+                 "forms or work chat you are at risk of having your invite retracted to make room for someone else "
+                 "that I can communicate with. "
+                 "Your invite registration completion will update as the additional info is entered into the "
+                 "system.<br /><br /> "
+                 "66% is fine, higher is better/easier."
+                 "<li>COMPLETE - I have Phone and email to reach you.</li>"
+                 "<li>85% - I have your phone number to reach you.</li>"
+                 "<li>66% - I have your email to reach you.</li>"
+                 "<li>5% - I only have MDShooters or work chat to reach you. <i>You're at risk of being removed from "
+                 "the invites.</i></li> "
+                 ""
+        ,
         'all_invites': all_invites,
         "year": datetime.now().year
         # "year": all_loads.prod
