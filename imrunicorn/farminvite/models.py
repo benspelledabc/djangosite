@@ -15,7 +15,10 @@ class InviteListing(models.Model):
     EMail = models.CharField(max_length=150, default=None, blank=True, null=True)
 
     def __str__(self):
-        return "%s %s (Secondary: %s) %s" % (self.Invite_Date, self.MDShooters_Name, self.Invite_Secondary, self.Phone_Number)
+        return "%s %s (Secondary: %s) %s" % (self.Invite_Date,
+                                             self.MDShooters_Name,
+                                             self.Invite_Secondary,
+                                             self.Phone_Number)
 
     class Meta:
         ordering = ('Invite_Date', 'Invite_Secondary', 'MDShooters_Name', 'Phone_Number')
