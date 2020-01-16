@@ -29,9 +29,9 @@
           {% for invite in all_invites %}
           <tr bgcolor="#F5F5F5">
               {% if invite.Invite_AM %}
-              <td id="td-ocw">{{ invite.Invite_Date }} -- [08:00AM - 12:01PM]</td>
+              <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
               {% else %}
-              <td id="td-ocw">{{ invite.Invite_Date }} -- [12:30PM - 04:30PM]</td>
+              <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
               {% endif %}
 
               <td id="td-ocw">{{ invite.MDShooters_Name }}</td>
