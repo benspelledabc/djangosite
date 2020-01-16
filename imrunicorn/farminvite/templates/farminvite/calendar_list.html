@@ -47,14 +47,21 @@
 
                 <td id="td-ocw">{{ invite.Invite_Secondary }}</td>
 
+                {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
                 <td id="td-ocw"> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a></td>
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                </td>
                 {% elif invite.EMail %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a></td>
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                </td>
                 {% else %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a></td>
+                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                </td>
+                {% endif %}
+                {% else %}
+                <td id="td-ocw"> &nbsp;</td>
                 {% endif %}
 
             </tr>
@@ -73,6 +80,7 @@
 
                 <td id="td-sheriff">{{ invite.Invite_Secondary }}</td>
 
+                {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
                 <td id="td-sheriff"> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
@@ -85,7 +93,9 @@
                 <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
                 </td>
                 {% endif %}
-
+                {% else %}
+                <td id="td-sheriff"> &nbsp;</td>
+                {% endif %}
 
             </tr>
             {% endif %}
