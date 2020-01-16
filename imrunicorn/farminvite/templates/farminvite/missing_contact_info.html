@@ -1,13 +1,16 @@
 {% extends "imrunicorn/layout.html" %}
-
 {% block content %}
+{% load humanize %}
+<h2>{{ title }}</h2>
 
 <div class="row">
     <div class="col-md-12">
-        <h4>Missing Contact Info</h4>
+        {% autoescape off %}
+        <h4>{{ blurb }}</h4>
+        {% endautoescape %}
     </div>
 </div>
-
+<br /><br />
 
 <table width="65%" border="1" align="center">
     <tr bgcolor="#808080">
