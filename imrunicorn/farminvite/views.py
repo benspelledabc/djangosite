@@ -115,8 +115,17 @@ def page_missing_contact_info(request):
     context = {
         # "roll_list": queryset,
         'release': get_version_json(request),
-        "title": "Farm Range Invites",
-        "blurb": "Something might have gone wrong.",
+        "title": "Missing Contact Info Results In Invite Retraction",
+        "blurb": "Please provide some contact info if you show up on this list as having it missing. Failure to do so "
+                 "will result in your name being removed from the invite list to make room for people that I can get "
+                 "in touch with. Entries without at least one or the other will be removed five days before the event "
+                 "and the invite will be "
+                 "sent to the secondary person for that day.<br /><br />"
+                 "I don't need both email and phone but it makes life much easier to have a phone listed on file. My "
+                 "cellphone service isn't great at the farm and I might not be able to email you. The text messages "
+                 "on the other hand will go thru, eventually.<br />"
+                 ""
+        ,
         'all_invites': all_invites,
         "year": datetime.now().year
     }
