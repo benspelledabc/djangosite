@@ -50,7 +50,7 @@ def page_farm_invites_view(request):
 
     context = {
         # "roll_list": queryset,
-        'contact_good': '100%',
+        'contact_good': 'COMPLETE',
         'contact_okay': '75%',
         'contact_poor': '40%',
         'contact_bad': '5%',
