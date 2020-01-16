@@ -103,3 +103,21 @@ def page_farm_check_list(request):
         "year": datetime.now().year
     }
     return render(request, "farminvite/simple_use_variables.html", context)
+
+
+def page_missing_contact_info(request):
+    this_moment = datetime.now()
+    # only events not past, ordered by date, am then pm.. then secondary listings
+    all_invites = InviteListing.objects.filter(
+        Q(Invite_Date=this_moment.date()) |
+        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+
+    context = {
+        # "roll_list": queryset,
+        'release': get_version_json(request),
+        "title": "Farm Range Invites",
+        "blurb": "Something might have gone wrong.",
+        'all_invites': all_invites,
+        "year": datetime.now().year
+    }
+    return render(request, "farminvite/missing_contact_info.html", context)

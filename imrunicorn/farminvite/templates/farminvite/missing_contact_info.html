@@ -1,0 +1,59 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Missing Contact Info</h4>
+    </div>
+</div>
+
+
+<table width="65%" border="1" align="center">
+    <tr bgcolor="#808080">
+        <th bgcolor="808080" style="text-align: center">
+            Invite Slot
+        </th>
+        </th>
+        <th bgcolor="808080" style="text-align: center">
+            MDShooters Name
+        </th>
+        <th bgcolor="808080" style="text-align: center">
+            Phone On File
+        </th>
+        <th bgcolor="808080" style="text-align: center">
+            EMail On File
+        </th>
+
+    </tr>
+
+    {% if all_invites != None %}
+    {% for invite in all_invites %}
+
+    {% if invite.Invite_AM %}
+    <tr bgcolor="#F5F5F5">
+        <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
+        <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+        <td id="td-ocw">{% if invite.Phone_Number %}True{% else %}<strong>False</strong>{% endif %}</td>
+        <td id="td-ocw">{% if invite.EMail %}True{% else %}<strong>False</strong>{% endif %}</td>
+    </tr>
+
+    {% else %}
+
+    <tr bgcolor="#BEBEBE">
+        <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
+        <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+        <td id="td-sheriff">{% if invite.Phone_Number %}True{% else %}<strong>False</strong>{% endif %}</td>
+        <td id="td-sheriff">{% if invite.EMail %}True{% else %}<strong>False</strong>{% endif %}</td>
+    </tr>
+    {% endif %}
+
+    {% endfor %}
+    {% endif %}
+
+</table>
+
+
+<br/><br/>
+
+{% endblock %}
