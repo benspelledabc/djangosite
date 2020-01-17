@@ -39,7 +39,7 @@
                 {% if request.user|has_group:"farminvite_editor" %}
                 <td id="td-ocw" data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    {{ invite.MDShooters_Name }}
+                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">{{ invite.MDShooters_Name }}</a>
                 </td>
                 {% else %}
                 <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
@@ -72,7 +72,7 @@
                 {% if request.user|has_group:"farminvite_editor" %}
                 <td id="td-sheriff" data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    {{ invite.MDShooters_Name }}
+                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">{{ invite.MDShooters_Name }}</a>
                 </td>
                 {% else %}
                 <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
