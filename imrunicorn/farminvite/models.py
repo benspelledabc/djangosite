@@ -13,6 +13,8 @@ class InviteListing(models.Model):
     Real_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Phone_Number = models.CharField(max_length=20, default=None, blank=True, null=True)
     EMail = models.CharField(max_length=150, default=None, blank=True, null=True)
+    Hours_Late = models.DecimalField(max_digits=4, decimal_places=2, default=0.0, null=True)
+    Event_Notes = models.TextField(blank=True, null=True) # i like big comments...
 
     def __str__(self):
         return "%s %s (Secondary: %s) %s" % (self.Invite_Date,
