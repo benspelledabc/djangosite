@@ -121,6 +121,28 @@ def page_farm_check_list(request):
     return render(request, "farminvite/simple_use_variables.html", context)
 
 
+def page_request_slot(request):
+    context = {
+        'release': get_version_json(request),
+        "title": "Request Slot",
+        "blurb": "Email Me To Request Slot",
+        "table_data": 'Strongly recommended items'
+                      '<li>FirstName (so i dont call you dude/woman all day):</li>'
+                      '<li>Display Name (MDShoters name or something else. This is what\'s displayed on the listing '
+                      'page.):</li> '
+                      '<li>Phone Number:</li>'
+                      '<li>E-Mail:</li>'
+                      '<li>Date Of Invite Requesting:</li>'
+                      '<li>AM or PM</li>'
+                      '<li><i>EMAIL SUBJECT: Aim Small Miss Small</i> (other subjects will be ignored)</li>'
+                      '<li>My Address: SvenDavison@gmail.com</li>'
+                      ''
+        ,
+        "year": datetime.now().year
+    }
+    return render(request, "farminvite/simple_use_variables.html", context)
+
+
 def page_missing_contact_info(request):
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings

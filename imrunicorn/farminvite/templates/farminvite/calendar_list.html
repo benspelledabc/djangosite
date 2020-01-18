@@ -39,69 +39,69 @@
             {% for invite in all_invites %}
             {% if invite.Invite_AM %}
             <tr bgcolor="#F5F5F5">
-                <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
+                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
 
                 {% if request.user|has_group:"farminvite_editor" %}
-                <td id="td-ocw" data-toggle="tooltip"
+                <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
                     {{ invite.MDShooters_Name }}
                 </td>
                 {% else %}
-                <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
                 {% endif %}
 
-                <td id="td-ocw">{{ invite.Invite_Secondary }}</td>
+                <td>{{ invite.Invite_Secondary }}</td>
 
                 {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
-                <td id="td-ocw"> {{ contact_good }}</td>
+                <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
                 </td>
                 {% elif invite.EMail %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
                 </td>
                 {% else %}
-                <td id="td-ocw"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
                 </td>
                 {% endif %}
                 {% else %}
-                <td id="td-ocw"><a href="#">Request Slot</a></td>
+                <td><a href="{% url 'request_slot' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
             {% else %}
             <tr bgcolor="#BEBEBE">
-                <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
+                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
 
                 {% if request.user|has_group:"farminvite_editor" %}
-                <td id="td-sheriff" data-toggle="tooltip"
+                <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
                     {{ invite.MDShooters_Name }}
                 </td>
                 {% else %}
-                <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
                 {% endif %}
 
-                <td id="td-sheriff">{{ invite.Invite_Secondary }}</td>
+                <td>{{ invite.Invite_Secondary }}</td>
 
                 {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
-                <td id="td-sheriff"> {{ contact_good }}</td>
+                <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
                 </td>
                 {% elif invite.EMail %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
                 </td>
                 {% else %}
-                <td id="td-sheriff"><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
                 </td>
                 {% endif %}
                 {% else %}
-                <td id="td-sheriff"><a href="#">Request Slot</a></td>
+                <td><a href="{% url 'request_slot' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
