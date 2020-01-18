@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class InviteListing(models.Model):
     Invite_Date = models.DateField(default=date.today)
+    Show_Listing = models.BooleanField(default=True)
     Invite_AM = models.BooleanField(default=True)
     Invite_PM = models.BooleanField(default=False)
     Invite_Secondary = models.BooleanField(default=False, blank=True, null=True)
@@ -16,10 +17,12 @@ class InviteListing(models.Model):
     Event_Notes = models.TextField(blank=True, null=True) # i like big comments...
 
     def __str__(self):
-        return "%s %s (Secondary: %s) %s" % (self.Invite_Date,
-                                             self.MDShooters_Name,
-                                             self.Invite_Secondary,
-                                             self.Phone_Number)
+        return "%s %s (Secondary: %s) %s [Show Listing = %s]" % (
+            self.Invite_Date,
+            self.MDShooters_Name,
+            self.Invite_Secondary,
+            self.Phone_Number,
+            self.Show_Listing)
 
     class Meta:
         ordering = ('Invite_Date', 'Invite_Secondary', 'MDShooters_Name', 'Phone_Number')
