@@ -45,8 +45,9 @@ def page_farm_invites_view(request):
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
-        Q(Invite_Date=this_moment.date()) |
-        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+        Q(Show_Listing=True) &
+        (Q(Invite_Date=this_moment.date()) |
+         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
 
     context = {
         'contact_good': 'COMPLETE',
