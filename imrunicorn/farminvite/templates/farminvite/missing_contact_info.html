@@ -34,21 +34,24 @@
     {% for invite in all_invites %}
 
     {% if invite.Invite_AM %}
+    {% if invite.MDShooters_Name != 'SLOT AVAILABLE' %}
     <tr bgcolor="#F5F5F5">
         <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
         <td id="td-ocw">{{ invite.MDShooters_Name }}</td>
         <td id="td-ocw">{% if invite.Phone_Number %}True{% else %}<strong>False</strong>{% endif %}</td>
         <td id="td-ocw">{% if invite.EMail %}True{% else %}<strong>False</strong>{% endif %}</td>
     </tr>
+    {% endif %}
 
     {% else %}
-
+    {% if invite.MDShooters_Name != 'SLOT AVAILABLE' %}
     <tr bgcolor="#BEBEBE">
         <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
         <td id="td-sheriff">{{ invite.MDShooters_Name }}</td>
         <td id="td-sheriff">{% if invite.Phone_Number %}True{% else %}<strong>False</strong>{% endif %}</td>
         <td id="td-sheriff">{% if invite.EMail %}True{% else %}<strong>False</strong>{% endif %}</td>
     </tr>
+    {% endif %}
     {% endif %}
 
     {% endfor %}
