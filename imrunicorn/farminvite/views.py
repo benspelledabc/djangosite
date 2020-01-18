@@ -126,14 +126,15 @@ def page_request_slot(request):
         'release': get_version_json(request),
         "title": "Request Slot",
         "blurb": "Email Me To Request Slot",
-        "table_data": 'Strongly recommended items'
+        "table_data": 'The email must contain these items or I\'ll ignore the request. I\'ll add you to the secondary '
+                      'listing if primary is full. '
                       '<li>FirstName (so i dont call you dude/woman all day):</li>'
                       '<li>Display Name (MDShoters name or something else. This is what\'s displayed on the listing '
                       'page.):</li> '
                       '<li>Phone Number:</li>'
                       '<li>E-Mail:</li>'
                       '<li>Date Of Invite Requesting:</li>'
-                      '<li>AM or PM</li>'
+                      '<li>AM or PM</li>'                      
                       '<li><i>EMAIL SUBJECT: Aim Small Miss Small</i> (other subjects will be ignored)</li>'
                       '<li>My Address: SvenDavison@gmail.com</li>'
                       ''
