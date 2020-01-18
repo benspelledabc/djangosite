@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.page_farm_invites_view, name='farm_invites_home'),
+    path('request_slot/', views.page_request_slot, name='request_slot'),
     path('missing_contact_info/', views.page_missing_contact_info, name='missing_contact_info'),
     path('checklist/', views.page_farm_check_list, name='farm_check_list'),
     path('map/', views.page_farm_invites_map_fake, name='farm_invites_map_fake'),
