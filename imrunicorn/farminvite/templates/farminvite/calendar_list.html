@@ -1,4 +1,9 @@
 {% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
 {% block content %}
 {% load humanize %}
 <h2>{{ title }}</h2>
@@ -39,7 +44,8 @@
                 {% if request.user|has_group:"farminvite_editor" %}
                 <td id="td-ocw" data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">{{ invite.MDShooters_Name }}</a>
+                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
+                    {{ invite.MDShooters_Name }}
                 </td>
                 {% else %}
                 <td id="td-ocw" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
@@ -72,7 +78,8 @@
                 {% if request.user|has_group:"farminvite_editor" %}
                 <td id="td-sheriff" data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">{{ invite.MDShooters_Name }}</a>
+                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
+                    {{ invite.MDShooters_Name }}
                 </td>
                 {% else %}
                 <td id="td-sheriff" data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
