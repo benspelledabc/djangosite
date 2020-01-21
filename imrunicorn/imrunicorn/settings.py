@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
+    'crispy_forms',
     'imrunicorn',
     'loaddata',
     'farminvite',
@@ -151,3 +152,5 @@ EMAIL_HOST_PASSWORD = 'redacted'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

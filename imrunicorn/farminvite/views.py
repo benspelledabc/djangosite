@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from model_utils.models import now
 
+from .forms import InviteListingForm
 from .models import InviteListing
 
 
@@ -170,3 +171,20 @@ def page_missing_contact_info(request):
         "year": datetime.now().year
     }
     return render(request, "farminvite/missing_contact_info.html", context)
+
+
+def page_invite_listing(request):
+    if request.method == 'POST':
+        form = InviteListingForm(request.POST)
+        if form.is_valid():
+            print("VALID")
+            form.save()
+
+    context = {
+        'release': get_version_json(request),
+        'form': InviteListingForm(),
+        "year": datetime.now().year
+    }
+
+    return render(request, 'farminvite/invite_listing_form.html', context)
+
