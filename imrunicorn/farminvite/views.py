@@ -7,21 +7,12 @@ from django.db.models import F, ExpressionWrapper
 from django.http import JsonResponse
 from django.shortcuts import render
 from model_utils.models import now
-
 from .forms import InviteListingForm
 from .models import InviteListing
+from announcements.get_news import latest_news, get_version_json
 
 
 # Create your views here.
-
-
-def get_version_json(request):
-    # data = open('release.json').read()  # opens the json file and saves the raw contents
-    data = open(os.path.join(settings.BASE_DIR, 'release.json')).read()
-    json_data = json.loads(data)  # converts to a json structure
-    return json_data
-
-
 def unused_json_farm_invites_view(request):
     context = {
         'body': 'no body to share',
@@ -32,7 +23,7 @@ def unused_json_farm_invites_view(request):
 
 def unused_page_farm_invites_view(request):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Shake it like it\'s going out of style!',
@@ -55,7 +46,7 @@ def page_farm_invites_view(request):
         'contact_okay': '85%',
         'contact_poor': '66%',
         'contact_bad': '5%',
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Farm Range Invites",
         "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters "
                  "forms or work chat you are at risk of having your invite retracted to make room for someone else "
@@ -79,7 +70,7 @@ def page_farm_invites_view(request):
 
 def page_farm_invites_map(request):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
         "year": datetime.now().year
@@ -89,7 +80,7 @@ def page_farm_invites_map(request):
 
 def page_farm_invites_map_fake(request):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Shake it like it\'s going out of style!',
@@ -100,7 +91,7 @@ def page_farm_invites_map_fake(request):
 
 def page_farm_check_list(request):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "What should I bring?",
         "blurb": "",
         "table_data": 'Strongly recommended items'
@@ -124,7 +115,7 @@ def page_farm_check_list(request):
 
 def page_request_slot(request):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Request Slot",
         "blurb": "Email Me To Request Slot",
         "table_data": 'The email must contain these items or I\'ll ignore the request. I\'ll add you to the secondary '
@@ -154,7 +145,7 @@ def page_missing_contact_info(request):
 
     context = {
         # "roll_list": queryset,
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Missing Contact Info Results In Invite Retraction",
         "blurb": "Please provide some contact info if you show up on this list as having it missing. Failure to do so "
                  "will result in your name being removed from the invite list to make room for people that I can get "
@@ -181,7 +172,7 @@ def page_invite_listing(request):
             form.save()
 
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         'form': InviteListingForm(),
         "year": datetime.now().year
     }

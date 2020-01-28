@@ -6,12 +6,15 @@ from django.shortcuts import render
 import os
 import json
 
+from announcements.get_news import latest_news, get_version_json
+
 
 # Create your views here.
 def page_home(request):
+    what_is_new = latest_news()
     context = {
-        "what_is_new": "This is new...",
-        'release': get_version_json(request),
+        "what_is_new": what_is_new[0].Body,
+        'release': get_version_json(),
         "title": "Master Po (2.0) Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
         "table_data": 'This should be from the database... jackle.',
@@ -20,16 +23,9 @@ def page_home(request):
     return render(request, "imrunicorn/index.html", context)
 
 
-def get_version_json(request):
-    # data = open('release.json').read()  # opens the json file and saves the raw contents
-    data = open(os.path.join(settings.BASE_DIR, 'release.json')).read()
-    json_data = json.loads(data)  # converts to a json structure
-    return json_data
-
-
 def handler404(request, exception):
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (404)",
         "fullbody": "",
@@ -44,7 +40,7 @@ def handler404(request, exception):
 def handler500(request):
     # return HttpResponse("Hello world 500.")
     context = {
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (500)",
         "fullbody": "",
@@ -62,15 +58,13 @@ def page_days_since(request):
     stamp_received = batf_data['stamp_received']
     total = batf_data['total']
 
-
-
     context = {
         # 'batf_data': total_batf['check_cashed'],
         'batf_check_cashed': check_cashed,
         'batf_approved': approved,
         'batf_stamp_received': stamp_received,
         'batf_total': total,
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Days since " + input_date,
         "blurb": "How many times has the sun gone up and down since then?",
         "input_date": input_date,

@@ -6,9 +6,8 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 import os
 import json
-
-# from .views import get_version_json as get_version_json
 from .models import HandLoad, EstimatedDope
+from announcements.get_news import latest_news, get_version_json
 
 
 # Create your views here.
@@ -19,7 +18,7 @@ def page_loads(request):
 
     context = {
         # "roll_list": queryset,
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Master Po: Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
         # changed this from tabledata
@@ -43,7 +42,7 @@ def page_estimated_dope(request, load_pk='3'):
         context = {
             'load_id': load_pk,
             # "roll_list": queryset,
-            'release': get_version_json(request),
+            'release': get_version_json(),
             "title": "Master Po Load Data",
             "blurb": "I'll move it to a database setup in a bit.",
             'load_details': selected_load,
@@ -53,7 +52,7 @@ def page_estimated_dope(request, load_pk='3'):
         context = {
             'load_id': load_pk,
             # "roll_list": queryset,
-            'release': get_version_json(request),
+            'release': get_version_json(),
             "title": "Master Po Load Data",
             "blurb": "Estimated DOPE not found.",
             # 'load_details': 'selected_load',
@@ -66,7 +65,7 @@ def page_estimated_dope(request, load_pk='3'):
 def page_avg_and_sd_calc(request):
     context = {
         # "roll_list": queryset,
-        'release': get_version_json(request),
+        'release': get_version_json(),
         "title": "Avg & SD Calc",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Lorem ipsum Django info is from '
@@ -82,10 +81,3 @@ def sample(request):
         'Result': 'The query completed but this is not an endpoint with data.'
     }
     return JsonResponse(data)
-
-
-def get_version_json(request):
-    # data = open('release.json').read()  # opens the json file and saves the raw contents
-    data = open(os.path.join(settings.BASE_DIR, 'release.json')).read()
-    json_data = json.loads(data)  # converts to a json structure
-    return json_data
