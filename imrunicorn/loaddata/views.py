@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import os
 import json
 from .models import HandLoad, EstimatedDope
-from announcements.get_news import latest_news, get_version_json
+from announcements.get_news import get_news, get_version_json
 
 
 # Create your views here.

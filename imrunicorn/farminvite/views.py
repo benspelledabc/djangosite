@@ -9,7 +9,7 @@ from django.shortcuts import render
 from model_utils.models import now
 from .forms import InviteListingForm
 from .models import InviteListing
-from announcements.get_news import latest_news, get_version_json
+from announcements.get_news import get_news, get_version_json
 
 
 # Create your views here.

@@ -1,0 +1,28 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ news_overview }}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+{% autoescape off %}
+        {% if all_news != None %}
+            {% for news in all_news %}
+                <hr />
+                <h2>{{ news.Date }} - <i>{{ news.Blurb }}</i></h2><br/>
+                {{ news.Body }}
+            {% endfor %}
+        {% endif %}
+{% endautoescape %}
+
+    </div>
+</div>
+
+{% endblock %}
