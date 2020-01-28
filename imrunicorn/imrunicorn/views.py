@@ -140,6 +140,6 @@ def page_blog_add(request):
 def page_blog_read(request):
     context = {
         'body': 'no body to share',
-        'header': 'read',
+        'header': 'add',
     }
     return JsonResponse(context)

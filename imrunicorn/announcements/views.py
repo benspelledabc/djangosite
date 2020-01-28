@@ -7,6 +7,11 @@ import os
 import json
 
 from announcements.get_news import get_news, get_version_json
+from django.shortcuts import render
+from rest_framework import viewsets
+
+from .models import WhatIsNew
+from .serializer import NewsSerializer
 
 
 # Create your views here.
@@ -21,3 +26,16 @@ def page_all_news(request):
         "year": datetime.now().year
     }
     return render(request, "announcements/all_news.html", context)
+
+
+def json_all_news_json(request):
+    context = {
+        "name": "peter griffin",
+        "channel": "fox",
+    }
+    return JsonResponse(context)
+
+
+class NewsView(viewsets.ModelViewSet):
+    queryset = WhatIsNew.objects.all()
+    serializer_class = NewsSerializer
