@@ -6,7 +6,7 @@ from django.shortcuts import render
 import os
 import json
 
-from announcements.get_news import latest_news, get_version_json
+from announcements.get_news import get_news, get_version_json
 
 
 # Create your views here.
@@ -15,7 +15,7 @@ def page_home(request):
     news_blurb = ""
     news_date = ""
     try:
-        news = latest_news()
+        news = get_news()
         news_date = news[0].Date
         news_blurb = news[0].Blurb
         news_body = news[0].Body
