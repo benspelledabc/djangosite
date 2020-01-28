@@ -102,11 +102,7 @@
                        data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">News</a>
                     <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'all_news' %}">All News</a><br/>
-                        <a class="dropdown-item" href="/news/news_api?format=json">News JSON</a><br/>
-                        {% if request.user.is_authenticated %}
-                        <a class="dropdown-item" href="/news/news_api?format=json">News JSON</a><br/>
-                        <a class="dropdown-item" href="/news/news_api/">News API</a><br/>
-                        {% endif %}
+                        <a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a><br/>
                     </div>
                 </li>
 
