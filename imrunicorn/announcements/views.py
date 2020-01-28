@@ -5,7 +5,9 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 import json
-
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.views import APIView
 from announcements.get_news import get_news, get_version_json
 from django.shortcuts import render
 from rest_framework import viewsets
@@ -36,6 +38,8 @@ def json_all_news_json(request):
     return JsonResponse(context)
 
 
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
 class NewsView(viewsets.ModelViewSet):
     queryset = WhatIsNew.objects.all()
     serializer_class = NewsSerializer

@@ -12,3 +12,7 @@ urlpatterns = [
     path('', include(router.urls)),
     # path('all_news_json/', views.json_all_news_json, name='all_news_json'),
 ]
+
+# from django.contrib.auth.decorators import login_required
+# @login_required
+# def blah_blah:
