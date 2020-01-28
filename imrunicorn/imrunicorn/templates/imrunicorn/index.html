@@ -13,15 +13,20 @@
         these are MY loads not yours. Meaning, I'm not telling you they are safe for YOUR gun.
         They might not even be 'safe' for my gun. That's my problem not yours.
     </div>
-    <br />
-    <div class="col-md-12" align="center">
-        <strong>{{ news_date }} - <i>{{ news_blurb }}</i></strong>
-    </div>
-    <div class="col-md-12" align="center">
-        {% autoescape off %}
-        {{ news_body }}
-        {% endautoescape %}
-    </div>
+
+    {% if news_date and news_blurb and news_body %}
+        <br />
+        <hr />
+        <div class="col-md-12" align="center">
+            <strong>{{ news_date }} - <i>{{ news_blurb }}</i></strong>
+        </div>
+        <div class="col-md-12" align="center">
+            {% autoescape off %}
+            {{ news_body }}
+            {% endautoescape %}
+        </div>
+    {% endif %}
+
 </div>
 
 
