@@ -11,9 +11,23 @@ from announcements.get_news import latest_news, get_version_json
 
 # Create your views here.
 def page_home(request):
-    what_is_new = latest_news()
+    news_body = ""
+    news_blurb = ""
+    news_date = ""
+    try:
+        news = latest_news()
+        news_date = news[0].Date
+        news_blurb = news[0].Blurb
+        news_body = news[0].Body
+    except IndexError as ie:
+        print(ie)
+    except Exception as err:
+        print(err)
+
     context = {
-        "what_is_new": what_is_new[0].Body,
+        "news_body": news_body,
+        "news_blurb": news_blurb,
+        "news_date": news_date,
         'release': get_version_json(),
         "title": "Master Po (2.0) Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
