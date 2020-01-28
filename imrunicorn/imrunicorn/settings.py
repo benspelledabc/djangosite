@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'imrunicorn',
     'loaddata',
     'farminvite',
+    'announcements',
 ]
 
 MIDDLEWARE = [

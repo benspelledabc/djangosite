@@ -10,3 +10,4 @@ __pycache__/*
 /imrunicorn/static/
 /imrunicorn/loaddata/migrations/
 /imrunicorn/farminvite/migrations/
+/imrunicorn/announcements/migrations/

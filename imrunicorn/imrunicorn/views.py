@@ -10,6 +10,7 @@ import json
 # Create your views here.
 def page_home(request):
     context = {
+        "what_is_new": "This is new...",
         'release': get_version_json(request),
         "title": "Master Po (2.0) Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
