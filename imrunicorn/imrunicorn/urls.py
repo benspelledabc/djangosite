@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
+from django.conf import settings
 # from . import forms, views
+from announcements.get_news import get_news, get_version_json
+
 from . import forms, views
 
 urlpatterns = [
@@ -46,6 +49,11 @@ urlpatterns = [
              {
                  'title': 'Log in',
                  'year': datetime.now().year,
+                 'release': get_version_json(),
+                 'no_accounts_blurb': 'I am not allowing new accounts at this time. It is just my account to manage '
+                                      'the site. Eventually, the idea is to allow account creation as well as storing '
+                                      'DOPE and your own load data. Keep it private or show to the public. In time.. '
+                                      'but for now that is not a thing yet.',
              }
          ),
          name='login'),
