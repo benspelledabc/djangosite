@@ -68,6 +68,31 @@ def page_farm_invites_view(request):
     return render(request, "farminvite/calendar_list.html", context)
 
 
+def page_farm_invites_view_hidden_listings(request):
+    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
+    this_moment = datetime.now()
+    # only events not past, ordered by date, am then pm.. then secondary listings
+    all_invites = InviteListing.objects.filter(
+        Q(Show_Listing=False) &
+        (Q(Invite_Date=this_moment.date()) |
+         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+
+    context = {
+        'contact_good': 'COMPLETE',
+        'contact_okay': '85%',
+        'contact_poor': '66%',
+        'contact_bad': '5%',
+        'release': get_version_json(),
+        "title": "Farm Range Invites Pending",
+        "blurb": "These are pending invites."
+        ,
+        'all_invites': all_invites,
+        "year": datetime.now().year
+        # "year": all_loads.prod
+    }
+    return render(request, "farminvite/calendar_list.html", context)
+
+
 def page_farm_invites_map(request):
     context = {
         'release': get_version_json(),
