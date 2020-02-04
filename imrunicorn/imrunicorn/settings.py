@@ -84,7 +84,6 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
 if socket.gethostname().startswith('svenMacBook'):
     DATABASES = {
          'default': {
