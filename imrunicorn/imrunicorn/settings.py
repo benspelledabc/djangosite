@@ -90,6 +90,8 @@ DATABASES = {
      #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      # },
 
+    # who has priority?
+
      'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
