@@ -84,21 +84,24 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-     # 'default': {
-     #     'ENGINE': 'django.db.backends.sqlite3',
-     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     # },
+if socket.gethostname().startswith('svenMacBook'):
+    DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+         },
+    }
+else:
+    DATABASES = {
+         'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'OPTIONS': {
+                'read_default_file': '/opt/loaddata.cnf',
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+         }
+    }
 
-     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/opt/loaddata.cnf',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-     }
-
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
