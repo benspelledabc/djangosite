@@ -11,3 +11,4 @@ __pycache__/*
 /imrunicorn/loaddata/migrations/
 /imrunicorn/farminvite/migrations/
 /imrunicorn/announcements/migrations/
+/imrunicorn/db.sqlite3

@@ -12,11 +12,19 @@
 <hr/>
 
 <div class="row">
+
     <div class="col-md-12" align="center">
         They say it'll take about <strong>{{ batf_total }}</strong> days total.<br />
         This is the sum of {{ batf_check_cashed }} to get the check cashed,
         {{ batf_approved }} to get approved, and {{ batf_stamp_received }} to have it received.
-        <br /><i>These dates are dynamically fetched from the netherworld or something.</i>
+        <br />
+        <i>These dates are dynamically fetched from the netherworld or something.
+            {% if cached_result == True %}
+            <br /><br />
+            We are having a problem pulling remote host. Displaying cached data.
+            <br />
+            {% endif %}
+        </i>
 
         <br /><br />
         Days since input date to today:
@@ -53,6 +61,7 @@
 
 
     </div>
+
 </div>
 
 <br/><br/>
