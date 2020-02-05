@@ -16,7 +16,7 @@ class Caliber(models.Model):
 class Firearm(models.Model):
     manufacture = models.CharField(max_length=150)
     model = models.CharField(max_length=150)
-    barrel_length = models.DecimalField(max_digits=5, decimal_places=1, default=18.0, null=True)
+    barrel_length = models.DecimalField(max_digits=5, decimal_places=2, default=18.0, null=True)
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
 
