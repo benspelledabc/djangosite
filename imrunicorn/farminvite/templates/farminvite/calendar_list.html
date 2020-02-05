@@ -37,7 +37,7 @@
 
             {% if all_invites != None %}
             {% for invite in all_invites %}
-            {% if invite.Invite_AM %}
+            {% if invite.Desired_Time_Slot == "AM" %}
             <tr bgcolor="#F5F5F5">
                 <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
 

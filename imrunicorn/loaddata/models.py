@@ -59,10 +59,7 @@ class HandLoad(models.Model):
     firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
-    # todo: removed chamber per added 'firearm' class
-    # Chamber = models.CharField(max_length=150, default=None, blank=True, null=True)
     Velocity = models.IntegerField(default=1200, null=True)
-    # Barrel_Length = models.DecimalField(max_digits=5, decimal_places=1, default=18.0, null=True)
     Is_Shamus_OCW = models.BooleanField(default=True)
     Is_Sven_OCW = models.BooleanField(default=True)
     Is_Sheriff_Load = models.BooleanField(default=True)

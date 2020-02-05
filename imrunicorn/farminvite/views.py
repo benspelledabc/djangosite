@@ -39,7 +39,7 @@ def page_farm_invites_view(request):
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=True) &
         (Q(Invite_Date=this_moment.date()) |
-         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
         'contact_good': 'COMPLETE',
@@ -75,7 +75,7 @@ def page_farm_invites_view_hidden_listings(request):
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=False) &
         (Q(Invite_Date=this_moment.date()) |
-         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
         'contact_good': 'COMPLETE',
@@ -166,7 +166,7 @@ def page_missing_contact_info(request):
     # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Invite_Date=this_moment.date()) |
-        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', '-Invite_AM', )
+        Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
         # "roll_list": queryset,
