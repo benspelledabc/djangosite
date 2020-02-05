@@ -20,7 +20,7 @@ class Firearm(models.Model):
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
 
-    # todo: Add 'owner' to class to track owner based off userid drop down menu?
+    # todo: Add 'owner' to class to track owner based off userid drop down menu.
 
     def __str__(self):
         return "%s %s %s" % (self.manufacture, self.model, self.caliber)
