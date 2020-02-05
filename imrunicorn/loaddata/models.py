@@ -19,6 +19,7 @@ class Firearm(models.Model):
     barrel_length = models.DecimalField(max_digits=5, decimal_places=2, default=18.0, null=True)
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
+    inches_per_twist = models.DecimalField(max_digits=4, decimal_places=1, default=9.0, null=True)
 
     # todo: Add 'owner' to class to track owner based off userid drop down menu.
 
