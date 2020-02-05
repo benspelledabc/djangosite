@@ -1,7 +1,7 @@
 {
   "pi":"3.14159265359",
-  "version": "3.141",
-  "build_date": "January 29, 2020",
+  "version": "3.1415",
+  "build_date": "February 5, 2020",
   "author": "Ben SpelledABC (AKA: Moorvogi)",
   "todo" : "Make the registration form easier to use."
 }
