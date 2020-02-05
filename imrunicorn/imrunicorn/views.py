@@ -71,9 +71,11 @@ def page_days_since(request):
     approved = batf_data['approved']
     stamp_received = batf_data['stamp_received']
     total = batf_data['total']
+    cached_result = batf_data['cached_result']
 
     context = {
         # 'batf_data': total_batf['check_cashed'],
+        'cached_result': cached_result,
         'batf_check_cashed': check_cashed,
         'batf_approved': approved,
         'batf_stamp_received': stamp_received,
@@ -88,45 +90,60 @@ def page_days_since(request):
 
 
 def fetch_estimated_batf_days():
-    import requests
-    url = 'https://www.silencershop.com/atf-wait-times'
-    response = requests.get(url)
-    # F4 Individual - Paper\"},{\"v\":32},{\"v\":175},{\"v\":10}]},{\"c\
+    try:
+        import requests
+        url = 'https://www.silencershop.com/atf-wait-times'
+        response = requests.get(url)
+        # F4 Individual - Paper\"},{\"v\":32},{\"v\":175},{\"v\":10}]},{\"c\
 
-    stop_before = response.text.find('F4 Individual - EFile')
-    stop_after = response.text.find('F4 Individual - Paper')
+        stop_before = response.text.find('F4 Individual - EFile')
+        stop_after = response.text.find('F4 Individual - Paper')
 
-    # getting there.. this is the right SECTION but we need to split it up more
-    answer = response.text[stop_after:stop_before]
-    answer_pieces = answer.split(':')
+        # getting there.. this is the right SECTION but we need to split it up more
+        answer = response.text[stop_after:stop_before]
+        answer_pieces = answer.split(':')
 
-    # first_number is correct
-    first_number_pieces = answer_pieces[1].split('}')
-    first_number = int(first_number_pieces[0])
+        # first_number is correct
+        first_number_pieces = answer_pieces[1].split('}')
+        first_number = int(first_number_pieces[0])
 
-    # second number starts around here
-    second_number_pieces = answer_pieces[2].split('}')
-    second_number = int(second_number_pieces[0])
+        # second number starts around here
+        second_number_pieces = answer_pieces[2].split('}')
+        second_number = int(second_number_pieces[0])
 
-    # third number starts around here
-    third_number_pieces = answer_pieces[3].split('}')
-    third_number = int(third_number_pieces[0])
+        # third number starts around here
+        third_number_pieces = answer_pieces[3].split('}')
+        third_number = int(third_number_pieces[0])
 
-    total = first_number + second_number + third_number
+        total = first_number + second_number + third_number
 
-    batf_data = {
-        'check_cashed': first_number,
-        'approved': second_number,
-        'stamp_received': third_number,
-        'total': total,
-    }
+        batf_data = {
+            'cached_result': False,
+            'check_cashed': first_number,
+            'approved': second_number,
+            'stamp_received': third_number,
+            'total': total,
+        }
 
-    # return HttpResponse(total)
-    # return JsonResponse(batf_data)
-    # return JsonResponse(total, safe=False)
-    # return batf_data[total]
+    except ConnectionError:
+        batf_data = {
+            'cached_result': True,
+            'check_cashed': 32,
+            'approved': 175,
+            'stamp_received': 10,
+            'total': 217,
+        }
+        # todo: make this not complain
+    except Exception:
+        batf_data = {
+            'cached_result': True,
+            'check_cashed': 32,
+            'approved': 175,
+            'stamp_received': 10,
+            'total': 217,
+        }
+
     return batf_data
-    # return total
 
 
 def page_blog_add(request):
