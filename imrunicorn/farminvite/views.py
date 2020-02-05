@@ -129,7 +129,7 @@ def page_farm_check_list(request):
                       '<li>Sense of humor</li>'
                       '<br />'
                       'Extras if you want...'
-                      '<li>Shotgun clays (great targets at range)</li>'
+                      '<li>Shotgun clays (great rifle targets at 200-600 yards)</li>'
                       '<li>AR500 steel plates, someone\'s bound to damage one eventually</li>'
                       '<li>Donations of brass (i\'ll use it or give it away to someone that can)</li>'
         ,

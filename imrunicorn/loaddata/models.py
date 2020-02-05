@@ -2,6 +2,31 @@ from django.db import models
 from decimal import Decimal
 
 
+class Caliber(models.Model):
+    name = models.CharField(max_length=150)
+    diameter = models.DecimalField(max_digits=5, decimal_places=3)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        ordering = ('name',)
+
+
+class Firearm(models.Model):
+    manufacture = models.CharField(max_length=150)
+    model = models.CharField(max_length=150)
+    extra_info = models.TextField(blank=True, null=True)  # i like big comments...
+
+    caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s %s %s" % (self.manufacture, self.model, self.caliber)
+
+    class Meta:
+        ordering = ('manufacture', 'model')
+
+
 class Powder(models.Model):
     name = models.CharField(max_length=150, default=None, blank=True, null=True)
     is_smokeless = models.BooleanField(default=True)
@@ -30,10 +55,11 @@ class Projectile(models.Model):
 class HandLoad(models.Model):
     # powder = models.CharField(max_length=30, choices=POWDER_CHOICES, default="UNLISTED")
     powder = models.ForeignKey(Powder, default=1, on_delete=models.CASCADE)
-
+    firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
-    Chamber = models.CharField(max_length=150, default=None, blank=True, null=True)
+    # todo: removed chamber per added 'firearm' class
+    # Chamber = models.CharField(max_length=150, default=None, blank=True, null=True)
     Velocity = models.IntegerField(default=1200, null=True)
     Barrel_Length = models.DecimalField(max_digits=5, decimal_places=1, default=18.0, null=True)
     Is_Shamus_OCW = models.BooleanField(default=True)
@@ -41,7 +67,7 @@ class HandLoad(models.Model):
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
-        return "[PK: %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.Chamber,
+        return "[PK: %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.caliber,
                                                                self.projectile.WeightGR,
                                                                self.projectile.Manufacture,
                                                                self.projectile.Name,
@@ -51,7 +77,7 @@ class HandLoad(models.Model):
                                                                )
 
     class Meta:
-        ordering = ('Chamber', '-projectile', '-Velocity')
+        ordering = ('firearm', '-projectile', '-Velocity')
 
 
 class EstimatedDope(models.Model):
@@ -99,6 +125,3 @@ class EstimatedDope(models.Model):
 
     def __str__(self):
         return str(self.hand_load)
-
-    # class Meta:
-    # ordering = ('hand_load.Velocity', 'hand_load.projectile')

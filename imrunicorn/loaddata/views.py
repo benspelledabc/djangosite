@@ -17,15 +17,12 @@ def page_loads(request):
                                output_field=FloatField()))
 
     context = {
-        # "roll_list": queryset,
         'release': get_version_json(),
         "title": "Master Po: Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
-        # changed this from tabledata
         "table_data": 'This should be from the database... jackle.',
         'all_loads': all_loads,
         "year": datetime.now().year
-        # "year": all_loads.prod
     }
     return render(request, "loaddata/djangoad.html", context)
 
