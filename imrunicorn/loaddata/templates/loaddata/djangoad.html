@@ -12,6 +12,9 @@
         <table width="85%" border="1" align="center">
             <tr bgcolor="#808080">
                 <th bgcolor="808080" style="text-align: center">
+                 Owner
+             </th>
+                <th bgcolor="808080" style="text-align: center">
                  Caliber
              </th>
                 <th bgcolor="808080" style="text-align: center">
@@ -44,6 +47,7 @@
           {% for load in all_loads %}
           {% if load.Is_Sheriff_Load %}
           <tr bgcolor="#BEBEBE">
+              <td id="td-sheriff">{{ load.firearm.owner }}</td>
               <td id="td-sheriff">{{ load.firearm.caliber }}</td>
               <td id="td-sheriff">{{ load.firearm.barrel_length|floatformat:0 }}</td>
               <td id="td-sheriff">{{ load.projectile.Name }}</td>
@@ -56,6 +60,7 @@
           </tr>
           {% else %}
           <tr bgcolor="#F5F5F5">
+              <td id="td-sheriff">{{ load.firearm.owner }}</td>
               <td id="td-ocw">{{ load.firearm.caliber }}</td>
               <td id="td-ocw">{{ load.firearm.barrel_length|floatformat:0 }}</td>
               <td id="td-ocw">{{ load.projectile.Name }}</td>
