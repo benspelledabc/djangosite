@@ -17,6 +17,7 @@ class Caliber(models.Model):
 class Firearm(models.Model):
     manufacture = models.CharField(max_length=150)
     model = models.CharField(max_length=150)
+    # TODO: this should default to the current user in the template and allow override only if is_staff or something
     owner = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
     barrel_length = models.DecimalField(max_digits=5, decimal_places=2, default=18.0, null=True)
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
