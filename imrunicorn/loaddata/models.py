@@ -27,7 +27,7 @@ class Firearm(models.Model):
     # todo: Add 'owner' to class to track owner based off userid drop down menu.
 
     def __str__(self):
-        return "%s %s %s" % (self.manufacture, self.model, self.caliber)
+        return "%s %s %s %s" % (self.owner, self.manufacture, self.model, self.caliber)
 
     class Meta:
         ordering = ('manufacture', 'model')
@@ -67,14 +67,14 @@ class HandLoad(models.Model):
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
-        return "[PK: %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.caliber,
-                                                               self.projectile.WeightGR,
-                                                               self.projectile.Manufacture,
-                                                               self.projectile.Name,
-                                                               self.Velocity,
-                                                               self.Powder_Charge,
-                                                               self.powder.name,
-                                                               )
+        return "[PK: %s - %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.owner, self.firearm.caliber,
+                                                                    self.projectile.WeightGR,
+                                                                    self.projectile.Manufacture,
+                                                                    self.projectile.Name,
+                                                                    self.Velocity,
+                                                                    self.Powder_Charge,
+                                                                    self.powder.name,
+                                                                    )
 
     class Meta:
         ordering = ('firearm', '-projectile', '-Velocity')
