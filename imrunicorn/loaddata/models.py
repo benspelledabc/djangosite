@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from django.contrib.auth.models import User
 
 
 class Caliber(models.Model):
@@ -16,10 +17,12 @@ class Caliber(models.Model):
 class Firearm(models.Model):
     manufacture = models.CharField(max_length=150)
     model = models.CharField(max_length=150)
+    # TODO: this should default to the current user in the template and allow override only if is_staff or something
+    owner = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
     barrel_length = models.DecimalField(max_digits=5, decimal_places=2, default=18.0, null=True)
-    extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
     inches_per_twist = models.DecimalField(max_digits=4, decimal_places=1, default=9.0, null=True)
+    extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     # todo: Add 'owner' to class to track owner based off userid drop down menu.
 
@@ -57,12 +60,10 @@ class Projectile(models.Model):
 
 class HandLoad(models.Model):
     powder = models.ForeignKey(Powder, default=1, on_delete=models.CASCADE)
+    Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
     firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
-    Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
     Velocity = models.IntegerField(default=1200, null=True)
-    # Is_Shamus_OCW = models.BooleanField(default=True)
-    # Is_Sven_OCW = models.BooleanField(default=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
