@@ -45,7 +45,7 @@
           {% if load.Is_Sheriff_Load %}
           <tr bgcolor="#BEBEBE">
               <td id="td-sheriff">{{ load.firearm.caliber }}</td>
-              <td id="td-sheriff">{{ load.firearm.barrel_length }}</td>
+              <td id="td-sheriff">{{ load.firearm.barrel_length|floatformat:0 }}</td>
               <td id="td-sheriff">{{ load.projectile.Name }}</td>
               <td id="td-sheriff">{{ load.projectile.WeightGR }}</td>
               <td id="td-sheriff">{{ load.powder }}</td>
@@ -57,7 +57,7 @@
           {% else %}
           <tr bgcolor="#F5F5F5">
               <td id="td-ocw">{{ load.firearm.caliber }}</td>
-              <td id="td-ocw">{{ load.firearm.barrel_length }}</td>
+              <td id="td-ocw">{{ load.firearm.barrel_length|floatformat:0 }}</td>
               <td id="td-ocw">{{ load.projectile.Name }}</td>
               <td id="td-ocw">{{ load.projectile.WeightGR }}</td>
               <td id="td-ocw">{{ load.powder }}</td>
