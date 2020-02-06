@@ -1,6 +1,12 @@
 windows create user
 C:\Users\sveni.THERMALTAKE\PycharmProjects\IMRUnicornDjango\venv\Scripts\python.exe C:/Users/sveni.THERMALTAKE/PycharmProjects/IMRUnicornDjango/imrunicorn/manage.py createsuperuser
 
+
+The nuclear option? Back up your db, for safety, then delete the migrations folder from each of your apps, and delete all rows from the django_migrations table in your db.
+Now run ./manage.py makemigrations. That will create a new initial migration file for each of your apps. If you were to then try to run ./manage.py migrate it would fail because all of that schema already exists and can’t be re-created. But you do need to tell Django that everything specified in the new migrations is already accounted for, so give it the —fake argument:
+./manage.py migrate —fake
+
+
 asgiref==3.2.3
 coverage==5.0.1
 Django==3.0.2
