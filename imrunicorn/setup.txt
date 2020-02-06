@@ -1,3 +1,6 @@
+windows create user
+C:\Users\sveni.THERMALTAKE\PycharmProjects\IMRUnicornDjango\venv\Scripts\python.exe C:/Users/sveni.THERMALTAKE/PycharmProjects/IMRUnicornDjango/imrunicorn/manage.py createsuperuser
+
 asgiref==3.2.3
 coverage==5.0.1
 Django==3.0.2

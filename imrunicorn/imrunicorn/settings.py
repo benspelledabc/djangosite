@@ -84,7 +84,8 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if socket.gethostname().startswith('svenMacBook'):
+if socket.gethostname().startswith('svenMacBook')\
+        or socket.gethostname().startswith('Thermaltake'):
     DATABASES = {
          'default': {
              'ENGINE': 'django.db.backends.sqlite3',

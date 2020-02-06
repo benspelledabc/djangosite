@@ -38,7 +38,6 @@ def page_estimated_dope(request, load_pk='3'):
         selected_load = EstimatedDope.objects.get(hand_load=load_pk)
         context = {
             'load_id': load_pk,
-            # "roll_list": queryset,
             'release': get_version_json(),
             "title": "Master Po Load Data",
             "blurb": "I'll move it to a database setup in a bit.",
@@ -48,11 +47,9 @@ def page_estimated_dope(request, load_pk='3'):
     except ObjectDoesNotExist:
         context = {
             'load_id': load_pk,
-            # "roll_list": queryset,
             'release': get_version_json(),
             "title": "Master Po Load Data",
             "blurb": "Estimated DOPE not found.",
-            # 'load_details': 'selected_load',
             "year": datetime.now().year,
         }
 
