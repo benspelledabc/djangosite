@@ -61,8 +61,8 @@ class HandLoad(models.Model):
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
     Velocity = models.IntegerField(default=1200, null=True)
-    Is_Shamus_OCW = models.BooleanField(default=True)
-    Is_Sven_OCW = models.BooleanField(default=True)
+    # Is_Shamus_OCW = models.BooleanField(default=True)
+    # Is_Sven_OCW = models.BooleanField(default=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
