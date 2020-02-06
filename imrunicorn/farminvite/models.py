@@ -19,8 +19,6 @@ class InviteListing(models.Model):
         choices=TIME_SLOT_CHOICES,
         default=AM,
     )
-    # Invite_AM = models.BooleanField(default=True)
-    # Invite_PM = models.BooleanField(default=False)
     Invite_Secondary = models.BooleanField(default=False, blank=True, null=True)
     MDShooters_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Real_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
