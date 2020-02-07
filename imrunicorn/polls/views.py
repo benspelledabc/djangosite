@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from announcements.get_news import get_news, get_version_json
 from django.views.generic import DetailView
+from ipware import get_client_ip
 from .models import Choice, Poll
 
 
@@ -15,6 +16,11 @@ def django_pdf(request):
 
 def django_pdf_duplicate(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
+
+
+# def get_remote_ip(request):
+#     client_address = request.META['HTTP_X_FORWARDED_FOR']
+#     return client_address
 
 
 class IndexView(generic.ListView):
@@ -30,7 +36,36 @@ class IndexView(generic.ListView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+        context['remote_ip'] = self.get_ip()
+
         return context
+
+    # this doesn't work right if behind a proxy (nginx)
+    def visitor_ip_address(self):
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = self.request.META.get('REMOTE_ADDR')
+        return ip
+
+    def get_ip(self):
+        ip, is_routable = get_client_ip(self.request)
+        return_value = "1.1.1.1"
+        if ip is None:
+            # Unable to get the client's IP address
+            return_value = "2.2.2.2"
+        else:
+            # We got the client's IP address
+            if is_routable:
+                # The client's IP address is publicly routable on the Internet
+                return_value = "3.3.3.3"
+            else:
+                # The client's IP address is private
+                return_value = "4.4.4.4"
+
+        return return_value
+        # Order of precedence is (Public, Private, Loopback, None)
 
 
 class DetailView(generic.DetailView):
