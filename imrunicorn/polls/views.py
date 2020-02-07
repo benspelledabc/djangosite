@@ -17,6 +17,11 @@ def django_pdf_duplicate(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
 
 
+# def get_remote_ip(request):
+#     client_address = request.META['HTTP_X_FORWARDED_FOR']
+#     return client_address
+
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_poll_list'
@@ -30,7 +35,17 @@ class IndexView(generic.ListView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+        context['remote_ip'] = self.visitor_ip_address()
+
         return context
+
+    def visitor_ip_address(self):
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = self.request.META.get('REMOTE_ADDR')
+        return ip
 
 
 class DetailView(generic.DetailView):
