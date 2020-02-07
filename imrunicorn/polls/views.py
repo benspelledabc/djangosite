@@ -36,7 +36,7 @@ class IndexView(generic.ListView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
-        context['remote_ip'] = self.get_ip()
+        context['remote_ip'] = self.get_ip_again()
 
         return context
 
@@ -66,6 +66,15 @@ class IndexView(generic.ListView):
 
         return return_value
         # Order of precedence is (Public, Private, Loopback, None)
+
+    def get_ip_again(self):
+        return_value = "0.0.0.0"
+        request = self.request
+        if 'HTTP_X_FORWARDED_FOR' in request.META:
+            ip = request.META['HTTP_X_FORWARDED_FOR'].split(",")[0].strip()
+            request.META['REMOTE_ADDR'] = ip
+            return_value = ip
+        return return_value
 
 
 class DetailView(generic.DetailView):
