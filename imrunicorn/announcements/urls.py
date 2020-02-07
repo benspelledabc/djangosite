@@ -10,6 +10,7 @@ router.register('news_api', views.NewsView)
 urlpatterns = [
     path('', views.page_all_news, name='all_news'),
     path('', include(router.urls)),
+    path('kevin/', views.page_kevin, name='kevin'),
     # path('all_news_json/', views.json_all_news_json, name='all_news_json'),
 ]
 

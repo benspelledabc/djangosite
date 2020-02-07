@@ -20,6 +20,9 @@
                 <th bgcolor="808080" style="text-align: center">
                  Len.
              </th>
+                <th bgcolor="808080" style="text-align: center">
+                 Twist
+             </th>
             <th bgcolor="808080" style="text-align: center">
                 Proj. Name
             </th>
@@ -50,6 +53,7 @@
               <td id="td-sheriff">{{ load.firearm.owner }}</td>
               <td id="td-sheriff">{{ load.firearm.caliber }}</td>
               <td id="td-sheriff">{{ load.firearm.barrel_length|floatformat:0 }}</td>
+              <td id="td-sheriff">{{ load.firearm.inches_per_twist }}</td>
               <td id="td-sheriff">{{ load.projectile.Name }}</td>
               <td id="td-sheriff">{{ load.projectile.WeightGR }}</td>
               <td id="td-sheriff">{{ load.powder }}</td>
@@ -63,6 +67,7 @@
               <td id="td-sheriff">{{ load.firearm.owner }}</td>
               <td id="td-ocw">{{ load.firearm.caliber }}</td>
               <td id="td-ocw">{{ load.firearm.barrel_length|floatformat:0 }}</td>
+              <td id="td-sheriff">{{ load.firearm.inches_per_twist }}</td>
               <td id="td-ocw">{{ load.projectile.Name }}</td>
               <td id="td-ocw">{{ load.projectile.WeightGR }}</td>
               <td id="td-ocw">{{ load.powder }}</td>

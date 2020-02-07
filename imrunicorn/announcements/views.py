@@ -38,6 +38,17 @@ def json_all_news_json(request):
     return JsonResponse(context)
 
 
+def page_kevin(request):
+    context = {
+        "channel": "fox",
+        'release': get_version_json(),
+        "title": "Hello Kevin",
+        "year": datetime.now().year
+    }
+    return render(request, "announcements/helloX.html", context)
+
+
+
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 class NewsView(viewsets.ModelViewSet):

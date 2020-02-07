@@ -45,7 +45,7 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    {{ invite.MDShooters_Name }}
+                    <a href="/admin/auth/user/add/?username={{ invite.MDShooters_Name }}" target="_blank">{{ invite.MDShooters_Name }}</a>
                 </td>
                 {% else %}
                 <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
@@ -79,7 +79,7 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    {{ invite.MDShooters_Name }}
+                    <a href="/admin/auth/user/add/?username={{ invite.MDShooters_Name }}" target="_blank">{{ invite.MDShooters_Name }}</a>
                 </td>
                 {% else %}
                 <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
