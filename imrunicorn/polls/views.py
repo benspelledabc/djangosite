@@ -13,6 +13,10 @@ def django_pdf(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
 
 
+def django_pdf_duplicate(request):
+    return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
+
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_poll_list'
