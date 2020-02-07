@@ -8,6 +8,10 @@ def index_orig(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 
+def django_pdf(request):
+    return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
+
+
 def index_version_two(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     output = ', '.join([q.question_text for q in latest_question_list])

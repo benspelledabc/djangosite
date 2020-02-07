@@ -18,5 +18,8 @@ urlpatterns = [
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
 
+    # ex: /polls/django-pdf
+    path('django-pdf/', views.django_pdf, name='django_pdf'),
+
 ]
 
