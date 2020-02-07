@@ -1,13 +1,25 @@
-{% extends 'polls/base.html' %}
+{% extends "imrunicorn/layout.html" %}
 
-{% block polls_content %}
-<h1>{{ poll.question }}</h1>
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
 
-<ul>
-{% for choice in poll.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% block content %}
 
-<a href="{% url 'polls:detail' poll.id %}">Vote again?</a>
+    {% block polls_content %}
+    <div class="jumbotron">
+        <h1>Poll #{{ poll.id }} Results</h1>
+        <p class="lead">{{ poll.question }}</p>
+    </div>
+
+    <ul>
+    {% for choice in poll.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'polls:detail' poll.id %}">Vote again?</a>
+    {% endblock %}
+
+
 {% endblock %}
