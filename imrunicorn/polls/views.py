@@ -24,27 +24,33 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context['poll_list'] = Poll.objects.all()[:5]
+        # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
         return context
-
-
-class IndexView_LKG(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_poll_list'
-
-    def get_queryset(self):
-        return Poll.objects.all()[:5]
 
 
 class DetailView(generic.DetailView):
     model = Poll
     template_name = 'polls/detail.html'
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # context['poll_list'] = Poll.objects.all()[:5]
+        context['release'] = get_version_json()
+        return context
+
 
 class ResultsView(generic.DetailView):
     model = Poll
     template_name = 'polls/results.html'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # context['poll_list'] = Poll.objects.all()[:5]
+        context['release'] = get_version_json()
+        return context
 
 
 def vote(request, poll_id):
