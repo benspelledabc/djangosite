@@ -36,6 +36,7 @@ urlpatterns = [
     path('loaddata/', include('loaddata.urls')),
     path('farminvite/', include('farminvite.urls')),
     path('news/', include('announcements.urls')),
+    path('polls/', include('polls.urls')),
 
     # path('contact/', views.contact, name='contact'),
     # path('about/', views.about, name='about'),
