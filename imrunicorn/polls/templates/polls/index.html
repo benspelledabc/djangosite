@@ -1,14 +1,38 @@
-{% extends 'polls/base.html' %}
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Polls</h1>
+    <p class="lead">Various selection of polls.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12" align="center">
+        I'm slowly adding tools to go with the load data I've made. Keep in mind,
+        these are MY loads not yours. Meaning, I'm not telling you they are safe for YOUR gun.
+        They might not even be 'safe' for my gun. That's my problem not yours.
+    </div>
+<br /><br /><br />
+
 
 {% block polls_content %}
-<h1>Polls</h1>
-{% if latest_poll_list %}
-    <ul>
-    {% for poll in latest_poll_list %}
-		<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    {% if latest_poll_list %}
+        <ul>
+        {% for poll in latest_poll_list %}
+            <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    {% endblock %}
+
+</div>
+
+<br /><br />
+
 {% endblock %}
