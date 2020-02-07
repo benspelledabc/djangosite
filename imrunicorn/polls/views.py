@@ -39,6 +39,7 @@ class IndexView(generic.ListView):
 
         return context
 
+    # this doesn't work right if behind a proxy (nginx)
     def visitor_ip_address(self):
         x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
