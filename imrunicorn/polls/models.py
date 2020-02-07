@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.http import HttpRequest
 from django.db import models
 
 
