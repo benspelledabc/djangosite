@@ -17,3 +17,4 @@ urllib3==1.25.7
 # mysqlclient==1.4.6 # doesn't work on windows but isnt needed
 # PyMySQL==0.9.3 # doesn't work on windows but isnt needed
 # uWSGI==2.0.18 # doesn't work on windows but isnt needed
+django-ipware==2.1.0  # used to get remote ip
