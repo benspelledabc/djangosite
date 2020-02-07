@@ -1,9 +1,14 @@
-{% if latest_question_list %} <ul>
-{% for question in latest_question_list %}
-<li>HARD CODED<br /> <a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li><br />
-<li>DYNAMIC_Namespaced<br /> <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+{% extends 'polls/base.html' %}
 
-    <br /><br />
-{% endfor %}
-</ul> {% else %}
-<p>No polls are available.</p> {% endif %}
+{% block polls_content %}
+<h1>Polls</h1>
+{% if latest_poll_list %}
+    <ul>
+    {% for poll in latest_poll_list %}
+		<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+{% endblock %}
