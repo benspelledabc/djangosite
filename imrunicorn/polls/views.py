@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from announcements.get_news import get_news, get_version_json
 from django.views.generic import DetailView
-
 from .models import Choice, Poll
 
 
@@ -24,6 +23,7 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
         return context
@@ -36,6 +36,7 @@ class DetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
         return context
@@ -48,6 +49,7 @@ class ResultsView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
         return context
