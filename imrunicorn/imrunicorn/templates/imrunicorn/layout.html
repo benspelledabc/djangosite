@@ -109,6 +109,8 @@
                     </div>
                 </li>
 
+                <li><a href="{% url 'polls:index' %}">Polls</a></li>
+
                 {% if request.user.is_authenticated %}
                 {% ifequal user.groups.all.0.name "blogger-disabled" %}
                 <li class="nav-item dropdown">
