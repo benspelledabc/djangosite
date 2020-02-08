@@ -69,6 +69,20 @@ def page_avg_and_sd_calc(request):
     return render(request, "loaddata/avg_and_sd_calc.html", context)
 
 
+def page_six_steps_of_firing_a_shot(request):
+    # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
+    context = {
+        "show_lorem": False,
+        'release': get_version_json(),
+        "title": "6 steps of fireing a shot",
+        "blurb": "This page is a place holder for what's to come soon.",
+        "table_data": '',
+        "year": datetime.now().year
+    }
+    return render(request, "loaddata/six_steps_to_firing_a_shot.html", context)
+
+
+
 def sample(request):
     data = {
         'Query': 'Complete',
