@@ -82,7 +82,6 @@ def page_six_steps_of_firing_a_shot(request):
     return render(request, "loaddata/six_steps_to_firing_a_shot.html", context)
 
 
-
 def sample(request):
     data = {
         'Query': 'Complete',
