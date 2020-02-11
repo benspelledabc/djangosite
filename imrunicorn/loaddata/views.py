@@ -82,6 +82,16 @@ def page_six_steps_of_firing_a_shot(request):
     return render(request, "loaddata/six_steps_to_firing_a_shot.html", context)
 
 
+def page_reading_wind_mirage(request):
+    context = {
+        'release': get_version_json(),
+        "title": "Reading Wind Mirage",
+        "blurb": "This page is a place holder for what's to come soon.",
+        "year": datetime.now().year
+    }
+    return render(request, "loaddata/reading_wind_mirage.html", context)
+
+
 def sample(request):
     data = {
         'Query': 'Complete',
