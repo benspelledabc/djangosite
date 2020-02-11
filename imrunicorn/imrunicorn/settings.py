@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'farminvite',
     'announcements',
     'polls',
+    'shooting_logbook',
 ]
 
 MIDDLEWARE = [
