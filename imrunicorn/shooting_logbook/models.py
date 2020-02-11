@@ -45,10 +45,10 @@ class ShotEntry(models.Model):
 
     WIND_SPEED_CHOICES = [
         (NONE, 'no wind'),
-        (LIGHT, '0-5 MPH wind'),
-        (MODERATE, '6-10 MPH wind'),
-        (HEAVY, '11-15 MPH wind'),
-        (OTHER, '16+ MPH wind'),
+        (LIGHT, '0-3 MPH wind'),
+        (MODERATE, '4-7 MPH wind'),
+        (HEAVY, '8-12 MPH wind'),
+        (OTHER, '13+ MPH wind'),
     ]
 
     NO_VALUE_TOWARD = 'NO_VALUE_TOWARD'
