@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 class Location(models.Model):
     nickname = models.CharField(max_length=150, default=None, blank=True, null=True)
+    # https://viewer.nationalmap.gov/theme/elevation/
     elevation = models.DecimalField(max_digits=5, decimal_places=0, default=764, null=True)
     latitude = models.DecimalField(max_digits=12, decimal_places=7, default=39.575230, null=True)
     longitude = models.DecimalField(max_digits=12, decimal_places=7, default=-76.996040, null=True)
@@ -29,7 +30,7 @@ class ShotCollection(models.Model):
     notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "%s (%s)" % (self.collection_date, self.shooter)
+        return "%s %s @ %s [Using: %s]" % (self.collection_date, self.shooter, self.location, self.load)
 
     class Meta:
         ordering = ('shooter', 'collection_date')
