@@ -1,9 +1,7 @@
 {
-  "section_in_book": "2.6",
-  "page_in_book": "37",
   "pi":"3.14159265359",
   "version": "3.1415",
-  "build_date": "February 10, 2020",
-  "author": "Ben SpelledABC (AKA: Moorvogi)",
+  "build_date": "February 12, 2020",
+  "author": "Ben SpelledABC",
   "todo" : "Make the registration form easier to use. "
 }
