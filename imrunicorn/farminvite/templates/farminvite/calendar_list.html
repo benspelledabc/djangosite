@@ -57,17 +57,17 @@
                 {% if invite.Phone_Number and invite.EMail%}
                 <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
                 </td>
                 {% elif invite.EMail %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
                 </td>
                 {% else %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
                 </td>
                 {% endif %}
                 {% else %}
-                <td><a href="{% url 'invite_listing' %}">Request Slot</a></td>
+                <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
@@ -91,17 +91,17 @@
                 {% if invite.Phone_Number and invite.EMail%}
                 <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
                 </td>
                 {% elif invite.EMail %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
                 </td>
                 {% else %}
-                <td><a href="{% url 'missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
+                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
                 </td>
                 {% endif %}
                 {% else %}
-                <td><a href="{% url 'invite_listing' %}">Request Slot</a></td>
+                <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
