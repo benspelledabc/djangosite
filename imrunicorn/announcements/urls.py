@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 router.register('news_api', views.NewsView)
 # router.register('courses', views.CourseView)
 
-app_name = 'announcements'
+# app_name = 'announcements'
 urlpatterns = [
     path('', views.page_all_news, name='all_news'),
     path('', include(router.urls)),

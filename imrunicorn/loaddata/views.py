@@ -62,3 +62,5 @@ def sample(request):
         'Result': 'The query completed but this is not an endpoint with data.'
     }
     return JsonResponse(data)
+
+# /data/django/IMRUnicorn-Django/
