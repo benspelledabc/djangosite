@@ -23,6 +23,7 @@ from announcements.get_news import get_news, get_version_json
 
 from . import forms, views
 
+# app_name = 'base_skipped_for_now'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
@@ -33,8 +34,8 @@ urlpatterns = [
     path('blog/', views.page_blog_read, name='blog_read'),
     path('blog/add/', views.page_blog_add, name='blog_add'),
 
-    path('loaddata/', include('loaddata.urls')),
-    path('farminvite/', include('farminvite.urls')),
+    path('load_data/', include('loaddata.urls')),
+    path('farm_invite/', include('farminvite.urls')),
     path('news/', include('announcements.urls')),
     path('polls/', include('polls.urls')),
     path('shooting_logbook/', include('shooting_logbook.urls')),

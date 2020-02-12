@@ -6,6 +6,7 @@ from . import views
 # router.register('student', views.StudentView)
 # router.register('courses', views.CourseView)
 
+app_name = 'load_data'
 urlpatterns = [
     path('', views.page_loads, name='home'),
     path('loads/', views.page_loads, name='loads'),

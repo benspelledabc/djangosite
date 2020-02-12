@@ -14,10 +14,10 @@
                  via {{ load_details.hand_load.Powder_Charge }}gr
                 of {{ load_details.hand_load.powder.name }}
                 )
-             - all <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a>
+             - all <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a>
         </h4>
         {% else %}
-        <h4>No estimated dope listed... - all <a class="dropdown-item" href="{% url 'loads' %}">Load Data</a></h4>
+        <h4>No estimated dope listed... - all <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a></h4>
         {% endif %}
     </div>
 </div>

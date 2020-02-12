@@ -7,12 +7,8 @@ router = routers.DefaultRouter()
 router.register('news_api', views.NewsView)
 # router.register('courses', views.CourseView)
 
+app_name = 'announcements'
 urlpatterns = [
     path('', views.page_all_news, name='all_news'),
     path('', include(router.urls)),
-    # path('all_news_json/', views.json_all_news_json, name='all_news_json'),
 ]
-
-# from django.contrib.auth.decorators import login_required
-# @login_required
-# def blah_blah:
