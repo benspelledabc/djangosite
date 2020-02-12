@@ -20,6 +20,36 @@ sqlparse==0.3.0
 uWSGI==2.0.18
 
 
+
+SET FOREIGN_KEY_CHECKS=0;
+
+drop table `imrunicorn_loaddata`.`polls_choice`;
+drop table `imrunicorn_loaddata`.`polls_poll`;
+drop table `imrunicorn_loaddata`.`shooting_logbook_location`;
+drop table `imrunicorn_loaddata`.`shooting_logbook_shotcollection`;
+drop table `imrunicorn_loaddata`.`shooting_logbook_shotentry`;
+drop table `imrunicorn_loaddata`.`announcements_whatisnew`;
+drop table `imrunicorn_loaddata`.`auth_group`;
+drop table `imrunicorn_loaddata`.`auth_group_permissions`;
+drop table `imrunicorn_loaddata`.`auth_permission`;
+drop table `imrunicorn_loaddata`.`auth_user`;
+drop table `imrunicorn_loaddata`.`auth_user_groups`;
+drop table `imrunicorn_loaddata`.`auth_user_user_permissions`;
+drop table `imrunicorn_loaddata`.`django_admin_log`;
+drop table `imrunicorn_loaddata`.`django_content_type`;
+drop table `imrunicorn_loaddata`.`django_migrations`;
+drop table `imrunicorn_loaddata`.`django_session`;
+drop table `imrunicorn_loaddata`.`farminvite_invitelisting`;
+drop table `imrunicorn_loaddata`.`loaddata_caliber`;
+drop table `imrunicorn_loaddata`.`loaddata_estimateddope`;
+drop table `imrunicorn_loaddata`.`loaddata_firearm`;
+drop table `imrunicorn_loaddata`.`loaddata_handload`;
+drop table `imrunicorn_loaddata`.`loaddata_powder`;
+drop table `imrunicorn_loaddata`.`loaddata_projectile`;
+
+
+
+
 # brew install mysql-client
 ## mysql-client is not on the `PATH` by default
 # export PATH="/usr/local/opt/mysql-client/bin:$PATH"
