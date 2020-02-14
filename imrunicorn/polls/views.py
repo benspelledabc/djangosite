@@ -8,7 +8,9 @@ from announcements.get_news import get_news, get_version_json
 from django.views.generic import DetailView
 from ipware import get_client_ip
 from .models import Choice, Poll
+import logging
 
+logger = logging.getLogger(__name__)
 
 def django_pdf(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
@@ -37,6 +39,9 @@ class IndexView(generic.ListView):
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
         context['remote_ip'] = self.get_ip_again()
+
+        # logger.warning(f"Testing logger, should be in IndexView for polls...")
+        # logger.info("Testing...")
 
         return context
 
@@ -100,6 +105,10 @@ class ResultsView(generic.DetailView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+
+        # logger.warning(f"Testing logger, should be in ResultsView for polls...")
+        # logger.info("Testing...")
+
         return context
 
 
@@ -120,3 +129,6 @@ def vote(request, poll_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+
+    # logger.warning(f"Testing logger, should be in vote for polls...")
+    # logger.info("Testing...")
