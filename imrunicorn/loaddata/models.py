@@ -30,7 +30,8 @@ class Firearm(models.Model):
         return "%s %s %s %s" % (self.owner, self.manufacture, self.model, self.caliber)
 
     class Meta:
-        ordering = ('manufacture', 'model')
+        ordering = ('owner', 'caliber', 'manufacture', 'model')
+        
 
 
 class Powder(models.Model):
