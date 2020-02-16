@@ -10,7 +10,7 @@ from ipware import get_client_ip
 from .models import Choice, Poll
 import logging
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 def django_pdf(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
