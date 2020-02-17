@@ -28,6 +28,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
 
+    # page_pi_endpoint
+    path('pi_test/', views.page_pi_endpoint(), name='pi_test'),
+
     path('days_since', views.page_days_since, name='days_since'),
     path('batf/', views.fetch_estimated_batf_days, name='fetch_estimated_batf_days'),
 

@@ -160,3 +160,11 @@ def page_blog_read(request):
         'header': 'add',
     }
     return JsonResponse(context)
+
+
+def page_pi_endpoint(request):
+    context = {
+        'header': 'This is a lightweight endpoint to test the raspberry pi.',
+        'body': 'Small holes',
+    }
+    return JsonResponse(context)
