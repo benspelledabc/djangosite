@@ -12,7 +12,7 @@ def page_six_steps_of_firing_a_shot(request):
         "title": "6 steps of firing a shot",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": '',
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "shooting_logbook/six_steps_to_firing_a_shot.html", context)
 
@@ -22,7 +22,7 @@ def page_reading_wind_mirage(request):
         'release': get_version_json(),
         "title": "Reading Wind Mirage",
         "blurb": "This page is a place holder for what's to come soon.",
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "shooting_logbook/reading_wind_mirage.html", context)
 

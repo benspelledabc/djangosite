@@ -32,7 +32,7 @@ def page_home(request):
         "title": "Master Po (2.0) Load Data",
         "blurb": "I'll move it to a database setup in a bit.",
         "table_data": 'This should be from the database... jackle.',
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)
 
@@ -43,7 +43,7 @@ def handler404(request, exception):
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (404)",
         "fullbody": "",
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     # going to try sending an email on 404 error.. hahaha bad idea in production
     # self.email_test(request)
@@ -58,7 +58,7 @@ def handler500(request):
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (500)",
         "fullbody": "",
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "errors/error.html", context)
 
@@ -84,7 +84,7 @@ def page_days_since(request):
         "title": "Days since " + input_date,
         "blurb": "How many times has the sun gone up and down since then?",
         "input_date": input_date,
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/days_since.html", context)
 
