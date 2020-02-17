@@ -27,7 +27,7 @@ def unused_page_farm_invites_view(request):
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Shake it like it\'s going out of style!',
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/coming_soon.html", context)
 
@@ -62,8 +62,8 @@ def page_farm_invites_view(request):
                  ""
         ,
         'all_invites': all_invites,
-        "year": datetime.now().year
-        # "year": all_loads.prod
+        "copy_year": datetime.now().year
+        # "copy_year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 
@@ -87,8 +87,8 @@ def page_farm_invites_view_hidden_listings(request):
         "blurb": "These are pending invites."
         ,
         'all_invites': all_invites,
-        "year": datetime.now().year
-        # "year": all_loads.prod
+        "copy_year": datetime.now().year
+        # "copy_year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 
@@ -98,7 +98,7 @@ def page_farm_invites_map(request):
         'release': get_version_json(),
         "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/farm_map.html", context)
 
@@ -109,7 +109,7 @@ def page_farm_invites_map_fake(request):
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Shake it like it\'s going out of style!',
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/fake_map.html", context)
 
@@ -133,7 +133,7 @@ def page_farm_check_list(request):
                       '<li>AR500 steel plates, someone\'s bound to damage one eventually</li>'
                       '<li>Donations of brass (i\'ll use it or give it away to someone that can)</li>'
         ,
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/simple_use_variables.html", context)
 
@@ -156,7 +156,7 @@ def page_request_slot(request):
                       '<li>My Address: SvenDavison@gmail.com</li>'
                       ''
         ,
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/simple_use_variables.html", context)
 
@@ -184,7 +184,7 @@ def page_missing_contact_info(request):
                  ""
         ,
         'all_invites': all_invites,
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
     return render(request, "farminvite/missing_contact_info.html", context)
 
@@ -199,7 +199,7 @@ def page_invite_listing(request):
     context = {
         'release': get_version_json(),
         'form': InviteListingForm(),
-        "year": datetime.now().year
+        "copy_year": datetime.now().year
     }
 
     return render(request, 'farminvite/invite_listing_form.html', context)
