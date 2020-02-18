@@ -8,9 +8,11 @@ from announcements.get_news import get_news, get_version_json
 from django.views.generic import DetailView
 from ipware import get_client_ip
 from .models import Choice, Poll
+from datetime import datetime
 import logging
 
 # logger = logging.getLogger(__name__)
+
 
 def django_pdf(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
@@ -38,6 +40,8 @@ class IndexView(generic.ListView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+        # "copy_year": datetime.now().year
+        context['copy_year'] = datetime.now().year
         context['remote_ip'] = self.get_ip_again()
 
         # logger.warning(f"Testing logger, should be in IndexView for polls...")
@@ -92,6 +96,7 @@ class DetailView(generic.DetailView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+        context['copy_year'] = datetime.now().year
         return context
 
 
@@ -105,6 +110,7 @@ class ResultsView(generic.DetailView):
         # i'm not sure what this is for.. but there it is, gone.
         # context['poll_list'] = Poll.objects.all()[:5]
         context['release'] = get_version_json()
+        context['copy_year'] = datetime.now().year
 
         # logger.warning(f"Testing logger, should be in ResultsView for polls...")
         # logger.info("Testing...")
@@ -121,6 +127,7 @@ def vote(request, poll_id):
         return render(request, 'polls/detail.html', {
             'poll': p,
             'error_message': "You didn't select a choice.",
+            'copy_year': datetime.now().year,
         })
     else:
         selected_choice.votes += 1
