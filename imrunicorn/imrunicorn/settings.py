@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
+    'django_extensions',
     'crispy_forms',
     'imrunicorn',
     'loaddata',
