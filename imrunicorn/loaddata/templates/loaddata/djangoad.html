@@ -61,12 +61,14 @@
               <td id="td-sheriff">{{ load.projectile.WeightGR }}</td>
               <td id="td-sheriff">{{ load.powder }}</td>
               <td id="td-sheriff">{{ load.Powder_Charge }}</td>
-              <td id="td-sheriff">{{ load.Velocity }}</td>
-              <td id="td-sheriff">{{ load.rps }}</td>
+              <td id="td-sheriff">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
+              <td id="td-sheriff">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-sheriff">{{ load.prod|floatformat:"0"|intcomma }}</td>
               <td id="td-sheriff">NA</td>
           </tr>
+
           {% else %}
+
           <tr bgcolor="#F5F5F5">
               <td id="td-sheriff">{{ load.firearm.owner }}</td>
               <td id="td-ocw">{{ load.firearm.caliber }}</td>
@@ -76,8 +78,8 @@
               <td id="td-ocw">{{ load.projectile.WeightGR }}</td>
               <td id="td-ocw">{{ load.powder }}</td>
               <td id="td-ocw">{{ load.Powder_Charge }}</td>
-              <td id="td-ocw">{{ load.Velocity }}</td>
-              <td id="td-ocw">{{ load.rps }}</td>
+              <td id="td-ocw">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
+              <td id="td-ocw">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-ocw">{{ load.prod|floatformat:"0"|intcomma }}</td>
               <td id="td-ocw"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
           </tr>
