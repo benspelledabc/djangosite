@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.conf import settings
-from django.db.models import F, FloatField, ExpressionWrapper
+from django.db.models import F, FloatField, ExpressionWrapper, TextField, IntegerField
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
@@ -17,9 +17,11 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 def page_loads(request):
     logger.info("This is not getting logged...")
+
     all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
-        prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
-                               output_field=FloatField()))
+        prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'), output_field=FloatField()),
+        rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60, output_field=IntegerField())
+    )
 
     context = {
         'release': get_version_json(),
