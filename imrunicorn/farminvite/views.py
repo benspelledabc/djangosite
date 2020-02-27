@@ -38,6 +38,7 @@ def page_farm_invites_view(request):
     # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=True) &
+        Q(Cancel_Code="InviteActive") &
         (Q(Invite_Date=this_moment.date()) |
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
@@ -84,11 +85,9 @@ def page_farm_invites_view_hidden_listings(request):
         'contact_bad': '5%',
         'release': get_version_json(),
         "title": "Farm Range Invites Pending",
-        "blurb": "These are pending invites."
-        ,
+        "blurb": "These are pending invites.",
         'all_invites': all_invites,
         "copy_year": datetime.now().year
-        # "copy_year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 

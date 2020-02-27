@@ -13,12 +13,31 @@ class InviteListing(models.Model):
     ]
 
     Invite_Date = models.DateField(default=date.today)
-    Show_Listing = models.BooleanField(default=False)
+    Show_Listing = models.BooleanField(default=False)   # False = require approvals
     Desired_Time_Slot = models.CharField(
         max_length=2,
         choices=TIME_SLOT_CHOICES,
         default=AM,
     )
+
+    Invite_Active = 'InviteActive'
+    Guest_Canceled_Good = 'GuestCanceledGood'
+    Guest_Canceled_Bad = 'GuestCanceledBad'
+    Admin_Canceled_Good = 'AdminCanceledGood'
+    Admin_Canceled_Bad = 'AdminCanceledBad'
+    CANCEL_CODE_CHOICES = [
+        (Invite_Active, 'Not Canceled'),
+        (Guest_Canceled_Good, 'Guest Canceled, good terms.'),
+        (Guest_Canceled_Bad, 'Guest Canceled, bad terms.'),
+        (Admin_Canceled_Good, 'Admin Canceled, good terms.'),
+        (Admin_Canceled_Bad, 'Admin Canceled, bad terms.'),
+    ]
+    Cancel_Code = models.CharField(
+        max_length=22,
+        choices=CANCEL_CODE_CHOICES,
+        default=Invite_Active,
+    )
+
     Invite_Secondary = models.BooleanField(default=False, blank=True, null=True)
     MDShooters_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Real_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
