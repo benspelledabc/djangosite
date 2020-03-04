@@ -12,3 +12,4 @@ __pycache__/*
 /imrunicorn/farminvite/migrations/
 /imrunicorn/announcements/migrations/
 /imrunicorn/db.sqlite3
+*iWantItAll3*.json
