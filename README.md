@@ -23,7 +23,8 @@ Uses gunicorn + nginx.
     $ docker-compose -f docker-compose.prod.yml exec web python manage.py makemigrations --no-input
     $ docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --no-input
     $ docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
-    $ empty stuff:   docker-compose down -v
+    $ empty stuff:   docker-compose -f docker-compose.prod.yml down -v
+
     ```
     Exec into the web container to create a superuser.
     ```sh
