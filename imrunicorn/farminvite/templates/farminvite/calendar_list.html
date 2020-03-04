@@ -6,9 +6,13 @@
 
 {% block content %}
 {% load humanize %}
-<h2>{{ title }}</h2>
 
+<div class="jumbotron">
+    <h1>Farm Invites</h1>
+    <p class="lead">Listings are now 99.9% private.</p>
+</div>
 
+{% if request.user|has_group:"farminvite_editor" %}
 <div class="row">
     <div class="col-md-12">
         <p>
@@ -115,6 +119,12 @@
 
     </div>
 </div>
+
+{% else %}
+
+<p align="center">Invites are hidden except from 'farminvite_editor' members.</p>
+
+{% endif %}
 
 
 {% endblock %}
