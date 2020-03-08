@@ -5,6 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         {% if load_details != None %}
+        <p>I don't use MIL scopes at the moment so I'm only tracking MOA based dope.</p>
         <h4>{{ load_details.hand_load.firearm.barrel_length }}" {{ load_details.hand_load.firearm.caliber }} -
                 {{ load_details.hand_load.projectile.WeightGR }}
                 {{ load_details.hand_load.projectile.Manufacture }}
@@ -14,7 +15,14 @@
                  via {{ load_details.hand_load.Powder_Charge }}gr
                 of {{ load_details.hand_load.powder.name }}
                 )
-             - all <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a>
+
+            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero >= 0 %}
+            <br />
+                RESET / ZEROSTOP: Clicks from bottom to zero: {{ load_details.hand_load.firearm.clicks_from_bottom_to_zero }}
+            {% endif %}
+            <br /><br />
+             Back to the <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a>
+            <br />
         </h4>
         {% else %}
         <h4>No estimated dope listed... - all <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a></h4>
