@@ -25,14 +25,11 @@ class Firearm(models.Model):
     clicks_from_bottom_to_zero = models.IntegerField(blank=True, default=-1)
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
-    # todo: Add 'owner' to class to track owner based off userid drop down menu.
-
     def __str__(self):
         return "%s %s %s %s" % (self.owner, self.manufacture, self.model, self.caliber)
 
     class Meta:
         ordering = ('owner', 'caliber', 'manufacture', 'model')
-        
 
 
 class Powder(models.Model):

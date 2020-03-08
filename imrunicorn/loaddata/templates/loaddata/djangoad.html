@@ -39,10 +39,10 @@
                 FPS
             </th>
             <th bgcolor="808080" style="text-align: center">
-                RPS
+                Yld
             </th>
             <th bgcolor="808080" style="text-align: center">
-                Yld
+                RPS
             </th>
             <th bgcolor="808080" style="text-align: center">
                 DOPE
@@ -62,8 +62,8 @@
               <td id="td-sheriff">{{ load.powder }}</td>
               <td id="td-sheriff">{{ load.Powder_Charge }}</td>
               <td id="td-sheriff">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td id="td-sheriff">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-sheriff">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td id="td-sheriff">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-sheriff">NA</td>
           </tr>
 
@@ -79,8 +79,8 @@
               <td id="td-ocw">{{ load.powder }}</td>
               <td id="td-ocw">{{ load.Powder_Charge }}</td>
               <td id="td-ocw">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td id="td-ocw">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-ocw">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td id="td-ocw">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td id="td-ocw"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
           </tr>
           {% endif %}
