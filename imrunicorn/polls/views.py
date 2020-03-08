@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
+from django.db.models import Q
 from announcements.get_news import get_news, get_version_json
 from django.views.generic import DetailView
 from ipware import get_client_ip
@@ -22,17 +23,18 @@ def django_pdf_duplicate(request):
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
 
 
-# def get_remote_ip(request):
-#     client_address = request.META['HTTP_X_FORWARDED_FOR']
-#     return client_address
-
-
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_poll_list'
 
     def get_queryset(self):
-        return Poll.objects.all()[:5]
+        this_moment = datetime.now()
+        recent_active_polls = Poll.objects.filter(
+            (Q(end_date=this_moment.date()) | Q(end_date__gt=this_moment.date())) &
+            (Q(start_date=this_moment.date()) | Q(start_date__lt=this_moment.date()))
+        ).order_by('end_date')[:15]
+        # ).order_by('-pk')[:15]
+        return recent_active_polls
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

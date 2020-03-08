@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpRequest
 from django.db import models
+from datetime import date, datetime
 
 
 class Poll(models.Model):
     question = models.CharField(max_length=200)
+    start_date = models.DateField(default=date.today)
+    end_date = models.DateField(default=date.today)
 
     def __str__(self):              # Python 3: def __unicode__(self):
         return self.question
+
+    class Meta:
+        ordering = ('-end_date', 'start_date')
 
 
 class Choice(models.Model):

@@ -12,11 +12,11 @@ class ChoiceInline(admin.TabularInline):
 class PollAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
-            'fields': ['question'],
+            'fields': ['question', 'start_date', 'end_date'],
         }),
     ]
     inlines = [ChoiceInline]
-    list_display = ('question',)
+    list_display = ('question', 'start_date', 'end_date',)
     search_fields = ['question']
 
 
