@@ -11,7 +11,9 @@ urlpatterns = [
     path('', views.page_loads, name='home'),
     path('loads/', views.page_loads, name='loads'),
     path('estimated_dope/<int:load_pk>', views.page_estimated_dope, name='page_estimated_dope'),
-    # path('estimated_dope/<slug:load_pk>', views.page_estimated_dope, name='page_estimated_dope'),
     path('estimated_dope/', views.page_estimated_dope, name='page_estimated_dope'),
+
+    path('firearm_detail/<int:firearm_pk>', views.page_firearm_detail, name='page_firearm_detail'),
+    path('firearm_detail/', views.page_firearm_detail, name='page_firearm_detail'),
 ]
 

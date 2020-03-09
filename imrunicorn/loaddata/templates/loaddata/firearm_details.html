@@ -1,0 +1,31 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+
+
+<div class="row">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            Firearm Owner: {{ firearm_details.owner|title }}</br>
+            Manufacture: {{ firearm_details.manufacture|title }}</br>
+            Model: {{ firearm_details.model|title }}</br>
+            Barrel Length: {{ firearm_details.barrel_length }} inches</br>
+            Caliber: {{ firearm_details.caliber }}</br>
+            Twist: 1 per {{ firearm_details.inches_per_twist }} inches</br>
+            Elevation Reset Clicks: {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
+            Windage Reset Clicks: {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
+            </br>
+            {% if firearm_details.extra_info %}
+            Extra Info: {{ firearm_details.extra_info }}</br>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

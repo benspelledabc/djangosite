@@ -71,7 +71,9 @@
 
           <tr bgcolor="#F5F5F5">
               <td id="td-sheriff">{{ load.firearm.owner }}</td>
-              <td id="td-ocw">{{ load.firearm.caliber }}</td>
+
+              <td id="td-ocw"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber }}</a></td>
+
               <td id="td-ocw">{{ load.firearm.barrel_length|floatformat:0 }}</td>
               <td id="td-sheriff">{{ load.firearm.inches_per_twist }}</td>
               <td id="td-ocw">{{ load.projectile.Name }}</td>
