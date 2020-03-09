@@ -22,7 +22,8 @@ class Firearm(models.Model):
     barrel_length = models.DecimalField(max_digits=5, decimal_places=2, default=18.0, null=True)
     caliber = models.ForeignKey(Caliber, related_name='Caliber', on_delete=models.CASCADE)
     inches_per_twist = models.DecimalField(max_digits=4, decimal_places=1, default=9.0, null=True)
-    clicks_from_bottom_to_zero = models.IntegerField(blank=True, default=-1)
+    clicks_from_bottom_to_zero_elevation = models.IntegerField(blank=True, default=-1)
+    clicks_from_bottom_to_zero_windage = models.IntegerField(blank=True, default=-1)
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
