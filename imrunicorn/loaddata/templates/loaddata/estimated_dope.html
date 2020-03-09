@@ -16,10 +16,23 @@
                 of {{ load_details.hand_load.powder.name }}
                 )
 
-            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero >= 0 %}
-            <br />
-                RESET / ZERO-STOP: Clicks from bottom to zero: {{ load_details.hand_load.firearm.clicks_from_bottom_to_zero }}
+            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 or load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
+            <br /><br /> RESET / ZERO-STOP:
             {% endif %}
+
+            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 %}
+            <br />
+                Clicks from bottom to zero (elevation): {{ load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation }}
+            {% endif %}
+
+            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
+            <br />
+                Clicks from bottom to zero (windage): {{ load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage }}
+            {% endif %}
+
+
+
+
             <br /><br />
              Back to the <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a>
             <br />
