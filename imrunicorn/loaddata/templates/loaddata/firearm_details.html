@@ -11,17 +11,26 @@
 <div class="row">
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
-            Firearm Owner: {{ firearm_details.owner|title }}</br>
-            Manufacture: {{ firearm_details.manufacture|title }}</br>
-            Model: {{ firearm_details.model|title }}</br>
-            Barrel Length: {{ firearm_details.barrel_length }} inches</br>
-            Caliber: {{ firearm_details.caliber }}</br>
-            Twist: 1 per {{ firearm_details.inches_per_twist }} inches</br>
-            Elevation Reset Clicks: {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
-            Windage Reset Clicks: {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
+
+            <b>Firearm Owner:</b> {{ firearm_details.owner|title }}</br>
+            <b>Manufacture:</b> {{ firearm_details.manufacture|title }}</br>
+            <b>Model:</b> {{ firearm_details.model|title }}</br>
+            <b>Barrel Length:</b> {{ firearm_details.barrel_length }} inches</br>
+            <b>Caliber:</b> {{ firearm_details.caliber }}</br>
+            <b>Twist:</b> 1 per {{ firearm_details.inches_per_twist }} inches</br>
+
+            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 or load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
+                {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 %}
+                    <b>Elevation Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
+                {% endif%}
+                {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
+                    <b>Windage Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
+                {% endif %}
+            {% endif %}
+
             </br>
             {% if firearm_details.extra_info %}
-            Extra Info: {{ firearm_details.extra_info }}</br>
+            <b>Extra Info:</b> {{ firearm_details.extra_info }}</br>
             {% endif %}
         </div>
 
