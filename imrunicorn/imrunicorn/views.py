@@ -29,9 +29,9 @@ def page_home(request):
         "news_blurb": news_blurb,
         "news_date": news_date,
         'release': get_version_json(),
-        "title": "Master Po (2.0) Load Data",
-        "blurb": "I'll move it to a database setup in a bit.",
-        "table_data": 'This should be from the database... jackle.',
+        # TODO: Make this work --> IMRUnicorn v{{ release.version }}
+        "title": "Overridden in the HTML.",
+        "blurb": "Math & science behind the pew.",
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)

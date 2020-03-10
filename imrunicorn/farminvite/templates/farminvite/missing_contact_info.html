@@ -6,9 +6,13 @@
 
 {% block content %}
 {% load humanize %}
-<h2>{{ title }}</h2>
 
-<div class="row ben_center">
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">The fit might hit the shan soon if you don't fix/update your contact info.</p>
+</div>
+
+<div class="row ben_format_pretty">
     <div class="col-md-12">
         {% autoescape off %}
         <h4>{{ blurb }}</h4>

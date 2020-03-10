@@ -10,30 +10,32 @@
     <p class="lead">Various selection of polls.</p>
 </div>
 
-<div class="row">
+<div class="row ben_format_pretty">
     <div class="col-md-12" align="center">
         Check back from time to time because the polls are set to display only polls that have started
         and not expired. This start/stop is determined by date. In addition we're only showing the most
-        recent few polls. <br /><br />Right now you can vote more than once on the same poll.
+        recent few polls. <br/><br/>Right now you can vote more than once on the same poll.
         Don't be bad. Only vote once.
     </div>
-<br /><br /><br />
+    <br/><br/><br/>
 
 
+    {% block polls_content %}
 
-{% block polls_content %}
-    {% if latest_poll_list %}
+    <div class="row ben_format_pretty">
+        {% if latest_poll_list %}
         <ul>
-        {% for poll in latest_poll_list %}
+            {% for poll in latest_poll_list %}
             <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
-        {% endfor %}
+            {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <p>No polls are available.</p>
-    {% endif %}
+        {% endif %}
+    </div>
     {% endblock %}
 
 </div>
 
-<br /><br />
+<br/><br/>
 {% endblock %}

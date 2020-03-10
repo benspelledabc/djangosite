@@ -49,7 +49,7 @@ def page_estimated_dope(request, load_pk='3'):
         context = {
             'load_id': load_pk,
             'release': get_version_json(),
-            "title": "Master Po Load Data",
+            "title": "Estimated Dope",
             "blurb": "I'll move it to a database setup in a bit.",
             'load_details': selected_load,
             "copy_year": datetime.now().year,
@@ -59,7 +59,7 @@ def page_estimated_dope(request, load_pk='3'):
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Master Po Load Data",
-            "blurb": "Estimated DOPE not found.",
+            "blurb": "No dope for this load.",
             "copy_year": datetime.now().year,
         }
 

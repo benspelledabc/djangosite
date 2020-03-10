@@ -8,12 +8,13 @@
 {% load humanize %}
 
 <div class="jumbotron">
-    <h1>Farm Invites</h1>
+    <h1>{{ title }}</h1>
     <p class="lead">Listings are now 99.9% private.</p>
 </div>
 
 {% if request.user|has_group:"farminvite_editor" %}
-<div class="row ben_center">
+
+<div class="row ben_format_pretty">
     <div class="col-md-12">
         <p>
             {% autoescape off %}
@@ -21,7 +22,7 @@
             {% endautoescape %}
         </p>
 
-        <table width="65%" border="1" align="center">
+        <table width="100%" border="1" align="center">
             <tr bgcolor="#808080">
                 <th bgcolor="808080" style="text-align: center">
                     Invite Slot

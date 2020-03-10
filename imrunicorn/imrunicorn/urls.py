@@ -53,13 +53,11 @@ urlpatterns = [
              authentication_form=forms.BootstrapAuthenticationForm,
              extra_context=
              {
-                 'title': 'Log in',
-                 'year': datetime.now().year,
+                 'title': 'Log In',
+                 'copy_year': datetime.now().year,
                  'release': get_version_json(),
-                 'no_accounts_blurb': 'I am not allowing new accounts at this time. It is just my account to manage '
-                                      'the site. Eventually, the idea is to allow account creation as well as storing '
-                                      'DOPE and your own load data. Keep it private or show to the public. In time.. '
-                                      'but for now that is not a thing yet.',
+                 'blurb': 'I am not allowing new accounts at this time.',
+                 'no_accounts_blurb': 'If you have an account and need a reset, you know how to reach me..',
              }
          ),
          name='login'),

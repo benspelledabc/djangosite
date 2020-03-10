@@ -84,8 +84,8 @@ def page_farm_invites_view_hidden_listings(request):
         'contact_poor': '66%',
         'contact_bad': '5%',
         'release': get_version_json(),
-        "title": "Farm Range Invites Pending",
-        "blurb": "These are pending invites.",
+        "title": "Invites Pending",
+        # "blurb": "no blurb",
         'all_invites': all_invites,
         "copy_year": datetime.now().year
     }
@@ -117,7 +117,7 @@ def page_farm_check_list(request):
     context = {
         'release': get_version_json(),
         "title": "What should I bring?",
-        "blurb": "",
+        "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
         "table_data": 'Strongly recommended items'
                       '<li>Ear protection</li>'
                       '<li>Eye protection</li>'
@@ -170,7 +170,7 @@ def page_missing_contact_info(request):
     context = {
         # "roll_list": queryset,
         'release': get_version_json(),
-        "title": "Missing Contact Info Results In Invite Retraction",
+        "title": "Registration Completion Guideline",
         "blurb": "Please provide some contact info if you show up on this list as having it missing. Failure to do so "
                  "will result in your name being removed from the invite list to make room for people that I can get "
                  "in touch with. Entries without at least one or the other will be removed five days before the event "

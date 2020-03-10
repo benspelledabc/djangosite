@@ -4,11 +4,11 @@
 
 <div class="jumbotron">
     <h1>IMRUnicorn v{{ release.version }}</h1>
-    <p class="lead">The robot is gone, it needed some work done.</p>
+    <p class="lead">{{ blurb }}</p>
 </div>
 
-<div class="row">
-    <div class="col-md-12" align="center">
+<div class="row ben_format_pretty">
+    <div align="center">
         I'm slowly adding tools to go with the load data I've made. Keep in mind,
         these are MY loads not yours. Meaning, I'm not telling you they are safe for YOUR gun.
         They might not even be 'safe' for my gun. That's my problem not yours.
@@ -17,10 +17,10 @@
     {% if news_date and news_blurb and news_body %}
         <br />
         <hr />
-        <div class="col-md-12" align="center">
+        <div>
             <strong>{{ news_date }} - <i>{{ news_blurb }}</i></strong>
         </div>
-        <div class="col-md-12" align="center">
+        <div>
             {% autoescape off %}
             {{ news_body }}
             {% endautoescape %}
