@@ -1,15 +1,16 @@
 {% extends "imrunicorn/layout.html" %}
 {% block content %}
 {% load humanize %}
-<h2>{{ title }}</h2>
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
 
 <div class="row">
     <div class="col-md-12">
-        <p>
-            Do your own research, don't use this load data. It might be a pipe bomb in your firearm.
-        </p>
 
-        <table width="85%" border="1" align="center">
+        <table width="95%" border="1" align="center">
             <tr bgcolor="#808080">
                 <th bgcolor="808080" style="text-align: center">
                  Owner
@@ -17,23 +18,17 @@
                 <th bgcolor="808080" style="text-align: center">
                  Caliber
              </th>
-                <th bgcolor="808080" style="text-align: center">
-                 Len.
-             </th>
-                <th bgcolor="808080" style="text-align: center">
-                 Twist
-             </th>
             <th bgcolor="808080" style="text-align: center">
-                Proj. Name
+                Projectile
             </th>
             <th bgcolor="808080" style="text-align: center">
-                Proj. gr
+                Gr (pr)
             </th>
             <th bgcolor="808080" style="text-align: center">
                 Powder
             </th>
             <th bgcolor="808080" style="text-align: center">
-                Gr
+                Gr (po)
             </th>
             <th bgcolor="808080" style="text-align: center">
                 FPS
@@ -53,37 +48,31 @@
           {% for load in all_loads %}
           {% if load.Is_Sheriff_Load %}
           <tr bgcolor="#BEBEBE">
-              <td id="td-sheriff">{{ load.firearm.owner }}</td>
-              <td id="td-ocw"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber }}</a></td>
-              <td id="td-sheriff">{{ load.firearm.barrel_length|floatformat:0 }}</td>
-              <td id="td-sheriff">{{ load.firearm.inches_per_twist }}</td>
-              <td id="td-sheriff">{{ load.projectile.Name }}</td>
-              <td id="td-sheriff">{{ load.projectile.WeightGR }}</td>
-              <td id="td-sheriff">{{ load.powder }}</td>
-              <td id="td-sheriff">{{ load.Powder_Charge }}</td>
-              <td id="td-sheriff">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td id="td-sheriff">{{ load.prod|floatformat:"0"|intcomma }}</td>
-              <td id="td-sheriff">{{ load.rps|floatformat:"0"|intcomma }}</td>
-              <td id="td-sheriff">NA</td>
+              <td style="padding-left:10px">{{ load.firearm.owner|title }}</td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
+              <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+              <td style="padding-left:10px">{{ load.powder }}</td>
+              <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
+              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">NA</td>
           </tr>
 
           {% else %}
 
           <tr bgcolor="#F5F5F5">
-              <td id="td-sheriff">{{ load.firearm.owner }}</td>
-
-              <td id="td-ocw"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber }}</a></td>
-
-              <td id="td-ocw">{{ load.firearm.barrel_length|floatformat:0 }}</td>
-              <td id="td-sheriff">{{ load.firearm.inches_per_twist }}</td>
-              <td id="td-ocw">{{ load.projectile.Name }}</td>
-              <td id="td-ocw">{{ load.projectile.WeightGR }}</td>
-              <td id="td-ocw">{{ load.powder }}</td>
-              <td id="td-ocw">{{ load.Powder_Charge }}</td>
-              <td id="td-ocw">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td id="td-ocw">{{ load.prod|floatformat:"0"|intcomma }}</td>
-              <td id="td-ocw">{{ load.rps|floatformat:"0"|intcomma }}</td>
-              <td id="td-ocw"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
+              <td style="padding-left:10px">{{ load.firearm.owner|title }}</td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
+              <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+              <td style="padding-left:10px">{{ load.powder }}</td>
+              <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
+              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
           </tr>
           {% endif %}
           {% endfor %}
@@ -94,44 +83,5 @@
    </div>
 </div>
 
-<div class="row">
-   </br>
-   </br>
-   <div id="ftlbs">
-      <center>
-         <p>Foot-Pound Energy Calculator (Enter gr and fps for ft pounds)</p>
-         <FORM NAME="calform">
-            <table border="1" style="border-style: dotted; width:50%">
-               <!-- base color DAD2AC -->
-               <tr>
-                  <td align=center bgcolor="#00ff33" style="width: 33%"><b>Weight</b><br>(Grains)</td>
-                  <td align=center bgcolor="#ffff00" style="width: 33%"><b>Velocity</b> <br>(FPS)</td>
-                  <td align=center bgcolor="#ff0000" style="width: 33%"><b>Energy</b><br>(ft lbs)</td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt01" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve01" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg01" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt02" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve02" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg02" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt03" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve03" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg03" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt04" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve04" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg04" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-            </table>
-         </FORM>
-      </center>
-      <p>&nbsp;</p>
-   </div>
-</div>
+</br></br></br>
 {% endblock %}
