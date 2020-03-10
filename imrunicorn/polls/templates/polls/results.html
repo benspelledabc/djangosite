@@ -8,8 +8,8 @@
 
     {% block polls_content %}
     <div class="jumbotron">
-        <h1>Poll #{{ poll.id }} Results</h1>
-        <p class="lead">{{ poll.question }}</p>
+        <h1>Poll Results</h1>
+        <p class="lead">{{ poll.question|title }}</p>
     </div>
 
     <ul>

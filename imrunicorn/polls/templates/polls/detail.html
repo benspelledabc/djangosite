@@ -8,8 +8,8 @@
 
     {% block polls_content %}
     <div class="jumbotron">
-        <h1>Poll #{{ poll.id }}</h1>
-        <p class="lead">{{ poll.question }}</p>
+        <h1>{{ poll.question|title }}</h1>
+        <p><i>Running:</i> {{ poll.start_date}} <i class="fas fa-angle-double-right"></i> {{ poll.end_date}}.</p>
     </div>
 
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -23,7 +23,7 @@
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
     {% endfor %}
         <br />
-    <input type="submit" value="Vote" />
+    <input type="submit" value="Vote, I promise to only do it once... or twice." />
     </form>
 </div>
 
