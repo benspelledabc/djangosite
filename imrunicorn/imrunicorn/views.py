@@ -24,14 +24,18 @@ def page_home(request):
     except Exception as err:
         print(err)
 
+    # making the jumbotron a bit more standardized.
+    release = get_version_json()
+    title = 'IMRUnicorn v%s' % release['version']
+
     context = {
         "news_body": news_body,
         "news_blurb": news_blurb,
         "news_date": news_date,
-        'release': get_version_json(),
-        # TODO: Make this work --> IMRUnicorn v{{ release.version }}
-        "title": "Overridden in the HTML.",
-        "blurb": "Math & science behind the pew.",
+        # 'release': get_version_json(),
+        'release': release,
+        "title": title,
+        "blurb": "I divide by zero by breakfast.",
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)

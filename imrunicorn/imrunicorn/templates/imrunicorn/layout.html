@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>IMRUnicorn v{{ release.version }}</title>
+    <title>{{ title }}</title>
 
     {% load static %}
     <!-- <link href="{% static 'imrunicorn/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/> -->
@@ -78,7 +78,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="/"><strong>IMRUnicorn <i>v{{ release.version }}</i></strong></a>
+            <a class="navbar-brand" href="/"><strong>{{ release.application_title }}</i></strong></a>
 
         </div>
         <div class="navbar-collapse collapse">
