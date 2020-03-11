@@ -2,15 +2,20 @@
 <html>
 <head>
     {% load auth_extras %}
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>IMRUnicorn v{{ release.version }}</title>
 
     {% load static %}
-    <link href="{% static 'imrunicorn/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'imrunicorn/content/site.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'imrunicorn/content/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- <link href="{% static 'imrunicorn/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/> -->
+    <!-- <link href="{% static 'imrunicorn/content/bootstrap.css' %}" rel="stylesheet" type="text/css"/> -->
+    <!-- <link href="{% static 'imrunicorn/content/site.css' %}" rel="stylesheet" type="text/css"/> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
     <style>
         div.ben_format_pretty {
@@ -63,6 +68,7 @@
 </head>
 
 <body>
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -79,81 +85,82 @@
             <ul class="nav navbar-nav">
                 <!-- <li><a href="#">Removed</a></li> -->
 
-
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Master Po</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'load_data:loads' %}">Load Data</a><br/>
-                        <a class="dropdown-item" href="{% url 'load_data:foot_pound_calculator' %}">Foot Pound Calculator</a><br/>
-                        <a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a><br/>
-                        <a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a><br/>
-                    </div>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Po <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">Hand Load Data/Tools</li>
+                    <li><a href="{% url 'load_data:loads' %}">Load Data</a></li>
+                    <li><a class="dropdown-item" href="{% url 'load_data:foot_pound_calculator' %}">Foot Pound Calculator</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Shooting Tips</li>
+                    <li><a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a></li>
+                      <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
+                  </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Days Since</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a><br/>
-                        <a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a><br/>
-                    </div>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Misc Tools<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">Days Since</li>
+                    <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
+                      <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
+                  </ul>
                 </li>
 
-                {% if request.user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Farm Invites</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'farm_invite:farm_check_list' %}"> What Should I Bring?</a><br/>
-                        <a class="dropdown-item" href="{% url 'farm_invite:farm_invites_home' %}"> Invite List</a><br/>
 
-                        <a class="dropdown-item" href="{% url 'farm_invite:farm_invites_view_hidden_listings' %}"> Invite List Pending</a><br/>
 
-                        <a class="dropdown-item" href="https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848" target="_blank"> Meet-up Location</a><br/>
-                        <a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> Can He Reach Me?</a><br/>
-                    </div>
-                </li>
-                {% endif %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Farm Invites<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      {% if request.user.is_authenticated %}
+                      <li class="dropdown-header">Registered Users Only</li>
+                    <li><a class="dropdown-item" href="{% url 'farm_invite:farm_check_list' %}"> What Should I Bring?</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:farm_invites_home' %}"> Invite List</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:farm_invites_view_hidden_listings' %}"> Invite List Pending</a></li>
+                      <li><a class="dropdown-item" href="https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848" target="_blank"> Meet-up Location</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> Can He Reach Me?</a></li>
+                    <li role="separator" class="divider"></li>
+                      {% endif %}
+                    <li class="dropdown-header">Info For All</li>
+                    <li><a class="dropdown-item" href="{% url 'farm_invite:farm_check_list' %}"> What Should I Bring?</a></li>
 
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">News</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'all_news' %}">All News</a><br/>
-                        <a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a><br/>
-                    </div>
+                  </ul>
                 </li>
 
-                <li><a href="{% url 'polls:index' %}">Polls</a></li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">News Actions</li>
+                    <li><a class="dropdown-item" href="{% url 'all_news' %}">All News</a></li>
+                      {% if request.user.is_authenticated %}
+                      <li><a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a></li>
+                      {% endif %}
+                  </ul>
+                </li>
+
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Polls<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">Poll Actions</li>
+                    <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
+                  </ul>
+                </li>
+
 
                 {% if request.user.is_authenticated %}
                 {% ifequal user.groups.all.0.name "blogger-disabled" %}
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Blog Coming</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'blog_read' %}">Read Blog</a><br/>
-                    </div>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">Blog Actions</li>
+                    <li><a class="dropdown-item" href="{% url 'blog_read' %}">Read Blog</a></li>
+                  </ul>
                 </li>
                 {% endifequal %}
                 {% endif %}
-
-
-                {% ifequal user.groups.all.0.name "LoadLady-disabled" %}
-                <li><a href="#">Page avg &amp; SD Calc</a></li>
-
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-                       data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">Disabled Menu</a>
-                    <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Restricted</a><br/>
-                        <a class="dropdown-item" href="#">Restricted</a><br/>
-                    </div>
-                </li>
-
-                {% endifequal %}
-
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
@@ -176,6 +183,15 @@
 <script src="{% static 'imrunicorn/scripts/jquery-1.10.2.js' %}"></script>
 <script src="{% static 'imrunicorn/scripts/bootstrap.js' %}"></script>
 <script src="{% static 'imrunicorn/scripts/respond.js' %}"></script>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+
 {% block scripts %}{% endblock %}
 
 </body>

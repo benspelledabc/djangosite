@@ -6,20 +6,22 @@
 
 {% block content %}
 
-    {% block polls_content %}
-    <div class="jumbotron">
-        <h1>Poll Results</h1>
-        <p class="lead">{{ poll.question|title }}</p>
-    </div>
+{% block polls_content %}
+<div class="jumbotron">
+    <h1>Poll Results</h1>
+    <p class="lead">{{ poll.question|title }}</p>
+</div>
 
+<div class="ben_format_pretty">
     <ul>
-    {% for choice in poll.choice_set.all %}
+        {% for choice in poll.choice_set.all %}
         <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-    {% endfor %}
+        {% endfor %}
     </ul>
 
+    <br />
     <a href="{% url 'polls:detail' poll.id %}">Vote again?</a>
     {% endblock %}
-
+</div>
 
 {% endblock %}

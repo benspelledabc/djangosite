@@ -15,9 +15,8 @@
         Check back from time to time because the polls are set to display only polls that have started
         and not expired. This start/stop is determined by date. In addition we're only showing the most
         recent few polls. <br/><br/>Right now you can vote more than once on the same poll.
-        Don't be bad. Only vote once.
+        Don't be bad. Only vote once.<br/><br/><br/>
     </div>
-    <br/><br/><br/>
 
 
     {% block polls_content %}
@@ -26,7 +25,7 @@
         {% if latest_poll_list %}
         <ul>
             {% for poll in latest_poll_list %}
-            <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+            <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question|title }}</a></li>
             {% endfor %}
         </ul>
         {% else %}
