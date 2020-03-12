@@ -28,7 +28,7 @@
                     {% if news.Is_Sticky %}
                         <i style="color:red;font-size: xx-large" class="fas fa-pastafarianism"></i>
                     {% endif %}
-                        {{ news.Date }} - <i>{{ news.Blurb }}</i>
+                        <a href="{% url 'news_by_pk' %}{{ news.pk }}">{{ news.Date }} - <i>{{ news.Blurb }}</i></a>
                     </div><br/>
                 {{ news.Body }}
             {% endfor %}
