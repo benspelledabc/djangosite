@@ -30,6 +30,7 @@
                 {{ news.Body |slice:":250" }}
 
     {% if news.Body|length > 250 %}
+      ...
     <br /><br />
     <i class="fas fa-angle-double-left"></i>
                 <a href="{% url 'news_by_pk' %}{{ news.pk }}">Read Full Post</a>
