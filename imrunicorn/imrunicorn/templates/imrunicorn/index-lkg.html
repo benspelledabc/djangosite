@@ -1,0 +1,35 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div align="center">
+        I'm slowly adding tools to go with the load data I've made. Keep in mind,
+        these are MY loads not yours. Meaning, I'm not telling you they are safe for YOUR gun.
+        They might not even be 'safe' for my gun. That's my problem not yours.
+    </div>
+
+    {% if news_date and news_blurb and news_body %}
+        <br />
+        <hr />
+        <div>
+            <strong>{{ news_date }} - <i>{{ news_blurb }}</i></strong>
+        </div>
+        <div>
+            {% autoescape off %}
+            {{ news_body }}
+            {% endautoescape %}
+        </div>
+    {% endif %}
+
+</div>
+
+
+<br /><br />
+
+{% endblock %}

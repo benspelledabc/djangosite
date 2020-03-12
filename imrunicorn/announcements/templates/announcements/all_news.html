@@ -1,5 +1,10 @@
 {% extends "imrunicorn/layout.html" %}
 
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
 {% block content %}
 {% load humanize %}
 
@@ -16,11 +21,17 @@
         {% if all_news != None %}
             {% for news in all_news %}
                 <hr />
-                <h2>{{ news.Date }} - <i>{{ news.Blurb }}</i></h2><br/>
+                    <div style="font-size: x-large">
+                    {% if news.Is_Sticky %}
+                        <i style="color:red;font-size: xx-large" class="fas fa-pastafarianism"></i>
+                    {% endif %}
+                        {{ news.Date }} - <i>{{ news.Blurb }}</i>
+                    </div><br/>
                 {{ news.Body }}
             {% endfor %}
         {% endif %}
 {% endautoescape %}
+
 
     </div>
 </div>

@@ -14,7 +14,18 @@ def get_news():
     result = WhatIsNew.objects.filter(
         Q(Published=True) & (Q(Date=this_moment.date())) |
         Q(Published=True) & Q(Date__lt=this_moment.date())
-    ).order_by('-Date', )
+    ).order_by('-Is_Sticky', '-Date', )
+
+    return result
+
+
+# last 5 posts, sticky first.
+def get_news_sticky():
+    this_moment = datetime.now()
+    result = WhatIsNew.objects.filter(
+        Q(Published=True) & (Q(Date=this_moment.date())) |
+        Q(Published=True) & Q(Date__lt=this_moment.date())
+    ).order_by('-Is_Sticky', '-Date')[:7]
 
     return result
 

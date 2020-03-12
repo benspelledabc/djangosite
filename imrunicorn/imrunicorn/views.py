@@ -6,19 +6,13 @@ from django.shortcuts import render
 import os
 import json
 
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_news_sticky, get_version_json
 
 
 # Create your views here.
 def page_home(request):
-    news_body = ""
-    news_blurb = ""
-    news_date = ""
     try:
-        news = get_news()
-        news_date = news[0].Date
-        news_blurb = news[0].Blurb
-        news_body = news[0].Body
+        all_news = get_news_sticky()
     except IndexError as ie:
         print(ie)
     except Exception as err:
@@ -29,10 +23,7 @@ def page_home(request):
     title = 'IMRUnicorn v%s' % release['version']
 
     context = {
-        "news_body": news_body,
-        "news_blurb": news_blurb,
-        "news_date": news_date,
-        # 'release': get_version_json(),
+        "all_news": all_news,
         'release': release,
         "title": title,
         "blurb": "I divide by zero by breakfast.",
