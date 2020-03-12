@@ -11,4 +11,6 @@ router.register('news_api', views.NewsView)
 urlpatterns = [
     path('', views.page_all_news, name='all_news'),
     path('', include(router.urls)),
+
+    path('<int:news_pk>', views.page_news_by_pk, name='page_news_by_pk'),
 ]

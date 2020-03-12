@@ -1,0 +1,38 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ news_overview }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class="col-md-12">
+
+{% autoescape off %}
+        {% if news_pk != None %}
+
+                    <div style="font-size: x-large">
+                    {% if news_pk.Is_Sticky %}
+                        <i style="color:red;font-size: xx-large" class="fas fa-pastafarianism"></i>
+                    {% endif %}
+                        {{ news_pk.Date }} - <i>{{ news_pk.Blurb }}</i>
+                    </div><br/>
+                {{ news_pk.Body }}
+
+        {% endif %}
+{% endautoescape %}
+
+
+    </div>
+</div>
+
+{% endblock %}

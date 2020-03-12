@@ -8,7 +8,7 @@ import json
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.views import APIView
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -41,6 +41,17 @@ def json_all_news_json(request):
         "channel": "fox",
     }
     return JsonResponse(context)
+
+
+def page_news_by_pk(request, news_pk='1'):
+    context = {
+        "copy_year": datetime.now().year,
+        "news_pk": get_news_by_pk(news_pk),
+        'release': get_version_json(),
+        "title": "News: Full Story",
+        "news_overview": "This will show the full story for the article you're reading.",
+    }
+    return render(request, "announcements/news_by_pk.html", context)
 
 
 def page_kevin(request):
