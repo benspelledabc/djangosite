@@ -16,7 +16,7 @@ class Location(models.Model):
         return "%s (%s , %s)" % (self.nickname, self.latitude, self.longitude)
 
     class Meta:
-        ordering = ('latitude', 'nickname')
+        ordering = ('latitude', 'longitude', 'nickname')
 
 
 class ShotCollection(models.Model):
@@ -33,7 +33,7 @@ class ShotCollection(models.Model):
         return "%s %s @ %s [Using: %s]" % (self.collection_date, self.shooter, self.location, self.load)
 
     class Meta:
-        ordering = ('collection_date', 'shooter')
+        ordering = ('-collection_date', 'shooter')
 
 
 class ShotEntry(models.Model):
@@ -83,5 +83,5 @@ class ShotEntry(models.Model):
         return "%s - Shot: %s" % (self.collection, self.shotNumber)
 
     class Meta:
-        ordering = ('collection', 'shotNumber',)
+        ordering = ('collection', '-shotNumber',)
 
