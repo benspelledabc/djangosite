@@ -33,7 +33,7 @@ class ShotCollection(models.Model):
         return "%s %s @ %s [Using: %s]" % (self.collection_date, self.shooter, self.location, self.load)
 
     class Meta:
-        ordering = ('shooter', 'collection_date')
+        ordering = ('collection_date', 'shooter')
 
 
 class ShotEntry(models.Model):

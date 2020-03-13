@@ -13,3 +13,5 @@ __pycache__/*
 /imrunicorn/announcements/migrations/
 /imrunicorn/db.sqlite3
 *iWantItAll3*.json
+*migrations*
+django-debug.log
