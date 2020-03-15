@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'announcements',
     'polls',
     'shooting_logbook',
+    'groundhog_logbook',
 ]
 
 MIDDLEWARE = [
