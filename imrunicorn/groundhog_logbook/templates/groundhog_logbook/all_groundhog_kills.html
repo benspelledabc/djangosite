@@ -1,0 +1,51 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ news_overview }}</p>
+</div>
+
+
+{% if all_news != None %}
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+
+            <!-- https://www.google.com/maps/search/?api=1&query=<lat>,<lng> -->
+            <!-- https://www.google.com/maps/search/?api=1&query=39.619507,-77.029337 -->
+
+            {% for news in all_news %}
+                <b>Removal Date:</b> {{ news.removal_date }}<br />
+                <b>Shooter:</b> <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">{{ news.shooter|title }}</a><br />
+                <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm|title }}</a><br />
+                <b>Load Detail:</b> {{ news.load }}<br />
+
+                <b>Location:</b><a href="https://www.google.com/maps/search/?api=1&query={{ news.location.latitude }},{{ news.location.longitude }}"
+                                   target="_blank">{{ news.location }}</a> * Map Link Is Buggy<br />
+                <b>Estimated Weight (lbs):</b> {{ news.estimated_weight_lbs }}<br />
+                <b>Sex:</b> {{ news.sex }}<br />
+                <b>Excessive Wound Cavity:</b> {{ news.excessive_wound_cavity }}<br />
+                <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
+                <br />
+                <br />
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

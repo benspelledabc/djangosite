@@ -100,6 +100,21 @@
 
 
                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logbooks<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      {% if request.user.is_authenticated %}
+                      <li class="dropdown-header">Registered Users Only</li>
+                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}"> All Groundhog Removals</a></li>
+                      {% else %}
+                    <li class="dropdown-header">Restricted Access</li>
+                    <li><a class="dropdown-item" href="{% url 'login' %}"> Logbook Requires Login</a></li>
+                      {% endif %}
+                  </ul>
+                </li>
+
+
+
+                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Misc Tools<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li class="dropdown-header">Days Since</li>

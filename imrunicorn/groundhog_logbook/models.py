@@ -13,7 +13,7 @@ class Location(models.Model):
     longitude = models.DecimalField(max_digits=12, decimal_places=7, default=-76.996040, null=True)
 
     def __str__(self):
-        return "%s (%s , %s)" % (self.nickname, self.latitude, self.longitude)
+        return "%s (%s LAT , %s LONG)" % (self.nickname, self.latitude, self.longitude)
 
     class Meta:
         ordering = ('nickname', 'latitude', 'longitude')
