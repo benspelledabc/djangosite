@@ -5,6 +5,18 @@ from .models import RemovalsByLocation, Location
 from django.db.models import Q
 
 
+def all_groundhog_hole_locations():
+    # this_moment = datetime.now()
+    # result = RemovalsByLocation.objects.filter(
+    #     Q(Published=True) & (Q(Date=this_moment.date())) |
+    #     Q(Published=True) & Q(Date__lt=this_moment.date())
+    # ).order_by('-Is_Sticky', '-Date', )
+
+    result = Location.objects.all()
+
+    return result
+
+
 def all_groundhog_removals():
     # this_moment = datetime.now()
     # result = RemovalsByLocation.objects.filter(

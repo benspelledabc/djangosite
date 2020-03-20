@@ -103,6 +103,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logbooks<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li class="dropdown-header">Groundhog Removal Logbook</li>
+                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_locations' %}"> Groundhog Hole Location List</a></li>
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}"> 2020 Groundhog Removals</a></li>
                   </ul>
                 </li>
@@ -113,8 +114,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Misc Tools<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li class="dropdown-header">Days Since</li>
-                    <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
-                      <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
+                        <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=3/18/2020">Fit Hit Shan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
+                        <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
                   </ul>
                 </li>
 

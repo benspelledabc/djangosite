@@ -1,0 +1,50 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ news_overview }}</p>
+</div>
+
+
+{% if list_of_holes != None %}
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            These could be a few feet off so look around a little bit.<br /><br />
+            <!-- https://www.google.com/maps/search/?api=1&query=<lat>,<lng> -->
+            <!-- https://www.google.com/maps/search/?api=1&query=39.619507,-77.029337 -->
+
+            {% for item in list_of_holes %}
+
+                <b>Location: </b>{{ item.nickname }}<br />
+                <a href="https://www.google.com/maps/search/?api=1&query={{ item.latitude }},{{ item.longitude }}"
+                                   target="_blank">{{ item.nickname }} - ({{ item.latitude }},{{ item.longitude }})</a><br /><br />
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% else %}
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            It appears we haven't started to track holes!
+        </div>
+
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
