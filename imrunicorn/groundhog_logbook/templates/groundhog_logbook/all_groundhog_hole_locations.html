@@ -25,10 +25,10 @@
             <!-- https://www.google.com/maps/search/?api=1&query=39.619507,-77.029337 -->
 
             {% for item in list_of_holes %}
-
-                <b>Location: </b>{{ item.nickname }}<br />
+          
+                <b>Location: </b>{{ item.nickname | title }}<br />
                 <a href="https://www.google.com/maps/search/?api=1&query={{ item.latitude }},{{ item.longitude }}"
-                                   target="_blank">{{ item.nickname }} - ({{ item.latitude }},{{ item.longitude }})</a><br /><br />
+                                   target="_blank">{{ item.nickname | title }} - ({{ item.latitude }},{{ item.longitude }})</a><br /><br />
 
             {% endfor %}
         </div>
