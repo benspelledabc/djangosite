@@ -31,3 +31,14 @@ class MainPageBlurbs(models.Model):
         ordering = ('-Is_Active', '-id')
         verbose_name_plural = "Main Page Blurbs"
 
+
+class PageBlurbOverrides(models.Model):
+    Blurb = models.CharField(max_length=250)
+    Page_Link_From_Base = models.CharField(max_length=250, unique=True)
+
+    def __str__(self):
+        return "[%s] - %s" % (self.id, self.Page_Link_From_Base)
+
+    class Meta:
+        ordering = ('Page_Link_From_Base', '-id')
+        verbose_name_plural = "Page Blurb Overrides"

@@ -8,7 +8,7 @@ import json
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.views import APIView
-from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json
+from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, get_page_blurb_override
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -16,6 +16,7 @@ from .models import WhatIsNew
 from .serializer import NewsSerializer
 
 import logging
+
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
 
@@ -28,9 +29,10 @@ def page_all_news(request):
         "all_news": get_news,
         'release': get_version_json(),
         "title": "All the news",
-        "news_overview": "I've decided to make a blog of sorts. It's super light for speed and readability on "
-                         "cellphones. I'll expand functionality later but for now this is just a listing of the "
-                         "'Announcements' published.",
+        "blurb": get_page_blurb_override('news/'),
+        # "blurb": "I've decided to make a blog of sorts. It's super light for speed and readability on "
+        #          "cellphones. I'll expand functionality later but for now this is just a listing of the "
+        #          "'Announcements' published.",
     }
     return render(request, "announcements/all_news.html", context)
 
@@ -49,7 +51,8 @@ def page_news_by_pk(request, news_pk='1'):
         "news_pk": get_news_by_pk(news_pk),
         'release': get_version_json(),
         "title": "News: Full Story",
-        "news_overview": "This will show the full story for the article you're reading.",
+        # "blurb": "This will show the full story for the article you're reading.",
+        "blurb": get_page_blurb_override('news/'),
     }
     return render(request, "announcements/news_by_pk.html", context)
 

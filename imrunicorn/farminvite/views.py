@@ -26,6 +26,7 @@ def unused_page_farm_invites_view(request):
         'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
+        # "blurb": get_page_blurb_override('news/'),
         "table_data": 'Shake it like it\'s going out of style!',
         "copy_year": datetime.now().year
     }

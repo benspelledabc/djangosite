@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import os
 import json
 from .models import HandLoad, EstimatedDope, Firearm
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_version_json, get_page_blurb_override
 
 import logging
 # This retrieves a Python logging instance (or creates it)
@@ -18,7 +18,8 @@ def page_foot_pound_calc(request):
     context = {
         'release': get_version_json(),
         "title": "Foot Pound Calculator",
-        "blurb": "I moved the calculator to its own page.",
+        # "blurb": "I moved the calculator to its own page.",
+        "blurb": get_page_blurb_override('load_data/foot_pound_calculator/'),
         "copy_year": datetime.now().year,
     }
     return render(request, "loaddata/foot_pound_calc.html", context)
@@ -36,7 +37,8 @@ def page_loads(request):
     context = {
         'release': get_version_json(),
         "title": "Load Data",
-        "blurb": "Do your own research, don't use this load data. It might be a pipe bomb in your firearm.",
+        # "blurb": "Do your own research, don't use this load data. It might be a pipe bomb in your firearm.",
+        "blurb": get_page_blurb_override('load_data/loads/'),
         'all_loads': all_loads,
         "copy_year": datetime.now().year
     }
@@ -50,7 +52,8 @@ def page_estimated_dope(request, load_pk='3'):
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Estimated Dope",
-            "blurb": "I'll move it to a database setup in a bit.",
+            # "blurb": "I'll move it to a database setup in a bit.",
+            "blurb": get_page_blurb_override('load_data/estimated_dope/'),
             'load_details': selected_load,
             "copy_year": datetime.now().year,
         }
@@ -59,7 +62,7 @@ def page_estimated_dope(request, load_pk='3'):
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Master Po Load Data",
-            "blurb": "No dope for this load.",
+            "blurb": get_page_blurb_override('load_data/estimated_dope/NO-DOPE-FOUND/'),
             "copy_year": datetime.now().year,
         }
 
@@ -74,7 +77,8 @@ def page_firearm_detail(request, firearm_pk='3'):
             'firearm_id': firearm_pk,
             'release': get_version_json(),
             "title": "Firearm Detail",
-            "blurb": "Sometimes knowing your tool is more important than using it quickly.",
+            # "blurb": "Sometimes knowing your tool is more important than using it quickly.",
+            "blurb": get_page_blurb_override('load_data/firearm_detail/'),
             'firearm_details': selected_firearm,
             "copy_year": datetime.now().year,
         }
@@ -83,7 +87,7 @@ def page_firearm_detail(request, firearm_pk='3'):
             'load_id': firearm_pk,
             'release': get_version_json(),
             "title": "Master Po Load Data",
-            "blurb": "Estimated DOPE not found.",
+            "blurb": get_page_blurb_override('load_data/firearm_detail/NOT-FOUND'),
             "copy_year": datetime.now().year,
         }
 

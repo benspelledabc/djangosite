@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_version_json, get_page_blurb_override
 
 
 def page_six_steps_of_firing_a_shot(request):
@@ -10,7 +10,8 @@ def page_six_steps_of_firing_a_shot(request):
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
-        "blurb": "This page is a place holder for what's to come soon.",
+        # "blurb": "This page is a place holder for what's to come soon.",
+        "blurb": get_page_blurb_override('shooting_logbook/six_steps/'),
         "table_data": '',
         "copy_year": datetime.now().year
     }
@@ -21,7 +22,8 @@ def page_reading_wind_mirage(request):
     context = {
         'release': get_version_json(),
         "title": "Reading Wind Mirage",
-        "blurb": "This page is a place holder for what's to come soon.",
+        # "blurb": "This page is a place holder for what's to come soon.",
+        "blurb": get_page_blurb_override('shooting_logbook/reading_wind_mirage/'),
         "copy_year": datetime.now().year
     }
     return render(request, "shooting_logbook/reading_wind_mirage.html", context)
