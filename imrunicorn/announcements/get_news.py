@@ -3,10 +3,27 @@ import json
 from datetime import datetime
 from django.conf import settings
 from farminvite.models import InviteListing
-from .models import WhatIsNew
+from .models import WhatIsNew, MainPageBlurbs
 from django.db.models import Q
 from django.db.models import F, ExpressionWrapper
 from django.http import JsonResponse
+
+
+def get_main_page_blurb():
+    blurb = "I need a new breakfast."
+    try:
+        blurb = MainPageBlurbs.objects.filter(
+            Q(Is_Active=True)
+        ).order_by('-id')[:1]
+        blurb = blurb[0].Blurb
+    except IndexError as ie:
+        # blurb = "Blurb Error: %s." % ie
+        # give a default
+        blurb = "I need a new breakfast."
+    except Exception as err:
+        blurb = "Blurb Error: %s." % err
+
+    return blurb
 
 
 def get_news():

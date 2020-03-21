@@ -18,3 +18,16 @@ class WhatIsNew(models.Model):
         ordering = ('-Date', 'Blurb')
         verbose_name = 'What Is New'
         verbose_name_plural = 'What Is New'
+
+
+class MainPageBlurbs(models.Model):
+    Blurb = models.CharField(max_length=250)
+    Is_Active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "[%s] - %s" % (self.Is_Active, self.Blurb)
+
+    class Meta:
+        ordering = ('-Is_Active', '-id')
+        verbose_name_plural = "Main Page Blurbs"
+

@@ -6,7 +6,7 @@ from django.shortcuts import render
 import os
 import json
 
-from announcements.get_news import get_news, get_news_sticky, get_version_json
+from announcements.get_news import get_news, get_news_sticky, get_version_json, get_main_page_blurb
 
 
 # Create your views here.
@@ -26,7 +26,7 @@ def page_home(request):
         "all_news": all_news,
         'release': release,
         "title": title,
-        "blurb": "I divide by zero by breakfast.",
+        "blurb": get_main_page_blurb,
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)
