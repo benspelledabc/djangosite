@@ -46,13 +46,15 @@ def json_all_news_json(request):
 
 
 def page_news_by_pk(request, news_pk='1'):
+    blurb_page = '/news/detail/' + str(news_pk)
     context = {
         "copy_year": datetime.now().year,
         "news_pk": get_news_by_pk(news_pk),
         'release': get_version_json(),
         "title": "News: Full Story",
         # "blurb": "This will show the full story for the article you're reading.",
-        "blurb": get_page_blurb_override('news/'),
+        # "blurb": get_page_blurb_override('news/'),
+        "blurb": get_page_blurb_override(blurb_page),
     }
     return render(request, "announcements/news_by_pk.html", context)
 
