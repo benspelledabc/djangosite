@@ -6,7 +6,7 @@ from django.shortcuts import render
 import os
 import json
 
-from announcements.get_news import get_news, get_news_sticky, get_version_json, get_main_page_blurb
+from announcements.get_news import get_news, get_news_sticky, get_version_json, get_page_blurb_override
 
 
 # Create your views here.
@@ -26,7 +26,8 @@ def page_home(request):
         "all_news": all_news,
         'release': release,
         "title": title,
-        "blurb": get_main_page_blurb,
+        # "blurb": get_main_page_blurb,
+        "blurb": get_page_blurb_override('/'),
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)
@@ -78,6 +79,7 @@ def page_days_since(request):
         'release': get_version_json(),
         "title": "Days since " + input_date,
         "blurb": "How many times has the sun gone up and down since then?",
+        # "blurb": get_page_blurb_override('/'),
         "input_date": input_date,
         "copy_year": datetime.now().year
     }
