@@ -62,6 +62,8 @@ def handler500(request):
 def page_days_since(request):
     input_date = request.GET.get('input_date')
 
+    blurb_string = "/days_since?input_date=" + input_date
+
     batf_data = fetch_estimated_batf_days()
     check_cashed = batf_data['check_cashed']
     approved = batf_data['approved']
@@ -78,8 +80,7 @@ def page_days_since(request):
         'batf_total': total,
         'release': get_version_json(),
         "title": "Days since " + input_date,
-        "blurb": "How many times has the sun gone up and down since then?",
-        # "blurb": get_page_blurb_override('/'),
+        "blurb": get_page_blurb_override(blurb_string),
         "input_date": input_date,
         "copy_year": datetime.now().year
     }
