@@ -44,7 +44,7 @@ def get_page_blurb_override(page=None):
     except IndexError as ie:
         # blurb = "Blurb Error: %s." % ie
         # give a default
-        blurb = "I need a new page blurb...."
+        blurb = ""
     except Exception as err:
         blurb = "Blurb Error: %s." % err
 

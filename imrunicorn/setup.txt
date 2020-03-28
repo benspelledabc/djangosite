@@ -7,6 +7,46 @@ Now run ./manage.py makemigrations. That will create a new initial migration fil
 ./manage.py migrate —fake
 
 
+>< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< ><
+import sys
+
+# build the output file to work with
+# /data/django/IMRUnicorn-Django/imrunicorn/manage.py show_urls >> ~/ben-endpoints/input.file
+
+def main(root_site=None):
+    if root_site is None:
+        root_site = "http://dev.benspelledabc.me"
+
+    count = 0
+    # with open('/root/ben-endpoints/input.file') as fp:
+    with open('input.file') as fp:
+        lines = fp.readlines()
+
+        for line in lines:
+            count += 1
+            line = line.split()
+            # first index of split
+            line = line[0]
+
+            # prevent admin link walking
+            if 'admin/' not in line:
+                # prevent paramaterized links
+                if '<' not in line:
+                    output = "{}{}".format(root_site, line)
+                    print(output)
+
+
+
+if __name__== "__main__":
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        main()
+
+>< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< ><
+
+
+
 asgiref==3.2.3
 coverage==5.0.1
 Django==3.0.2
