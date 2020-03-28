@@ -1,4 +1,9 @@
 {% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
 {% block content %}
 {% load humanize %}
 <div class="jumbotron">
@@ -50,9 +55,23 @@
           <tr bgcolor="#BEBEBE">
               <td style="padding-left:10px">{{ load.firearm.owner|title }}</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
+
+
+              {% if load.projectile.buy_link != None %}
+              <td style="padding-left:10px"><a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.projectile.Name }}</td>
+              {% else %}
               <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              {% endif %}
+
               <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+
+              {% if load.powder.buy_link != None %}
+              <td style="padding-left:10px"><a href="{{ load.powder.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.powder }}</td>
+              {% else %}
               <td style="padding-left:10px">{{ load.powder }}</td>
+              {% endif %}
+
+
               <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
@@ -65,9 +84,21 @@
           <tr bgcolor="#F5F5F5">
               <td style="padding-left:10px">{{ load.firearm.owner|title }}</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
+
+              {% if load.projectile.buy_link != None %}
+              <td style="padding-left:10px"><a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.projectile.Name }}</td>
+              {% else %}
               <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              {% endif %}
+
               <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+
+              {% if load.powder.buy_link != None %}
+              <td style="padding-left:10px"><a href="{{ load.powder.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.powder }}</td>
+              {% else %}
               <td style="padding-left:10px">{{ load.powder }}</td>
+              {% endif %}
+
               <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>

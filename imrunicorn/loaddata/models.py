@@ -36,6 +36,8 @@ class Firearm(models.Model):
 class Powder(models.Model):
     name = models.CharField(max_length=150, default=None, blank=True, null=True)
     is_smokeless = models.BooleanField(default=True)
+    # might exceed database length limits
+    buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -50,6 +52,8 @@ class Projectile(models.Model):
     WeightGR = models.DecimalField(max_digits=5, decimal_places=1)
     Diameter = models.DecimalField(max_digits=5, decimal_places=3)
     Ballistic_Coefficient = models.DecimalField(max_digits=5, decimal_places=4, default=0.24)
+    # might exceed database length limits
+    buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
 
     def __str__(self):
         return "%s %s %s" % (self.WeightGR, self.Manufacture, self.Name)
