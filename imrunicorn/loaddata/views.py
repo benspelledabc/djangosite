@@ -69,7 +69,16 @@ def page_estimated_dope(request, load_pk='3'):
     return render(request, "loaddata/estimated_dope.html", context)
 
 
-def page_firearm_detail(request, firearm_pk='3'):
+def page_firearm_detail(request, firearm_pk=None):
+    if firearm_pk is None:
+        context = {
+            'load_id': firearm_pk,
+            'release': get_version_json(),
+            "title": "Can't get detail without an id.",
+            "blurb": get_page_blurb_override('load_data/firearm_detail/NOT-FOUND'),
+            "copy_year": datetime.now().year,
+        }
+        return render(request, "loaddata/firearm_details.html", context)
     try:
         selected_firearm = Firearm.objects.get(pk=firearm_pk)
 
@@ -86,7 +95,7 @@ def page_firearm_detail(request, firearm_pk='3'):
         context = {
             'load_id': firearm_pk,
             'release': get_version_json(),
-            "title": "Master Po Load Data",
+            "title": "OOPS! Firearm not found.",
             "blurb": get_page_blurb_override('load_data/firearm_detail/NOT-FOUND'),
             "copy_year": datetime.now().year,
         }

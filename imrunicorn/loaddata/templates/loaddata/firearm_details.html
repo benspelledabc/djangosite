@@ -18,15 +18,8 @@
             <b>Barrel Length:</b> {{ firearm_details.barrel_length }} inches</br>
             <b>Caliber:</b> {{ firearm_details.caliber }}</br>
             <b>Twist:</b> 1 per {{ firearm_details.inches_per_twist }} inches</br>
-
-            {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 or load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
-                {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_elevation >= 0 %}
-                    <b>Elevation Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
-                {% endif%}
-                {% if load_details.hand_load.firearm.clicks_from_bottom_to_zero_windage >= 0 %}
-                    <b>Windage Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
-                {% endif %}
-            {% endif %}
+            <b>Elevation Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
+            <b>Windage Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
 
             </br>
             {% if firearm_details.extra_info %}
