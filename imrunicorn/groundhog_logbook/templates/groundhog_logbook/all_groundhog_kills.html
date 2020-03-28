@@ -31,10 +31,20 @@
                 <b>Load Detail:</b> {{ news.load }}<br />
 
                 <b>Location:</b><a href="https://www.google.com/maps/search/?api=1&query={{ news.location.latitude }},{{ news.location.longitude }}"
-                                   target="_blank">{{ news.location }}</a> * Map Link Is Buggy<br />
+                                   target="_blank">{{ news.location }}</a><br />
                 <b>Estimated Weight (lbs):</b> {{ news.estimated_weight_lbs }}<br />
-                <b>Sex:</b> {{ news.sex }}<br />
-                <b>Excessive Wound Cavity:</b> {{ news.excessive_wound_cavity }}<br />
+
+                {% if news.sex == "MALE" %}
+                    <b>Sex:</b> {{ news.sex }} - <i class="fas fa-mars"></i><br />
+                {% elif news.sex == "FEMALE" %}
+                    <b>Sex:</b> {{ news.sex }} - <i class="fas fa-venus"></i><br />
+                {% else %}
+                    <b>Sex:</b> {{ news.sex }} - <i class="far fa-question-circle"></i><br />
+                {% endif %}
+
+                {% if news.excessive_wound_cavity %}
+                    <b>Excessive Wound Cavity:</b> </i>{{ news.excessive_wound_cavity }} - <i class="fas fa-biohazard"></i><br />
+                {%  endif %}
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
                 <br />
                 <br />
