@@ -10,7 +10,10 @@ class Caliber(models.Model):
     is_approved = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.name)
+        if self.is_approved:
+            return self.name
+        else:
+            return "%s (Pending Approval)" % self.name
 
     class Meta:
         ordering = ('name',)
