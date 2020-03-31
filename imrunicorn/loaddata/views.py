@@ -6,12 +6,55 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 import os
 import json
-from .models import HandLoad, EstimatedDope, Firearm
+from .models import HandLoad, EstimatedDope, Firearm, Caliber
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override
+from .forms import CaliberForm
 
 import logging
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def caliber_create_view(request):
+    form = CaliberForm(request.POST or None)
+    if form.is_valid():
+        # over ride values to track the submission
+        safe_form = form.save(commit=False)
+        safe_form.author_pk = request.user.pk
+        safe_form.is_approved = False
+        safe_form.save()
+
+        form = CaliberForm()
+
+    all_calibers = Caliber.objects.all().order_by('-diameter')
+
+    context = {
+        'release': get_version_json(),
+        "title": "Caliber Creation Tool",
+        # "blurb": "I moved the calculator to its own page.",
+        "blurb": get_page_blurb_override('load_data/toolbox/create_caliber/'),
+        "copy_year": datetime.now().year,
+        "all_calibers": all_calibers,
+        'form': form,
+    }
+    return render(request, "loaddata/caliber_create.html", context)
+
+
+def caliber_create_view_lkg(request):
+    form = CaliberForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = CaliberForm()
+
+    context = {
+        'release': get_version_json(),
+        "title": "Caliber Creation Tool",
+        # "blurb": "I moved the calculator to its own page.",
+        "blurb": get_page_blurb_override('load_data/toolbox/create_caliber/'),
+        "copy_year": datetime.now().year,
+        'form': form,
+    }
+    return render(request, "loaddata/caliber_create.html", context)
 
 
 def page_foot_pound_calc(request):

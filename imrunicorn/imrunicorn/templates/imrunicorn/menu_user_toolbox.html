@@ -1,0 +1,38 @@
+{% comment %}
+This section of the menu is only for users that have logged in.
+There will be more things added to it in time but the first thing on the
+menu is to have a way to CRUD their firearms and loads.
+{% endcomment %}
+
+{% if user.is_authenticated %}
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Toolboxes<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li class="dropdown-header">My Toolbox</li>
+          <li><a href="{% url 'load_data:create_caliber' %}">View/Create Calibers</a></li>
+
+          {% if user.is_staff %}
+          <li><a href="#">Firearm Details</a></li>
+          <li><a href="#">Load Details</a></li>
+          <li><a href="#">DOPE Details</a></li>
+          <li><a href="#">Groundhog Details</a></li>
+          <li><a href="#">Submit news</a></li>
+          <li><a href="#">STAFF Details</a></li>
+          {% endif %}
+      </ul>
+    </li>
+
+    {% ifequal user.groups.all.0.name "AFKLady" %}
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AFKBot<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a href="#">AFKLady</a></li>
+          <li><a href="#">AFKSir</a></li>
+      </ul>
+    </li>
+    {% endifequal %}
+
+
+
+{% endif %}

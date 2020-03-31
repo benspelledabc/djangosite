@@ -1,13 +1,9 @@
 {% if user.is_authenticated %}
 <form id="logoutForm" action="/logout/" method="post" class="navbar-right">
     {% csrf_token %}
+
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/admin/" target="_blank">Admin</a></li>
-
-        {% ifequal user.groups.all.0.name "AFKLady" %}
-            <li><a href="/roll" target="_blank">Add/Edit Items</a></li>
-        {% endifequal %}
-
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
 </form>
@@ -15,5 +11,4 @@
 <ul class="nav navbar-nav navbar-right">
     <li><a href="{% url 'login' %}">Login</a></li>
 </ul>
-
 {% endif %}

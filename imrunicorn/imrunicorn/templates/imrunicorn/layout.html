@@ -173,6 +173,8 @@
                 {% endifequal %}
                 {% endif %}
 
+                {% include 'imrunicorn/menu_user_toolbox.html' %}
+
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
         </div>
@@ -187,6 +189,16 @@
         <p>&copy; {{ copy_year }} - Drunken Dwarves, Irate Gnomes, and {{ release.author }} <br/>
             Version: {{ release.version }} - Build Date: {{ release.build_date }}
         </p>
+
+        {% comment %}
+        {% if not request.user.is_anonymous %}
+        <p>
+            Username : {{ user|title }}<br />
+            User Id  : {{ user.pk|title }}<br />
+            GhogKills: Not Tracked, yet.<br />
+        </p>
+        {% endif %}
+        {% endcomment %}
 
     </footer>
 </div>

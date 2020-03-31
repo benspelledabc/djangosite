@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 class Caliber(models.Model):
     name = models.CharField(max_length=150)
     diameter = models.DecimalField(max_digits=5, decimal_places=3)
+    author_pk = models.IntegerField(default=1, null=True)
+    is_approved = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.name)
