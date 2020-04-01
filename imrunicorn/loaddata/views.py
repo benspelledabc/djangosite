@@ -6,13 +6,41 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 import os
 import json
-from .models import HandLoad, EstimatedDope, Firearm, Caliber
+from .models import HandLoad, EstimatedDope, Firearm, Caliber, Powder
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override
-from .forms import CaliberForm
+from .forms import CaliberForm, PowderForm
 
 import logging
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def powder_create_view(request):
+    # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
+    # return JsonResponse(data)
+    form = PowderForm(request.POST or None)
+    if form.is_valid():
+        # over ride values to track the submission
+        safe_form = form.save(commit=False)
+        safe_form.author_pk = request.user.pk
+        safe_form.is_approved = False
+        safe_form.save()
+
+        form = PowderForm()
+
+    all_powders = Powder.objects.all().order_by('-name')
+
+    context = {
+        'release': get_version_json(),
+        "title": "Powder Creation Tool",
+        # "blurb": "I moved the calculator to its own page.",
+        "blurb": get_page_blurb_override('load_data/toolbox/create_powder/'),
+        "copy_year": datetime.now().year,
+        "all_powders": all_powders,
+        'form': form,
+    }
+    return render(request, "loaddata/powder_create.html", context)
+
 
 
 def caliber_create_view(request):

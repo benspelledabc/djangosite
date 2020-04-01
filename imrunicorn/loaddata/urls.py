@@ -21,5 +21,7 @@ urlpatterns = [
     path('firearm_detail/', views.page_firearm_detail, name='page_firearm_detail'),
 
     path('toolbox/create_caliber/', views.caliber_create_view, name='create_caliber'),
+    path('toolbox/create_powder/', views.powder_create_view, name='create_powder'),
+
 ]
 

@@ -43,9 +43,14 @@ class Powder(models.Model):
     is_smokeless = models.BooleanField(default=True)
     # might exceed database length limits
     buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
+    author_pk = models.IntegerField(default=1, null=True)
+    is_approved = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.name)
+        if self.is_approved:
+            return self.name
+        else:
+            return "%s (Pending Approval)" % self.name
 
     class Meta:
         ordering = ('name', 'is_smokeless')

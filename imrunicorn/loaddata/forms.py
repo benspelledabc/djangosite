@@ -4,8 +4,6 @@ from .models import Caliber, Firearm, Powder, Projectile, HandLoad, EstimatedDop
 
 
 class CaliberForm(forms.ModelForm):
-    # author_pk = forms.IntegerField(widget=forms.IntegerField(attrs={"readonly": "readonly"}))
-
     class Meta:
         model = Caliber
         fields = [
@@ -14,5 +12,10 @@ class CaliberForm(forms.ModelForm):
         ]
 
 
-# class RawCaliberForm(forms.Form):
-#     author_pk = forms.IntegerField(readonly="True")
+class PowderForm(forms.ModelForm):
+    class Meta:
+        model = Powder
+        fields = [
+            "name",
+            "is_smokeless",
+        ]
