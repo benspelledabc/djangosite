@@ -4,6 +4,7 @@
 
 {% load humanize %}
 
+{% if user.is_authenticated %}
 <div class="jumbotron">
     <h1>{{ title }}</h1>
     <p class="lead">{{ blurb }}</p>
@@ -59,8 +60,20 @@
 
 
     </div>
-
 </div>
+{% else %}
+<div class="jumbotron">
+    <h1>Access Denied</h1>
+    <p class="lead">You have to logon to see this content now.</p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12" align="center">
+       Sorry for the inconvenience.
+    </div>
+</div>
+{% endif %}
 
 <br/><br/>
 
