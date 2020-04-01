@@ -64,9 +64,14 @@ class Projectile(models.Model):
     Ballistic_Coefficient = models.DecimalField(max_digits=5, decimal_places=4, default=0.24)
     # might exceed database length limits
     buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
+    author_pk = models.IntegerField(default=1, null=True)
+    is_approved = models.BooleanField(default=True)
 
     def __str__(self):
-        return "%s %s %s" % (self.WeightGR, self.Manufacture, self.Name)
+        if self.is_approved:
+            return "%s %s %s" % (self.WeightGR, self.Manufacture, self.Name)
+        else:
+            return "%s %s %s (Pending Approval)" % (self.WeightGR, self.Manufacture, self.Name)
 
     class Meta:
         ordering = ('WeightGR', 'Manufacture')

@@ -12,6 +12,7 @@ menu is to have a way to CRUD their firearms and loads.
           <li class="dropdown-header">My Toolbox</li>
           <li><a href="{% url 'load_data:create_caliber' %}">View/Create Calibers</a></li>
           <li><a href="{% url 'load_data:create_powder' %}">View/Create Powders</a></li>
+          <li><a href="{% url 'load_data:create_projectile' %}">View/Create Projectiles</a></li>
 
           {% if user.is_staff %}
           <li><a href="#">Firearm Details</a></li>

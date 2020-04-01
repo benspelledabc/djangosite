@@ -19,3 +19,15 @@ class PowderForm(forms.ModelForm):
             "name",
             "is_smokeless",
         ]
+        
+
+class ProjectileForm(forms.ModelForm):
+    class Meta:
+        model = Projectile
+        fields = [
+            "Manufacture",
+            "Name",
+            "WeightGR",
+            "Diameter",
+            "Ballistic_Coefficient",
+        ]
