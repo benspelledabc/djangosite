@@ -34,8 +34,7 @@ def projectile_create_view(request):
     context = {
         'release': get_version_json(),
         "title": "Projectile Creation Tool",
-        # "blurb": "I moved the calculator to its own page.",
-        "blurb": get_page_blurb_override('load_data/toolbox/create_powder/'),
+        "blurb": get_page_blurb_override('load_data/toolbox/create_projectile/'),
         "copy_year": datetime.now().year,
         "all_projectiles": all_records,
         'form': form,
