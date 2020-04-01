@@ -52,7 +52,7 @@ def page_groundhog_removals_scoreboard(request):
         "copy_year": datetime.now().year,
         "logs": logs,
         'release': get_version_json(),
-        "title": "Groundhog Removal Scoreboard",
+        "title": "Top Groundhog Removers",
         "blurb": get_page_blurb_override('groundhog_logbook/removal_scoreboard/'),
     }
     return render(request, "groundhog_logbook/groundhog_removal_scoreboard.html", context)

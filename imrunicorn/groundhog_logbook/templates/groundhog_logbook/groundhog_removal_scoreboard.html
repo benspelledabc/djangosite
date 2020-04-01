@@ -2,6 +2,38 @@
 
 {% block extra_head %}
 <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+<style>
+    /* DivTable.com */
+.divTable{
+	display: table;
+	width: 50%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px dashed #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
 {% endblock %}
 
 
@@ -20,13 +52,27 @@
 <div class="row ben_format_pretty">
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
-            We're going to list the top 3 spots that groundhogs are being removed as
-            well as the top 3 shooters doing the removals. For now, we're just going to list the top shooter.<br /><br />
 
-            <i>* A bug in my code is giving me the user_id instead of the user_name.... deal with it for now.</i> <br /><br />
-            {% for log in logs %}
-                #{{ forloop.counter }} remover: {{ log.shooter|title }}  <i>Again, sorry it's the id not the username.</i><br />
-            {% endfor %}
+            This isn't really a <i>scoreboard</i> per say but more of a way to show who is doing the most removals. It
+            also gives me a chance to do something different code wise to get the site to display what I want.
+
+            <br /><br />
+
+            {% comment %}
+            This will build a little table of the top X removers.
+            {% endcomment %}
+        <div class="divTable row ben_format_pretty">
+            <div class="divTableBody">
+                {% for log in logs %}
+                <div class="divTableRow">
+                    <div class="divTableCell"># {{ forloop.counter }}</div>
+                    <div class="divTableCell"><a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.shooter }}">
+                            {{ log.shooter__username|title }}</a></div>
+                    <div class="divTableCell">[Count: {{ log.removals }}]</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         </div>
 
     </div>
