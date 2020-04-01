@@ -1,0 +1,46 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+
+{% if logs != None %}
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            We're going to list the top 3 spots that groundhogs are being removed as
+            well as the top 3 shooters doing the removals. For now, we're just going to list the top shooter.<br /><br />
+
+            <i>* A bug in my code is giving me the user_id instead of the user_name.... deal with it for now.</i> <br /><br />
+            {% for log in logs %}
+                #{{ forloop.counter }} remover: {{ log.shooter|title }}  <i>Again, sorry it's the id not the username.</i><br />
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% else %}
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            Nothing is dead... yet.
+        </div>
+
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
