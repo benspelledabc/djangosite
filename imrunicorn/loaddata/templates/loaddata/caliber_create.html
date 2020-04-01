@@ -2,6 +2,8 @@
 
 {% block extra_head %}
 <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+
+{% comment %}
 <style>
 .newspaper {
   column-count: 2;
@@ -39,6 +41,9 @@
 	display: table-row-group;
 }
 </style>
+{% endcomment %}
+
+
 {% endblock %}
 
 {% block content %}
@@ -49,8 +54,10 @@
 </div>
 
 {% if user.is_authenticated %}
+
 <div class="row ben_format_pretty">
-    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+    <div align="center">
+        <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
 
             Please make sure the caliber isn't already listed. The list sorted by diameter and shows what is pending approval.
@@ -60,6 +67,32 @@
             I'll disable the account if I start getting too many pending approvals (or trash data) from a user.
             <br /><br /><br />
 
+            <div align="left">
+                <select id="choices">
+                    <option value="">---------</option>
+                    {% for caliber in all_calibers %}
+                        <option value="{{ caliber.name }} - {{ caliber.diameter }}">
+                        {{ caliber.name }} - {{ caliber.diameter }}
+                        {% if caliber.is_approved == False %}
+                            ( Pending approval, submitted by user id: # {{ caliber.author_pk }} )
+                        {% endif %}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+<br /><br /><br />
+            <div align="left">
+                <form method="POST"> {% csrf_token %}
+                    {{ form.as_p }}
+                    <b>Is Approved:</b> False (Pending Approval)<br/>
+                    <b>User Id:</b> {{ user.pk }} <br/>
+                    <b>User Name:</b> {{ user }} <br/>
+                    <br/>
+                    <input type="submit" value="Save" />
+                </form>
+            </div>
+
+            {% comment %}
             <div class="divTable">
                 <div class="divTableBody">
                     <div class="divTableRow">
@@ -67,7 +100,6 @@
                             <select id="choices">
                                 <option value="">---------</option>
                                 {% for caliber in all_calibers %}
-                                    {% comment %} <li>{{ caliber.name }} - {{ caliber.diameter }}</li> {% endcomment %}
                                     <option value="{{ caliber.name }} - {{ caliber.diameter }}">
                                         {{ caliber.name }} - {{ caliber.diameter }}
                                         {% if caliber.is_approved == False %}
@@ -92,17 +124,22 @@
                 </div>
             </div>
             <!-- DivTable.com -->
+            {% endcomment %}
+
         </div>
 
 
 
     </div>
+    </div>
 </div>
 {% else %}
 <div class="row ben_format_pretty">
-    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
-        <div style="text-align: left;font-family:times new roman;">
-            You must be logged in to edit stuff.
+    <div align="center">
+        <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+            <div style="text-align: left;font-family:times new roman;">
+                You must be logged in to edit stuff.
+            </div>
         </div>
     </div>
 </div>
