@@ -87,14 +87,22 @@ class HandLoad(models.Model):
 
     def __str__(self):
         # return "[PK: %s - %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.owner, self.firearm.caliber,
-        return "%s - %s - %sgr %s %s {%s [%sgr of %s]}" % (self.firearm.owner, self.firearm.caliber,
-                                                           self.projectile.WeightGR,
-                                                           self.projectile.Manufacture,
-                                                           self.projectile.Name,
-                                                           self.Velocity,
-                                                           self.Powder_Charge,
-                                                           self.powder.name,
-                                                           )
+        # return "%s - %s - %sgr %s %s {%s [%sgr of %s]}" % (self.firearm.owner, self.firearm.caliber,
+        #                                                    self.projectile.WeightGR,
+        #                                                    self.projectile.Manufacture,
+        #                                                    self.projectile.Name,
+        #                                                    self.Velocity,
+        #                                                    self.Powder_Charge,
+        #                                                    self.powder.name,
+        #                                                    )
+
+        return "%sgr %s %s @ %s FPS via %sgr of %s" % (self.projectile.WeightGR,
+                                                       self.projectile.Manufacture,
+                                                       self.projectile.Name,
+                                                       self.Velocity,
+                                                       self.Powder_Charge,
+                                                       self.powder.name,
+                                                       )
 
     class Meta:
         ordering = ('firearm', '-projectile', '-Velocity')

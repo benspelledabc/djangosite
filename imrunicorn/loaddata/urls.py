@@ -23,6 +23,7 @@ urlpatterns = [
     path('toolbox/create_caliber/', views.caliber_create_view, name='create_caliber'),
     path('toolbox/create_powder/', views.powder_create_view, name='create_powder'),
     path('toolbox/create_projectile/', views.projectile_create_view, name='create_projectile'),
+    path('toolbox/create_firearm/', views.firearm_create_view, name='create_firearm'),
 
 
 ]

@@ -16,6 +16,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def firearm_create_view(request):
+    data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
+    return JsonResponse(data)
+
+
 def projectile_create_view(request):
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
     # return JsonResponse(data)
