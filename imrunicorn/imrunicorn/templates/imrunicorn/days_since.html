@@ -13,7 +13,7 @@
 <div class="row">
 
     <div class="col-md-12" align="center">
-        They say it'll take about <strong>{{ batf_total }}</strong> days total.<br />
+        They say it'll take about <strong>{{ batf_total }}</strong> days total, <i>see exception below</i>.<br />
         This is the sum of {{ batf_check_cashed }} to get the check cashed,
         {{ batf_approved }} to get approved, and {{ batf_stamp_received }} to have it received.
         <br />
@@ -53,8 +53,10 @@
             //document.write(Difference_In_Days.toFixed(0) + " days.");
 
             var diffSimple = Difference_In_Days.toFixed(0);
-            document.write("<strong>" + diffSimple + " days</strong>");
+            document.write("<strong>" + diffSimple + " days</strong><br /><br />");
 
+            ten_months = 10 * 30;
+            document.write("<strong>Exception</strong>: As of 4/6/2020 the source says '10 months' (~" + ten_months + " days).");
 
         </script>
 
