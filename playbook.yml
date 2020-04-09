@@ -1,0 +1,15 @@
+-
+    name: Install Web Services
+    hosts: endservers
+    tasks:
+        - name: Install httpd service
+          yum:
+              name: httpd
+              state: present
+
+        - name: Start web server
+          service:
+              name: httpd
+              state: started
+
+
