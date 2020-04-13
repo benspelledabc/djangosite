@@ -46,10 +46,11 @@
                     <b>Excessive Wound Cavity:</b> </i>{{ news.excessive_wound_cavity }} - <i style="color:red;" class="fas fa-biohazard"></i><br />
                 {%  endif %}
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
-
-            {% if news.kill_shot != None%}
+            {% if news.kill_shot.url != None%}
                 {% if user.is_authenticated %}
-                    <b>Image:</b><br /><a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 10%; float: left; margin-left: 30px;" /></a><br />
+                    <b>Image:</b><br />
+                    <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 10%" /></a><br />
+
                 {% else %}
                     <b>Image:</b> Authenticated Users Only<br />
                 {% endif %}

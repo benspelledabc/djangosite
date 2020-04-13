@@ -29,7 +29,7 @@ class RemovalsByLocation(models.Model):
     excessive_wound_cavity = models.BooleanField(default=False)
     shot_distance_yards = models.DecimalField(max_digits=4, decimal_places=0, default=200)
     # upload the kill shot!?
-    kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True)
+    kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
 
     UNKNOWN = 'UNKNOWN'
     MALE = 'MALE'
