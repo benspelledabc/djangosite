@@ -27,7 +27,7 @@
                 Projectile
             </th>
             <th bgcolor="808080" style="text-align: center">
-                Gr (pr)
+                Powder
             </th>
             <th bgcolor="808080" style="text-align: center">
                 FPS
@@ -55,12 +55,16 @@
 
 
               {% if load.projectile.buy_link != None %}
-              <td style="padding-left:10px"><a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}gr - {{ load.projectile.Name }} <a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a></td>
               {% else %}
-              <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}gr - {{ load.projectile.Name }}</td>
               {% endif %}
 
-              <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+              {% if load.powder.buy_link != None %}
+              <td style="padding-left:10px">{{ load.Powder_Charge }}gr - {{ load.powder.name }} <a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a></td>
+              {% else %}
+              <td style="padding-left:10px">{{ load.Powder_Charge }}gr - {{ load.powder.name }}</td>
+              {% endif %}
 
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
@@ -76,12 +80,17 @@
               <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
 
               {% if load.projectile.buy_link != None %}
-              <td style="padding-left:10px"><a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}gr - {{ load.projectile.Name }}<a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a></td>
               {% else %}
-              <td style="padding-left:10px">{{ load.projectile.Name }}</td>
+              <td style="padding-left:10px">{{ load.projectile.WeightGR }}gr - {{ load.projectile.Name }}</td>
               {% endif %}
 
-              <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
+              {% if load.powder.buy_link != None %}
+              <td style="padding-left:10px">{{ load.Powder_Charge }}gr - {{ load.powder.name }} <a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a></td>
+              {% else %}
+              <td style="padding-left:10px">{{ load.Powder_Charge }}gr - {{ load.powder.name }}</td>
+              {% endif %}
+
 
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
