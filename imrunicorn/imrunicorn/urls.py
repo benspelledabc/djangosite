@@ -20,6 +20,8 @@ from datetime import datetime
 from django.conf import settings
 # from . import forms, views
 from announcements.get_news import get_news, get_version_json
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import forms, views
 
@@ -62,7 +64,7 @@ urlpatterns = [
              }
          ),
          name='login'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # # https://docs.djangoproject.com/en/2.0/topics/http/views/#customizing-error-views
 # handler404 = 'YOUR_APP_NAME.views.handler404'
