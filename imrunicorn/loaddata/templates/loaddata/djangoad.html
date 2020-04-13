@@ -30,12 +30,6 @@
                 Gr (pr)
             </th>
             <th bgcolor="808080" style="text-align: center">
-                Powder
-            </th>
-            <th bgcolor="808080" style="text-align: center">
-                Gr (po)
-            </th>
-            <th bgcolor="808080" style="text-align: center">
                 FPS
             </th>
             <th bgcolor="808080" style="text-align: center">
@@ -46,6 +40,9 @@
             </th>
             <th bgcolor="808080" style="text-align: center">
                 DOPE
+            </th>
+            <th bgcolor="808080" style="text-align: center">
+                Details
             </th>
         </tr>
 
@@ -65,18 +62,11 @@
 
               <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
 
-              {% if load.powder.buy_link != None %}
-              <td style="padding-left:10px"><a href="{{ load.powder.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.powder }}</td>
-              {% else %}
-              <td style="padding-left:10px">{{ load.powder }}</td>
-              {% endif %}
-
-
-              <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">NA</td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:loads' %}{{ load.pk }}">Yes</a></td>
           </tr>
 
           {% else %}
@@ -93,17 +83,11 @@
 
               <td style="padding-left:10px">{{ load.projectile.WeightGR }}</td>
 
-              {% if load.powder.buy_link != None %}
-              <td style="padding-left:10px"><a href="{{ load.powder.buy_link }}" target="_blank"><i class="fas fa-link"></i></a> - {{ load.powder }}</td>
-              {% else %}
-              <td style="padding-left:10px">{{ load.powder }}</td>
-              {% endif %}
-
-              <td style="padding-left:10px">{{ load.Powder_Charge }}</td>
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:loads' %}{{ load.pk }}">Yes</a></td>
           </tr>
           {% endif %}
           {% endfor %}

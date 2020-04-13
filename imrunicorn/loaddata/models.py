@@ -43,6 +43,7 @@ class Powder(models.Model):
     is_smokeless = models.BooleanField(default=True)
     # might exceed database length limits
     buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
+    lbs_on_hand = models.DecimalField(max_digits=3, decimal_places=1, default=1.0, null=True)
     author_pk = models.IntegerField(default=1, null=True)
     is_approved = models.BooleanField(default=True)
 
@@ -63,6 +64,7 @@ class Projectile(models.Model):
     Diameter = models.DecimalField(max_digits=5, decimal_places=3)
     Ballistic_Coefficient = models.DecimalField(max_digits=5, decimal_places=4, default=0.24)
     # might exceed database length limits
+    projectiles_on_hand = models.IntegerField(default=100, null=True)
     buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
     author_pk = models.IntegerField(default=1, null=True)
     is_approved = models.BooleanField(default=True)
@@ -77,11 +79,55 @@ class Projectile(models.Model):
         ordering = ('WeightGR', 'Manufacture')
 
 
+class Brass(models.Model):
+    # Caliber
+    caliber = models.ForeignKey(Caliber, related_name='caliber', on_delete=models.CASCADE)
+    manufacture = models.CharField(max_length=150, default="Mixed")
+
+    # might exceed database length limits
+    brass_on_hand = models.IntegerField(default=100, null=True)
+    buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
+    author_pk = models.IntegerField(default=1, null=True)
+    is_approved = models.BooleanField(default=True)
+
+    def __str__(self):
+        if self.is_approved:
+            return "%s %s" % (self.caliber, self.manufacture)
+        else:
+            return "%s %s" % (self.caliber, self.manufacture)
+
+    class Meta:
+        ordering = ('caliber', 'manufacture')
+
+
+class Primer(models.Model):
+    manufacture = models.CharField(max_length=150, default="Mixed")
+    description = models.CharField(max_length=150, default=None, blank=True, null=True)
+    # TODO: Consider making this an ENUM, there's no need for a shit ton of choices.
+
+    # might exceed database length limits
+    units_on_hand = models.IntegerField(default=100, null=True)
+    buy_link = models.CharField(max_length=450, default=None, blank=True, null=True)
+    author_pk = models.IntegerField(default=1, null=True)
+    is_approved = models.BooleanField(default=True)
+
+    def __str__(self):
+        if self.is_approved:
+            return "%s %s" % (self.manufacture, self.description)
+        else:
+            return "%s %s (Pending Approval)" % (self.manufacture, self.description)
+
+    class Meta:
+        ordering = ('manufacture', 'description')
+
+
 class HandLoad(models.Model):
     powder = models.ForeignKey(Powder, default=1, on_delete=models.CASCADE)
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
     firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
+    brass = models.ForeignKey(Brass, related_name='brass', on_delete=models.CASCADE, null=True)
+    primer = models.ForeignKey(Primer, related_name='primer', on_delete=models.CASCADE, null=True)
     Velocity = models.IntegerField(default=1200, null=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
 

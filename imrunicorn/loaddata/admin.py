@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Powder, Projectile, HandLoad, EstimatedDope, Firearm, Caliber
+from .models import Powder, Projectile, HandLoad, EstimatedDope, Firearm, Caliber, Brass, Primer
 
 # Register your models here.
 admin.site.register(Powder)
@@ -8,4 +8,6 @@ admin.site.register(HandLoad)
 admin.site.register(EstimatedDope)
 admin.site.register(Firearm)
 admin.site.register(Caliber)
+admin.site.register(Brass)
+admin.site.register(Primer)
 

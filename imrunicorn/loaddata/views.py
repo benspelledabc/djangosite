@@ -74,7 +74,6 @@ def powder_create_view(request):
     return render(request, "loaddata/powder_create.html", context)
 
 
-
 def caliber_create_view(request):
     form = CaliberForm(request.POST or None)
     if form.is_valid():
@@ -146,6 +145,51 @@ def page_loads(request):
         "copy_year": datetime.now().year
     }
     return render(request, "loaddata/djangoad.html", context)
+
+
+# Create your views here.
+def page_loads_details(request, load_pk=None):
+    if load_pk is None:
+        context = {
+            'load_id': load_pk,
+            'release': get_version_json(),
+            "title": "Can't get detail without an id.",
+            # todo: figure out this blurb link.
+            # "blurb": get_page_blurb_override('load_data/load_detail/NOT-FOUND'),
+            "copy_year": datetime.now().year,
+        }
+        return render(request, "loaddata/load_details.html", context)
+
+   # selected_firearm = Firearm.objects.get(pk=firearm_pk)
+
+    # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+    #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+    #                            output_field=FloatField()),
+    #     rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+    #                           output_field=IntegerField())
+    # )
+
+    try:
+        selected_hand_load = HandLoad.objects.get(pk=load_pk)
+        context = {
+            'release': get_version_json(),
+            "title": "Load Details",
+            # todo: figure out this blurb link.
+            # "blurb": get_page_blurb_override('load_data/load_detail/NOT-FOUND'),
+            'selected_hand_load': selected_hand_load,
+            "copy_year": datetime.now().year
+        }
+        return render(request, "loaddata/load_details.html", context)
+    except ObjectDoesNotExist:
+        context = {
+            'load_id': load_pk,
+            'release': get_version_json(),
+            "title": "Can't get detail without a valid id.",
+            # todo: figure out this blurb link.
+            # "blurb": get_page_blurb_override('load_data/load_detail/NOT-FOUND'),
+            "copy_year": datetime.now().year,
+        }
+        return render(request, "loaddata/load_details.html", context)
 
 
 def page_estimated_dope(request, load_pk='3'):
