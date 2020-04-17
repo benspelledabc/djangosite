@@ -14,6 +14,7 @@ blocks:
             - checkout
             - mkdir .pip_cache
             - cache restore
+            - apt-get install python3-mysqldb
             - pip install --cache-dir .pip_cache -r ./imrunicorn/requirements.txt
             - pip install --cache-dir .pip_cache mysqlclient
             - pip install --cache-dir .pip_cache PyMySQL
