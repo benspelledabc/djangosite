@@ -15,6 +15,9 @@ blocks:
             - mkdir .pip_cache
             - cache restore
             - pip install --cache-dir .pip_cache -r ./imrunicorn/requirements.txt
+            - pip install --cache-dir .pip_cache mysqlclient
+            - pip install --cache-dir .pip_cache PyMySQL
+            - pip install --cache-dir .pip_cache uWSGI
             - cache store
   - name: Test
     task:
