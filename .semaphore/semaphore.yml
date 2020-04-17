@@ -14,6 +14,7 @@ blocks:
             - checkout
             - mkdir .pip_cache
             - cache restore
+            - cd imrunicorn
             - pip install --cache-dir .pip_cache -r requirements.txt
             - cache store
   - name: Test
