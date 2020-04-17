@@ -26,15 +26,17 @@ blocks:
           - cache restore
           - pip install --cache-dir .pip_cache -r requirements.txt
       jobs:
-        - name: Unit Test -different
+        - name: Unit Test
           commands:
+            - cd imrunicorn
             - python manage.py makemigrations
             - python manage.py migrate
             - python manage.py test
         - name: Checklist
           commands:
+            - cd imrunicorn
             - python manage.py check --deploy
-        - name: Style Check -different
+        - name: Style Check (disabled)
           commands:
             - 'echo "pip install flake8:'
             - echo "flake8 imrunicorn/ --max-line-length=127 --ignore=F4"
