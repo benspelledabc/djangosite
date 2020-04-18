@@ -24,7 +24,7 @@ blocks:
           - 'python manage.py makemigrations '
           - python manage.py migrate
           - python manage.py collectstatic --no-input
-          - 'chown www-data:www-data data/db.sqlite3'
+          - 'echo "chown www-data:www-data data/db.sqlite3, not permitted"'
           - cd ..
 agent:
   machine:
