@@ -45,6 +45,8 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('shooting_logbook/', include('shooting_logbook.urls')),
     path('groundhog_logbook/', include('groundhog_logbook.urls')),
+    
+    path('docker/', include('docker_test.urls')),
 
     # path('contact/', views.contact, name='contact'),
     # path('about/', views.about, name='about'),

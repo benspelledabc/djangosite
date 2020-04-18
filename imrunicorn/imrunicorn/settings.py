@@ -26,14 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
 
-if socket.gethostname().startswith('nifi') \
-        or socket.gethostname().startswith('Thermaltake') \
-        or socket.gethostname().startswith('svenMacBook'):
-    DEBUG = True
-    IS_PRODUCTION = not DEBUG
-else:
-    DEBUG = False
-    IS_PRODUCTION = not DEBUG
+DEBUG = False
+IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
 
@@ -57,6 +51,7 @@ INSTALLED_APPS = [
     'polls',
     'shooting_logbook',
     'groundhog_logbook',
+    'docker_test',
 ]
 
 MIDDLEWARE = [
