@@ -31,6 +31,7 @@ blocks:
         - name: Unit Test
           commands:
             - cd imrunicorn
+            - mkdir data
             - python manage.py makemigrations
             - python manage.py migrate
             - echo "python manage.py test"
