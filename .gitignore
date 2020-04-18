@@ -14,4 +14,4 @@ __pycache__/*
 /imrunicorn/db.sqlite3
 *iWantItAll3*.json
 *migrations*
-django-debug.log
+django-debug.logdocker-compose-dontadd.yml
