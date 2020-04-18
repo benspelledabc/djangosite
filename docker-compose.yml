@@ -4,5 +4,6 @@ services:
   unicorn_web:
     image: benspelledabc/django-imrunicorn:latest
     ports:
-    - "80:8020"
-
+        - "80:8020"
+    volumes:
+        - ./data/:/opt/app/imrunicorn/data/
