@@ -21,6 +21,11 @@ def firearm_create_view(request):
     return JsonResponse(data)
 
 
+def docker_update_test(request):
+    data = {'Query': 'Complete', 'Result': 'The query loaded and stuff sooo it might be good.'}
+    return JsonResponse(data)
+
+
 def projectile_create_view(request):
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
     # return JsonResponse(data)

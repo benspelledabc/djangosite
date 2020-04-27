@@ -27,6 +27,7 @@ urlpatterns = [
     path('toolbox/create_projectile/', views.projectile_create_view, name='create_projectile'),
     path('toolbox/create_firearm/', views.firearm_create_view, name='create_firearm'),
 
+    path('docker/', views.docker_update_test, name='docker_update_test'),
 
 ]
 

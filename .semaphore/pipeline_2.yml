@@ -1,0 +1,32 @@
+version: v1.0
+name: Pipeline 2
+blocks:
+  - name: Docker Build
+    task:
+      jobs:
+        - name: Build
+          commands:
+            - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+            - 'docker pull $DOCKER_USERNAME/django-imrunicorn:latest || true'
+            - 'docker build --cache-from=$DOCKER_USERNAME/django-imrunicorn:latest -t $DOCKER_USERNAME/django-imrunicorn:latest .'
+            - 'docker push $DOCKER_USERNAME/django-imrunicorn:latest'
+      secrets:
+        - name: dockerhub
+      prologue:
+        commands:
+          - sem-version python 3.7
+          - checkout
+          - cache restore
+          - mkdir -p .pip_cache
+          - cd imrunicorn
+          - pip install --cache-dir .pip_cache -r requirements.txt
+          - mkdir data
+          - 'python manage.py makemigrations '
+          - python manage.py migrate
+          - python manage.py collectstatic --no-input
+          - 'echo "chown www-data:www-data data/db.sqlite3, not permitted"'
+          - cd ..
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804

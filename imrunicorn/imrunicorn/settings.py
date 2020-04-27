@@ -26,14 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
 
-if socket.gethostname().startswith('nifi') \
-        or socket.gethostname().startswith('Thermaltake') \
-        or socket.gethostname().startswith('svenMacBook'):
-    DEBUG = True
-    IS_PRODUCTION = not DEBUG
-else:
-    DEBUG = False
-    IS_PRODUCTION = not DEBUG
+DEBUG = False
+IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
 
@@ -57,6 +51,7 @@ INSTALLED_APPS = [
     'polls',
     'shooting_logbook',
     'groundhog_logbook',
+    'docker_test',
 ]
 
 MIDDLEWARE = [
@@ -92,15 +87,8 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if socket.gethostname().startswith('svenMacBook') \
-        or socket.gethostname().startswith('Thermaltake'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
-else:
+if socket.gethostname().startswith('benspelledabc') \
+        or socket.gethostname().startswith('nifi'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -109,6 +97,13 @@ else:
                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             },
         }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'data/db.sqlite3'),
+        },
     }
 
 # Password validation
