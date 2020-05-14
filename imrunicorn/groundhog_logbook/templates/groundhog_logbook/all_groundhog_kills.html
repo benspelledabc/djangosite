@@ -45,13 +45,8 @@
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
 
             {% if news.kill_shot.url != None%}
-                {% if user.is_authenticated %}
                     <b>Image:</b><br />
                     <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 30%" /></a><br />
-
-                {% else %}
-                    <b>Image:</b> Authenticated Users Only<br />
-                {% endif %}
             {% else %}
                 <b>Image:</b> None<br />
             {% endif %}
