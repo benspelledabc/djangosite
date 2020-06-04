@@ -89,7 +89,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Po <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li class="dropdown-header">Hand Load Data/Tools</li>
-                    <li><a href="{% url 'load_data:loads' %}">Load Data</a></li>
+                    <li><a href="{% url 'load_data:loads' %}">Load Data: All</a></li>
+                      <li><a href="{% url 'load_data:loads' load_type='ocw' %}">Load Data: OCW</a></li>
+                      <li><a href="{% url 'load_data:loads' load_type='sheriff' %}">Load Data: Sheriff</a></li>
                     <li><a class="dropdown-item" href="{% url 'load_data:foot_pound_calculator' %}">Foot Pound Calculator</a></li>
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">Shooting Tips</li>

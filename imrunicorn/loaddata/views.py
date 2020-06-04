@@ -166,9 +166,7 @@ def page_loads_by_type(request, load_type='All'):
 
     context = {
         'release': get_version_json(),
-        # "title": "Load Data",
-        "title": load_type,
-        # "blurb": "Do your own research, don't use this load data. It might be a pipe bomb in your firearm.",
+        "title": "Load Data: %s" % load_type,
         "blurb": get_page_blurb_override('load_data/loads/'),
         'all_loads': all_loads,
         "copy_year": datetime.now().year
