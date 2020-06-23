@@ -22,6 +22,7 @@ class Location(models.Model):
 class RemovalsByLocation(models.Model):
     shooter = models.ForeignKey(User, related_name='groundhog_logbook_shooter', on_delete=models.CASCADE, null=True)
     removal_date = models.DateField(default=date.today)
+    removal_time = models.TimeField(null=True)
     firearm = models.ForeignKey(Firearm, related_name='groundhog_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='groundhog_logbook_hand_load', on_delete=models.CASCADE)
     location = models.ForeignKey(Location, related_name='location', on_delete=models.CASCADE)
@@ -30,6 +31,7 @@ class RemovalsByLocation(models.Model):
     shot_distance_yards = models.DecimalField(max_digits=4, decimal_places=0, default=200)
     # upload the kill shot!?
     kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
+    kill_shot_two = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
 
     UNKNOWN = 'UNKNOWN'
     MALE = 'MALE'

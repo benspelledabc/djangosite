@@ -23,6 +23,7 @@
 
             {% for news in all_news %}
                 <b>Removal Date:</b> {{ news.removal_date }}<br />
+                <b>Removal Time:</b> {{ news.removal_time }}<br />
                 <b>Shooter:</b> <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">{{ news.shooter|title }}</a><br />
                 <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm|title }}</a><br />
                 <b>Load Detail:</b> {{ news.load }}<br />
@@ -45,10 +46,17 @@
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
 
             {% if news.kill_shot.url != None%}
-                    <b>Image:</b><br />
+                    <b>Image 1:</b><br />
                     <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 30%" /></a><br />
             {% else %}
-                <b>Image:</b> None<br />
+                <b>Image 1:</b> None<br />
+            {% endif %}
+
+            {% if news.kill_shot_two.url != None%}
+                    <b>Image 2:</b><br />
+                    <a href="{{ news.kill_shot_two.url }}" target="_blank"><img src="{{ news.kill_shot_two.url }}" style="width: 30%" /></a><br />
+            {% else %}
+                <b>Image 2:</b> None<br />
             {% endif %}
 
             {% if forloop.last  == False %}
