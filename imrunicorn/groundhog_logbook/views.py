@@ -16,7 +16,7 @@ def page_charts(request):
         "all_news": "disabled",
         'release': get_version_json(),
         "title": "Groundhog Charts",
-        "blurb": get_page_blurb_override('groundhog_logbook/pie_chart/'),
+        "blurb": get_page_blurb_override('groundhog_logbook/charts/'),
     }
     # <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     # etc etc
