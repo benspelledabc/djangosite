@@ -4,6 +4,7 @@ from django.db.models import F, FloatField, ExpressionWrapper, TextField, Intege
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
 import os
 import json
 
@@ -133,6 +134,46 @@ def page_foot_pound_calc(request):
 
 
 # Create your views here.
+def page_loads_by_type(request, load_type='All'):
+    load_type = load_type.lower()
+    if load_type == 'ocw':
+        load_type = 'ocw'
+        all_loads = HandLoad.objects.all().filter(Q(Is_Sheriff_Load=False) | Q(Is_Sheriff_Load=False)).order_by(
+            'Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+            prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+                                   output_field=FloatField()),
+            rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+                                  output_field=IntegerField())
+        )
+    elif load_type == 'sheriff':
+        load_type = 'sheriff'
+        all_loads = HandLoad.objects.all().filter(Q(Is_Sheriff_Load=True) | Q(Is_Sheriff_Load=True)).order_by(
+            'Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+            prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+                                   output_field=FloatField()),
+            rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+                                  output_field=IntegerField())
+        )
+    else:
+        load_type = 'all'
+        all_loads = HandLoad.objects.all().filter(Q(Is_Sheriff_Load=True) | Q(Is_Sheriff_Load=False)).order_by(
+            'Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+            prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+                                   output_field=FloatField()),
+            rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+                                  output_field=IntegerField())
+        )
+
+    context = {
+        'release': get_version_json(),
+        "title": "Load Data: %s" % load_type,
+        "blurb": get_page_blurb_override('load_data/loads/'),
+        'all_loads': all_loads,
+        "copy_year": datetime.now().year
+    }
+    return render(request, "loaddata/djangoad.html", context)
+
+
 def page_loads(request):
     logger.info("This is not getting logged...")
 
