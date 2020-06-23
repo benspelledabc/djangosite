@@ -8,6 +8,8 @@ from rest_framework import viewsets
 
 
 # Create your views here.
+# https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
+
 def page_all_groundhog_removals(request):
     all_news = all_groundhog_removals
 
