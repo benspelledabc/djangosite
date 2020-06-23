@@ -10,6 +10,22 @@ from rest_framework import viewsets
 # Create your views here.
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 
+def page_charts(request):
+    context = {
+        "copy_year": datetime.now().year,
+        "all_news": "disabled",
+        'release': get_version_json(),
+        "title": "Groundhog Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/pie_chart/'),
+    }
+    # <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    # etc etc
+    # https://plotly.com/javascript/bar-charts/#
+    # https://plotly.com/javascript/getting-started/
+
+    return render(request, "groundhog_logbook/groundhog_charts.html", context)
+
+
 def page_all_groundhog_removals(request):
     all_news = all_groundhog_removals
 
