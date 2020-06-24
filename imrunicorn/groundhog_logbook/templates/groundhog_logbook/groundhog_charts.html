@@ -3,7 +3,6 @@
 {% block extra_head %}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
 <style>
@@ -67,21 +66,19 @@
             I'm going to add a graph that shows the number of removals by hour. For now, here's a scoreboard.
         </div>
 
-
-
-            {% comment %}
-            This will build a little table of the top X removers.
-            {% endcomment %}
         <div class="divTable row ben_format_pretty">
             <div class="divTableBody">
+
                 {% for log in logs %}
                 <div class="divTableRow">
                     <div class="divTableCell"># {{ forloop.counter }}</div>
-                    <div class="divTableCell"><a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.shooter }}">
-                            {{ log.shooter__username|title }}</a></div>
+                    <div class="divTableCell"><a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.sex }}">
+                            {{ log.sex|title }}</a></div>
+                    <div class="divTableCell">{{ log.removal_time }}</div>
                     <div class="divTableCell">[Count: {{ log.removals }}]</div>
                 </div>
                 {% endfor %}
+
             </div>
         </div>
 

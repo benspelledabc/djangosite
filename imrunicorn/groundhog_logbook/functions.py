@@ -28,3 +28,9 @@ def groundhog_removal_scoreboard():
     result = RemovalsByLocation.objects.distinct().values('shooter', 'shooter__username') \
         .annotate(removals=Count('shooter')).order_by('-removals')[:3]
     return result
+
+
+def groundhogs_by_hour_of_day():
+    result = RemovalsByLocation.objects.distinct().values('sex', 'removal_time') \
+        .annotate(removals=Count('sex')).order_by('removal_time')
+    return result

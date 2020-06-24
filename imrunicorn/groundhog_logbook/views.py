@@ -1,5 +1,5 @@
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, get_page_blurb_override
-from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, all_groundhog_hole_locations, groundhog_removal_scoreboard
+from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, all_groundhog_hole_locations, groundhog_removal_scoreboard, groundhogs_by_hour_of_day
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime
@@ -11,9 +11,10 @@ from rest_framework import viewsets
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 
 def page_charts(request):
+    logs = groundhogs_by_hour_of_day()
     context = {
         "copy_year": datetime.now().year,
-        "all_news": "disabled",
+        "logs": logs,
         'release': get_version_json(),
         "title": "Groundhog Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/charts/'),
