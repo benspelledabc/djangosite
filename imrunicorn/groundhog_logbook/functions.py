@@ -13,7 +13,8 @@ def all_groundhog_hole_locations():
 
 
 def all_groundhog_removals():
-    result = RemovalsByLocation.objects.filter().order_by('-removal_date', '-shot_distance_yards')
+    result = RemovalsByLocation.objects.filter()\
+        .order_by('-removal_date', '-removal_time', '-shot_distance_yards')
     return result
 
 
