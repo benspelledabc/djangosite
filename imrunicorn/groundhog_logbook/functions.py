@@ -30,6 +30,9 @@ def groundhog_removal_scoreboard():
     return result
 
 
+# get the hour portion...
+# https://docs.djangoproject.com/en/3.0/ref/models/database-functions/#trunc
+# check into lookup, transform, aggregates and be jolly!
 def groundhogs_by_hour_of_day():
     result = RemovalsByLocation.objects.distinct().values('sex', 'removal_time') \
         .annotate(removals=Count('sex')).order_by('removal_time')
