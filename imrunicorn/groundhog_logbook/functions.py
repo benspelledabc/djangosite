@@ -36,7 +36,8 @@ def groundhog_removal_scoreboard():
 # check into lookup, transform, aggregates and be jolly!
 def groundhogs_by_hour_of_day():
     result = RemovalsByLocation.objects.annotate(
-        hour=TruncHour('removal_time')).values('hour', 'sex')\
-        .annotate(experiments=Count('id'))\
+        # hour=TruncHour('removal_time')).values('hour', 'sex') \
+        hour=TruncHour('removal_time')).values('hour',) \
+        .annotate(kills_per_hour=Count('id'))\
         .order_by('hour')
     return result
