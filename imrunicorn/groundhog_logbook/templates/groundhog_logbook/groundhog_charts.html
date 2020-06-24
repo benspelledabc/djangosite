@@ -74,8 +74,8 @@
                     <div class="divTableCell"># {{ forloop.counter }}</div>
                     <div class="divTableCell"><a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.sex }}">
                             {{ log.sex|title }}</a></div>
-                    <div class="divTableCell">{{ log.removal_time }}</div>
-                    <div class="divTableCell">[Count: {{ log.removals }}]</div>
+                    <div class="divTableCell">{{ log.hour }}</div>
+                    <div class="divTableCell">[Count: {{ log.experiments }}]</div>
                 </div>
                 {% endfor %}
 

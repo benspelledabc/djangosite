@@ -3,6 +3,7 @@ from datetime import datetime
 from django.conf import settings
 from .models import RemovalsByLocation, Location
 from django.db.models import Q, Count
+from django.db.models.functions import TruncHour
 from django.contrib.auth.models import User
 
 
@@ -34,6 +35,8 @@ def groundhog_removal_scoreboard():
 # https://docs.djangoproject.com/en/3.0/ref/models/database-functions/#trunc
 # check into lookup, transform, aggregates and be jolly!
 def groundhogs_by_hour_of_day():
-    result = RemovalsByLocation.objects.distinct().values('sex', 'removal_time') \
-        .annotate(removals=Count('sex')).order_by('removal_time')
+    result = RemovalsByLocation.objects.annotate(
+        hour=TruncHour('removal_time')).values('hour', 'sex')\
+        .annotate(experiments=Count('id'))\
+        .order_by('hour')
     return result
