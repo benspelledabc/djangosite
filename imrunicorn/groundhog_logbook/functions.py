@@ -21,7 +21,7 @@ def all_groundhog_removals():
 def all_groundhog_removals_by_shooter(shooter_pk='1'):
     result = RemovalsByLocation.objects.filter(
         Q(shooter__pk=shooter_pk)
-    ).order_by('-removal_date', '-shot_distance_yards')
+    ).order_by('-removal_date', '-removal_time', '-shot_distance_yards')
 
     return result
 
