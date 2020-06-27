@@ -6,11 +6,13 @@
 
 {% block content %}
 {% load humanize %}
+
+
+{% if user.is_authenticated %}
 <div class="jumbotron">
     <h1>{{ title }}</h1>
     <p class="lead">{{ blurb }}</p>
 </div>
-
 
 <div class="row">
     <div class="col-md-12">
@@ -106,6 +108,21 @@
 
    </div>
 </div>
+
+{% else %}
+<div class="jumbotron">
+    <h1>Access Denied</h1>
+    <p class="lead">You are not logged in.</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div align="center">
+        Accounts are for friends and supporters. You are not logged in to see this page.
+    </div>
+</div>
+
+{% endif %}
+
 
 </br></br></br>
 {% endblock %}
