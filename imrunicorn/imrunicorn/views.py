@@ -20,7 +20,8 @@ def page_home(request):
 
     # making the jumbotron a bit more standardized.
     release = get_version_json()
-    title = 'IMRUnicorn v%s' % release['version']
+    # title = 'IMRUnicorn v%s' % release['version']
+    title = release['application_title']
 
     context = {
         "all_news": all_news,
