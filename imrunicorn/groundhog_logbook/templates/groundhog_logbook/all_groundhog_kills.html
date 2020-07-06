@@ -46,6 +46,10 @@
                 {%  endif %}
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
 
+            {% if news.extra_info %}
+            <b>Extra Info:</b><br /> {% autoescape off %}{{ news.extra_info }}{% endautoescape %}</br>
+            {% endif %}
+
             {% if news.kill_shot.url != None%}
                     <b>Image 1:</b><br />
                     <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 30%" /></a><br />

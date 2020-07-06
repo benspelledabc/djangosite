@@ -29,6 +29,7 @@ class RemovalsByLocation(models.Model):
     estimated_weight_lbs = models.DecimalField(max_digits=4, decimal_places=2, default=10.25)
     excessive_wound_cavity = models.BooleanField(default=False)
     shot_distance_yards = models.DecimalField(max_digits=4, decimal_places=0, default=200)
+    extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     # upload the kill shot!?
     kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
     kill_shot_two = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
