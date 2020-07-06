@@ -23,7 +23,7 @@
 
             </br>
             {% if firearm_details.extra_info %}
-            <b>Extra Info:</b> {{ firearm_details.extra_info }}</br>
+            <b>Extra Info:</b> {% autoescape off %}{{ firearm_details.extra_info }}{% endautoescape %}</br>
             {% endif %}
         </div>
 
