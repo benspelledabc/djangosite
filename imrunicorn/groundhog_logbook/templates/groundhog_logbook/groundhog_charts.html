@@ -65,7 +65,7 @@
                 {% for log in logs %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.hour }}</div>
-                    <div class="divTableCell">Male/Female/Unknown (<i>Combined</i>)</div>
+                    <div class="divTableCell">{{ log.sex }}</div>
                     <div class="divTableCell">{{ log.kills_per_hour }}</div>
                 </div>
                 {% endfor %}
