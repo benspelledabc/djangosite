@@ -72,6 +72,17 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+
+        {% if restart.requested %}
+        <div align="center" style="background-color:red;color:yellow">
+            RESTART REQUESTED for {{ restart.request_time }} on {{ restart.request_date }}
+        </div>
+        {% else %}
+        <div align="center" style="background-color:red;color:yellow">
+            {{ hidden_banner }}
+        </div>
+        {% endif %}
+
         <div class="navbar-header">
             <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
                 <span class="icon-bar"></span>
