@@ -54,14 +54,48 @@
 <div class="row ben_format_pretty">
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
+
             The idea here is to show when they are being dispatched. Tracking and trending the data for activity based on time of day.
+
             <br /><br />
 
 
         <div class="divTable row ben_format_pretty">
+            This chart only shows the number that are dispatched by sex.
+            <div class="divTableBody">
+
+                {% for log in logs_sexy %}
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ log.sex }}</div>
+                    <div class="divTableCell">{{ log.kills }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+            <br /><hr />
+
+        <div class="divTable row ben_format_pretty">
+            This chart only shows the number that are dispatched by hour of the day.
             <div class="divTableBody">
 
                 {% for log in logs %}
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ log.hour }}</div>
+                    <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+            <br /><hr />
+
+        <div class="divTable row ben_format_pretty">
+
+            <div class="divTableBody">
+                This chart only shows the number that are dispatched by hour of the day but includes the sex of groundhog.
+                {% for log in logs_sexy_hour %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.hour }}</div>
                     <div class="divTableCell">{{ log.sex }}</div>

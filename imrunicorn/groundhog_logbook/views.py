@@ -1,5 +1,7 @@
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, get_page_blurb_override
-from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, all_groundhog_hole_locations, groundhog_removal_scoreboard, groundhogs_by_hour_of_day
+from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter
+from groundhog_logbook.functions import all_groundhog_hole_locations, groundhog_removal_scoreboard
+from groundhog_logbook.functions import groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime
@@ -34,9 +36,13 @@ class ChartData(APIView):
 
 def page_charts(request):
     logs = groundhogs_by_hour_of_day()
+    logs_sexy = groundhogs_by_sex()
+    logs_sexy_hour = groundhogs_by_hour_of_day_by_sex()
     context = {
         "copy_year": datetime.now().year,
         "logs": logs,
+        "logs_sexy": logs_sexy,
+        "logs_sexy_hour": logs_sexy_hour,
         'release': get_version_json(),
         "title": "Groundhog Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/charts/'),
