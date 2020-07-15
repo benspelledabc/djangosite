@@ -9,25 +9,31 @@ menu is to have a way to CRUD their firearms and loads.
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Toolboxes<span class="caret"></span></a>
       <ul class="dropdown-menu">
-          <li class="dropdown-header">My Toolbox</li>
+          {% if user.is_staff %}
+          <li class="dropdown-header">Admin Toolbox</li>
+          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Web Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Gunicorn Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Nginx Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Cancel All Restart Requests</a></li>
+          <li role="separator" class="divider"></li>
+
+          <li class="dropdown-header">Staff Toolbox</li>
           <li><a href="{% url 'load_data:create_caliber' %}">View/Create Calibers</a></li>
           <li><a href="{% url 'load_data:create_powder' %}">View/Create Powders</a></li>
           <li><a href="{% url 'load_data:create_projectile' %}">View/Create Projectiles</a></li>
           <li><a href="{% url 'load_data:create_firearm' %}">View/Create Firearm</a></li>
-
-          {% if user.is_staff %}
           <li><a href="#">Firearm Details</a></li>
           <li><a href="#">Load Details</a></li>
           <li><a href="#">DOPE Details</a></li>
           <li><a href="#">Groundhog Details</a></li>
           <li><a href="#">Submit news</a></li>
           <li><a href="#">STAFF Details</a></li>
-          {% endif %}
           <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Days Since</li>
-            {% comment %}<li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=3/18/2020">Fit Hit Shan</a></li>{% endcomment %}
-            <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
-            <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
+          {% endif %}
+          <li class="dropdown-header">Days Since</li>
+          {% comment %}<li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=3/18/2020">Fit Hit Shan</a></li>{% endcomment %}
+          <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
+          <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
       </ul>
     </li>
 
