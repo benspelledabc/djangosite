@@ -47,7 +47,6 @@ urlpatterns = [
     path('groundhog_logbook/', include('groundhog_logbook.urls')),
 
     path('admin_toolbox/', include('admin_toolbox.urls')),
-    path('maintenance_logs/', include('maintenance_logs.urls')),
 
     path('docker/', include('docker_test.urls')),
 
