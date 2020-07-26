@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'polls',
     'shooting_logbook',
     'groundhog_logbook',
+    'admin_toolbox',
     'docker_test',
 ]
 

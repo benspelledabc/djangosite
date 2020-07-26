@@ -11,10 +11,10 @@ menu is to have a way to CRUD their firearms and loads.
       <ul class="dropdown-menu">
           {% if user.is_staff %}
           <li class="dropdown-header">Admin Toolbox</li>
-          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Web Restart</a></li>
-          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Gunicorn Restart</a></li>
-          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Request Nginx Restart</a></li>
-          <li><a href="{% url 'admin_toolbox:admin_tools_json_test' %}">Cancel All Restart Requests</a></li>
+          <li><a href="{% url 'admin_toolbox:restart_gunicorn_and_nginx' %}">Request Web Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:restart_gunicorn' %}">Request Gunicorn Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:restart_nginx' %}">Request Nginx Restart</a></li>
+          <li><a href="{% url 'admin_toolbox:cancel_all_restarts' %}">Cancel All Restart Requests</a></li>
           <li role="separator" class="divider"></li>
 
           <li class="dropdown-header">Staff Toolbox</li>

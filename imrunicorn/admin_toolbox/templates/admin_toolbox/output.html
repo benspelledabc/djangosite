@@ -1,0 +1,22 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<br />
+<div class="row ben_format_pretty">
+    <div class="col-md-12" align="left">
+    {% autoescape off %}
+        <p>Status: {{ table_data.status }}</p>
+        <p>Output: {{ table_data.output }}</p>
+    {% endautoescape %}
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}
