@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.db.models import Q
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_version_json, get_restart_notice
+# "restart": get_restart_notice isn't really used yet
 from django.views.generic import DetailView
 from ipware import get_client_ip
 from .models import Choice, Poll

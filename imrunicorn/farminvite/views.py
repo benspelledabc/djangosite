@@ -9,12 +9,13 @@ from django.shortcuts import render
 from model_utils.models import now
 from .forms import InviteListingForm
 from .models import InviteListing
-from announcements.get_news import get_news, get_version_json
+from announcements.get_news import get_news, get_version_json, get_restart_notice
 
 
 # Create your views here.
 def unused_json_farm_invites_view(request):
     context = {
+        "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'farm invites view',
     }
@@ -23,6 +24,7 @@ def unused_json_farm_invites_view(request):
 
 def unused_page_farm_invites_view(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
@@ -44,6 +46,7 @@ def page_farm_invites_view(request):
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
+        "restart": get_restart_notice,
         'contact_good': 'COMPLETE',
         'contact_okay': '85%',
         'contact_poor': '66%',
@@ -80,6 +83,7 @@ def page_farm_invites_view_hidden_listings(request):
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
+        "restart": get_restart_notice,
         'contact_good': 'COMPLETE',
         'contact_okay': '85%',
         'contact_poor': '66%',
@@ -95,6 +99,7 @@ def page_farm_invites_view_hidden_listings(request):
 
 def page_farm_invites_map(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
@@ -105,6 +110,7 @@ def page_farm_invites_map(request):
 
 def page_farm_invites_map_fake(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
@@ -116,6 +122,7 @@ def page_farm_invites_map_fake(request):
 
 def page_farm_check_list(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "What should I bring?",
         "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
@@ -140,6 +147,7 @@ def page_farm_check_list(request):
 
 def page_request_slot(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Request Slot",
         "blurb": "Email Me To Request Slot",
@@ -170,6 +178,7 @@ def page_missing_contact_info(request):
 
     context = {
         # "roll_list": queryset,
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Registration Completion Guideline",
         "blurb": "Please provide some contact info if you show up on this list as having it missing. Failure to do so "
@@ -197,6 +206,7 @@ def page_invite_listing(request):
             form.save()
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         'form': InviteListingForm(),
         "copy_year": datetime.now().year

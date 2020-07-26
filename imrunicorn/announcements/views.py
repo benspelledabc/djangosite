@@ -8,7 +8,8 @@ import json
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.views import APIView
-from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, get_page_blurb_override
+from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, \
+    get_version_json, get_page_blurb_override, get_restart_notice
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -25,6 +26,7 @@ logger = logging.getLogger(__name__)
 def page_all_news(request):
     logger.info("This is not getting logged...")
     context = {
+        "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": get_news,
         'release': get_version_json(),
@@ -39,6 +41,7 @@ def page_all_news(request):
 
 def json_all_news_json(request):
     context = {
+        "restart": get_restart_notice,
         "name": "peter griffin",
         "channel": "fox",
     }
@@ -48,6 +51,7 @@ def json_all_news_json(request):
 def page_news_by_pk(request, news_pk='1'):
     blurb_page = '/news/detail/' + str(news_pk)
     context = {
+        "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "news_pk": get_news_by_pk(news_pk),
         'release': get_version_json(),
@@ -61,6 +65,7 @@ def page_news_by_pk(request, news_pk='1'):
 
 def page_kevin(request):
     context = {
+        "restart": get_restart_notice,
         "channel": "fox",
         'release': get_version_json(),
         "title": "Hello Kevin",

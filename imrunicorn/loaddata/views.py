@@ -9,7 +9,7 @@ import os
 import json
 
 from .models import HandLoad, EstimatedDope, Firearm, Caliber, Powder, Projectile
-from announcements.get_news import get_news, get_version_json, get_page_blurb_override
+from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
 from .forms import CaliberForm, PowderForm, ProjectileForm
 
 import logging
@@ -18,12 +18,14 @@ logger = logging.getLogger(__name__)
 
 
 def firearm_create_view(request):
-    data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
+    data = {"restart": get_restart_notice,'Query': 'Complete',
+            'Result': 'The query completed but this is not an endpoint with data.'}
     return JsonResponse(data)
 
 
 def docker_update_test(request):
-    data = {'Query': 'Complete', 'Result': 'The query loaded and stuff sooo it might be good.'}
+    data = {"restart": get_restart_notice, 'Query': 'Complete',
+            'Result': 'The query loaded and stuff sooo it might be good.'}
     return JsonResponse(data)
 
 
@@ -43,6 +45,7 @@ def projectile_create_view(request):
     all_records = Projectile.objects.all().order_by('WeightGR', '-Manufacture', '-Name')
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Projectile Creation Tool",
         "blurb": get_page_blurb_override('load_data/toolbox/create_projectile/'),
@@ -69,6 +72,7 @@ def powder_create_view(request):
     all_powders = Powder.objects.all().order_by('-name')
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Powder Creation Tool",
         # "blurb": "I moved the calculator to its own page.",
@@ -94,6 +98,7 @@ def caliber_create_view(request):
     all_calibers = Caliber.objects.all().order_by('-diameter')
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Caliber Creation Tool",
         # "blurb": "I moved the calculator to its own page.",
@@ -112,6 +117,7 @@ def caliber_create_view_lkg(request):
         form = CaliberForm()
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Caliber Creation Tool",
         # "blurb": "I moved the calculator to its own page.",
@@ -124,6 +130,7 @@ def caliber_create_view_lkg(request):
 
 def page_foot_pound_calc(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Foot Pound Calculator",
         # "blurb": "I moved the calculator to its own page.",
@@ -165,6 +172,7 @@ def page_loads_by_type(request, load_type='All'):
         )
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Load Data: %s" % load_type,
         "blurb": get_page_blurb_override('load_data/loads/'),
@@ -183,6 +191,7 @@ def page_loads(request):
     )
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Load Data",
         # "blurb": "Do your own research, don't use this load data. It might be a pipe bomb in your firearm.",
@@ -197,6 +206,7 @@ def page_loads(request):
 def page_loads_details(request, load_pk=None):
     if load_pk is None:
         context = {
+            "restart": get_restart_notice,
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Can't get detail without an id.",
@@ -218,6 +228,7 @@ def page_loads_details(request, load_pk=None):
     try:
         selected_hand_load = HandLoad.objects.get(pk=load_pk)
         context = {
+            "restart": get_restart_notice,
             'release': get_version_json(),
             "title": "Load Details",
             # todo: figure out this blurb link.
@@ -228,6 +239,7 @@ def page_loads_details(request, load_pk=None):
         return render(request, "loaddata/load_details.html", context)
     except ObjectDoesNotExist:
         context = {
+            "restart": get_restart_notice,
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Can't get detail without a valid id.",
@@ -242,6 +254,7 @@ def page_estimated_dope(request, load_pk='3'):
     try:
         selected_load = EstimatedDope.objects.get(hand_load=load_pk)
         context = {
+            "restart": get_restart_notice,
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Estimated Dope",
@@ -252,6 +265,7 @@ def page_estimated_dope(request, load_pk='3'):
         }
     except ObjectDoesNotExist:
         context = {
+            "restart": get_restart_notice,
             'load_id': load_pk,
             'release': get_version_json(),
             "title": "Master Po Load Data",
@@ -265,6 +279,7 @@ def page_estimated_dope(request, load_pk='3'):
 def page_firearm_detail(request, firearm_pk=None):
     if firearm_pk is None:
         context = {
+            "restart": get_restart_notice,
             'load_id': firearm_pk,
             'release': get_version_json(),
             "title": "Can't get detail without an id.",
@@ -276,6 +291,7 @@ def page_firearm_detail(request, firearm_pk=None):
         selected_firearm = Firearm.objects.get(pk=firearm_pk)
 
         context = {
+            "restart": get_restart_notice,
             'firearm_id': firearm_pk,
             'release': get_version_json(),
             "title": "Firearm Detail",
@@ -286,6 +302,7 @@ def page_firearm_detail(request, firearm_pk=None):
         }
     except ObjectDoesNotExist:
         context = {
+            "restart": get_restart_notice,
             'load_id': firearm_pk,
             'release': get_version_json(),
             "title": "OOPS! Firearm not found.",
@@ -298,6 +315,7 @@ def page_firearm_detail(request, firearm_pk=None):
 
 def sample(request):
     data = {
+        "restart": get_restart_notice,
         'Query': 'Complete',
         'Result': 'The query completed but this is not an endpoint with data.'
     }

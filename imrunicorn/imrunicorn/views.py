@@ -6,7 +6,8 @@ from django.shortcuts import render
 import os
 import json
 
-from announcements.get_news import get_news, get_news_sticky, get_version_json, get_page_blurb_override
+from announcements.get_news import get_news, get_news_sticky, get_version_json, \
+    get_page_blurb_override, get_restart_notice
 
 
 # Create your views here.
@@ -24,6 +25,7 @@ def page_home(request):
     title = release['application_title']
 
     context = {
+        "restart": get_restart_notice,
         "all_news": all_news,
         'release': release,
         "title": title,
@@ -36,6 +38,7 @@ def page_home(request):
 
 def handler404(request, exception):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (404)",
@@ -51,6 +54,7 @@ def handler404(request, exception):
 def handler500(request):
     # return HttpResponse("Hello world 500.")
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (500)",
@@ -73,6 +77,7 @@ def page_days_since(request):
     cached_result = batf_data['cached_result']
 
     context = {
+        "restart": get_restart_notice,
         # 'batf_data': total_batf['check_cashed'],
         'cached_result': cached_result,
         'batf_check_cashed': check_cashed,
@@ -147,6 +152,7 @@ def fetch_estimated_batf_days():
 
 def page_blog_add(request):
     context = {
+        "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'add',
     }
@@ -155,6 +161,7 @@ def page_blog_add(request):
 
 def page_blog_read(request):
     context = {
+        "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'add',
     }
@@ -163,6 +170,7 @@ def page_blog_read(request):
 
 def page_pi_endpoint(request):
     context = {
+        "restart": get_restart_notice,
         'header': 'Small holes',
         'body': 'This is a lightweight endpoint to test the raspberry pi.',
     }

@@ -1,12 +1,13 @@
 from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
-from announcements.get_news import get_news, get_version_json, get_page_blurb_override
+from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
 
 
 def page_six_steps_of_firing_a_shot(request):
     # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
     context = {
+        "restart": get_restart_notice,
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
@@ -20,6 +21,7 @@ def page_six_steps_of_firing_a_shot(request):
 
 def page_reading_wind_mirage(request):
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Reading Wind Mirage",
         # "blurb": "This page is a place holder for what's to come soon.",
@@ -31,6 +33,7 @@ def page_reading_wind_mirage(request):
 
 def sample(request):
     data = {
+        "restart": get_restart_notice,
         'Query': 'Complete',
         'Result': 'The query completed but this is not an endpoint with data.'
     }

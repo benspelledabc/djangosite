@@ -1,6 +1,6 @@
 import os
 import json
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from django.conf import settings
 from farminvite.models import InviteListing
 from .models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
@@ -25,14 +25,29 @@ def get_main_page_blurb():
     return blurb
 
 
-def get_news():
-    this_moment = datetime.now()
-    result = WhatIsNew.objects.filter(
-        Q(Published=True) & (Q(Date=this_moment.date())) |
-        Q(Published=True) & Q(Date__lt=this_moment.date())
-    ).order_by('-Is_Sticky', '-Date', )
+def get_restart_notice():
+    message = {
+        "requested": False,
+        "request_time": "never",
+        "request_date": "never",
+    }
+    if os.path.isfile('./admin_toolbox/restart_nginx.token') or \
+            os.path.isfile('./admin_toolbox/restart_gunicorn.token'):
+        message = {
+            "requested": True,
+            "request_time": datetime.now() + timedelta(seconds=80),
+            "request_date": date.today(),
+        }
+    return message
 
-    return blurb
+# def get_news():
+#    this_moment = datetime.now()
+#    result = WhatIsNew.objects.filter(
+#        Q(Published=True) & (Q(Date=this_moment.date())) |
+#        Q(Published=True) & Q(Date__lt=this_moment.date())
+#    ).order_by('-Is_Sticky', '-Date', )
+#
+#    return blurb
 
 
 def get_page_blurb_override(page=None):

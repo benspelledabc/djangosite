@@ -10,7 +10,8 @@ from model_utils.models import now
 from subprocess import Popen, PIPE, STDOUT
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from announcements.get_news import get_news, get_version_json, get_page_blurb_override
+from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+
 
 # Create your views here.
 def admintool_restart_gunicorn(request):
@@ -32,6 +33,7 @@ def admintool_restart_gunicorn(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Gunicorn",
         # "blurb": "I moved the calculator to its own page.",
@@ -61,6 +63,7 @@ def admintool_restart_nginx(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Nginx",
         # "blurb": "I moved the calculator to its own page.",
@@ -90,6 +93,7 @@ def admintool_restart_gunicorn_and_nginx(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Gunicorn & Nginx",
         # "blurb": "I moved the calculator to its own page.",
@@ -119,6 +123,7 @@ def admintool_cancel_restarts(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
+        "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Cancel All Restarts",
         # "blurb": "I moved the calculator to its own page.",
@@ -175,6 +180,7 @@ def dir_delete(request):
 
 def no_request_found(request):
     context = {
+        "restart": get_restart_notice,
         'body': 'no_request_found',
         'header': 'no_request_found view',
     }
