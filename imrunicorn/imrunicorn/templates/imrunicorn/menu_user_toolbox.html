@@ -15,8 +15,10 @@ menu is to have a way to CRUD their firearms and loads.
           <li><a href="{% url 'admin_toolbox:restart_gunicorn' %}">Request Gunicorn Restart</a></li>
           <li><a href="{% url 'admin_toolbox:restart_nginx' %}">Request Nginx Restart</a></li>
           <li><a href="{% url 'admin_toolbox:cancel_all_restarts' %}">Cancel All Restart Requests</a></li>
-          <li role="separator" class="divider"></li>
+          {% endif %}
 
+          {% ifequal user.groups.all.0.name "DisabledLinksViewer" %}
+          <li role="separator" class="divider"></li>
           <li class="dropdown-header">Staff Toolbox</li>
           <li><a href="{% url 'load_data:create_caliber' %}">View/Create Calibers</a></li>
           <li><a href="{% url 'load_data:create_powder' %}">View/Create Powders</a></li>
@@ -28,12 +30,16 @@ menu is to have a way to CRUD their firearms and loads.
           <li><a href="#">Groundhog Details</a></li>
           <li><a href="#">Submit news</a></li>
           <li><a href="#">STAFF Details</a></li>
+          {% endifequal %}
+
+          {% ifequal user.groups.all.0.name "DisabledLinksViewer" %}
           <li role="separator" class="divider"></li>
-          {% endif %}
           <li class="dropdown-header">Days Since</li>
           {% comment %}<li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=3/18/2020">Fit Hit Shan</a></li>{% endcomment %}
           <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=10/22/2019">First</a></li>
           <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
+          {% endifequal %}
+
       </ul>
     </li>
 
