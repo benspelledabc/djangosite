@@ -5,4 +5,4 @@ from .models import WhatIsNew
 class NewsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = WhatIsNew
-        fields = ('url', 'Date', 'Blurb', 'Body', 'Published', 'Is_Sticky')
+        fields = ('url', 'Date', 'Blurb', 'Body', 'Image_One', 'Published', 'Is_Sticky')
