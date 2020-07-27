@@ -7,7 +7,7 @@ import os
 import json
 
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
-    get_page_blurb_override, get_restart_notice
+    get_page_blurb_override, get_restart_notice, get_main_page_blurb
 
 
 # Create your views here.
@@ -19,12 +19,18 @@ def page_home(request):
     except Exception as err:
         print(err)
 
-    # making the jumbotron a bit more standardized.
+    try:
+        main_blurb = get_main_page_blurb()
+    except IndexError as ie:
+        print(ie)
+    except Exception as err:
+        print(err)
+
     release = get_version_json()
-    # title = 'IMRUnicorn v%s' % release['version']
     title = release['application_title']
 
     context = {
+        "main_blurb": main_blurb,
         "restart": get_restart_notice,
         "all_news": all_news,
         'release': release,

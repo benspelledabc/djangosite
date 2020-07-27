@@ -16,9 +16,7 @@ def get_main_page_blurb():
         ).order_by('-id')[:1]
         blurb = blurb[0].Blurb
     except IndexError as ie:
-        # blurb = "Blurb Error: %s." % ie
-        # give a default
-        blurb = "I need a new breakfast."
+        blurb = "I only have the default page content. Add a main page blurb and enable it to set content."
     except Exception as err:
         blurb = "Blurb Error: %s." % err
 
