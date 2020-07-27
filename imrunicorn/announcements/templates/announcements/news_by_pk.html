@@ -26,6 +26,13 @@
                     {% endif %}
                         {{ news_pk.Date }} - <i>{{ news_pk.Blurb }}</i>
                     </div><br/>
+        {% if news_pk.Image_One %}
+        <br />
+        <div align="center">
+            <a href="{{ news_pk.Image_One.url }}" target="_blank"><img src="{{ news_pk.Image_One.url }}" style="width: 30%" /></a>
+        </div>
+        {% endif %}
+
                 {{ news_pk.Body }}
 
         {% endif %}
