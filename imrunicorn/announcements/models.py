@@ -22,7 +22,8 @@ class WhatIsNew(models.Model):
 
 
 class MainPageBlurbs(models.Model):
-    Blurb = models.CharField(max_length=250)
+    # Blurb = models.CharField(max_length=250)
+    Blurb = models.TextField(blank=True, null=True)  # i like big comments...
     Is_Active = models.BooleanField(default=False)
 
     def __str__(self):
