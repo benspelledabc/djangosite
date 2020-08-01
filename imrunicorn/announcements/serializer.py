@@ -22,7 +22,7 @@ class MainPageBlurbsSerializer(serializers.HyperlinkedModelSerializer):
 
 class PageBlurbOverridesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = MainPageBlurbs
+        model = PageBlurbOverrides
         fields = ('Blurb', 'Page_Link_From_Base')
 
 
