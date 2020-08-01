@@ -138,9 +138,13 @@
                                           target="_blank"> Meet-up Location</a></li>
                       {% endcomment %}
 
+                      {% comment %}
                       <li><a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> Can He Reach Me?</a></li>
+                      {% endcomment %}
+
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">Info For All</li>
+                      <li><a class="dropdown-item" href="#"> How do I sign up? (coming soon)</a></li>
                     <li><a class="dropdown-item" href="{% url 'farm_invite:farm_check_list' %}"> What Should I Bring?</a></li>
                   </ul>
                 </li>

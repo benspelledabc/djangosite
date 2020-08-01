@@ -126,19 +126,43 @@ def page_farm_check_list(request):
         'release': get_version_json(),
         "title": "What should I bring?",
         "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
-        "table_data": 'Strongly recommended items'
-                      '<li>Ear protection</li>'
-                      '<li>Eye protection</li>'
-                      '<li>Chair to sit?</li>'
-                      '<li>Shooting mat? Keeps you out of the dirt/mud/snow.</li>'
-                      '<li>Firearm (and ammo for said firearm)</li>'
+        "table_data": '<ul>'
+                      '<strong>Strongly recommended items</strong>'
+                      '<li>Ear protection<ul><li>Once mine are in, they don\'t come out for the day.</li></ul></li>'
+                      '<li>Eye protection<ul><li>Steel in the eye sucks.</li></ul></li>'
+                      '<li>Chair to sit on'
+                      '<ul><li>Being prone or standing for 4-8 hours is uncomfortable.</li></ul></li>'
+                      '<li>Shooting mat<ul><li>Keeps you out of the dirt/mud/snow and deer poop.</li></ul></li>'
+                      '<li>Firearm</li>'
+                      '<ul><li>ZEROED (or close) for your ammo.</li><li>AMMO for said firearm.</li></ul>'
                       '<li>Snacks/Drinks for yourself.</li>'
                       '<li>Sense of humor</li>'
+                      
+                      '<li>Targets (You want to shoot AT something?!)<ul>'
+                      '<li>Paper Targets<ul><li>Target Frame to hold targets.'
+                      '<ul><li>(Use mine with a $20 deposit.)</li></ul>'
+                      '<li>Stapler</li>'
+                      '<li>Marker to mark off hits to get the most out of your target.</li></ul>'
+                      
+                      '<li>AR500 steel plates</li>'
+                      '<ul><li>Bring your own or '
+                      'shoot my steel after ammo inspection, qualification and additional donation.</li></ul>'
+                      '<li>Plastic bottles filled with water (old soda bottles).</li>'
+                      '<li>Shotgun clays (great rifle targets at 100-600 yards)</li>'
+                      '</ul></li>'
+                      '</li></li>'
+                      
+                      
+                      
                       '<br />'
-                      'Extras if you want...'
-                      '<li>Shotgun clays (great rifle targets at 200-600 yards)</li>'
-                      '<li>AR500 steel plates, someone\'s bound to damage one eventually</li>'
-                      '<li>Donations of brass (i\'ll use it or give it away to someone that can)</li>'
+                      '<strong>Extras brownie points</strong>'
+                      '<li>Donations of brass (I\'ll use it or give it away to someone that can)</li>'
+                      
+                      '<br />'
+                      '<strong>What to <i>LEAVE AT HOME</i></strong>'
+                      '<li>Ego</li>'
+                      '</ul>'
+
         ,
         "copy_year": datetime.now().year
     }

@@ -30,6 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
 
+    path('api/', include('api.urls')),
+
     # page_pi_endpoint
     path('pi_test/', views.page_pi_endpoint, name='pi_test'),
 

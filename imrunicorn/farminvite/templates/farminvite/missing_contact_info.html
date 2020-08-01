@@ -9,8 +9,10 @@
 
 <div class="jumbotron">
     <h1>{{ title }}</h1>
-    <p class="lead">The fit might hit the shan soon if you don't fix/update your contact info.</p>
+    <p class="lead">Contact info <strong>MUST</strong> be 100% now.</p>
 </div>
+
+{% if request.user|has_group:"farminvite_editor" %}
 
 <div class="row ben_format_pretty">
     <div class="col-md-12">
@@ -91,5 +93,12 @@
 
 
 <br/><br/>
+
+
+{% else %}
+
+<p align="center">Even if you have an account this is viewable only by a subset of members.</p>
+
+{% endif %}
 
 {% endblock %}
