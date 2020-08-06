@@ -141,10 +141,11 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Farm Invite/Schedule<span class="caret"></span></a>
                   <ul class="dropdown-menu">
+                      {% comment %}
                       <li class="dropdown-header">Registered Users Only</li>
                       <li><a class="dropdown-item" href="#"> Invite List</a></li>
                       <li><a class="dropdown-item" href="#"> Invite List Pending</a></li>
-
+                      {% endcomment %}
                       {% comment %}<li><a class="dropdown-item"
                                           href="https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848"
                                           target="_blank"> Meet-up Location</a></li>
@@ -154,8 +155,8 @@
                       <li><a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> Can He Reach Me?</a></li>
                       {% endcomment %}
 
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Info For All</li>
+                    {% comment %}<li role="separator" class="divider"></li>{% endcomment %}
+                    <li class="dropdown-header">Info</li>
                       <li><a class="dropdown-item" href="{% url 'farm_invite:how_do_i_sign_up' %}"> How do I sign up?</a></li>
                     <li><a class="dropdown-item" href="{% url 'farm_invite:check_list' %}"> What Should I Bring?</a></li>
                   </ul>
