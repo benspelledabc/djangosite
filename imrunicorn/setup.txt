@@ -1,5 +1,3 @@
-windows create user
-C:\Users\sveni.THERMALTAKE\PycharmProjects\IMRUnicornDjango\venv\Scripts\python.exe C:/Users/sveni.THERMALTAKE/PycharmProjects/IMRUnicornDjango/imrunicorn/manage.py createsuperuser
 
 
 The nuclear option? Back up your db, for safety, then delete the migrations folder from each of your apps, and delete all rows from the django_migrations table in your db.

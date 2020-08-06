@@ -12,11 +12,6 @@
               name: httpd
               state: started
 
-        # - name: Copy source to targets
-        #   copy:
-        #     src: /Users/svendavison/PycharmProjects/IMRUnicornDjango
-        #     dest: /data/django
-
         - name: install the latest version of git
           yum:
             name: git
@@ -24,7 +19,7 @@
 
 
         - git:
-            repo: 'https://github.com/svendavison/IMRUnicornDjango.git'
+            repo: 'https://github.com/username/IMRUnicornDjango.git'
             dest: /data/zomg-git
             version: v3.142
 
