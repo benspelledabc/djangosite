@@ -70,6 +70,36 @@ def handler500(request):
     return render(request, "errors/error.html", context)
 
 
+def page_cash_app(request):
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "cash_app": "Show_QR_Code",
+        "title": "Donate: Cash App",
+        "blurb": "Cash app is our preferred method of making and receiving payment.",
+        "full_body": "",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/donate_cash_app.html", context)
+
+
+def page_donate_steel_targets(request):
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Donate: Steel Targets",
+        "blurb": "Steel targets are a resource that needs to be replaced over time.",
+        "full_body": "Donate new or slightly used steel targets. "
+                     "<a mailto:'Admin@BenSpelledABC.me'>Email me</a> and I'll provide an address or meet in person. "
+                     "I'll accept this as a form of range day reservation if you want but the steel must be "
+                     "<i>in my hands</i> first. ( #lessonsLearned )",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/simple_use_variables.html", context)
+
+
 def page_days_since(request):
     input_date = request.GET.get('input_date')
 

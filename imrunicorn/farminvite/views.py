@@ -193,6 +193,36 @@ def page_request_slot(request):
     return render(request, "farminvite/simple_use_variables.html", context)
 
 
+def page_cash_app(request):
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Donate: Cash App",
+        "blurb": "Cash app is our preferred method of payment.",
+        "full_body": "",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "farminvite/donate_cash_app.html", context)
+
+
+def page_how_to_sign_up(request):
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "How to sign up",
+        "blurb": "The process to sign up is fairly simple.",
+        "cash_app": "Show_QR_Code",
+        "table_data": 'Make a donation and I\'ll get back with you. '
+                      'I\'m doing a required donation first approach this time. #lessonsLearned.'
+                      '<br /><br />Email me at: <a mailto="Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a> '
+                      'with your CashApp donation amount and CashApp name. Mine is $BenSpelledABC.'
+        ,
+        "copy_year": datetime.now().year
+    }
+    return render(request, "farminvite/simple_use_variables.html", context)
+
+
 def page_missing_contact_info(request):
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings

@@ -1,0 +1,34 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12" align="center">
+        <p>
+        CashApp is a great little way to pay or get payment and it works on Android or iPhones. You can get it from
+        their website. <a href="https://cash.app/$BenSpelledABC" target="_blank">https://cash.app/</a></p>
+
+        {% if cash_app == "Show_QR_Code" %}
+        <p>
+            <br />
+        Use your phone's camera and scan this QR code.
+        <br />
+        <img src="{% static '/content/cashapp_benspelledabc.jpg' %}" height="300" />
+            </p>
+        {% endif %}
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}

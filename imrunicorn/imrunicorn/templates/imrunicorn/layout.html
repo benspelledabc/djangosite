@@ -109,6 +109,18 @@
                     <li class="dropdown-header">Shooting Tips</li>
                     <li><a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a></li>
                       <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
+
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">News Actions</li>
+                    <li><a class="dropdown-item" href="{% url 'all_news' %}">All News</a></li>
+                      {% if request.user.is_authenticated %}
+                      <li><a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a></li>
+                      {% endif %}
+
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Poll Actions</li>
+                    <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
+
                   </ul>
                 </li>
 
@@ -130,8 +142,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Farm Invite/Schedule<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li class="dropdown-header">Registered Users Only</li>
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:farm_invites_home' %}"> Invite List</a></li>
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:farm_invites_view_hidden_listings' %}"> Invite List Pending</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:home' %}"> Invite List</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:view_hidden_listings' %}"> Invite List Pending</a></li>
 
                       {% comment %}<li><a class="dropdown-item"
                                           href="https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848"
@@ -144,26 +156,21 @@
 
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">Info For All</li>
-                      <li><a class="dropdown-item" href="#"> How do I sign up? (coming soon)</a></li>
-                    <li><a class="dropdown-item" href="{% url 'farm_invite:farm_check_list' %}"> What Should I Bring?</a></li>
+                      <li><a class="dropdown-item" href="{% url 'farm_invite:how_do_i_sign_up' %}"> How do I sign up?</a></li>
+                    <li><a class="dropdown-item" href="{% url 'farm_invite:check_list' %}"> What Should I Bring?</a></li>
                   </ul>
                 </li>
 
 
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Common Tools<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donate<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                      <li class="dropdown-header">News Actions</li>
-                    <li><a class="dropdown-item" href="{% url 'all_news' %}">All News</a></li>
-                      {% if request.user.is_authenticated %}
-                      <li><a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a></li>
-                      {% endif %}
-
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Poll Actions</li>
-                    <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
+                      <li class="dropdown-header">Cash/Credit Donations</li>
+                    <li><a class="dropdown-item" href="{% url 'donate_cash_app' %}">Cash App (Preferred Method)</a></li>
+                    <li><a class="dropdown-item" href="{% url 'donate_steel_targets' %}">Steel Targets</a></li>
                   </ul>
                 </li>
+
 
                 {% include 'imrunicorn/menu_user_toolbox.html' %}
 

@@ -1,4 +1,5 @@
 {% extends "imrunicorn/layout.html" %}
+{% load static %}
 {% block content %}
 {% load humanize %}
 
@@ -13,6 +14,19 @@
     {% autoescape off %}
     <p>{{ table_data }}</p>
     {% endautoescape %}
+
+        <br />
+        {% if cash_app == "Show_QR_Code" %}
+        <br />
+        <div class="col-md-12" align="center">
+        <p>
+        $25+ Registration: (More may be required depending on your desires/needs for targets etc etc.)<br />
+        <a href="https://cash.app/$BenSpelledABC" target="_blank">
+            <img src="{% static '/content/cashapp_benspelledabc.jpg' %}" height="300" />
+        </a>
+        </p>
+        </div>
+        {% endif %}
     </div>
 </div>
 
