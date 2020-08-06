@@ -185,7 +185,7 @@ def page_request_slot(request):
                       '<li>Date Of Invite Requesting:</li>'
                       '<li>AM or PM</li>'                      
                       '<li><i>EMAIL SUBJECT: Aim Small Miss Small</i> (other subjects will be ignored)</li>'
-                      '<li>My Address: SvenDavison@gmail.com</li>'
+                      '<li>My Address: <a href="mailto:Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a></li>'
                       ''
         ,
         "copy_year": datetime.now().year
@@ -215,7 +215,7 @@ def page_how_to_sign_up(request):
         "cash_app": "Show_QR_Code",
         "table_data": 'Make a donation and I\'ll get back with you. '
                       'I\'m doing a required donation first approach this time. #lessonsLearned.'
-                      '<br /><br />Email me at: <a mailto="Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a> '
+                      '<br /><br />Email me at: <a href="mailto:Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a> '
                       'with your CashApp donation amount and CashApp name. Mine is $BenSpelledABC.'
         ,
         "copy_year": datetime.now().year

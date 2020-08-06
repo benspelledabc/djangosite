@@ -92,7 +92,8 @@ def page_donate_steel_targets(request):
         "title": "Donate: Steel Targets",
         "blurb": "Steel targets are a resource that needs to be replaced over time.",
         "full_body": "Donate new or slightly used steel targets. "
-                     "<a mailto:'Admin@BenSpelledABC.me'>Email me</a> and I'll provide an address or meet in person. "
+                     "Email me at <a href=\"mailto:Admin@BenSpelledABC.me\">Admin@BenSpelledABC.me</a> and "
+                     "I'll provide an address or meet in person. "
                      "I'll accept this as a form of range day reservation if you want but the steel must be "
                      "<i>in my hands</i> first. ( #lessonsLearned )",
         "copy_year": datetime.now().year
