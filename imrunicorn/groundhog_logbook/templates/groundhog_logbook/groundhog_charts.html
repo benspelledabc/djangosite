@@ -59,7 +59,7 @@
 
             <br /><br />
 
-
+            {% if logs_sexy|length > 0 %}
         <div class="divTable row ben_format_pretty">
             This chart only shows the number that are dispatched by sex.
             <div class="divTableBody">
@@ -74,7 +74,9 @@
             </div>
         </div>
             <br /><hr />
+            {% endif %}
 
+            {% if logs|length > 0 %}
         <div class="divTable row ben_format_pretty">
             This chart only shows the number that are dispatched by hour of the day.
             <div class="divTableBody">
@@ -90,7 +92,10 @@
         </div>
 
             <br /><hr />
+            {% endif %}
 
+
+    {% if logs_sexy_hour|length > 0 %}
         <div class="divTable row ben_format_pretty">
 
             <div class="divTableBody">
@@ -105,6 +110,7 @@
 
             </div>
         </div>
+            {% endif %}
 
 
         </div>
