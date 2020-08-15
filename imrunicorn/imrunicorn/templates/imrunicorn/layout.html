@@ -111,14 +111,8 @@
                       <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
 
                       <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">News Actions</li>
-                    <li><a class="dropdown-item" href="{% url 'all_news' %}">All News</a></li>
-                      {% if request.user.is_authenticated %}
-                      <li><a class="dropdown-item" href="/news/news_api/" target="_blank">News API</a></li>
-                      {% endif %}
-
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Poll Actions</li>
+                      <li class="dropdown-header">Misc Stuff</li>
+                    <li><a class="dropdown-item" href="{% url 'all_news' %}">News</a></li>
                     <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
 
                   </ul>
