@@ -93,9 +93,7 @@ def page_donate_steel_targets(request):
         "blurb": "Steel targets are a resource that needs to be replaced over time.",
         "full_body": "Donate new or slightly used steel targets. "
                      "Email me at <a href=\"mailto:Admin@BenSpelledABC.me\">Admin@BenSpelledABC.me</a> and "
-                     "I'll provide an address or meet in person. "
-                     "I'll accept this as a form of range day reservation if you want but the steel must be "
-                     "<i>in my hands</i> first. ( #lessonsLearned )",
+                     "I'll provide an address or meet in person. ",
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/simple_use_variables.html", context)
