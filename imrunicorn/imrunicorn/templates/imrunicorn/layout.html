@@ -125,6 +125,11 @@
                       <li class="dropdown-header">Groundhog Removal Logbook</li>
 
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_locations' %}"> Hole Location List</a></li>
+                      {% if user.is_authenticated %}
+                      <li><a class="dropdown-item"
+                             href="https://www.google.com/maps/d/edit?mid=1oKonLT_hz3f0q0_tMRIxC7GcoOjll455&ll=39.619590204745705%2C-77.02708839986629&z=17" target="_blank">View All On GoogleMaps</a></li>
+                      {% endif %}
+
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}"> Removals</a></li>
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts</a></li>
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard' %}"> Removal Scoreboard</a></li>
