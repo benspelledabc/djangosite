@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# sometimes it doesn't like this env...
+
+
 # start-server.sh
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
     (cd imrunicorn; python manage.py createsuperuser --no-input)
