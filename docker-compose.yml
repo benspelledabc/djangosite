@@ -2,9 +2,31 @@ version: '3'
 
 services:
   unicorn_web:
-    hostname: docker_imrunicorn
+    hostname: unicorn_web
     image: benspelledabc/django-imrunicorn:latest
     ports:
         - "80:8020"
     volumes:
         - ./data/:/opt/app/imrunicorn/data/
+
+  unicorn_db:
+    # image: mysql:5.7
+    image: mariadb
+    hostname: unicorn_db
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: imrunicorn
+      MYSQL_USER: imrunicorn
+      MYSQL_PASSWORD: imrunicorn
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+    db_data: {}
