@@ -20,9 +20,9 @@ Uses gunicorn + nginx.
 
     ```sh
     $ docker-compose -f docker-compose.yml up -d --build
-    $ docker-compose -f docker-compose.yml exec unicorn_web python manage.py imrunicorn/makemigrations --no-input
-    $ docker-compose -f docker-compose.yml exec unicorn_web python manage.py imrunicorn/migrate --no-input
-    $ docker-compose -f docker-compose.yml exec unicorn_web python manage.py imrunicorn/collectstatic --no-input --clear
+    $ docker-compose -f docker-compose.yml exec unicorn_web python imrunicorn/manage.py makemigrations --no-input
+    $ docker-compose -f docker-compose.yml exec unicorn_web python imrunicorn/manage.py migrate --no-input
+    $ docker-compose -f docker-compose.yml exec unicorn_web python imrunicorn/manage.py collectstatic --no-input --clear
     $ empty stuff:   docker-compose -f docker-compose.yml down -v
 
     ```

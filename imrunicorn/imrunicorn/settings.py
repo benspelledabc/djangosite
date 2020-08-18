@@ -100,6 +100,19 @@ if socket.gethostname().startswith('benspelledabc') \
             },
         }
     }
+elif socket.gethostname().startswith('docker_imrunicorn'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'USER': os.environ.get('db_user'),
+            'PASSWORD': os.environ.get('db_pass'),
+            'HOST': os.environ.get('db_host'),
+            'PORT': os.environ.get('dp_port'),
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        }
+    }
 else:
     DATABASES = {
         'default': {

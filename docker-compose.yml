@@ -2,6 +2,7 @@ version: '3'
 
 services:
   unicorn_web:
+    hostname: docker_imrunicorn
     image: benspelledabc/django-imrunicorn:latest
     ports:
         - "80:8020"

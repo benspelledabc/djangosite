@@ -17,7 +17,7 @@ RUN touch /opt/app/imrunicorn/data/empty
 
 COPY start-server.sh /opt/app/
 COPY ./imrunicorn/requirements.txt /opt/app/
-COPY .pip_cache /opt/app/pip_cache/
+# COPY .pip_cache /opt/app/pip_cache/
 COPY imrunicorn /opt/app/imrunicorn/
 WORKDIR /opt/app
 RUN pip install -r requirements.txt --cache-dir /opt/app/pip_cache
