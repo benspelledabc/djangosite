@@ -1,8 +1,6 @@
 # Project exclude paths
 /venv/
 .idea/*
-__pycache__/*
-*.pyc
 .DS_Store
 .DS_Store/*
 ../.DS_Store
@@ -13,5 +11,4 @@ __pycache__/*
 /imrunicorn/announcements/migrations/
 /imrunicorn/db.sqlite3
 *iWantItAll3*.json
-*migrations*
 django-debug.logdocker-compose-dontadd.yml
