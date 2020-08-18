@@ -104,6 +104,7 @@ elif socket.gethostname().startswith('unicorn_'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'imrunicorn',
             'USER': "imrunicorn",
             'PASSWORD': "imrunicorn",
             'HOST': "unicorn_db",
