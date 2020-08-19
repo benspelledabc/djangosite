@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# sometimes it doesn't like this env...
-
 
 # start-server.sh
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
