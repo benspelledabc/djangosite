@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# pycharm - settings->editor->code style->line separator
 
 # start-server.sh
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
