@@ -8,6 +8,7 @@ services:
         - "80:8020"
     volumes:
         - ./data/:/opt/app/imrunicorn/data/
+        - ./uploads/:/opt/app/imrunicorn/media/uploads/
 
   unicorn_db:
     # image: mysql:5.7
@@ -17,7 +18,7 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_ROOT_PASSWORD: imrunicorn
       MYSQL_DATABASE: imrunicorn
       MYSQL_USER: imrunicorn
       MYSQL_PASSWORD: imrunicorn
