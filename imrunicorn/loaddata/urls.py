@@ -14,8 +14,8 @@ urlpatterns = [
 
     # page_loads_details
     path('loads/', views.page_loads, name='loads'),
-    path('loads/<str:load_type>', views.page_loads_by_type, name='loads'),
     path('loads/<int:load_pk>', views.page_loads_details, name='loads'),
+    path('loads/<str:load_type>', views.page_loads_by_type, name='loads'),
 
     path('estimated_dope/<int:load_pk>', views.page_estimated_dope, name='page_estimated_dope'),
     path('estimated_dope/', views.page_estimated_dope, name='page_estimated_dope'),

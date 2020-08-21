@@ -16,16 +16,17 @@
     <div class="col-md-12">
 
 
-{% if user.is_authenticated %}
         {% if selected_hand_load != None %}
             {% if selected_hand_load.Is_Sheriff_Load %}
-                <strong><i>This isn't a great load, it was just put here to say its not bad and we've tried it.</i></strong><br /><br /><br />
+                <strong><i>This isn't a great load, it was just put here to say its not bad and we've tried it. It's
+                like calling the ammo 'blaster' ammo.</i></strong><br /><br /><br />
             {% endif %}
             Intended Firearm: {{ selected_hand_load.firearm|title }}<br />
             <br />
-            Powder - {{ selected_hand_load.powder.name }}<br />
-        Powder Gr - {{ selected_hand_load.Powder_Charge }} <i>(7,000Gr per pound, call it 6,900 for spillage)</i><br />
-            Powder Lbs On-Hand - {{ selected_hand_load.powder.lbs_on_hand }}<br />
+            Powder - {% if user.is_authenticated %}{{ selected_hand_load.powder.name }}{% else %} MEMBERS ONLY{% endif %}<br />
+            Powder Gr - {% if user.is_authenticated %}{{ selected_hand_load.Powder_Charge }}<i>(7,000Gr per pound, call it 6,900 for spillage)</i>
+                        {% else %} MEMBERS ONLY{% endif %}<br />
+            {% if user.is_staff %}Powder Lbs On-Hand - {{ selected_hand_load.powder.lbs_on_hand }}<br />{% endif %}
             {% if selected_hand_load.powder.buy_link != None %}
                 Powder Buy Link - <a href="{{ selected_hand_load.powder.buy_link }}" target="_blank"><i class="fas fa-link"></i> {{ selected_hand_load.powder.buy_link }}</a><br />
             {% endif %}
@@ -34,21 +35,21 @@
             Projectile Name - {{ selected_hand_load.projectile.Name }}<br />
             Projectile Gr - {{ selected_hand_load.projectile.WeightGR }}<br />
             Projectile BC - {{ selected_hand_load.projectile.Ballistic_Coefficient }}<br />
-            Projectile On-Hand - {{ selected_hand_load.projectile.projectiles_on_hand }}<br />
+            {% if user.is_staff %}Projectile On-Hand - {{ selected_hand_load.projectile.projectiles_on_hand }}<br />{% endif %}
             {% if selected_hand_load.projectile.buy_link != None %}
                 Projectile Buy Link - <a href="{{ selected_hand_load.projectile.buy_link }}" target="_blank"> <i class="fas fa-link"></i> {{ selected_hand_load.projectile.buy_link }}</a><br />
             {% endif %}
             <br />
             Brass Caliber - {{ selected_hand_load.brass.caliber }}<br />
             Brass Manufacture - {{ selected_hand_load.brass.manufacture }}<br />
-            Brass On-Hand - {{ selected_hand_load.brass.brass_on_hand }}<br />
+            {% if user.is_staff %}Brass On-Hand - {{ selected_hand_load.brass.brass_on_hand }}<br />{% endif %}
             {% if selected_hand_load.brass.buy_link != None %}
                 Brass Buy Link - <a href="{{ selected_hand_load.brass.buy_link }}" target="_blank"><i class="fas fa-link"></i> {{ selected_hand_load.brass.buy_link }}</a><br />
             {% endif %}
             <br />
             Primer Manufacture - {{ selected_hand_load.primer.manufacture }}<br />
             Primer Description - {{ selected_hand_load.primer.description }}<br />
-            Primer On-Hand - {{ selected_hand_load.primer.units_on_hand }}<br />
+            {% if user.is_staff %}Primer On-Hand - {{ selected_hand_load.primer.units_on_hand }}<br />{% endif %}
             {% if selected_hand_load.primer.buy_link != None %}
                 Primer Buy Link - <a href="{{ selected_hand_load.primer.buy_link }}" target="_blank"><i class="fas fa-link"></i> {{ selected_hand_load.primer.buy_link }}</a><br />
             {% endif %}
@@ -57,9 +58,7 @@
 
 
         {% endif %}
-{% else %}
-        I'm only showing load details to authenticated users at this time.
-{% endif %}
+
 
 
     </div>
