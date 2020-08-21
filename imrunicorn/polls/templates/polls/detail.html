@@ -19,8 +19,10 @@
     <form action="{% url 'polls:vote' poll.id %}" method="post">
     {% csrf_token %}
     {% for choice in poll.choice_set.all %}
+        {% autoescape off %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+        {% endautoescape %}
     {% endfor %}
         <br />
     <input type="submit" value="Vote, I promise to only do it once... or twice." />
