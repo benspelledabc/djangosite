@@ -128,11 +128,12 @@ class HandLoad(models.Model):
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
     brass = models.ForeignKey(Brass, related_name='brass', on_delete=models.CASCADE, null=True)
     primer = models.ForeignKey(Primer, related_name='primer', on_delete=models.CASCADE, null=True)
-    Velocity = models.IntegerField(default=1200, null=True)
+    Velocity = models.IntegerField(default=2200, null=True)
     Is_Estimated = models.BooleanField(default=True)
-    Standard_Deviation = models.IntegerField(default=1200, null=True)
-    Extreme_Spread = models.IntegerField(default=1200, null=True)
+    Standard_Deviation = models.IntegerField(default=20, null=True)
+    Extreme_Spread = models.IntegerField(default=25, null=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
+    Confirmed_Splat_Factor = models.BooleanField(default=False)
 
     def __str__(self):
         # return "[PK: %s - %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.owner, self.firearm.caliber,
