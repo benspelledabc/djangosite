@@ -8,6 +8,7 @@ class Poll(models.Model):
     question = models.CharField(max_length=200)
     start_date = models.DateField(default=date.today)
     end_date = models.DateField(default=date.today)
+    reference_link = models.CharField(max_length=450, default=None, blank=True, null=True)
 
     def __str__(self):              # Python 3: def __unicode__(self):
         return self.question
