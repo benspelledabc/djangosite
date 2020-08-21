@@ -56,5 +56,5 @@ class RemovalsByLocation(models.Model):
                                                  self.location.nickname)
 
     class Meta:
-        ordering = ('removal_date', 'shooter', 'shot_distance_yards')
+        ordering = ('-removal_date', 'shooter', 'shot_distance_yards')
 
