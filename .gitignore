@@ -16,3 +16,8 @@ __pycache__/
 /imrunicorn/db.sqlite3
 *iWantItAll3*.json
 django-debug.logdocker-compose-dontadd.yml
+/imrunicorn/groundhog_logbook/migrations/0001_initial.py
+/imrunicorn/polls/migrations/0001_initial.py
+/imrunicorn/shooting_logbook/migrations/0001_initial.py
+/imrunicorn/data/db.sqlite3
+/imrunicorn/django-debug.log
