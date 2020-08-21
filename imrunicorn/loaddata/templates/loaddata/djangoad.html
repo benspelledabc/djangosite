@@ -70,8 +70,7 @@
 
 
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}
-{% comment %}{% if load.Is_Estimated %}~ {% endif %} {% endcomment %}
-</td>
+{% if load.Is_Estimated %}~ {% endif %}</td>
 
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }} {% if load.prod >= 1200 %}<i class="fas fa-crown"></i>{% endif %}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
@@ -99,9 +98,7 @@
 
 
               <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}
-{% comment %}{% if load.Is_Estimated %}~ {% endif %} {% endcomment %}
-
-</td>
+{% if load.Is_Estimated %}~ {% endif %}</td>
 
               <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }} {% if load.prod >= 1200 %}<i class="fas fa-crown"></i>{% endif %}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
