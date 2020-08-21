@@ -68,8 +68,8 @@
               <td style="padding-left:10px">{{ load.Powder_Charge }}gr - {{ load.powder.name }}</td>
               {% endif %}
 
-              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}{% if load.Is_Estimated %}~ {% endif %}</td>
+              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }} {% if load.prod >= 1200 %}<i class="fas fa-crown"></i>{% endif %}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px">NA</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:loads' %}{{ load.pk }}">Yes</a></td>
@@ -94,8 +94,9 @@
               {% endif %}
 
 
-              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}</td>
-              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }}</td>
+              <td style="padding-left:10px">{{ load.Velocity|floatformat:"0"|intcomma }}{% if load.Is_Estimated %}~ {% endif %}</td>
+
+              <td style="padding-left:10px">{{ load.prod|floatformat:"0"|intcomma }} {% if load.prod >= 1200 %}<i class="fas fa-crown"></i>{% endif %}</td>
               <td style="padding-left:10px">{{ load.rps|floatformat:"0"|intcomma }}</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:page_estimated_dope' %}{{ load.pk }}">Info</a></td>
               <td style="padding-left:10px"><a href="{% url 'load_data:loads' %}{{ load.pk }}">Yes</a></td>

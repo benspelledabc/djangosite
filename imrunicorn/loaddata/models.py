@@ -129,6 +129,9 @@ class HandLoad(models.Model):
     brass = models.ForeignKey(Brass, related_name='brass', on_delete=models.CASCADE, null=True)
     primer = models.ForeignKey(Primer, related_name='primer', on_delete=models.CASCADE, null=True)
     Velocity = models.IntegerField(default=1200, null=True)
+    Is_Estimated = models.BooleanField(default=True)
+    Standard_Deviation = models.IntegerField(default=1200, null=True)
+    Extreme_Spread = models.IntegerField(default=1200, null=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
 
     def __str__(self):
