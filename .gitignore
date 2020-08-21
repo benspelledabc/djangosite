@@ -10,14 +10,5 @@ __pycache__/
 ../.DS_Store
 /venv-2.7/
 /imrunicorn/static/
-/imrunicorn/loaddata/migrations/
-/imrunicorn/farminvite/migrations/
-/imrunicorn/announcements/migrations/
 /imrunicorn/db.sqlite3
-*iWantItAll3*.json
-django-debug.logdocker-compose-dontadd.yml
-/imrunicorn/groundhog_logbook/migrations/0001_initial.py
-/imrunicorn/polls/migrations/0001_initial.py
-/imrunicorn/shooting_logbook/migrations/0001_initial.py
-/imrunicorn/data/db.sqlite3
 /imrunicorn/django-debug.log
