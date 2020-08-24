@@ -4,10 +4,9 @@ from rest_framework import routers
 
 # similar to object based url building
 router = routers.DefaultRouter()
-# these got moved to 'api' app.
-# router.register('news_api', views.NewsView)
-# router.register('main_page_blurbs', views.MainPageBlurbsView)
-# router.register('page_blurb_overrides', views.PageBlurbOverridesView)
+router.register('news_api', views.NewsView)
+router.register('main_page_blurbs', views.MainPageBlurbsView)
+router.register('page_blurb_overrides', views.PageBlurbOverridesView)
 
 # app_name = 'announcements'
 urlpatterns = [
