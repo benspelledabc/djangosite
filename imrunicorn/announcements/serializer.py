@@ -17,12 +17,12 @@ class WhatIsNewSerializer(serializers.HyperlinkedModelSerializer):
 class MainPageBlurbsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = MainPageBlurbs
-        fields = ('Blurb', 'Is_Active')
+        fields = ('url', 'Blurb', 'Is_Active')
 
 
 class PageBlurbOverridesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PageBlurbOverrides
-        fields = ('Blurb', 'Page_Link_From_Base')
+        fields = ('url', 'Blurb', 'Page_Link_From_Base')
 
 
