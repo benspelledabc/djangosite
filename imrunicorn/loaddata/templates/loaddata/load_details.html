@@ -34,7 +34,7 @@
             Projectile Manufacture - {{ selected_hand_load.projectile.Manufacture }}<br />
             Projectile Name - {{ selected_hand_load.projectile.Name }}<br />
             Projectile Gr - {{ selected_hand_load.projectile.WeightGR }}<br />
-            Projectile BC - {{ selected_hand_load.projectile.Ballistic_Coefficient }}<br />
+            {% comment %}Projectile BC - {{ selected_hand_load.projectile.Ballistic_Coefficient }}<br />{% endcomment %}
             {% if user.is_staff %}Projectile On-Hand - {{ selected_hand_load.projectile.projectiles_on_hand }}<br />{% endif %}
             {% if selected_hand_load.projectile.buy_link != None %}
                 Projectile Buy Link - <a href="{{ selected_hand_load.projectile.buy_link }}" target="_blank"> <i class="fas fa-link"></i> {{ selected_hand_load.projectile.buy_link }}</a><br />
