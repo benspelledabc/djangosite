@@ -13,8 +13,8 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, \
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from .models import WhatIsNew
-from .serializer import NewsSerializer
+from .models import WhatIsNew, MainPageBlurbs
+from .serializer import NewsSerializer, MainPageBlurbsSerializer
 
 import logging
 
@@ -79,3 +79,8 @@ def page_kevin(request):
 class NewsView(viewsets.ModelViewSet):
     queryset = WhatIsNew.objects.all()
     serializer_class = NewsSerializer
+
+
+class MainPageBlurbsView(viewsets.ModelViewSet):
+    queryset = MainPageBlurbs.objects.all()
+    serializer_class = MainPageBlurbsSerializer
