@@ -9,17 +9,17 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
 from rest_framework.permissions import IsAuthenticated
-
-from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides, PageBlurbOverrides
-from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
+from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
+from announcements.serializer import WhatIsNewSerializer, \
+    NewsSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
 
 # Create your views here.
 # uses the standards from django for CRUD
 
 
-class WhatIsNewView(viewsets.ModelViewSet):
+class NewsView(viewsets.ModelViewSet):
     queryset = WhatIsNew.objects.all()
-    serializer_class = WhatIsNewSerializer
+    serializer_class = WhatIsNew
 
 
 class MainPageBlurbsView(viewsets.ModelViewSet):
