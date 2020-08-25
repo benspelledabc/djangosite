@@ -134,6 +134,7 @@ class HandLoad(models.Model):
     Extreme_Spread = models.IntegerField(default=25, null=True)
     Is_Sheriff_Load = models.BooleanField(default=True)
     Confirmed_Splat_Factor = models.BooleanField(default=False)
+    Group_Size = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank=True)
 
     def __str__(self):
         # return "[PK: %s - %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.owner, self.firearm.caliber,
