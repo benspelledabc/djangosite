@@ -22,6 +22,11 @@
                 like calling the ammo 'blaster' ammo.</i></strong><br /><br /><br />
             {% endif %}
             Intended Firearm: {{ selected_hand_load.firearm|title }}<br />
+
+            {% if selected_hand_load.Group_Size %}
+            Shot Group Size: {{ selected_hand_load.Group_Size }}<br />
+            {% endif %}
+
             <br />
             Powder - {% if user.is_authenticated %}{{ selected_hand_load.powder.name }}{% else %} MEMBERS ONLY{% endif %}<br />
             Powder Gr - {% if user.is_authenticated %}{{ selected_hand_load.Powder_Charge }}<i>(7,000Gr per pound, call it 6,900 for spillage)</i>
