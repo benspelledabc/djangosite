@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'shooting_logbook',
     'groundhog_logbook',
     'admin_toolbox',
-    'docker_test',
 ]
 
 MIDDLEWARE = [

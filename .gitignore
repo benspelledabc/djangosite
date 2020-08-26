@@ -1,14 +1,7 @@
 # Project exclude paths
-imrunicorn/media/uploads/
-doMigrations.sh
 /venv/
 .pyc*
 __pycache__/
 .idea/*
-.DS_Store
-.DS_Store/*
-../.DS_Store
-/venv-2.7/
 /imrunicorn/static/
-/imrunicorn/db.sqlite3
-/imrunicorn/django-debug.log
+

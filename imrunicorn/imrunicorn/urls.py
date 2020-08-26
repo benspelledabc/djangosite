@@ -53,8 +53,6 @@ urlpatterns = [
 
     path('admin_toolbox/', include('admin_toolbox.urls')),
 
-    path('docker/', include('docker_test.urls')),
-
     # path('contact/', views.contact, name='contact'),
     # path('about/', views.about, name='about'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),

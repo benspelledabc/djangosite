@@ -1,0 +1,215 @@
+INFO|2020-08-21 13:55:02|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-21 13:55:52|django.server|"GET / HTTP/1.1" 200 14319
+INFO|2020-08-21 13:55:52|django.server|"GET /static/imrunicorn/scripts/modernizr-2.6.2.js HTTP/1.1" 200 51395
+INFO|2020-08-21 13:55:52|django.server|"GET /static/imrunicorn/scripts/respond.js HTTP/1.1" 200 10318
+INFO|2020-08-21 13:55:52|django.server|"GET /static/imrunicorn/scripts/bootstrap.js HTTP/1.1" 200 59250
+INFO|2020-08-21 13:55:52|django.server|"GET /static/imrunicorn/scripts/jquery-1.10.2.js HTTP/1.1" 200 273990
+WARNING|2020-08-21 13:55:52|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 13:55:52|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 13:55:52|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 13:55:52|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 13:55:52|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 13:55:52|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 13:55:52|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-21 18:48:06|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-21 18:50:09|django.server|"GET / HTTP/1.1" 200 14319
+WARNING|2020-08-21 18:50:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:50:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:50:09|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:50:10|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:50:10|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:50:10|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 18:51:20|django.server|"GET /login/ HTTP/1.1" 200 9208
+WARNING|2020-08-21 18:51:20|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:20|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:20|django.server|"GET /static/app/scripts/jquery.validate.min.js HTTP/1.1" 404 1728
+WARNING|2020-08-21 18:51:20|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:20|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:20|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:20|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:20|django.server|"GET /static/app/scripts/jquery.validate.min.js HTTP/1.1" 404 1728
+INFO|2020-08-21 18:51:26|django.server|"POST /login/ HTTP/1.1" 302 0
+INFO|2020-08-21 18:51:26|django.server|"GET / HTTP/1.1" 200 16321
+WARNING|2020-08-21 18:51:26|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:26|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:26|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:26|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:26|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:26|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 18:51:31|django.server|"GET / HTTP/1.1" 200 16321
+WARNING|2020-08-21 18:51:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:31|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:31|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 18:51:53|django.server|"GET / HTTP/1.1" 200 16321
+WARNING|2020-08-21 18:51:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:53|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:53|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 18:51:59|django.server|"GET /news/ HTTP/1.1" 200 33885
+WARNING|2020-08-21 18:51:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:59|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:51:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:51:59|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-21 18:52:01|django.server|"GET /news/detail/49 HTTP/1.1" 200 11165
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg
+WARNING|2020-08-21 18:52:01|django.server|"GET /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg HTTP/1.1" 404 1950
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:01|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg
+WARNING|2020-08-21 18:52:01|django.request|Not Found: /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg
+WARNING|2020-08-21 18:52:01|django.server|"GET /media/uploads/announcements/what_is_new/paying_pig_yRifwKC.jpeg HTTP/1.1" 404 1950
+INFO|2020-08-21 18:52:12|django.server|"GET /groundhog_logbook/by_shooter/ HTTP/1.1" 200 43315
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/B8017A78-0658-43C4-B441-F9E608FF5EAE.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/F001D143-249B-460D-9F63-00DF3D8C63E5.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/B8017A78-0658-43C4-B441-F9E608FF5EAE.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/B8017A78-0658-43C4-B441-F9E608FF5EAE.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/F001D143-249B-460D-9F63-00DF3D8C63E5.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/F001D143-249B-460D-9F63-00DF3D8C63E5.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg
+WARNING|2020-08-21 18:52:12|django.request|Not Found: /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg
+WARNING|2020-08-21 18:52:12|django.server|"GET /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg HTTP/1.1" 404 1989
+WARNING|2020-08-21 18:52:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:44|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+WARNING|2020-08-21 18:52:46|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:46|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-21 18:52:46|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4421
+INFO|2020-08-25 20:09:21|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-25 20:09:59|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-25 20:11:46|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-25 20:11:59|django.server|"GET / HTTP/1.1" 200 14427
+INFO|2020-08-25 20:12:35|django.server|"GET / HTTP/1.1" 200 14427
+INFO|2020-08-25 20:12:35|django.server|"GET /static/imrunicorn/scripts/modernizr-2.6.2.js HTTP/1.1" 200 51395
+INFO|2020-08-25 20:12:35|django.server|"GET /static/imrunicorn/scripts/bootstrap.js HTTP/1.1" 200 59250
+INFO|2020-08-25 20:12:35|django.server|"GET /static/imrunicorn/scripts/respond.js HTTP/1.1" 200 10318
+INFO|2020-08-25 20:12:35|django.server|"GET /static/imrunicorn/scripts/jquery-1.10.2.js HTTP/1.1" 200 273990
+WARNING|2020-08-25 20:12:35|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:35|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:35|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:12:35|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:35|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:35|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:38|django.server|"GET / HTTP/1.1" 200 14427
+WARNING|2020-08-25 20:12:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:38|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:40|django.server|"GET /load_data/loads/ HTTP/1.1" 200 33135
+WARNING|2020-08-25 20:12:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:41|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:12:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:41|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:52|django.server|"GET /groundhog_logbook/locations/ HTTP/1.1" 200 8007
+WARNING|2020-08-25 20:12:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:53|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:12:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:53|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:53|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:55|django.server|"GET /donate/cash_app/ HTTP/1.1" 200 8214
+WARNING|2020-08-25 20:12:55|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:55|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:55|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:55|django.server|"GET /static/content/cashapp_benspelledabc.jpg HTTP/1.1" 200 262869
+WARNING|2020-08-25 20:12:55|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:55|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:55|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:12:57|django.server|"GET /groundhog_logbook/by_shooter/ HTTP/1.1" 200 34340
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/6F8BF1C7-611F-466D-BE54-94E8115F1205.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/3B969BF7-F44C-4026-A727-DCDA34BBFE94.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/443AC268-B210-4AAB-AC28-987E59036F66.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/808A3C4B-B556-4228-A88D-7FC751FF385D.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/CFCEABB5-359D-4F05-85D3-1CC3B12EEEDC.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/B7D01571-08E5-4E85-91EF-77A1488F8F2C.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg
+WARNING|2020-08-25 20:12:58|django.request|Not Found: /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/45120593-B816-484E-8575-E237946ECF1D.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/EE30DEAC-2071-449E-BEF1-F2989FC22BCF.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/DE3BB30F-D661-4CDB-BCD0-C17F821DB5DD.jpeg HTTP/1.1" 404 1992
+WARNING|2020-08-25 20:12:58|django.server|"GET /media/uploads/groundhog_kill_shots/E16B18CE-989E-4267-AB3F-26C84C8A857C.jpeg HTTP/1.1" 404 1992
+INFO|2020-08-25 20:13:00|django.server|"GET /load_data/loads/ HTTP/1.1" 200 33135
+WARNING|2020-08-25 20:13:00|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:00|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:00|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:13:01|django.server|"GET / HTTP/1.1" 200 14427
+WARNING|2020-08-25 20:13:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:01|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:13:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:01|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:01|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:13:07|django.server|"GET /load_data/loads/ HTTP/1.1" 200 33135
+WARNING|2020-08-25 20:13:07|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:07|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:07|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:13:07|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:07|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:07|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+INFO|2020-08-25 20:13:09|django.server|"GET / HTTP/1.1" 200 14427
+WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:09|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-25 20:13:09|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
