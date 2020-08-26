@@ -33,7 +33,6 @@ class RemovalsByLocation(models.Model):
     # upload the kill shot!?
     kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
     kill_shot_two = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
-    kill_shot_three = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
 
     UNKNOWN = 'UNKNOWN'
     MALE = 'MALE'
