@@ -32,6 +32,12 @@
             <a href="{{ news_pk.Image_One.url }}" target="_blank"><img src="{{ news_pk.Image_One.url }}" style="width: 30%" /></a>
         </div>
         {% endif %}
+        {% if news_pk.Image_Two %}
+        <br />
+        <div align="center">
+            <a href="{{ news_pk.Image_Two.url }}" target="_blank"><img src="{{ news_pk.Image_Two.url }}" style="width: 30%" /></a>
+        </div>
+        {% endif %}
 
                 {{ news_pk.Body }}
 
