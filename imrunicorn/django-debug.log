@@ -213,3 +213,771 @@ WARNING|2020-08-25 20:13:09|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.
 WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
 WARNING|2020-08-25 20:13:09|django.request|Not Found: /dist/js/bootstrap.min.js
 WARNING|2020-08-25 20:13:09|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4318
+WARNING|2020-08-26 18:07:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:41|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:07:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:36|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:36|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:36|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:36|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:08:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:09:17|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:09:17|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:09:18|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:09:18|django.request|Not Found: /dist/js/bootstrap.min.js
+ERROR|2020-08-26 18:09:25|django.request|Internal Server Error: /admin/auth/user/5/change/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 96, in as_widget
+    renderer=self.form.renderer,
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/widgets.py", line 241, in render
+    context = self.get_context(name, value, attrs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/forms.py", line 47, in get_context
+    for key, value_ in hasher.safe_summary(value).items():
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/hashers.py", line 256, in safe_summary
+    algorithm, iterations, salt, hash = encoded.split('$', 3)
+ValueError: not enough values to unpack (expected 4, got 2)
+ERROR|2020-08-26 18:09:25|django.request|Internal Server Error: /admin/auth/user/5/change/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 96, in as_widget
+    renderer=self.form.renderer,
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/widgets.py", line 241, in render
+    context = self.get_context(name, value, attrs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/forms.py", line 47, in get_context
+    for key, value_ in hasher.safe_summary(value).items():
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/hashers.py", line 256, in safe_summary
+    algorithm, iterations, salt, hash = encoded.split('$', 3)
+ValueError: not enough values to unpack (expected 4, got 2)
+WARNING|2020-08-26 18:10:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:10:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:10:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:10:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:48|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:48|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:48|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:48|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:56|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:56|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:56|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:12:56|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:14:23|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:14:23|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:14:23|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:14:23|django.request|Not Found: /dist/js/bootstrap.min.js
+ERROR|2020-08-26 18:14:33|django.request|Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1704, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/actions.py", line 28, in delete_selected
+    deletable_objects, model_count, perms_needed, protected = modeladmin.get_deleted_objects(queryset, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1826, in get_deleted_objects
+    return get_deleted_objects(objs, request, self.admin_site)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 118, in get_deleted_objects
+    collector.collect(objs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 181, in collect
+    return super().collect(objs, source_attr=source_attr, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/deletion.py", line 244, in collect
+    if sub_objs:
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 280, in __bool__
+    self._fetch_all()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1144, in execute_sql
+    cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+ERROR|2020-08-26 18:14:33|django.request|Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1704, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/actions.py", line 28, in delete_selected
+    deletable_objects, model_count, perms_needed, protected = modeladmin.get_deleted_objects(queryset, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1826, in get_deleted_objects
+    return get_deleted_objects(objs, request, self.admin_site)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 118, in get_deleted_objects
+    collector.collect(objs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 181, in collect
+    return super().collect(objs, source_attr=source_attr, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/deletion.py", line 244, in collect
+    if sub_objs:
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 280, in __bool__
+    self._fetch_all()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1144, in execute_sql
+    cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+ERROR|2020-08-26 18:15:08|django.request|Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1704, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/actions.py", line 28, in delete_selected
+    deletable_objects, model_count, perms_needed, protected = modeladmin.get_deleted_objects(queryset, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1826, in get_deleted_objects
+    return get_deleted_objects(objs, request, self.admin_site)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 118, in get_deleted_objects
+    collector.collect(objs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 181, in collect
+    return super().collect(objs, source_attr=source_attr, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/deletion.py", line 244, in collect
+    if sub_objs:
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 280, in __bool__
+    self._fetch_all()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1144, in execute_sql
+    cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+ERROR|2020-08-26 18:15:08|django.request|Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1704, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1390, in response_action
+    response = func(self, request, queryset)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/actions.py", line 28, in delete_selected
+    deletable_objects, model_count, perms_needed, protected = modeladmin.get_deleted_objects(queryset, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/options.py", line 1826, in get_deleted_objects
+    return get_deleted_objects(objs, request, self.admin_site)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 118, in get_deleted_objects
+    collector.collect(objs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/admin/utils.py", line 181, in collect
+    return super().collect(objs, source_attr=source_attr, **kwargs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/deletion.py", line 244, in collect
+    if sub_objs:
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 280, in __bool__
+    self._fetch_all()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1144, in execute_sql
+    cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'groundhog_logbook_removalsbylocation.kill_shot_three' in 'field list'")
+ERROR|2020-08-26 18:17:13|django.request|Internal Server Error: /admin/auth/user/5/change/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 96, in as_widget
+    renderer=self.form.renderer,
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/widgets.py", line 241, in render
+    context = self.get_context(name, value, attrs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/forms.py", line 47, in get_context
+    for key, value_ in hasher.safe_summary(value).items():
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/hashers.py", line 256, in safe_summary
+    algorithm, iterations, salt, hash = encoded.split('$', 3)
+ValueError: not enough values to unpack (expected 4, got 2)
+ERROR|2020-08-26 18:17:13|django.request|Internal Server Error: /admin/auth/user/5/change/
+Traceback (most recent call last):
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/boundfield.py", line 96, in as_widget
+    renderer=self.form.renderer,
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/forms/widgets.py", line 241, in render
+    context = self.get_context(name, value, attrs)
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/forms.py", line 47, in get_context
+    for key, value_ in hasher.safe_summary(value).items():
+  File "/data/django/IMRUnicorn-Django/venv/lib64/python3.6/site-packages/django/contrib/auth/hashers.py", line 256, in safe_summary
+    algorithm, iterations, salt, hash = encoded.split('$', 3)
+ValueError: not enough values to unpack (expected 4, got 2)
+WARNING|2020-08-26 18:17:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
