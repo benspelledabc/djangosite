@@ -2,6 +2,7 @@
 
 {% block extra_head %}
 <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -30,8 +31,8 @@
                     {% if news.Is_Sticky %}
                         <i style="color:red;font-size: xx-large" class="fas fa-pastafarianism"></i>
                     {% endif %}
-                    {% if news.Image_One %}
-                        <a href="{{ news.Image_One.url }}" target="_blank"><i style="color:blue;font-size: large" class="fas fa-camera"></i></a>
+                    {% if news.Image_One or news.Image_Two %}
+                        <i style="color:blue;font-size: large" class="fas fa-camera"></i>
                     {% endif %}
                        -  <a href="{% url 'news_by_pk' %}{{ news.pk }}">{{ news.Date }} - <i>{{ news.Blurb }}</i></a>
                     </div><br/>

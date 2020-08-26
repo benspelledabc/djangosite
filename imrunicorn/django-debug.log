@@ -981,3 +981,204 @@ WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
 WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
 WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
 WARNING|2020-08-26 18:17:32|django.request|Not Found: /dist/js/bootstrap.min.js
+INFO|2020-08-26 18:31:34|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:31:37|django.server|"GET / HTTP/1.1" 200 10155
+INFO|2020-08-26 18:31:37|django.server|"GET /static/imrunicorn/scripts/modernizr-2.6.2.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:37|django.server|"GET /static/imrunicorn/scripts/jquery-1.10.2.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:37|django.server|"GET /static/imrunicorn/scripts/bootstrap.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:37|django.server|"GET /static/imrunicorn/scripts/respond.js HTTP/1.1" 304 0
+WARNING|2020-08-26 18:31:37|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:37|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:37|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:31:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:38|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:38|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:31:39|django.server|"GET /news/detail/1 HTTP/1.1" 200 9910
+WARNING|2020-08-26 18:31:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:39|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:31:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:39|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:31:42|django.server|"GET /admin/ HTTP/1.1" 200 16851
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:42|django.server|"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+WARNING|2020-08-26 18:31:42|django.request|Not Found: /favicon.ico
+WARNING|2020-08-26 18:31:42|django.request|Not Found: /favicon.ico
+WARNING|2020-08-26 18:31:42|django.server|"GET /favicon.ico HTTP/1.1" 404 4274
+INFO|2020-08-26 18:31:44|django.server|"GET /admin/announcements/whatisnew/ HTTP/1.1" 200 4429
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:44|django.server|"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /admin/announcements/whatisnew/1/change/ HTTP/1.1" 200 7398
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:45|django.server|"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:55|django.server|"POST /admin/announcements/whatisnew/1/change/ HTTP/1.1" 302 0
+INFO|2020-08-26 18:31:55|django.server|"GET /admin/announcements/whatisnew/ HTTP/1.1" 200 4648
+INFO|2020-08-26 18:31:55|django.server|"GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO|2020-08-26 18:31:55|django.server|"GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO|2020-08-26 18:31:57|django.server|"GET /news/detail/1 HTTP/1.1" 200 10440
+INFO|2020-08-26 18:31:58|django.server|"GET /media/uploads/announcements/what_is_new/images.png HTTP/1.1" 200 3232
+INFO|2020-08-26 18:31:58|django.server|"GET /media/uploads/announcements/what_is_new/13497253-red-color-splat.jpg HTTP/1.1" 200 86423
+WARNING|2020-08-26 18:31:58|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:58|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:58|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:31:58|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:31:59|django.server|"GET / HTTP/1.1" 200 10348
+WARNING|2020-08-26 18:31:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:59|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:31:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:59|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:31:59|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:00|django.server|"GET /news/detail/1 HTTP/1.1" 200 10440
+INFO|2020-08-26 18:32:00|django.server|"GET /media/uploads/announcements/what_is_new/13497253-red-color-splat.jpg HTTP/1.1" 304 0
+INFO|2020-08-26 18:32:00|django.server|"GET /media/uploads/announcements/what_is_new/images.png HTTP/1.1" 304 0
+WARNING|2020-08-26 18:32:00|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:00|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:00|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:02|django.server|"GET / HTTP/1.1" 200 10348
+WARNING|2020-08-26 18:32:02|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:02|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:02|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:32:02|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:02|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:02|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:19|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:32:27|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:32:30|django.server|"GET / HTTP/1.1" 200 10348
+WARNING|2020-08-26 18:32:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:30|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:32:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:30|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:30|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:30|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:32:37|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:32:39|django.server|"GET / HTTP/1.1" 200 10348
+WARNING|2020-08-26 18:32:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:39|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:32:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:39|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:39|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:39|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:32:45|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:32:47|django.server|"GET / HTTP/1.1" 200 10155
+WARNING|2020-08-26 18:32:47|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:47|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:47|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:32:47|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:47|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:47|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:47|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:32:55|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:32:57|django.server|"GET / HTTP/1.1" 200 10348
+WARNING|2020-08-26 18:32:57|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:57|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:57|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:32:57|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:57|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:32:57|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:32:57|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:34:28|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:34:31|django.server|"GET / HTTP/1.1" 200 10580
+WARNING|2020-08-26 18:34:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:31|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:34:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:31|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:31|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:34:31|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:34:32|django.server|"GET /media/uploads/announcements/what_is_new/13497253-red-color-splat.jpg HTTP/1.1" 304 0
+INFO|2020-08-26 18:34:50|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:34:54|django.server|"GET / HTTP/1.1" 200 10582
+WARNING|2020-08-26 18:34:54|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:54|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:54|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:34:54|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:54|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:34:54|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:34:54|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:35:23|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:35:25|django.server|"GET / HTTP/1.1" 200 10582
+WARNING|2020-08-26 18:35:25|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:35:25|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:35:25|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:35:25|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:35:25|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:35:25|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:35:25|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:37:40|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:37:43|django.server|"GET / HTTP/1.1" 200 11209
+WARNING|2020-08-26 18:37:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:37:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:37:43|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:37:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:37:43|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:37:43|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:37:43|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:38:26|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:38:28|django.server|"GET / HTTP/1.1" 200 11192
+WARNING|2020-08-26 18:38:28|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:38:28|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:38:28|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:38:28|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:38:28|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:38:28|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:38:28|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:39:14|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:39:16|django.server|"GET / HTTP/1.1" 200 11254
+WARNING|2020-08-26 18:39:16|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:16|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:16|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:39:17|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:17|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:17|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:39:17|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:39:43|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:39:45|django.server|"GET / HTTP/1.1" 200 11233
+WARNING|2020-08-26 18:39:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:45|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:39:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:45|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:39:45|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:39:45|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:40:41|django.utils.autoreload|Watching for file changes with StatReloader
+INFO|2020-08-26 18:40:43|django.server|"GET / HTTP/1.1" 200 10267
+WARNING|2020-08-26 18:40:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:44|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+WARNING|2020-08-26 18:40:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:44|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:44|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
+INFO|2020-08-26 18:40:44|django.server|"GET /static/imrunicorn/favicon.ico HTTP/1.1" 200 1406
+INFO|2020-08-26 18:40:46|django.server|"GET /news/detail/1 HTTP/1.1" 200 10440
+INFO|2020-08-26 18:40:46|django.server|"GET /media/uploads/announcements/what_is_new/images.png HTTP/1.1" 304 0
+INFO|2020-08-26 18:40:46|django.server|"GET /media/uploads/announcements/what_is_new/13497253-red-color-splat.jpg HTTP/1.1" 304 0
+WARNING|2020-08-26 18:40:46|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:46|django.request|Not Found: /dist/js/bootstrap.min.js
+WARNING|2020-08-26 18:40:46|django.server|"GET /dist/js/bootstrap.min.js HTTP/1.1" 404 4313
