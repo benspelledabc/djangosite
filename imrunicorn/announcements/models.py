@@ -9,6 +9,7 @@ class WhatIsNew(models.Model):
     Blurb = models.CharField(max_length=250)
     Body = models.TextField()  # i like big comments...
     Image_One = models.ImageField(upload_to='uploads/announcements/what_is_new/', null=True, blank=True)
+    Image_Two = models.ImageField(upload_to='uploads/announcements/what_is_new/', null=True, blank=True)
     Published = models.BooleanField(default=True)
     Is_Sticky = models.BooleanField(default=False)
 
