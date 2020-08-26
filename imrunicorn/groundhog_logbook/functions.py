@@ -27,7 +27,10 @@ def all_groundhog_removals_by_shooter(shooter_pk='1'):
 
 
 def groundhog_removal_scoreboard():
-    result = RemovalsByLocation.objects.distinct().values('shooter', 'shooter__username') \
+    result = RemovalsByLocation.objects.distinct().values('shooter',
+                                                          'shooter__username',
+                                                          'shooter__first_name',
+                                                          'shooter__last_name') \
         .annotate(removals=Count('shooter')).order_by('-removals')[:3]
     return result
 
