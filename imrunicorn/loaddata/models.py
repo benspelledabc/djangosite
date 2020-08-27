@@ -135,18 +135,9 @@ class HandLoad(models.Model):
     Is_Sheriff_Load = models.BooleanField(default=True)
     Confirmed_Splat_Factor = models.BooleanField(default=False)
     Group_Size = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank=True)
+    Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        # return "[PK: %s - %s] %s (%sgr %s %s {%s [%sgr of %s]})" % (self.pk, self.firearm.owner, self.firearm.caliber,
-        # return "%s - %s - %sgr %s %s {%s [%sgr of %s]}" % (self.firearm.owner, self.firearm.caliber,
-        #                                                    self.projectile.WeightGR,
-        #                                                    self.projectile.Manufacture,
-        #                                                    self.projectile.Name,
-        #                                                    self.Velocity,
-        #                                                    self.Powder_Charge,
-        #                                                    self.powder.name,
-        #                                                    )
-
         return "%sgr %s %s @ %s FPS via %sgr of %s" % (self.projectile.WeightGR,
                                                        self.projectile.Manufacture,
                                                        self.projectile.Name,
