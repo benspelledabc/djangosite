@@ -51,7 +51,11 @@ urlpatterns = [
     path('shooting_logbook/', include('shooting_logbook.urls')),
     path('groundhog_logbook/', include('groundhog_logbook.urls')),
 
+    path('deer_harvest_logbook/', include('deer_harvest_logbook.urls')),
+
     path('admin_toolbox/', include('admin_toolbox.urls')),
+
+
 
     # path('contact/', views.contact, name='contact'),
     # path('about/', views.about, name='about'),

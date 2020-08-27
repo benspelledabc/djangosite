@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'shooting_logbook',
     'groundhog_logbook',
     'admin_toolbox',
+    'deer_harvest_logbook',
 ]
 
 MIDDLEWARE = [
