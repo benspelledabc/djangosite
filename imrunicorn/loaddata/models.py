@@ -32,7 +32,7 @@ class Firearm(models.Model):
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "%s's %s %s %s" % (self.owner, self.manufacture, self.model, self.caliber)
+        return "%s's %s %s %s" % (self.owner.first_name, self.manufacture, self.model, self.caliber)
 
     class Meta:
         ordering = ('owner', 'caliber', 'manufacture', 'model')
