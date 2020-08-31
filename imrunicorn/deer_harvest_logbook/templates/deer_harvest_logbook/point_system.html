@@ -1,0 +1,57 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+
+            There's a lot of meat on a deer but for simplicity reasons we've decided on something simpler.
+
+            <br /><br />
+            <ul>
+                <li>1pt = Left Front Leg</li>
+                <li>1pt = Right Front Leg</li>
+                <li>1pt = Left Back Leg</li>
+                    <ul><li>Includes Loin</li></ul>
+                <li>1pt = Right back Leg</li>
+                    <ul><li>Includes Loin</li></ul>
+                <li>1pt = Left Back Strap</li>
+                <li>1pt = Right Back Strap</li>
+                <li>BONUS = General Pleasantness</li>
+                    <ul><li>(Added because liquified organs is: unpleasant)</li></ul>
+            </ul>
+
+            <br /><br />
+
+            {% if hide_points %}
+                Pictures help?
+                <a class="dropdown-item" href="{% url 'deer_harvest_logbook:point_system_show_points' %}">Show Point/Score Visuals</a>
+                <br /><br />
+                <center><img width="300" src="{% static '/deer_harvest_logbook/2Buck-Face_noPoints_Small.png' %}" /></center>
+            {% else %}
+                Done with pictures?
+                <a class="dropdown-item" href="{% url 'deer_harvest_logbook:point_system' %}">Hide Point/Score Visuals</a>
+                <br /><br />
+                <center><img width="300" src="{% static '/deer_harvest_logbook/2Buck-Face_Points_Small.png' %}" /></center>
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends "imrunicorn/layout.html" %}
+{% load static %}
 
 {% block extra_head %}
 <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
@@ -21,16 +22,12 @@
         <div style="text-align: left;font-family:times new roman;">
 
             {% for news in all_news %}
-                <b>Removal Date:</b> {{ news.removal_date }}<br />
-                <b>Removal Time:</b> {{ news.removal_time }}<br />
-                <b>Shooter:</b> <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">{{ news.shooter.first_name }}</a><br />
+                <b>Harvest Date:</b> {{ news.harvest_date }}<br />
+                <b>Harvest Time:</b> {{ news.harvest_time }}<br />
+                <b>Shooter:</b> <a href="{% url 'deer_harvest_logbook:all_harvests' %}{{ news.shooter.pk }}">{{ news.shooter.first_name }}</a><br />
                 <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm|title }}</a><br />
 
                 <b>Load Detail:</b>{% if user.is_authenticated %} {{ news.load }}{% else %} <i>(Logged In Users Only)</i></i>{% endif %}<br />
-                <b>Location:</b>{% if user.is_authenticated %}<a href="https://www.google.com/maps/search/?api=1&query={{ news.location.latitude }},{{ news.location.longitude }}"
-                      target="_blank">{{ news.location }}</a>{% else %} <i>(Logged In Users Only)</i>{% endif %}<br />
-
-
                 <b>Estimated Weight (lbs):</b> {{ news.estimated_weight_lbs }}<br />
 
                 {% if news.sex == "MALE" %}
@@ -41,30 +38,28 @@
                     <b>Sex:</b> {{ news.sex }} - <i class="far fa-question-circle"></i><br />
                 {% endif %}
 
-                {% if news.excessive_wound_cavity %}
-                    <b>Excessive Wound Cavity:</b> </i>{{ news.excessive_wound_cavity }} - <i style="color:red;" class="fas fa-biohazard"></i><br />
-                {%  endif %}
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
+                <b>Score:</b> {{ news.harvest_score }} {% if news.bonus_for_not_unpleasant %} + 1 (bonus) {% endif %}<br />
 
-            {% if news.extra_info %}
-            <b>Extra Info:</b><br /> {% autoescape off %}{{ news.extra_info }}{% endautoescape %}</br>
-            {% endif %}
+                {% if news.extra_info %}
+                <b>Extra Info:</b><br /> {% autoescape off %}{{ news.extra_info }}{% endautoescape %}</br>
+                {% endif %}
 
-            {% if news.kill_shot.url != None%}
-                    <b>Image 1:</b><br />
-                    <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 30%" /></a><br />
-            {% endif %}
+                {% if news.kill_shot.url != None%}
+                        <b>Image 1:</b><br />
+                        <a href="{{ news.kill_shot.url }}" target="_blank"><img src="{{ news.kill_shot.url }}" style="width: 30%" /></a><br />
+                {% endif %}
 
-            {% if news.kill_shot_two.url != None%}
-                    <b>Image 2:</b><br />
-                    <a href="{{ news.kill_shot_two.url }}" target="_blank"><img src="{{ news.kill_shot_two.url }}" style="width: 30%" /></a><br />
-            {% endif %}
+                {% if news.kill_shot_two.url != None%}
+                        <b>Image 2:</b><br />
+                        <a href="{{ news.kill_shot_two.url }}" target="_blank"><img src="{{ news.kill_shot_two.url }}" style="width: 30%" /></a><br />
+                {% endif %}
 
-            {% if forloop.last  == False %}
-                <hr />
-            {% else %}
-                <br />
-            {% endif %}
+                {% if forloop.last  == False %}
+                    <hr />
+                {% else %}
+                    <br />
+                {% endif %}
 
             {% endfor %}
         </div>

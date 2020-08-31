@@ -1,0 +1,168 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+<style>
+    /* DivTable.com */
+.divTable{
+	display: table;
+	width: 50%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px dashed #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+
+{% if logs != None %}
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+
+            The idea here is to show when they are being harvested. Tracking and trending the data for activity based on time of day.
+
+            <br /><br />
+
+
+
+
+            {% if logs_by_score|length > 0 %}
+                <div class="divTable row ben_format_pretty">
+                    <div class="divTableBody">
+                        This chart shows the number that are harvested by score.
+                        {% for log in logs_by_score %}
+                            <div class="divTableRow">
+                            <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+
+
+
+
+
+
+
+            {% if logs_sexy|length > 0 %}
+        <div class="divTable row ben_format_pretty">
+            This chart only shows the number that are harvested by sex.
+            <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Sex</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
+                {% for log in logs_sexy %}
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ log.sex }}</div>
+                    <div class="divTableCell">{{ log.kills }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+            <br /><hr />
+            {% endif %}
+
+            {% if logs|length > 0 %}
+        <div class="divTable row ben_format_pretty">
+            This chart only shows the number that are harvested by hour of the day. This does not take bonus
+            points into consideration.
+            <div class="divTableBody">
+
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Hour Of Day</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
+                {% for log in logs %}
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ log.hour }}</div>
+                    <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+            <br /><hr />
+            {% endif %}
+
+
+    {% if logs_sexy_hour|length > 0 %}
+        <div class="divTable row ben_format_pretty">
+
+            <div class="divTableBody">
+                This chart only shows the number that are harvested by score.
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Score</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
+                {% for log in logs_sexy_hour %}
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ log.harvest_score }}</div>
+                    <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+</div>
+{% else %}
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            I'm still adding this feature. The idea is to show a pie-chart or bar graph showing the times the deer
+            are typically harvested. Maybe a stacked one bar graph so we can track by the hour as well as by sex. I'm
+            still open to ideas and testing things out.
+        </div>
+
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

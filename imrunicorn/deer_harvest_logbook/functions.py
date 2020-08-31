@@ -25,11 +25,10 @@ def harvests_by_hour_of_day():
     return result
 
 
-def harvests_by_hour_of_day_by_sex():
-    result = Harvests.objects.annotate(
-        hour=TruncHour('harvest_time')).values('hour', 'sex',) \
+def harvests_by_score():
+    result = Harvests.objects.values('harvest_score', ) \
         .annotate(kills_per_hour=Count('id'))\
-        .order_by('hour')
+        .order_by('-harvest_score')
     return result
 
 

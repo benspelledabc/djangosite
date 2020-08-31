@@ -12,6 +12,10 @@ class Harvests(models.Model):
     shooter = models.ForeignKey(User, related_name='deer_harvest_logbook_shooter', on_delete=models.CASCADE, null=True)
     harvest_date = models.DateField(default=date.today)
     harvest_time = models.TimeField(null=True)
+
+    harvest_score = models.IntegerField(null=True, blank=True)
+    bonus_for_not_unpleasant = models.BooleanField(default=False, null=True, blank=True)
+
     firearm = models.ForeignKey(Firearm, related_name='deer_harvest_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='deer_harvest_logbook_hand_load', on_delete=models.CASCADE)
     estimated_weight_lbs = models.DecimalField(max_digits=5, decimal_places=2, default=100.25)
@@ -43,5 +47,13 @@ class Harvests(models.Model):
                                                  self.estimated_weight_lbs)
 
     class Meta:
+        verbose_name = 'Harvest'
+        verbose_name_plural = 'Harvests'
         ordering = ('-harvest_date', 'shooter', 'shot_distance_yards')
+        constraints = [
+            models.CheckConstraint(
+                check=models.Q(harvest_score__gte=0) & models.Q(harvest_score__lte=6),
+                name="A harvest score value is valid between 0 and 6",
+            )
+        ]
 

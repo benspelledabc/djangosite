@@ -138,7 +138,10 @@
 
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Deer Harvest Logbook</li>
+                      <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:point_system' %}">Point System</a></li>
                       <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:all_harvests' %}">All Harvests</a></li>
+                      <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:page_charts' %}">Harvest Charts</a></li>
+
                       {% comment %}
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts</a></li>
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard' %}"> Removal Scoreboard</a></li>
