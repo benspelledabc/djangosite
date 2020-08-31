@@ -15,6 +15,7 @@ class Harvests(models.Model):
 
     harvest_score = models.IntegerField(null=True, blank=True)
     bonus_for_not_unpleasant = models.BooleanField(default=False, null=True, blank=True)
+    crop_damage_permit = models.BooleanField(default=False, null=True, blank=True)
 
     firearm = models.ForeignKey(Firearm, related_name='deer_harvest_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='deer_harvest_logbook_hand_load', on_delete=models.CASCADE)
