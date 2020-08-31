@@ -5,3 +5,4 @@ __pycache__/
 .idea/*
 /imrunicorn/static/
 
+/imrunicorn/data/db.sqlite3
