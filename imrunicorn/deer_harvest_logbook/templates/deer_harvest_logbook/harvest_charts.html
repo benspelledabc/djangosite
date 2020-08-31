@@ -55,13 +55,6 @@
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
 
-            The idea here is to show when they are being harvested. Tracking and trending the data for activity based on time of day.
-
-            <br /><br />
-
-
-
-
             {% if logs_by_score|length > 0 %}
                 <div class="divTable row ben_format_pretty">
                     <div class="divTableBody">
@@ -75,16 +68,8 @@
                 </div>
             {% endif %}
 
-
-
-
-
-
-
-
             {% if logs_sexy|length > 0 %}
         <div class="divTable row ben_format_pretty">
-            This chart only shows the number that are harvested by sex.
             <div class="divTableBody">
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Sex</b></div>
@@ -99,18 +84,17 @@
 
             </div>
         </div>
-            <br /><hr />
+            <br />
             {% endif %}
 
             {% if logs|length > 0 %}
         <div class="divTable row ben_format_pretty">
-            This chart only shows the number that are harvested by hour of the day. This does not take bonus
-            points into consideration.
+
             <div class="divTableBody">
 
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Hour Of Day</b></div>
-                    <div class="divTableCell"><b>Count</b></div>
+                    <div class="divTableCell"><b>Count</b> (Ignoring Bonus Points)</div>
                 </div>
                 {% for log in logs %}
                 <div class="divTableRow">
@@ -122,7 +106,7 @@
             </div>
         </div>
 
-            <br /><hr />
+            <br />
             {% endif %}
 
 
@@ -130,7 +114,6 @@
         <div class="divTable row ben_format_pretty">
 
             <div class="divTableBody">
-                This chart only shows the number that are harvested by score.
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Score</b></div>
                     <div class="divTableCell"><b>Count</b></div>

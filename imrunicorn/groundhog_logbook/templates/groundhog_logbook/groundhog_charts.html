@@ -61,8 +61,11 @@
 
             {% if logs_sexy|length > 0 %}
         <div class="divTable row ben_format_pretty">
-            This chart only shows the number that are dispatched by sex.
             <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Sex</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
 
                 {% for log in logs_sexy %}
                 <div class="divTableRow">
@@ -73,13 +76,16 @@
 
             </div>
         </div>
-            <br /><hr />
+            <br />
             {% endif %}
 
             {% if logs|length > 0 %}
         <div class="divTable row ben_format_pretty">
-            This chart only shows the number that are dispatched by hour of the day.
             <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Hour of Day</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
 
                 {% for log in logs %}
                 <div class="divTableRow">
@@ -91,7 +97,7 @@
             </div>
         </div>
 
-            <br /><hr />
+            <br />
             {% endif %}
 
 
@@ -99,7 +105,11 @@
         <div class="divTable row ben_format_pretty">
 
             <div class="divTableBody">
-                This chart only shows the number that are dispatched by hour of the day but includes the sex of groundhog.
+                <div class="divTableRow">
+                    <div class="divTableCell"><b>Hour of Day</b></div>
+                    <div class="divTableCell"><b>Sex</b></div>
+                    <div class="divTableCell"><b>Count</b></div>
+                </div>
                 {% for log in logs_sexy_hour %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.hour }}</div>
