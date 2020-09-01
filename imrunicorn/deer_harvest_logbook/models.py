@@ -51,10 +51,12 @@ class Harvests(models.Model):
         verbose_name = 'Harvest'
         verbose_name_plural = 'Harvests'
         ordering = ('-harvest_date', 'shooter', 'shot_distance_yards')
-        constraints = [
-            models.CheckConstraint(
-                check=models.Q(harvest_score__gte=0) & models.Q(harvest_score__lte=6),
-                name="A harvest score value is valid between 0 and 6",
-            )
-        ]
+
+        # todo: Make this, or something similar, work for MySQL/MariaDB
+        # constraints = [
+        #     models.CheckConstraint(
+        #         check=models.Q(harvest_score__gte=0) & models.Q(harvest_score__lte=6),
+        #         name="A harvest score value is valid between 0 and 6",
+        #     )
+        # ]
 
