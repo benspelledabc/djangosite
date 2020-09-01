@@ -34,7 +34,16 @@
                     {% if news.Image_One or news.Image_Two %}
                         <i style="color:blue;font-size: large" class="fas fa-camera"></i>
                     {% endif %}
-                       -  <a href="{% url 'news_by_pk' %}{{ news.pk }}">{{ news.Date }} - <i>{{ news.Blurb }}</i></a>
+
+                        {% comment %}
+                        only include the dash if there is a picture or sticky before it.
+                        {% endcomment %}
+                    {% if news.Image_One or news.Image_Two or news.Is_Sticky %}
+                       -
+                    {% endif %}
+                        <a href="{% url 'news_by_pk' %}{{ news.pk }}">{{ news.Date }} - <i>{{ news.Blurb }}</i></a>
+
+
                     </div><br/>
                 {{ news.Body|slice:":250" }}
 
