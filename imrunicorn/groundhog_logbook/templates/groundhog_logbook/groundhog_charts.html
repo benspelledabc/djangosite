@@ -22,6 +22,14 @@
 	display: table-cell;
 	padding: 3px 10px;
 }
+.divTableCellCount {
+    text-align: right;
+	border: 1px dashed #999999;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 1px;
+    white-space: nowrap;
+}
 .divTableHeading {
 	background-color: #EEE;
 	display: table-header-group;
@@ -64,13 +72,13 @@
             <div class="divTableBody">
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Sex</b></div>
-                    <div class="divTableCell"><b>Count</b></div>
+                    <div class="divTableCellCount"><b>Count</b></div>
                 </div>
 
                 {% for log in logs_sexy %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.sex }}</div>
-                    <div class="divTableCell">{{ log.kills }}</div>
+                    <div class="divTableCellCount">{{ log.kills }}</div>
                 </div>
                 {% endfor %}
 
@@ -84,13 +92,13 @@
             <div class="divTableBody">
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Hour of Day</b></div>
-                    <div class="divTableCell"><b>Count</b></div>
+                    <div class="divTableCellCount"><b>Count</b></div>
                 </div>
 
                 {% for log in logs %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.hour }}</div>
-                    <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                    <div class="divTableCellCount">{{ log.kills_per_hour }}</div>
                 </div>
                 {% endfor %}
 
@@ -108,13 +116,13 @@
                 <div class="divTableRow">
                     <div class="divTableCell"><b>Hour of Day</b></div>
                     <div class="divTableCell"><b>Sex</b></div>
-                    <div class="divTableCell"><b>Count</b></div>
+                    <div class="divTableCellCount"><b>Count</b></div>
                 </div>
                 {% for log in logs_sexy_hour %}
                 <div class="divTableRow">
                     <div class="divTableCell">{{ log.hour }}</div>
                     <div class="divTableCell">{{ log.sex }}</div>
-                    <div class="divTableCell">{{ log.kills_per_hour }}</div>
+                    <div class="divTableCellCount">{{ log.kills_per_hour }}</div>
                 </div>
                 {% endfor %}
 
