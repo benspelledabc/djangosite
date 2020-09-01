@@ -2,7 +2,7 @@ asgiref==3.2.3
 certifi==2019.11.28
 chardet==3.0.4
 coverage==5.0.1
-Django==3.0.3
+Django==3.0.7
 django-crispy-forms==1.8.1
 django-fontawesome==1.0
 django-model-utils==4.0.0
