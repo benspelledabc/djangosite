@@ -2,8 +2,9 @@
 
 ### Intended Uses
 Use it to track your own handload data, groundhog dispatching, and deer harvests.
-http://docker.benspelledabc.me/
-https://benspelledabc.me/
+
+Docker Version --- http://docker.benspelledabc.me/ (testing)
+Services Version - https://benspelledabc.me/
 
 
 ### Background
