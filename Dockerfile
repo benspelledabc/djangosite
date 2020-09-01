@@ -12,6 +12,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 RUN mkdir -p /opt/app
 RUN mkdir -p /opt/app/pip_cache
 RUN mkdir -p /opt/app/imrunicorn
+RUN mkdir -p /opt/app/imrunicorn/media
 RUN mkdir -p /opt/app/imrunicorn/data
 RUN touch /opt/app/imrunicorn/data/empty
 
