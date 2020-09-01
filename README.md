@@ -1,8 +1,10 @@
 # IMRUnicornDjango
 
-Don't forget to open SELinux a little to allow the proxy via gunicorn
+### Intended Uses
 
-`chcon system_u:object_r:container_file_t:s0 imrunicorn.sock`
+Stuff.
+
+
 
 ### Data Backup/Restore
 
@@ -13,8 +15,12 @@ backup: ./manage.py dumpdata --natural-foreign --exclude contenttypes --exclude 
 restore: ./manage.py loaddata ~/iWantItAll3.json
 
 
+
 ### Production
 
+This portion needs to be updated. I'm keeping it for archive purposes, for now. If you use the docker-compose file you'll have the most success I think. Something I still need to work out is to create the folders to set permissions. The folders that aren't created by default are created when you try to upload pictures. Such as: folders within
+
+    /opt/app/imrunicorn/media
 
     ```sh
     $ docker-compose -f docker-compose.yml up -d --build
@@ -27,3 +33,6 @@ restore: ./manage.py loaddata ~/iWantItAll3.json
     ```
     Exec into the web container to create a superuser.
 
+dont forget to open SELinux a little to allow the proxy via gunicorn
+
+`chcon system_u:object_r:container_file_t:s0 imrunicorn.sock`
