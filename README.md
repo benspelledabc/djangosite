@@ -1,12 +1,14 @@
 # IMRUnicornDjango
 
 ### Intended Uses
+Use it to track your own handload data, groundhog dispatching, and deer harvests.
 
-Stuff.
+
+### Background
+For years I've had a website that stored my load data for reloading. I use this "known good" website setup to assist in learning a new language. I've done the site in VB.NET, C#, PHP, Java and now in Python. Each time I build the website I also try to add a new feature. This time, it's a log book of groundhog dispatching, deer harvests and a transition to using docker images to do the heavy lifting.
 
 
 ### Production
-
 This portion needs to be updated. I'm keeping it for archive purposes, for now. If you use the docker-compose file you'll have the most success I think. Something I still need to work out is to create the folders to set permissions. The folders that aren't created by default are created when you try to upload pictures. Such as: folders within
 
     /opt/app/imrunicorn/media
@@ -25,14 +27,11 @@ This portion needs to be updated. I'm keeping it for archive purposes, for now. 
 
 
 ### Data Backup/Restore
-
 Really I'm just using mysqldump for now but this might work too.
 
 backup: ./manage.py dumpdata --natural-foreign --exclude contenttypes --exclude auth.permission --exclude admin.logentry --exclude sessions.session --indent 4 > ~/iWantItAll3.json
 
 restore: ./manage.py loaddata ~/iWantItAll3.json
-
-
 
 
 ### Notes
