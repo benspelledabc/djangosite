@@ -3,7 +3,7 @@ version: '3'
 services:
   unicorn_web:
     hostname: unicorn_web
-    image: benspelledabc/django-imrunicorn:2.1
+    image: benspelledabc/django-imrunicorn:2.3
     ports:
         - "80:8020"
     volumes:
