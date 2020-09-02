@@ -1,25 +1,108 @@
--
-    name: Install Web Services
-    hosts: endservers
-    tasks:
-        - name: Install httpd service
-          yum:
-              name: httpd
-              state: present
-
-        - name: Start web server
-          service:
-              name: httpd
-              state: started
-
-        - name: install the latest version of git
-          yum:
-            name: git
-            state: latest
+---
 
 
-        - git:
-            repo: 'https://github.com/username/IMRUnicornDjango.git'
-            dest: /data/zomg-git
-            version: v3.142
+- name: Deploy benspelledabc/django-imrunicorn and stuff
+  connection: ssh
+  gather_facts: true
+  hosts: all
 
+  tasks:
+    - name: Install vim, epel-release, python-pip
+      yum:
+        name: 'vim,epel-release,python-pip'
+        state: latest
+
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Curl install docker
+      shell: 'curl -fsSL https://get.docker.com/ | sh'  
+      args:
+        warn: no
+        creates: /usr/bin/docker
+
+    # need to conditionaly do this with a token or something fast.
+    - name: Install docker-compose
+      get_url: 
+        url : https://github.com/docker/compose/releases/download/1.27.0-rc2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        # mode: 'u+x,g+x,o+x'
+        mode: '0777'
+
+    - name: Enable service docker
+      service:
+        name: docker
+        enabled: yes
+
+    - name: Start service docker, if not started
+      service:
+        name: docker
+        state: started
+
+  # Create benspelledabc
+    - name: Add the user 'benspelledabc' and adding to 'docker' group
+      user:
+        name: benspelledabc
+        shell: /bin/bash
+        groups: docker
+        append: yes
+
+    - name: Create Folder '/data/django/imrunicorn'
+      file: 
+        path: /data/django/imrunicorn
+        owner: benspelledabc
+        group: benspelledabc
+        mode: 0755 
+        state: directory
+
+    - name: Copy Docker-Compose
+      copy:
+        src: ./docker-compose.yml
+        dest: /data/django/imrunicorn/docker-compose.yml
+
+    - name: Copy workit.sh
+      copy:
+        src: ./workit.sh
+        dest: /data/django/imrunicorn/workit.sh
+        mode: 0755
+
+    - name: Copy mysql loaddata.cnf
+      copy:
+        src: ./loaddata.cnf
+        dest: /opt/loaddata.cnf
+        mode: 0644
+
+    # - name: Docker - pull benspelledabc/django-imrunicorn:2.4
+    #   docker_image:
+    #     name: benspelledabc/django-imrunicorn
+    #     tag: "2.4"
+    #     source: pull
+
+    # - name: Docker - pull mariadb
+    #   docker_image:
+    #     name: mariadb
+    #     source: pull
+
+    # - name: Docker - pull adminer
+    #   docker_image:
+    #     name: adminer
+    #     source: pull
+
+    - name: Docker - docker-compose up -d
+      shell: 'docker-compose -f /data/django/imrunicorn/docker-compose.yml up -d'  
+      args:
+        warn: no
+
+    # Wait for port 80 to become open on the host, don't start checking for 10 seconds
+    - name: Making sure site is up before migrations are done
+      wait_for:
+        port: 80
+        delay: 10
+        timeout: 300
+
+    - name: Work it (make migrations and fix permissions)
+      shell: '/data/django/imrunicorn/workit.sh'  
+
+  # - name: curl self into a ball ?

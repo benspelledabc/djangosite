@@ -4,6 +4,9 @@ services:
   unicorn_web:
     hostname: unicorn_web
     image: benspelledabc/django-imrunicorn:2.4
+    depends_on:
+      - unicorn_db
+      - adminer
     ports:
         - "80:8020"
     volumes:

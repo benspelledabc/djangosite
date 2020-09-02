@@ -1,0 +1,5 @@
+[client]
+database=imrunicorn_loaddata
+user=yourusername
+password=somepassword
+host=localhost
