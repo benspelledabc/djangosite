@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
     'crispy_forms',
+    'phone_field',
     'imrunicorn',
     'api',
     'loaddata',

@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Recipient, MeatCut, RequestedOrder, Flavor
 
-# Register your models here.
+admin.site.register(Recipient)
+admin.site.register(MeatCut)
+admin.site.register(RequestedOrder)
+admin.site.register(Flavor)
