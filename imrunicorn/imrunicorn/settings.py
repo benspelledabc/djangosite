@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'groundhog_logbook',
     'admin_toolbox',
     'deer_harvest_logbook',
-    'deer_waitlist',
+    'deer_wait_list',
 ]
 
 MIDDLEWARE = [
