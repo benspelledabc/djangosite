@@ -26,7 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
 
-DEBUG = False
+if socket.gethostname().startswith('benspelledabc'):
+    DEBUG = False
+else:
+    DEBUG = True
+
 IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
     'crispy_forms',
+    'phone_field',
     'imrunicorn',
     'api',
     'loaddata',
@@ -54,6 +59,7 @@ INSTALLED_APPS = [
     'groundhog_logbook',
     'admin_toolbox',
     'deer_harvest_logbook',
+    'deer_wait_list',
 ]
 
 MIDDLEWARE = [
