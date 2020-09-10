@@ -12,6 +12,7 @@ services:
     volumes:
         - ./data/:/opt/app/imrunicorn/data/
         - ./uploads/:/opt/app/imrunicorn/media/uploads/
+        - ./certs/:/opt/app/certs/
 
   unicorn_db:
     # image: mysql:5.7

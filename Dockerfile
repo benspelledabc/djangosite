@@ -11,6 +11,10 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 # copy source and install dependencies
 RUN mkdir -p /opt/app/pip_cache
 
+# /opt/app/certs/server.pem
+RUN mkdir -p /opt/app/certs
+COPY not_empty /opt/app/certs/
+
 COPY imrunicorn /opt/app/imrunicorn/
 
 RUN mkdir -p /opt/app/imrunicorn/media/uploads/announcements/what_is_new

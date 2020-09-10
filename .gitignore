@@ -4,5 +4,9 @@
 __pycache__/
 .idea/*
 /imrunicorn/static/
-
+/certs/
+imrunicorn/imrunicorn.sock
+nginx.default-lkg
+media.tar
+/uploads/
 /imrunicorn/data/db.sqlite3
