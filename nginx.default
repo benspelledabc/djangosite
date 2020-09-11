@@ -44,21 +44,21 @@ server {
 }
 
 
-# server {
-#   listen 443;
-#   ssl on;
+server {
+   listen 443;
+   ssl on;
    # need to add the certs...
-#   ssl_certificate /etc/ssl/prod.benspelledabc.me.pem;
-#   ssl_certificate_key /etc/ssl/prod.benspelledabc.me.key;
-#   server_name benspelledabc.me;
-#   access_log /var/log/nginx/nginx.vhost.access.log;
-#   error_log /var/log/nginx/nginx.vhost.error.log;
+   ssl_certificate /etc/ssl/prod.benspelledabc.me.pem;
+   ssl_certificate_key /etc/ssl/prod.benspelledabc.me.key;
+   server_name benspelledabc.me;
+   access_log /var/log/nginx/nginx.vhost.access.log;
+   error_log /var/log/nginx/nginx.vhost.error.log;
 #   
-#   location / {
-#      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-#      proxy_set_header Host benspelledabc.me;
-      # need to verify the sock location....
-#      proxy_pass http://unix:/data/django/IMRUnicorn-Django/imrunicorn/imrunicorn.sock;
-#   }
-#}
+   location / {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host benspelledabc.me;
+     # need to verify the sock location....
+      proxy_pass http://unix:/data/django/IMRUnicorn-Django/imrunicorn/imrunicorn.sock;
+   }
+}
 
