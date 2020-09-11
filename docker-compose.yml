@@ -3,7 +3,7 @@ version: '3'
 services:
   unicorn_web:
     hostname: unicorn_web
-    image: benspelledabc/django-imrunicorn:2.4
+    image: benspelledabc/django-imrunicorn:2.5
     depends_on:
       - unicorn_db
       - adminer
