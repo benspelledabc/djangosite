@@ -13,7 +13,8 @@ RUN mkdir -p /opt/app/pip_cache
 
 # /opt/app/certs/server.pem
 RUN mkdir -p /opt/app/certs
-COPY not_empty /opt/app/certs/
+COPY selfsigned.pem /data/django/certs/
+COPY selfsigned.key /data/django/certs/
 
 COPY imrunicorn /opt/app/imrunicorn/
 
