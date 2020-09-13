@@ -18,6 +18,7 @@ Really I'm just using mysqldump at this time.
 
 ### Notes
 After you pull the containers via docker compose, you'll likely have to import all the migrations. I've made the 'work-it.sh' for myself but you get the idea, I hope. Make right, will make the permissions right (enough).
+
 `./work-it.sh`
 `./make_right.sh`
 
