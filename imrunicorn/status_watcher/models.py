@@ -11,8 +11,8 @@ class WatchItem(models.Model):
     item_exception = models.CharField(max_length=250, default=None, blank=True, null=True)
 
     def __str__(self):
-        return "%s %s" % (self.item_name, self.item_phrase)
+        return "[%s] - %s" % (self.item_phrase_not_exist, self.item_name)
 
     class Meta:
-        ordering = ('item_name', 'item_phrase')
+        ordering = ('-item_phrase_not_exist', 'item_name')
 
