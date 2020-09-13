@@ -40,7 +40,7 @@
                     <td style="padding-left:10px">{{ item.item_name|slice:":40" }}</td>
                     {% endif %}
 
-                    {% if user.is_staff %}
+                    {% ifequal user.groups.all.0.name "status_watcher_link_viewer" %}
                         {% if item.item_link|length > 40 %}
                         <td style="padding-left:10px"><a href="{{ item.item_link }}" target="_blank">{{ item.item_link|slice:":40" }}...</a></td>
                         {% else %}
@@ -48,7 +48,7 @@
                         {% endif %}
                     {% else %}
                         <td style="padding-left:10px; text-align: center;">Hidden</td>
-                    {% endif %}
+                    {% endifequal %}
 
                     {% if item.item_phrase_not_exist %}
                     <td bgcolor="#00e600" style="padding-left:10px; text-align: center;">{{ item.item_phrase_not_exist }}</td>
