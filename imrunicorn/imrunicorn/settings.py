@@ -26,7 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
 
-DEBUG = False
+if socket.gethostname().find('MacBook') != -1:
+    DEBUG = True
+else:
+    DEBUG = False
 IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
@@ -56,6 +59,7 @@ INSTALLED_APPS = [
     'admin_toolbox',
     'deer_harvest_logbook',
     'deer_wait_list',
+    'status_watcher',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +97,7 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 
 if socket.gethostname().startswith('benspelledabc') \
         or socket.gethostname().startswith('dell') \
+        or (socket.gethostname().find('MacBook') != -1) \
         or socket.gethostname().startswith('docker-'):
     DATABASES = {
         'default': {

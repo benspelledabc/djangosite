@@ -1,0 +1,74 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+
+{% block content %}
+{% load humanize %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: justify;font-family:times new roman;">
+
+            This page will search other sites for predefined content. Eventually, I'll have it send an email to an
+            alert list so we can 'buy now'. For now, it's going to just light up a light on my Raspberry Pi.<br /><br />
+
+        <table align="center" border="1">
+            <tr bgcolor="#808080">
+                <th bgcolor="808080" style="text-align: center; padding-left: 5px; padding-right: 5px;">
+                 Watching Item
+             </th>
+                <th bgcolor="808080" style="text-align: center; padding-left: 5px; padding-right: 5px;">
+                 Watching Link
+             </th>
+            <th bgcolor="808080" style="text-align: center; padding-left: 5px; padding-right: 5px;">
+                Appears In Stock
+            </th>
+            <th bgcolor="808080" style="text-align: center; padding-left: 5px; padding-right: 5px;">
+                Query Exception
+            </th>
+            </tr>
+
+
+            {% for item in watch_list %}
+                <tr bgcolor="#F5F5F5">
+                    {% if item.item_name|length > 40 %}
+                    <td style="padding-left:10px">{{ item.item_name|slice:":40" }}...</td>
+                    {% else %}
+                    <td style="padding-left:10px">{{ item.item_name|slice:":40" }}</td>
+                    {% endif %}
+
+                    {% ifequal user.groups.all.0.name "status_watcher_link_viewer" %}
+                        {% if item.item_link|length > 40 %}
+                        <td style="padding-left:10px"><a href="{{ item.item_link }}" target="_blank">{{ item.item_link|slice:":40" }}...</a></td>
+                        {% else %}
+                        <td style="padding-left:10px"><a href="{{ item.item_link }}" target="_blank">{{ item.item_link|slice:":40" }}</a></td>
+                        {% endif %}
+                    {% else %}
+                        <td style="padding-left:10px; text-align: center;">Hidden</td>
+                    {% endifequal %}
+
+                    {% if item.item_phrase_not_exist %}
+                    <td bgcolor="#00e600" style="padding-left:10px; text-align: center;">{{ item.item_phrase_not_exist }}</td>
+                    {% else %}
+                    <td bgcolor="#ff4d4d" style="padding-left:10px; text-align: center;">{{ item.item_phrase_not_exist }}</td>
+                    {% endif %}
+
+                    <td style="padding-left:10px; text-align: center;">{{ item.item_exception }}</td>
+                </tr>
+            {% endfor %}
+
+
+        </table>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
