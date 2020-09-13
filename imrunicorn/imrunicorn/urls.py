@@ -55,6 +55,8 @@ urlpatterns = [
 
     path('admin_toolbox/', include('admin_toolbox.urls')),
 
+    path('status_watcher/', include('status_watcher.urls')),
+
 
 
     # path('contact/', views.contact, name='contact'),

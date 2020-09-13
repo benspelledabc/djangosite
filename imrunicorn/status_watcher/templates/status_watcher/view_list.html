@@ -1,0 +1,58 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+
+{% block content %}
+{% load humanize %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: justify;font-family:times new roman;">
+
+            WIP: Coming soon.
+
+        <table align="center" border="1">
+            <tr bgcolor="#808080">
+                <th bgcolor="808080" style="text-align: center">
+                 Watching Item
+             </th>
+                <th bgcolor="808080" style="text-align: center">
+                 Watching Link
+             </th>
+            <th bgcolor="808080" style="text-align: center">
+                Phrase to <strong>NOT</strong> find
+            </th>
+            <th bgcolor="808080" style="text-align: center">
+                STATUS
+            </th>
+            <th bgcolor="808080" style="text-align: center">
+                Exception
+            </th>
+            </tr>
+
+
+            {% for item in watch_list %}
+                <tr bgcolor="#F5F5F5">
+                    <td style="padding-left:10px">{{ item.item_name }}</td>
+                    <td style="padding-left:10px"><a href="{{ item.item_link }}" target="_blank">{{ item.item_link|slice:":50" }}...</a></td>
+                    <td style="padding-left:10px">{{ item.item_phrase }}</td>
+                    <td style="padding-left:10px">{{ item.item_phrase_not_exist }}</td>
+                    <td style="padding-left:10px">{{ item.item_exception }}</td>
+                </tr>
+            {% endfor %}
+
+
+        </table>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
