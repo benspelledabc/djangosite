@@ -20,6 +20,9 @@ menu is to have a way to CRUD their firearms and loads.
 
           <li class="dropdown-header">Status Watcher</li>
           <li><a href="{% url 'status_watcher:home' %}">View List</a></li>
+          {% if user.is_staff %}
+          <li><a href="{% url 'status_watcher:view_watches_reset' %}">Reset List</a></li>
+          {% endif %}
 
 
           {% ifequal user.groups.all.0.name "DisabledLinksViewer" %}

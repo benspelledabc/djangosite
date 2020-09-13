@@ -6,6 +6,27 @@ from .queries import get_watch_list
 # Create your views here.
 
 
+def page_view_watches_reset(request):
+    watches = get_watch_list()
+
+    for item in watches:
+        # page_search = search_url_for_magic_string(item.item_link, item.item_phrase)
+        item.item_exception = "reset"
+        item.item_phrase_not_exist = None
+        item.save()
+
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Status Watcher",
+        # "blurb": "This page is a place holder for what's to come soon.",
+        "blurb": get_page_blurb_override('status_watcher/view_watches/'),
+        'watch_list': watches,
+        "copy_year": datetime.now().year
+    }
+    return render(request, "status_watcher/view_list.html", context)
+
+
 def page_view_watches(request):
     watches = get_watch_list()
 
