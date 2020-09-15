@@ -2,7 +2,7 @@ pipeline {
     
     environment {
         registry = "benspelledabc/jenkins-upload-test"
-        registryCredential = ‘dockerhub’
+        registryCredential = 'dockerhub'
     }
     
     agent { dockerfile true }
