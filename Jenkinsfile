@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "benspelledabc/jenkins-upload-test"
+    imagename = "benspelledabc/djangosite"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
