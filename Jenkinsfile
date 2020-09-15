@@ -1,4 +1,48 @@
 pipeline {
+  environment {
+    imagename = "benspelledabc/jenkins-upload-test"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git([url: 'https://github.com/benspelledabc/djangosite.git', branch: 'auto_push', credentialsId: 'ben-github-global'])
+
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build imagename
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("$BUILD_NUMBER")
+             dockerImage.push('latest')
+
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+         sh "docker rmi $imagename:latest"
+
+      }
+    }
+  }
+}
+
+//old kinda works, build but  no push
+/*
+pipeline {
     
     environment {
         registry = "benspelledabc/jenkins-upload-test"
@@ -13,36 +57,6 @@ pipeline {
                 echo 'hello world'
             }
         }//end say hello world stage
-        
-        
-        stage('Building image') {
-            steps{
-                script {
-                    //docker.build registry + ":$BUILD_NUMBER"
-                    docker.build registry + ":latest"
-                }
-            }
-        }//end build image stage
-        
-        
-        stage('Deploy Image') {
-            steps{
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }//end deploy image
-        
-        /*
-        stage('Remove Unused docker image') {
-            steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
-            }
-        }*/
-        //end remove image
-        
-    }//end of all stages
-    
+    }
 }
+*/
