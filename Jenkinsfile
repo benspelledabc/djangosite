@@ -26,7 +26,7 @@ pipeline {
             //on develop branch, we are only going to push to latest
             //master will push to some other special sauce
             dockerImage.push("0.$BUILD_NUMBER")
-            dockerImage.push('latest')
+            //dockerImage.push('latest')
           }
         }
       }
