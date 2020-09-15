@@ -39,15 +39,15 @@ pipeline {
       }
     }
     
-    def remote = [:]
-    remote.name = ""
+    //def remote = [:]
+    //remote.name = ""
     //remote.host = "benspelledabc.me"
-    remote.host = "104.248.122.83"
-    remote.allowAnyHosts = true
+    //remote.host = "104.248.122.83"
+    //remote.allowAnyHosts = true
     stage("SSH Steps Rocks!") {
       steps {
         //writeFile file: 'test.sh', text: 'ls'
-        sshCommand remote: remote, command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
+        sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
         //sshScript remote: remote, script: 'test.sh'
         //sshPut remote: remote, from: 'test.sh', into: '.'
         //sshGet remote: remote, from: 'test.sh', into: 'test_new.sh', override: true
