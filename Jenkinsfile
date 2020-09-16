@@ -47,7 +47,7 @@ pipeline {
     stage("SSH Steps Rocks!") {
       steps {
         //sh 'ssh -i ~.ssh/AWSBob.private benspelledabc.me "touch /data/django/fromJenkins"'
-        sh 'ssh root@104.248.122.83 "touch /data/django/fromJenkins"'
+        sh 'ssh -oStrictHostKeyChecking=no root@104.248.122.83 "touch /data/django/fromJenkins"'
         //writeFile file: 'test.sh', text: 'ls'
         //sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
         //sshScript remote: remote, script: 'test.sh'
