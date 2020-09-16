@@ -46,6 +46,7 @@ pipeline {
     //remote.allowAnyHosts = true
     stage("SSH Steps Rocks!") {
       steps {
+        sh 'whoami'
         //sh 'ssh -i ~.ssh/AWSBob.private benspelledabc.me "touch /data/django/fromJenkins"'
         sh 'ssh -oStrictHostKeyChecking=no root@104.248.122.83 "touch /data/django/fromJenkins"'
         //writeFile file: 'test.sh', text: 'ls'
