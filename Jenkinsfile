@@ -3,6 +3,9 @@ pipeline {
     imagename = "benspelledabc/djangosite"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    certPath = '~/.ssh/AWSBob.private'
+    sshUser = 'root'
+    sshTarget = '104.248.122.83'
   }
   
   options {
@@ -43,5 +46,28 @@ pipeline {
         sh "docker rmi $imagename:latest"
       }
     }
+    
+    //def remote = [:]
+    //remote.name = ""
+    //remote.host = "benspelledabc.me"
+    //remote.host = "104.248.122.83"
+    //remote.allowAnyHosts = true
+    stage("SSH Steps Rocks!") {
+      steps {
+        sh 'whoami'
+        sh 'echo $HOME'
+        //sh 'ssh -i ~.ssh/AWSBob.private benspelledabc.me "touch /data/django/fromJenkins"'
+        sh 'ssh -i $certPath -oStrictHostKeyChecking=no $sshUser@$sshTarget "touch /data/django/fromJenkins2"'
+        //writeFile file: 'test.sh', text: 'ls'
+        //sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
+        //sshScript remote: remote, script: 'test.sh'
+        //sshPut remote: remote, from: 'test.sh', into: '.'
+        //sshGet remote: remote, from: 'test.sh', into: 'test_new.sh', override: true
+        //sshRemove remote: remote, path: 'test.sh'
+      }
+    }
+    
+    
+    
   }
 }
