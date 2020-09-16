@@ -46,8 +46,10 @@ pipeline {
     //remote.allowAnyHosts = true
     stage("SSH Steps Rocks!") {
       steps {
+        //sh 'ssh -i ~.ssh/AWSBob.private benspelledabc.me "touch /data/django/fromJenkins"'
+        sh 'ssh "touch /data/django/fromJenkins"'
         //writeFile file: 'test.sh', text: 'ls'
-        sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
+        //sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
         //sshScript remote: remote, script: 'test.sh'
         //sshPut remote: remote, from: 'test.sh', into: '.'
         //sshGet remote: remote, from: 'test.sh', into: 'test_new.sh', override: true
