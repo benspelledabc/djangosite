@@ -4,6 +4,11 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
+  
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '30'))
+  }
+  
   agent any
   stages {
     stage('Cloning Git') {
