@@ -52,7 +52,7 @@ pipeline {
         sh 'whoami'
         sh 'echo $HOME'
         //sh 'ssh -i ~.ssh/AWSBob.private benspelledabc.me "touch /data/django/fromJenkins"'
-        sh 'ssh -i certPath -oStrictHostKeyChecking=no sshUser@sshTarget "touch /data/django/fromJenkins2"'
+        sh 'ssh -i $certPath -oStrictHostKeyChecking=no $sshUser@$sshTarget "touch /data/django/fromJenkins2"'
         //writeFile file: 'test.sh', text: 'ls'
         //sshCommand remote: "104.248.122.83", command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
         //sshScript remote: remote, script: 'test.sh'
