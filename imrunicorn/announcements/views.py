@@ -32,9 +32,6 @@ def page_all_news(request):
         'release': get_version_json(),
         "title": "All the news",
         "blurb": get_page_blurb_override('news/'),
-        # "blurb": "I've decided to make a blog of sorts. It's super light for speed and readability on "
-        #          "cellphones. I'll expand functionality later but for now this is just a listing of the "
-        #          "'Announcements' published.",
     }
     return render(request, "announcements/all_news.html", context)
 
