@@ -3,10 +3,22 @@ from django.shortcuts import render
 from datetime import datetime
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
 from .queries import get_watch_list
+from django.contrib.auth.models import Group
 # Create your views here.
 
 
 def page_view_watches_reset(request):
+    users_in_group = Group.objects.get(name="restricted-group").user_set.all()
+    if request.user not in users_in_group:
+        context = {
+            "restart": get_restart_notice,
+            'release': get_version_json(),
+            "title": "Status Watcher",
+            "blurb": "You're not allowed access to this resource at this time.",
+            "copy_year": datetime.now().year
+        }
+        return render(request, "imrunicorn/access_denied.html", context)
+
     watches = get_watch_list()
 
     for item in watches:
