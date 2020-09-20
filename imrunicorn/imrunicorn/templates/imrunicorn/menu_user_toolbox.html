@@ -9,6 +9,7 @@ menu is to have a way to CRUD their firearms and loads.
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Toolboxes<span class="caret"></span></a>
       <ul class="dropdown-menu">
 
+          {% comment %}
           {% if user.is_staff %}
           <li class="dropdown-header">Toolbox</li>
           <li><a href="{% url 'admin_toolbox:restart_gunicorn_and_nginx' %}">Request Web Restart</a></li>
@@ -17,6 +18,7 @@ menu is to have a way to CRUD their firearms and loads.
           <li><a href="{% url 'admin_toolbox:cancel_all_restarts' %}">Cancel All Restart Requests</a></li>
           <li role="separator" class="divider"></li>
           {% endif %}
+          {% endcomment %}
 
           <li class="dropdown-header">Status Watcher</li>
           <li><a href="{% url 'status_watcher:home' %}">View List</a></li>

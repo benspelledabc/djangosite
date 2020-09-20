@@ -1,0 +1,21 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/9a11d62cbf.js"></script>
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div align="center">
+        In short, this is a general access denied notification. There could be several reasons why so this page just
+        wraps them all up into one big bucket of access denied with no further info. #sand
+    </div>
+</div>
+{% endblock %}
