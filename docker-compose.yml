@@ -17,7 +17,6 @@ services:
         - ./certs/:/opt/app/certs/
 
   unicorn_db:
-    # image: mysql:5.7
     image: mariadb
     hostname: unicorn_db
     volumes:
