@@ -3,7 +3,6 @@ version: '3'
 services:
   unicorn_web:
     hostname: unicorn_web
-    # image: benspelledabc/django-certs:1.7
     image: benspelledabc/djangosite:3.14.0.12
     # restart: always
     depends_on:
