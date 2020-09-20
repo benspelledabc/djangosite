@@ -3,8 +3,8 @@ version: '3'
 services:
   unicorn_web:
     hostname: unicorn_web
-    image: benspelledabc/djangosite:3.14.15
-    # restart: always
+    image: benspelledabc/djangosite:3.14.16
+    restart: always
     depends_on:
       - unicorn_db
       - adminer
