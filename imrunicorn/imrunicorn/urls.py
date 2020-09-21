@@ -27,6 +27,8 @@ from . import forms, views
 
 # app_name = 'base_skipped_for_now'
 urlpatterns = [
+    path('greyscale', views.page_greyscale_test, name='greyscale_test'),
+
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
 
