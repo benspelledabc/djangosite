@@ -10,6 +10,21 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 
 
+def page_greyscale_test(request):
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Donate: Steel Targets",
+        "blurb": "Steel targets are a resource that needs to be replaced over time.",
+        "full_body": "Donate new or slightly used steel targets. "
+                     "Email me at <a href=\"mailto:Admin@BenSpelledABC.me\">Admin@BenSpelledABC.me</a> and "
+                     "I'll provide an address or meet in person. ",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/gs_single.html", context)
+
+
 # Create your views here.
 def page_home(request):
     try:
