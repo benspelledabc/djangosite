@@ -57,6 +57,19 @@ def page_home(request):
     return render(request, "imrunicorn/index.html", context)
 
 
+def handler403(request, exception):
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Access Denied",
+        "subtitle": "Friendly 403 error message.",
+        "fullbody": "",
+        "copy_year": datetime.now().year
+    }
+    # return render(request, "errors/403-denied.html", context)
+    return render(request, "errors/403-gs-error.html", context)
+
+
 def handler404(request, exception):
     context = {
         "restart": get_restart_notice,
