@@ -85,4 +85,5 @@ urlpatterns = [
 # handler404 = 'YOUR_APP_NAME.views.handler404'
 
 handler404 = 'imrunicorn.views.handler404'
+handler403 = 'imrunicorn.views.handler403'
 handler500 = 'imrunicorn.views.handler500'
