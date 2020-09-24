@@ -66,10 +66,8 @@ def handler403(request, exception):
         "fullbody": "",
         "copy_year": datetime.now().year
     }
-    # going to try sending an email on 404 error.. hahaha bad idea in production
-    # self.email_test(request)
-
-    return render(request, "errors/403-denied.html", context)
+    # return render(request, "errors/403-denied.html", context)
+    return render(request, "errors/403-gs-error.html", context)
 
 
 def handler404(request, exception):
