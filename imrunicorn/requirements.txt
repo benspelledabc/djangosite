@@ -22,3 +22,4 @@ django-extensions
 Pillow
 django-phone-field==1.8.1
 django-ip-restriction==1.1.1
+django-createsuperuserwithpassword==2.0.0
