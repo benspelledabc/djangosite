@@ -34,11 +34,11 @@ else:
 IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
-RESTRICT_IPS = True
+# RESTRICT_IPS = True
 # in settings.py (will override the above environment variable)
-ALLOWED_IPS = ['192.168.2.0/24', '192.168.0.1', '192.168.0.2', '192.168.0.3']
-ALLOW_AUTHENTICATED = True
-ALLOW_ADMIN = True
+# ALLOWED_IPS = ['192.168.2.0/24', '192.168.0.1', '192.168.0.2', '192.168.0.3']
+# ALLOW_AUTHENTICATED = True
+# ALLOW_ADMIN = True
 # RESTRICT_ADMIN_BY_IPS = True
 # ALLOWED_ADMIN_IPS = ['192.168.2.0/24', '192.168.0.1', '192.168.0.2', '192.168.0.3']
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
+    'django_createsuperuserwithpassword',
     'django_extensions',
     'crispy_forms',
     'phone_field',
