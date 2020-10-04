@@ -20,6 +20,14 @@ menu is to have a way to CRUD their firearms and loads.
           {% endif %}
           {% endcomment %}
 
+          <li class="dropdown-header">Content Collection: Videos</li>
+          <li><a href="{% url 'content_collection:video_list' %}">Video List</a></li>
+          <li><a href="{% url 'content_collection:videos_latest' %}">Latest Video</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Content Collection: Misc</li>
+          <li><a href="{% url 'content_collection:blank' %}">Misc</a></li>
+          <li role="separator" class="divider"></li>
+
           <li class="dropdown-header">Status Watcher</li>
           <li><a href="{% url 'status_watcher:home' %}">View List</a></li>
           {% if user.is_staff %}
