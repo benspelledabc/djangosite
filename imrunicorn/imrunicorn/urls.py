@@ -59,6 +59,8 @@ urlpatterns = [
 
     path('status_watcher/', include('status_watcher.urls')),
 
+    path('content_collection/', include('content_collection.urls')),
+
 
 
     # path('contact/', views.contact, name='contact'),
