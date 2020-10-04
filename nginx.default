@@ -38,7 +38,9 @@ server {
    access_log /var/log/nginx/nginx.vhost.access.log;
    error_log /var/log/nginx/nginx.vhost.error.log;
 
-   client_max_body_size 100M;
+   # client_max_body_size 999M;
+   # this should disable the limit... so i'm told
+   client_max_body_size 0;
    
    location / {
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
