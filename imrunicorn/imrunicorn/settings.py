@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hmj=u6w0i830gw=k^l&vc*jsl!mvtx8#r%#con#lvz04aordkg'
+# IPRESTRICT_GEOIP_ENABLED = False
 
 if socket.gethostname().find('MacBook') != -1 \
     or socket.gethostname().find('wk-benspelledabc') != -1:
@@ -69,6 +70,8 @@ INSTALLED_APPS = [
     'deer_harvest_logbook',
     'deer_wait_list',
     'status_watcher',
+    'content_collection',
+    #'iprestrict',
 ]
 
 MIDDLEWARE = [
