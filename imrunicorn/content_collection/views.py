@@ -2,7 +2,7 @@ from django.shortcuts import render
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
 from datetime import datetime
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
 from django.shortcuts import render
 
 
