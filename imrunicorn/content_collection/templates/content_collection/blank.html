@@ -1,0 +1,32 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+
+{% block extra_head %}
+<script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+{% if all_news != None %}
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            This page is blank but only just.
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+
+
+{% endblock %}
