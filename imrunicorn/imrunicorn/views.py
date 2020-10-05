@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
+from .decorators import unauthenticated_user
 import os
 import json
 
@@ -98,6 +99,7 @@ def handler500(request):
     return render(request, "errors/error.html", context)
 
 
+# @unauthenticated_user
 def page_cash_app(request):
     # return HttpResponse("Hello world 500.")
     context = {
