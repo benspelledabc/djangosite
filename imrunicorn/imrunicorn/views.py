@@ -3,7 +3,7 @@ from django.conf import settings
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
-from .decorators import unauthenticated_user
+from .decorators import unauthenticated_user, allowed_groups
 import os
 import json
 
@@ -114,6 +114,7 @@ def page_cash_app(request):
     return render(request, "imrunicorn/donate_cash_app.html", context)
 
 
+@allowed_groups(allowed_group_list=['admin'])
 def page_donate_steel_targets(request):
     # return HttpResponse("Hello world 500.")
     context = {
