@@ -2,12 +2,14 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from datetime import datetime
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 from .queries import get_watch_list
 from django.contrib.auth.models import Group
 # Create your views here.
 
 
 def page_view_watches_reset(request):
+    step_hit_count_by_page(request.path)
     users_in_group = Group.objects.get(name="restricted-group").user_set.all()
     if request.user not in users_in_group:
         context = {
@@ -40,6 +42,7 @@ def page_view_watches_reset(request):
 
 
 def page_view_watches(request):
+    step_hit_count_by_page(request.path)
     watches = get_watch_list()
 
     for item in watches:
@@ -99,6 +102,7 @@ def search_url_for_magic_string(search_url, magic_string):
 # eventually, we'll remove everything below this line
 
 def page_view_watches_lkg(request):
+    step_hit_count_by_page(request.path)
     watches = get_watch_list()
     context = {
         "restart": get_restart_notice,
@@ -113,6 +117,7 @@ def page_view_watches_lkg(request):
 
 
 def page_home_old(request):
+    step_hit_count_by_page(request.path)
     context = {
         'body': 'no body to share',
         'header': 'Status',

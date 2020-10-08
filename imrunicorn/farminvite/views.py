@@ -10,10 +10,11 @@ from model_utils.models import now
 from .forms import InviteListingForm
 from .models import InviteListing
 from announcements.get_news import get_news, get_version_json, get_restart_notice
-
+from imrunicorn.functions import step_hit_count_by_page
 
 # Create your views here.
 def unused_json_farm_invites_view(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'body': 'no body to share',
@@ -23,6 +24,7 @@ def unused_json_farm_invites_view(request):
 
 
 def unused_page_farm_invites_view(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -36,6 +38,7 @@ def unused_page_farm_invites_view(request):
 
 
 def page_farm_invites_view(request):
+    step_hit_count_by_page(request.path)
     # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings
@@ -74,6 +77,7 @@ def page_farm_invites_view(request):
 
 
 def page_farm_invites_view_hidden_listings(request):
+    step_hit_count_by_page(request.path)
     # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings
@@ -98,6 +102,7 @@ def page_farm_invites_view_hidden_listings(request):
 
 
 def page_farm_invites_map(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -109,6 +114,7 @@ def page_farm_invites_map(request):
 
 
 def page_farm_invites_map_fake(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -121,6 +127,7 @@ def page_farm_invites_map_fake(request):
 
 
 def page_farm_check_list(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -170,6 +177,7 @@ def page_farm_check_list(request):
 
 
 def page_request_slot(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -194,6 +202,7 @@ def page_request_slot(request):
 
 
 def page_cash_app(request):
+    step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
@@ -207,6 +216,7 @@ def page_cash_app(request):
 
 
 def page_how_to_sign_up(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -224,6 +234,7 @@ def page_how_to_sign_up(request):
 
 
 def page_missing_contact_info(request):
+    step_hit_count_by_page(request.path)
     this_moment = datetime.now()
     # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
@@ -253,6 +264,7 @@ def page_missing_contact_info(request):
 
 
 def page_invite_listing(request):
+    step_hit_count_by_page(request.path)
     if request.method == 'POST':
         form = InviteListingForm(request.POST)
         if form.is_valid():

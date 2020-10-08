@@ -11,10 +11,12 @@ from subprocess import Popen, PIPE, STDOUT
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 
 
 # Create your views here.
 def admintool_restart_gunicorn(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_gunicorn"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -45,6 +47,7 @@ def admintool_restart_gunicorn(request):
 
 
 def admintool_restart_nginx(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_nginx"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -75,6 +78,7 @@ def admintool_restart_nginx(request):
 
 
 def admintool_restart_gunicorn_and_nginx(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_gunicorn_and_nginx"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -105,6 +109,7 @@ def admintool_restart_gunicorn_and_nginx(request):
 
 
 def admintool_cancel_restarts(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "cancel_all_restarts"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -135,6 +140,7 @@ def admintool_cancel_restarts(request):
 
 
 def dir_maker(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/dir_maker.sh", "create"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -150,6 +156,7 @@ def dir_maker(request):
 
 
 def dir_delete(request):
+    step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/dir_maker.sh", "delete"]
     try:
         process = Popen(command, stdout=PIPE, stderr=STDOUT)
@@ -179,6 +186,7 @@ def dir_delete(request):
 
 
 def no_request_found(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'body': 'no_request_found',
