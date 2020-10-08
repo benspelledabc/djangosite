@@ -114,7 +114,7 @@ def page_cash_app(request):
     return render(request, "imrunicorn/donate_cash_app.html", context)
 
 
-@allowed_groups(allowed_group_list=['admin'])
+# @allowed_groups(allowed_group_list=['admin'])
 def page_donate_steel_targets(request):
     # return HttpResponse("Hello world 500.")
     context = {
