@@ -1,0 +1,26 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<br />
+<div class="row ben_format_pretty">
+    <div class="col-md-12" align="left">
+    Page hits
+        {% for hit in page_hits %}
+        Name: <a href="{{request.scheme}}://{{request.get_host}}{{hit.page_name}}"
+                 target="_blank">{{request.scheme}}://{{request.get_host}}{{hit.page_name}}</a><br />
+            Count: {{ hit.page_hit_count }}<br /><br />
+        {% endfor %}
+
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}

@@ -2,9 +2,11 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 
 
 def page_six_steps_of_firing_a_shot(request):
+    step_hit_count_by_page(request.path)
     # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
     context = {
         "restart": get_restart_notice,
@@ -20,6 +22,7 @@ def page_six_steps_of_firing_a_shot(request):
 
 
 def page_reading_wind_mirage(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -32,6 +35,7 @@ def page_reading_wind_mirage(request):
 
 
 def sample(request):
+    step_hit_count_by_page(request.path)
     data = {
         "restart": get_restart_notice,
         'Query': 'Complete',
