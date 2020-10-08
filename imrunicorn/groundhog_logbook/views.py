@@ -3,6 +3,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter
 from groundhog_logbook.functions import all_groundhog_hole_locations, groundhog_removal_scoreboard
 from groundhog_logbook.functions import groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex
+from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime
@@ -37,6 +38,7 @@ class ChartData(APIView):
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 
 def page_charts(request):
+    step_hit_count_by_page(request.path)
     logs = groundhogs_by_hour_of_day()
     logs_sexy = groundhogs_by_sex()
     logs_sexy_hour = groundhogs_by_hour_of_day_by_sex()
@@ -59,6 +61,7 @@ def page_charts(request):
 
 
 def page_all_groundhog_removals(request):
+    step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals
 
     context = {
@@ -73,6 +76,7 @@ def page_all_groundhog_removals(request):
 
 
 def page_all_groundhog_locations(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
@@ -85,6 +89,7 @@ def page_all_groundhog_locations(request):
 
 
 def page_all_groundhog_removals_by_shooter_pk(request, shooter_pk=1):
+    step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals_by_shooter(shooter_pk)
 
     context = {
@@ -99,6 +104,7 @@ def page_all_groundhog_removals_by_shooter_pk(request, shooter_pk=1):
 
 
 def page_groundhog_removals_scoreboard(request):
+    step_hit_count_by_page(request.path)
     logs = groundhog_removal_scoreboard()
 
     context = {

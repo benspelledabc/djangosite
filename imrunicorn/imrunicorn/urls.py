@@ -32,6 +32,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
 
+    path('page_hits/', views.page_page_hits, name='page_hits'),
+
     path('donate/cash_app/', views.page_cash_app, name='donate_cash_app'),
     path('donate/steel_targets/', views.page_donate_steel_targets, name='donate_steel_targets'),
 

@@ -10,6 +10,7 @@ import json
 
 from .models import HandLoad, EstimatedDope, Firearm, Caliber, Powder, Projectile
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 from .forms import CaliberForm, PowderForm, ProjectileForm
 
 import logging
@@ -18,18 +19,21 @@ logger = logging.getLogger(__name__)
 
 
 def firearm_create_view(request):
+    step_hit_count_by_page(request.path)
     data = {"restart": get_restart_notice,'Query': 'Complete',
             'Result': 'The query completed but this is not an endpoint with data.'}
     return JsonResponse(data)
 
 
 def docker_update_test(request):
+    step_hit_count_by_page(request.path)
     data = {"restart": get_restart_notice, 'Query': 'Complete',
             'Result': 'The query loaded and stuff sooo it might be good.'}
     return JsonResponse(data)
 
 
 def projectile_create_view(request):
+    step_hit_count_by_page(request.path)
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
     # return JsonResponse(data)
     form = ProjectileForm(request.POST or None)
@@ -57,6 +61,7 @@ def projectile_create_view(request):
 
 
 def powder_create_view(request):
+    step_hit_count_by_page(request.path)
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
     # return JsonResponse(data)
     form = PowderForm(request.POST or None)
@@ -85,6 +90,7 @@ def powder_create_view(request):
 
 
 def caliber_create_view(request):
+    step_hit_count_by_page(request.path)
     form = CaliberForm(request.POST or None)
     if form.is_valid():
         # over ride values to track the submission
@@ -111,6 +117,7 @@ def caliber_create_view(request):
 
 
 def caliber_create_view_lkg(request):
+    step_hit_count_by_page(request.path)
     form = CaliberForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -129,6 +136,7 @@ def caliber_create_view_lkg(request):
 
 
 def page_foot_pound_calc(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -142,6 +150,7 @@ def page_foot_pound_calc(request):
 
 # Create your views here.
 def page_loads_by_type(request, load_type='All'):
+    step_hit_count_by_page(request.path)
     load_type = load_type.lower()
     if load_type == 'ocw':
         load_type = 'ocw'
@@ -183,6 +192,7 @@ def page_loads_by_type(request, load_type='All'):
 
 
 def page_loads(request):
+    step_hit_count_by_page(request.path)
     logger.info("This is not getting logged...")
 
     all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
@@ -204,6 +214,7 @@ def page_loads(request):
 
 # Create your views here.
 def page_loads_details(request, load_pk=None):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'load_id': load_pk,
@@ -251,6 +262,7 @@ def page_loads_details(request, load_pk=None):
 
 
 def page_estimated_dope(request, load_pk='3'):
+    step_hit_count_by_page(request.path)
     try:
         selected_load = EstimatedDope.objects.get(hand_load=load_pk)
         context = {
@@ -277,6 +289,7 @@ def page_estimated_dope(request, load_pk='3'):
 
 
 def page_firearm_detail(request, firearm_pk=None):
+    step_hit_count_by_page(request.path)
     if firearm_pk is None:
         context = {
             "restart": get_restart_notice,
@@ -314,6 +327,7 @@ def page_firearm_detail(request, firearm_pk=None):
 
 
 def sample(request):
+    step_hit_count_by_page(request.path)
     data = {
         "restart": get_restart_notice,
         'Query': 'Complete',

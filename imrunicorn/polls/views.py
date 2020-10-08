@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.db.models import Q
 from announcements.get_news import get_news, get_version_json, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 # "restart": get_restart_notice isn't really used yet
 from django.views.generic import DetailView
 from ipware import get_client_ip
@@ -17,10 +18,12 @@ import logging
 
 
 def django_pdf(request):
+    step_hit_count_by_page(request.path)
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
 
 
 def django_pdf_duplicate(request):
+    step_hit_count_by_page(request.path)
     return HttpResponse("Click <a href='/static/content/django.pdf'>here</a> to win!")
 
 
@@ -122,6 +125,7 @@ class ResultsView(generic.DetailView):
 
 
 def vote(request, poll_id):
+    step_hit_count_by_page(request.path)
     p = get_object_or_404(Poll, pk=poll_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])

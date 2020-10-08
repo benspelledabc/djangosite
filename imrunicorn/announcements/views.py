@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.views import APIView
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, \
     get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -24,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def page_all_news(request):
+    step_hit_count_by_page(request.path)
     logger.info("This is not getting logged...")
     context = {
         "restart": get_restart_notice,
@@ -37,6 +39,7 @@ def page_all_news(request):
 
 
 def json_all_news_json(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         "name": "peter griffin",
@@ -46,6 +49,7 @@ def json_all_news_json(request):
 
 
 def page_news_by_pk(request, news_pk='1'):
+    step_hit_count_by_page(request.path)
     blurb_page = '/news/detail/' + str(news_pk)
     context = {
         "restart": get_restart_notice,
@@ -61,6 +65,7 @@ def page_news_by_pk(request, news_pk='1'):
 
 
 def page_kevin(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         "channel": "fox",
