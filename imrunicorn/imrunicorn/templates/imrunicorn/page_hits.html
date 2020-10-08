@@ -11,11 +11,18 @@
 <br />
 <div class="row ben_format_pretty">
     <div class="col-md-12" align="left">
-    Page hits
+
+        <strong>HIT LIST</strong><br />
         {% for hit in page_hits %}
-        Name: <a href="{{request.scheme}}://{{request.get_host}}{{hit.page_name}}"
-                 target="_blank">{{request.scheme}}://{{request.get_host}}{{hit.page_name}}</a><br />
-            Count: {{ hit.page_hit_count }}<br /><br />
+            {% if hit.page_name not in hide_list %}
+                {% if hit.page_name != '/dist/js/bootstrap.min.js'%}
+                    Name: <a href="{{request.scheme}}://{{request.get_host}}{{hit.page_name}}"
+                         target="_blank">{{request.scheme}}://{{request.get_host}}{{hit.page_name}}</a><br />
+                    Count: {{ hit.page_hit_count }}<br /><br />
+                {% endif %}
+            {% else %}
+                {{hit.page_name}} : {{hide_list}}<br />
+            {% endif %}
         {% endfor %}
 
     </div>

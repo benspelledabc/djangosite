@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 import json
-from .models import PageCounter
+from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from .functions import step_hit_count_by_page
@@ -122,12 +122,14 @@ def page_cash_app(request):
 def page_page_hits(request):
     step_hit_count_by_page(request.path)
     page_hits = PageCounter.objects.all().order_by('-page_hit_count')
+    hide_list = PageHideList.objects.all()
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Hot Pages",
         "blurb": "See what others are looking at.",
         "page_hits": page_hits,
+        "hide_list": hide_list,
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/page_hits.html", context)
