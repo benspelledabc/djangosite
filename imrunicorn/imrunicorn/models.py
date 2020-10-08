@@ -27,3 +27,9 @@ class PageCounter(models.Model):
         ordering = ('-page_hit_count', 'page_name')
 
 
+class PageHideList(models.Model):
+    page_name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return "%s" % self.page_name
+
