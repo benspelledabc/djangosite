@@ -14,15 +14,9 @@
 
         <strong>HIT LIST</strong><br />
         {% for hit in page_hits %}
-            {% if hit.page_name not in hide_list %}
-                {% if hit.page_name != '/dist/js/bootstrap.min.js'%}
-                    Name: <a href="{{request.scheme}}://{{request.get_host}}{{hit.page_name}}"
-                         target="_blank">{{request.scheme}}://{{request.get_host}}{{hit.page_name}}</a><br />
-                    Count: {{ hit.page_hit_count }}<br /><br />
-                {% endif %}
-            {% else %}
-                {{hit.page_name}} : {{hide_list}}<br />
-            {% endif %}
+                [{{ hit.page_hit_count }}] - <a href="{{request.scheme}}://{{request.get_host}}{{hit.page_name}}"
+                    target="_blank">{{request.scheme}}://{{request.get_host}}{{hit.page_name}}</a><br />
+
         {% endfor %}
 
     </div>
