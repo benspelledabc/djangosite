@@ -124,7 +124,10 @@ def page_page_hits(request):
     page_hits = PageCounter.objects.\
         exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
 
-    page_hits = PageCounter.objects.exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+    # page_hits = PageCounter.objects.exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+    page_hits = PageCounter.objects.exclude(
+        page_name__in=PageHideList.objects.values('page_name'),
+    ).order_by('-page_hit_count')
 
     context = {
         "restart": get_restart_notice,
