@@ -121,15 +121,17 @@ def page_cash_app(request):
 
 def page_page_hits(request):
     step_hit_count_by_page(request.path)
-    page_hits = PageCounter.objects.all().order_by('-page_hit_count')
-    hide_list = PageHideList.objects.all()
+    page_hits = PageCounter.objects.\
+        exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+
+    page_hits = PageCounter.objects.exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Hot Pages",
         "blurb": "See what others are looking at.",
         "page_hits": page_hits,
-        "hide_list": hide_list,
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/page_hits.html", context)
