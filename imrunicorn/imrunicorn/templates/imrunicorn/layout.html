@@ -8,6 +8,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>
+
+        {% comment %}
+            This doesn't work the way i think/want because it doesn't pick up sub domains...
+        {% endcomment %}
+
         {{ title }}
         {% if "8000" in request.get_host %}
             - DEV
