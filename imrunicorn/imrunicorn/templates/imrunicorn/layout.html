@@ -14,13 +14,9 @@
         {% endcomment %}
 
         {{ title }}
-        {% if "8000" in request.get_host %}
-            - DEV
-        {% elif "dev.benspelledabc.me" in request.get_host  %}
-            - DEV
-        {% elif "test.benspelledabc.me" in request.get_host  %}
-            - TEST
-        {% endif %}
+        {% if release.cut != 'prod' %}
+            - {{ release.cut }}
+        {% endif%}
     </title>
 
     {% load static %}
@@ -119,6 +115,8 @@
                     <i class="fab fa-dev"></i>
                 {% elif "test" in release.cut  %}
                     <i style="color:red;"  class="fas fa-vial"></i>
+                {% elif "debug" in release.cut %}
+                    <i class="fas fa-bug"></i>
                 {% endif %}
             </a>
 
