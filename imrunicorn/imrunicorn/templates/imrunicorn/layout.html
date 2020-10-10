@@ -115,11 +115,9 @@
 
             <a class="navbar-brand" href="/">
                 <strong>{{ release.application_title }}</i></strong>
-                {% if "8000" in request.get_host %}
+                {% if "dev" in release.cut  %}
                     <i class="fab fa-dev"></i>
-                {% elif "dev.benspelledabc.me" in request.get_host  %}
-                    <i sclass="fab fa-dev"></i>
-                {% elif "test.benspelledabc.me" in request.get_host  %}
+                {% elif "test" in release.cut  %}
                     <i style="color:red;"  class="fas fa-vial"></i>
                 {% endif %}
             </a>

@@ -46,6 +46,7 @@ def page_home(request):
 
     release = get_version_json()
     title = release['application_title']
+    cut = release['cut']
 
     context = {
         "main_blurb": main_blurb,
@@ -53,6 +54,7 @@ def page_home(request):
         "all_news": all_news,
         'release': release,
         "title": title,
+        "cut": cut,
         # "blurb": get_main_page_blurb,
         "blurb": get_page_blurb_override('/'),
         "copy_year": datetime.now().year
