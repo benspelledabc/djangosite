@@ -3,7 +3,9 @@ version: '3'
 services:
   unicorn_web:
     hostname: unicorn_web
-    image: benspelledabc/djangosite:3.14.16
+    # image: benspelledabc/djangosite:3.14.40
+    # image: benspelledabc/djangosite:1.35
+    image: benspelledabc/djangosite:3.14.41
     restart: always
     depends_on:
       - unicorn_db
@@ -15,6 +17,10 @@ services:
         - ./data/:/opt/app/imrunicorn/data/
         - ./uploads/:/opt/app/imrunicorn/media/uploads/
         - ./certs/:/opt/app/certs/
+        # i use this volume for version control, sure there are better/easier ways
+        # - /data/django/imrunicorn/release.json:/opt/app/imrunicorn/release.json
+        # - ${PWD}/release.json:/opt/app/imrunicorn/release.json
+
 
   unicorn_db:
     image: mariadb
