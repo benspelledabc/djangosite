@@ -2,7 +2,7 @@
 
 server {
     listen 8020;
-    server_name benspelledabc.me;
+    server_name sample.benspelledabc.me;
     return 301 https://$host$request_uri;
 
     location / {
