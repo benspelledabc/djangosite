@@ -43,7 +43,7 @@ pipeline {
       steps{
         //we may not have pushed them all, but we're going to clean them all up
         sh "docker rmi $imagename:0.$BUILD_NUMBER"
-        sh "docker rmi $imagename:latest"
+        // sh "docker rmi $imagename:latest"
       }
     }
     
