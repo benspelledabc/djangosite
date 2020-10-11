@@ -19,11 +19,11 @@
         <ul>
         {% for item in videos %}
             {% if item.restricted %}
-                {% ifequal user.groups.all.0.name "content_collection_restricted" %}
+                {% if unrestricted_user %}
                     <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - {{ item.file_title }}</a>
                 {% else %}
                     <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - [ Title Hidden ]</a>
-                {% endifequal %}
+                {% endif %}
             {% else %}
                 <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - {{ item.file_title}}</a>
             {% endif %}

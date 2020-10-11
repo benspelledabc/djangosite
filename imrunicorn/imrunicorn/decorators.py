@@ -12,6 +12,8 @@ def unauthenticated_user(view_func):
     return wrapper_func
 
 
+# example use: @allowed_groups(allowed_groupname_list=['site_tester'])
+# from imrunicorn.decorators import allowed_groups
 def allowed_groups(allowed_groupname_list=['']):
     def decorator(view_func):
         def wrapper_func(request, *args, **kwargs):

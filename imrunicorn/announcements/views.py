@@ -64,18 +64,6 @@ def page_news_by_pk(request, news_pk='1'):
     return render(request, "announcements/news_by_pk.html", context)
 
 
-def page_kevin(request):
-    step_hit_count_by_page(request.path)
-    context = {
-        "restart": get_restart_notice,
-        "channel": "fox",
-        'release': get_version_json(),
-        "title": "Hello Kevin",
-        "copy_year": datetime.now().year,
-    }
-    return render(request, "announcements/helloX.html", context)
-
-
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 class NewsView(viewsets.ModelViewSet):

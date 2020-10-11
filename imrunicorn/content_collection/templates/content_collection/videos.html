@@ -16,13 +16,13 @@
     <center>
         {% for item in videos %}
             {% if item.restricted %}
-                {% ifequal user.groups.all.0.name "content_collection_restricted" %}
+                {% if unrestricted_user %}
                     <video width="640" height="480" controls>
                         <source src="{{ item.file_name.url }}" type="video/mp4">
                     </video>
                 {% else %}
-                    This video is restricted to a group, <i>content_collection_restricted</i>, which you are not part of as <strong>{{user}}</strong>.
-                {% endifequal %}
+                    Access to this video is restricted to a group which you are not part of as <strong>{{user}}</strong>.
+                {% endif %}
             {% else %}
                 <br />
                 <video width="640" height="480" controls>

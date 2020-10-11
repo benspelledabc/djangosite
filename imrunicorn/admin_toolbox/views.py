@@ -12,9 +12,10 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
-
+from imrunicorn.decorators import allowed_groups
 
 # Create your views here.
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def admintool_restart_gunicorn(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_gunicorn"]
@@ -46,6 +47,7 @@ def admintool_restart_gunicorn(request):
     return render(request, "admin_toolbox/output.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def admintool_restart_nginx(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_nginx"]
@@ -77,6 +79,7 @@ def admintool_restart_nginx(request):
     return render(request, "admin_toolbox/output.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def admintool_restart_gunicorn_and_nginx(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "restart_gunicorn_and_nginx"]
@@ -108,6 +111,7 @@ def admintool_restart_gunicorn_and_nginx(request):
     return render(request, "admin_toolbox/output.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def admintool_cancel_restarts(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/server_control.sh", "cancel_all_restarts"]
@@ -139,6 +143,7 @@ def admintool_cancel_restarts(request):
     return render(request, "admin_toolbox/output.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def dir_maker(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/dir_maker.sh", "create"]
@@ -155,6 +160,7 @@ def dir_maker(request):
         return JsonResponse({"status": "failed", "output": str(e)})
 
 
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def dir_delete(request):
     step_hit_count_by_page(request.path)
     command = ["bash", "admin_toolbox/dir_maker.sh", "delete"]
@@ -171,20 +177,7 @@ def dir_delete(request):
         return JsonResponse({"status": "failed", "output": str(e)})
 
 
-#
-# @csrf_exempt
-# def file_maniputer(request):
-#     if request.method == 'POST':
-#         request_data = json.loads(request.body)
-#         if request_data["action"] == "create":
-#             data = dir_maker()
-#         else:
-#             data = {"status": "not defined", "output": "not defined"}
-#
-#         response = HttpResponse(json.dumps(data), content_type='application/json', status=200)
-#         return response
-
-
+@allowed_groups(allowed_groupname_list=['admin_tools_members'])
 def no_request_found(request):
     step_hit_count_by_page(request.path)
     context = {

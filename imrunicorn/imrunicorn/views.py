@@ -8,12 +8,12 @@ import json
 from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
+from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page
 
 
 def page_access_denied_groups(request):
     step_hit_count_by_page(request.path)
-    # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -24,6 +24,7 @@ def page_access_denied_groups(request):
     return render(request, "imrunicorn/access_denied.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['site_tester'])
 def page_greyscale_test(request):
     step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
@@ -201,7 +202,7 @@ def page_days_since(request):
 
 
 def fetch_estimated_batf_days():
-    step_hit_count_by_page(request.path)
+    # step_hit_count_by_page(request.path)
     try:
         import requests
         url = 'https://www.silencershop.com/atf-wait-times'
