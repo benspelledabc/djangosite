@@ -3,29 +3,16 @@ from django.conf import settings
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
-from .decorators import unauthenticated_user, allowed_groups
 import os
 import json
-
+from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
-
-
-def page_access_denied_groups(request):
-    # render function takes argument  - request
-    # and return HTML as response
-    context = {
-        "restart": get_restart_notice,
-        'release': get_version_json(),
-        "title": "Access Denied",
-        "deny_type": "User not in required group or groups.",
-        "blurb": "The short version is, you got #groupBlocked.",
-        "copy_year": datetime.now().year
-    }
-    return render(request, "imrunicorn/access_denied.html", context)
+from .functions import step_hit_count_by_page
 
 
 def page_greyscale_test(request):
+    step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
@@ -42,6 +29,7 @@ def page_greyscale_test(request):
 
 # Create your views here.
 def page_home(request):
+    step_hit_count_by_page(request.path)
     try:
         all_news = get_news_sticky()
     except IndexError as ie:
@@ -58,6 +46,7 @@ def page_home(request):
 
     release = get_version_json()
     title = release['application_title']
+    cut = release['cut']
 
     context = {
         "main_blurb": main_blurb,
@@ -65,6 +54,7 @@ def page_home(request):
         "all_news": all_news,
         'release': release,
         "title": title,
+        "cut": cut,
         # "blurb": get_main_page_blurb,
         "blurb": get_page_blurb_override('/'),
         "copy_year": datetime.now().year
@@ -73,6 +63,7 @@ def page_home(request):
 
 
 def handler403(request, exception):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -86,6 +77,7 @@ def handler403(request, exception):
 
 
 def handler404(request, exception):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -101,6 +93,7 @@ def handler404(request, exception):
 
 
 def handler500(request):
+    step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
@@ -113,9 +106,9 @@ def handler500(request):
     return render(request, "errors/error.html", context)
 
 
-# @unauthenticated_user
 def page_cash_app(request):
     # return HttpResponse("Hello world 500.")
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -128,9 +121,29 @@ def page_cash_app(request):
     return render(request, "imrunicorn/donate_cash_app.html", context)
 
 
-# Guest must be a member of one of the following groups to see content, else be redirected to denied page.
-# @allowed_groups(allowed_groupname_list=['group_test', 'fake_group'])
+def page_page_hits(request):
+    step_hit_count_by_page(request.path)
+    page_hits = PageCounter.objects.\
+        exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+
+    # page_hits = PageCounter.objects.exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
+    page_hits = PageCounter.objects.exclude(
+        page_name__in=PageHideList.objects.values('page_name'),
+    ).order_by('-page_hit_count')
+
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Hot Pages",
+        "blurb": "See what others are looking at.",
+        "page_hits": page_hits,
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/page_hits.html", context)
+
+
 def page_donate_steel_targets(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
@@ -145,6 +158,7 @@ def page_donate_steel_targets(request):
 
 
 def page_days_since(request):
+    step_hit_count_by_page(request.path)
     input_date = request.GET.get('input_date')
 
     blurb_string = "/days_since?input_date=" + input_date
@@ -174,6 +188,7 @@ def page_days_since(request):
 
 
 def fetch_estimated_batf_days():
+    step_hit_count_by_page(request.path)
     try:
         import requests
         url = 'https://www.silencershop.com/atf-wait-times'
@@ -231,6 +246,7 @@ def fetch_estimated_batf_days():
 
 
 def page_blog_add(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'body': 'no body to share',
@@ -240,6 +256,7 @@ def page_blog_add(request):
 
 
 def page_blog_read(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'body': 'no body to share',
@@ -249,6 +266,7 @@ def page_blog_read(request):
 
 
 def page_pi_endpoint(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         'header': 'Small holes',

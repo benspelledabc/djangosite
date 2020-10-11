@@ -7,7 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>{{ title }}</title>
+    <title>
+
+        {% comment %}
+            This doesn't work the way i think/want because it doesn't pick up sub domains...
+        {% endcomment %}
+
+        {{ title }}
+        {% if release.cut != 'prod' %}
+            - {{ release.cut }}
+        {% endif%}
+    </title>
 
     {% load static %}
     <!-- <link href="{% static 'imrunicorn/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/> -->
@@ -40,6 +50,8 @@
 
     </style>
 
+
+    <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
     {% block extra_head %}
 
     {% endblock %}
@@ -99,7 +111,16 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="/"><strong>{{ release.application_title }}</i></strong></a>
+            <a class="navbar-brand" href="/">
+                <strong>{{ release.application_title }}</i></strong>
+                {% if "dev" in release.cut  %}
+                    <i class="fab fa-dev">&nbsp;</i>
+                {% elif "test" in release.cut  %}
+                    <i style="color:red;"  class="fas fa-vial">&nbsp;</i>
+                {% elif "debug" in release.cut %}
+                    <i style="color:yellow" class="fas fa-bug">&nbsp;</i>
+                {% endif %}
+            </a>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -125,6 +146,7 @@
                       <li class="dropdown-header">Misc Stuff</li>
                     <li><a class="dropdown-item" href="{% url 'all_news' %}">News</a></li>
                     <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
+                    <li><a href="{% url 'page_hits' %}">Page Hits</a></li>
 
                   </ul>
                 </li>
@@ -231,6 +253,12 @@
   <div class="row text-center">
    <div class="col-lg-12">© {{ copy_year }} - Drunken Dwarves, Irate Gnomes, and {{ release.author }}</div>
    <div class="col-lg-12">Version: {{ release.version }} - Build Date: {{ release.build_date }}</div>
+      <div class="col-lg-12">
+          <br />
+          <span id="siteseal">
+              <script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=s6ZRfZaLsoE24WHV2OfHJKt76hKbS8UzH5DNTzKcLcFnH61heBtsybvUpZD7"></script>
+          </span>
+      </div>
   </div>
      <br />
   <div class="row justify-content-center text-center">
@@ -257,7 +285,8 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- removed at some point -->
+<!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
 
 {% block scripts %}{% endblock %}
 

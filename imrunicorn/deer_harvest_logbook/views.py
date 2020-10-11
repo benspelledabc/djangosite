@@ -1,5 +1,6 @@
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 from deer_harvest_logbook.functions import all_harvests, all_harvests_by_shooter
 from deer_harvest_logbook.functions import harvests_by_hour_of_day, harvests_by_score, harvests_by_sex
 from datetime import datetime
@@ -11,6 +12,7 @@ User = get_user_model()
 
 
 def page_charts(request):
+    step_hit_count_by_page(request.path)
     logs = harvests_by_hour_of_day()
     logs_sexy = harvests_by_sex()
     logs_by_score = harvests_by_score()
@@ -28,6 +30,7 @@ def page_charts(request):
 
 
 def page_point_system(request):
+    step_hit_count_by_page(request.path)
     context = {
         "hide_points": True,
         "restart": get_restart_notice,
@@ -40,6 +43,7 @@ def page_point_system(request):
 
 
 def page_point_system_show_points(request):
+    step_hit_count_by_page(request.path)
     context = {
         "hide_points": False,
         "restart": get_restart_notice,
@@ -52,6 +56,7 @@ def page_point_system_show_points(request):
 
 
 def page_all_harvests(request):
+    step_hit_count_by_page(request.path)
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
@@ -65,6 +70,7 @@ def page_all_harvests(request):
 
 
 def page_all_harvests(request):
+    step_hit_count_by_page(request.path)
     all_removals = {}
     context = {
         "restart": get_restart_notice,
@@ -78,6 +84,7 @@ def page_all_harvests(request):
 
 
 def page_all_harvests_by_shooter_pk(request, shooter_pk=1):
+    step_hit_count_by_page(request.path)
     # all_news = all_groundhog_removals_by_shooter(shooter_pk)
     all_news = all_harvests
     context = {

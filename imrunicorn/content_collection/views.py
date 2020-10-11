@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
+from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk
 # from django.contrib.auth import get_user_model
@@ -33,6 +34,7 @@ def page_latest_video_by_pk(request, video_pk=1):
 
 
 def page_latest_video(request):
+    step_hit_count_by_page(request.path)
     videos = get_latest_video
     context = {
         "videos": videos,
@@ -46,6 +48,7 @@ def page_latest_video(request):
 
 
 def page_video_list(request):
+    step_hit_count_by_page(request.path)
     videos = get_all_videos
     context = {
         "videos": videos,
@@ -59,6 +62,7 @@ def page_video_list(request):
 
 
 def page_videos(request):
+    step_hit_count_by_page(request.path)
     videos = get_all_videos
     context = {
         "videos": videos,
