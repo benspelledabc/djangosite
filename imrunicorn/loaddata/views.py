@@ -145,6 +145,7 @@ def page_foot_pound_calc(request):
         "blurb": get_page_blurb_override('load_data/foot_pound_calculator/'),
         "copy_year": datetime.now().year,
     }
+    # print("release.cut == {0}".format(context['release']['cut']))
     return render(request, "loaddata/foot_pound_calc.html", context)
 
 
