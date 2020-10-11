@@ -31,6 +31,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),
+    path('access_denied_groups', views.page_access_denied_groups, name='access_denied_groups'),
 
     path('donate/cash_app/', views.page_cash_app, name='donate_cash_app'),
     path('donate/steel_targets/', views.page_donate_steel_targets, name='donate_steel_targets'),

@@ -11,6 +11,20 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 
 
+def page_access_denied_groups(request):
+    # render function takes argument  - request
+    # and return HTML as response
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Access Denied",
+        "deny_type": "User not in required group or groups.",
+        "blurb": "The short version is, you got #groupBlocked.",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/access_denied.html", context)
+
+
 def page_greyscale_test(request):
     # return HttpResponse("Hello world 500.")
     context = {
@@ -114,9 +128,9 @@ def page_cash_app(request):
     return render(request, "imrunicorn/donate_cash_app.html", context)
 
 
-@allowed_groups(allowed_group_list=['group_test'])
+# Guest must be a member of one of the following groups to see content, else be redirected to denied page.
+# @allowed_groups(allowed_groupname_list=['group_test', 'fake_group'])
 def page_donate_steel_targets(request):
-    # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),

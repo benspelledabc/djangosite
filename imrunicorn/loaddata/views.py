@@ -10,6 +10,7 @@ import json
 
 from .models import HandLoad, EstimatedDope, Firearm, Caliber, Powder, Projectile
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
+from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .forms import CaliberForm, PowderForm, ProjectileForm
 
 import logging
@@ -182,6 +183,7 @@ def page_loads_by_type(request, load_type='All'):
     return render(request, "loaddata/djangoad.html", context)
 
 
+# @allowed_groups(allowed_groupname_list=['content_collection_restricted'])
 def page_loads(request):
     logger.info("This is not getting logged...")
 
