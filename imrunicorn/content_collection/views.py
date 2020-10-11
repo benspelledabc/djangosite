@@ -6,6 +6,9 @@ from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
+# from imrunicorn.decorators import allowed_groups
+# @allowed_groups(allowed_groupname_list=['admin_tools_members'])
+# request.user.groups.filter(name__in=allowed_groupname_list).exists()
 
 
 # Create your views here.
@@ -21,12 +24,20 @@ def page_blank(request):
 
 
 def page_latest_video_by_pk(request, video_pk=1):
+    step_hit_count_by_page(request.path)
     videos = get_video_by_pk(video_pk)
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "videos": videos,
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
+        'unrestricted_user': unrestricted,
         "title": "Videos: #{video_id}".format(video_id=video_pk),
         "blurb": get_page_blurb_override('content_collection/videos/'),
     }
@@ -36,12 +47,19 @@ def page_latest_video_by_pk(request, video_pk=1):
 def page_latest_video(request):
     step_hit_count_by_page(request.path)
     videos = get_latest_video
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "videos": videos,
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Videos: Latest",
+        'unrestricted_user': unrestricted,
         "blurb": get_page_blurb_override('content_collection/videos/'),
     }
     return render(request, "content_collection/videos.html", context)
@@ -50,11 +68,18 @@ def page_latest_video(request):
 def page_video_list(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "videos": videos,
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
+        'unrestricted_user': unrestricted,
         "title": "Video List",
         "blurb": get_page_blurb_override('content_collection/videos_list/'),
     }
@@ -64,11 +89,18 @@ def page_video_list(request):
 def page_videos(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "videos": videos,
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
+        'unrestricted_user': unrestricted,
         "title": "Videos: All (slow to load)",
         "blurb": get_page_blurb_override('content_collection/videos/'),
     }
