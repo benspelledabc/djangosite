@@ -11,6 +11,19 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
 from .functions import step_hit_count_by_page
 
 
+def page_access_denied_groups(request):
+    step_hit_count_by_page(request.path)
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Access Denied",
+        "deny_message": "You are not in one of the groups that is allowed to see this page.",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/access_denied.html", context)
+
+
 def page_greyscale_test(request):
     step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
