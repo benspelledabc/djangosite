@@ -144,7 +144,6 @@ def page_page_hits(request):
 
 def page_donate_steel_targets(request):
     step_hit_count_by_page(request.path)
-    # return HttpResponse("Hello world 500.")
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),

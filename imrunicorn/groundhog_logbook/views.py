@@ -1,3 +1,4 @@
+from imrunicorn.decorators import unauthenticated_user
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter
@@ -60,6 +61,7 @@ def page_charts(request):
     return render(request, "groundhog_logbook/groundhog_charts.html", context)
 
 
+# @unauthenticated_user
 def page_all_groundhog_removals(request):
     step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals
