@@ -50,6 +50,8 @@
 
     </style>
 
+
+    <script src="https://kit.fontawesome.com/9a11d62cbf.js" crossorigin="anonymous"></script>
     {% block extra_head %}
 
     {% endblock %}
@@ -112,11 +114,11 @@
             <a class="navbar-brand" href="/">
                 <strong>{{ release.application_title }}</i></strong>
                 {% if "dev" in release.cut  %}
-                    <i class="fab fa-dev"></i>
+                    <i class="fab fa-dev">&nbsp;</i>
                 {% elif "test" in release.cut  %}
-                    <i style="color:red;"  class="fas fa-vial"></i>
+                    <i style="color:red;"  class="fas fa-vial">&nbsp;</i>
                 {% elif "debug" in release.cut %}
-                    <i class="fas fa-bug"></i>
+                    <i style="color:yellow" class="fas fa-bug">&nbsp;</i>
                 {% endif %}
             </a>
 

@@ -110,7 +110,6 @@ WSGI_APPLICATION = 'imrunicorn.wsgi.application'
 
 if socket.gethostname().startswith('benspelledabc') \
         or socket.gethostname().startswith('dell') \
-        or (socket.gethostname().find('MacBook') != -1) \
         or socket.gethostname().startswith('docker-'):
     DATABASES = {
         'default': {
