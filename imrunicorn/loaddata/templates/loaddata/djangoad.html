@@ -92,7 +92,7 @@
           {% else %}
 
           <tr bgcolor="#F5F5F5">
-              <td style="padding-left:10px">{{ load.firearm.owner.first_name }}</td>
+              <td style="padding-left:10px">{{ load.firearm.owner.userprofile.preferred_display_name|default:load.firearm.owner.username }}</td>
               <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
 
               {% if load.projectile.buy_link != None %}
