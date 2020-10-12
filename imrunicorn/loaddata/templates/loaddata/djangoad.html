@@ -49,9 +49,9 @@
           {% for load in all_loads %}
           {% if load.Is_Sheriff_Load %}
           <tr bgcolor="#BEBEBE">
-              <td style="padding-left:10px">{{ load.firearm.owner.first_name }}</td>
-              <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
 
+              <td style="padding-left:10px">{{ load.firearm.owner.userprofile.preferred_display_name|default:load.firearm.owner.username }}</td>
+              <td style="padding-left:10px"><a href="{% url 'load_data:page_firearm_detail' %}{{ load.firearm.pk }}">{{ load.firearm.caliber|upper }}</a></td>
 
               {% if load.projectile.buy_link != None %}
               <td style="padding-left:10px">{{ load.projectile.WeightGR }}gr - {{ load.projectile.Name }} <a href="{{ load.projectile.buy_link }}" target="_blank"><i class="fas fa-link"></i></a></td>

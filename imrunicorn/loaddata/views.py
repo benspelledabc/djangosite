@@ -204,6 +204,9 @@ def page_loads(request):
         rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60, output_field=IntegerField())
     )
 
+    # print(all_loads[0].firearm.owner.first_name)
+    # print(all_loads[0].firearm.owner.userprofile.preferred_display_name)
+
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
