@@ -23,7 +23,10 @@
             {% for news in all_news %}
                 <b>Removal Date:</b> {{ news.removal_date }}<br />
                 <b>Removal Time:</b> {{ news.removal_time }}<br />
-                <b>Shooter:</b> <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">{{ news.shooter.first_name }}</a><br />
+                <b>Shooter:</b>
+            <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">
+                {{ news.shooter.userprofile.preferred_display_name|default:news.shooter.first_name }}
+            </a><br />
                 <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm|title }}</a><br />
 
                 <b>Load Detail:</b>{% if user.is_authenticated %} {{ news.load }}{% else %} <i>(Logged In Users Only)</i></i>{% endif %}<br />
