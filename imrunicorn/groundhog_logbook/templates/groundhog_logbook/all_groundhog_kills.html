@@ -27,7 +27,7 @@
             <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ news.shooter.pk }}">
                 {{ news.shooter.userprofile.preferred_display_name|default:news.shooter.first_name }}
             </a><br />
-                <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm|title }}</a><br />
+                <b>Firearm Info:</b><a href="{% url 'load_data:page_firearm_detail' %}{{ news.firearm.pk }}">{{ news.firearm }}</a><br />
 
                 <b>Load Detail:</b>{% if user.is_authenticated %} {{ news.load }}{% else %} <i>(Logged In Users Only)</i></i>{% endif %}<br />
                 <b>Location:</b>{% if user.is_authenticated %}<a href="https://www.google.com/maps/search/?api=1&query={{ news.location.latitude }},{{ news.location.longitude }}"

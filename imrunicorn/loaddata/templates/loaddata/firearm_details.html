@@ -12,7 +12,7 @@
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
 
-            <b>Firearm Owner:</b> {{ firearm_details.owner|title }}</br>
+            <b>Firearm Owner:</b> {{ firearm_details.owner.userprofile.preferred_display_name|default:firearm_details.owner }}</br>
             <b>Manufacture:</b> {{ firearm_details.manufacture|title }}</br>
             <b>Model:</b> {{ firearm_details.model|title }}</br>
             <b>Barrel Length:</b> {{ firearm_details.barrel_length }} inches</br>
