@@ -1,6 +1,7 @@
 from django.db import models
 from decimal import Decimal
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class Caliber(models.Model):
@@ -32,7 +33,13 @@ class Firearm(models.Model):
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "%s's %s %s %s" % (self.owner.first_name, self.manufacture, self.model, self.caliber)
+        display_name = self.owner.first_name
+        try:
+            display_name = self.owner.userprofile.preferred_display_name
+        except ObjectDoesNotExist:
+            pass
+
+        return "%s's %s %s %s" % (display_name, self.manufacture, self.model, self.caliber)
 
     class Meta:
         ordering = ('owner', 'caliber', 'manufacture', 'model')

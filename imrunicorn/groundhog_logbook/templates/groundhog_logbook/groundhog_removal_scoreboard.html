@@ -76,8 +76,11 @@
                 {% for log in logs %}
                 <div class="divTableRow">
                     <div class="divTableCell"># {{ forloop.counter }}</div>
-                    <div class="divTableCell"><a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.shooter }}">
-                            {{ log.shooter__first_name }}</a></div>
+                        <div class="divTableCell">
+                            <a href="{% url 'groundhog_logbook:all_groundhog_removals' %}{{ log.shooter }}">
+                                {{ log.shooter__userprofile__preferred_display_name|default:log.shooter__first_name }}
+                            </a>
+                        </div>
                     <div class="divTableCell">[Count: {{ log.removals }}]</div>
                 </div>
                 {% endfor %}
