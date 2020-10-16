@@ -10,3 +10,4 @@ nginx.default-lkg
 media.tar
 /uploads/
 /imrunicorn/data/db.sqlite3
+.vscode/settings.json
