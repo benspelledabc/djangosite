@@ -1,4 +1,6 @@
 {% extends "imrunicorn/layout.html" %}
+{% load static %}
+
 
 {% block extra_head %}
 
@@ -13,7 +15,6 @@
 </div>
 
 <div class="row ben_format_pretty">
-    Carousel pictures... mmmm<br /><br />
 
     <div class="col-md-12">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -32,26 +33,42 @@
                 {% for item in carousel %}
                     {% if forloop.first %}
                         <div class="item active">
-                            {% if item.picture.url != None %}
-                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
-                            {% else %}
-                                {% if item.link_to_external|first in 'http' %}
-                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                            {% if item.restricted %}
+                                {% if unrestricted_user %}
+                                    {% if item.picture.url != None %}
+                                        <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                                    {% else %}
+                                        <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    {% endif %}
                                 {% else %}
-                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    <img class="slide-image" src="{% static '/content_collection/restricted.png' %}" alt="restricted image">
                                 {% endif %}
+                            {% else %}
+                                    {% if item.picture.url != None %}
+                                        <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                                    {% else %}
+                                        <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    {% endif %}
                             {% endif %}
                         </div>
                     {% else %}
                         <div class="item">
-                            {% if item.picture.url != None %}
-                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
-                            {% else %}
-                                {% if item.link_to_external|first in 'http' %}
-                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                            {% if item.restricted %}
+                                {% if unrestricted_user %}
+                                    {% if item.picture.url != None %}
+                                        <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                                    {% else %}
+                                        <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    {% endif %}
                                 {% else %}
-                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    <img class="slide-image" src="{% static '/content_collection/restricted.png' %}" alt="restricted image">
                                 {% endif %}
+                            {% else %}
+                                    {% if item.picture.url != None %}
+                                        <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                                    {% else %}
+                                        <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                    {% endif %}
                             {% endif %}
                         </div>
                     {% endif %}

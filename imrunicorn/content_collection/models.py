@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 
 
@@ -18,10 +19,11 @@ class PicturesForCarousel(models.Model):
     caption = models.CharField(max_length=250, null="no name yet", blank="no name yet", default="no name yet")
     picture = models.ImageField(upload_to='uploads/carousel/', null=True, blank=True)
     link_to_external = models.CharField(max_length=250, null=True, blank=True)
+    restricted = models.BooleanField(default=True, null=True)
 
     def __str__(self):
         return self.caption
 
     class Meta:
-        ordering = ('caption', '-pk')
+        ordering = ('-pk', 'caption')
 

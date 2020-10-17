@@ -27,11 +27,18 @@ def page_blank(request):
 def page_carousel_recent(request):
     step_hit_count_by_page(request.path)
     carousel = get_recent_pictures_for_carousel()
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Carousel",
+        'unrestricted_user': unrestricted,
         "carousel": carousel,
         "blurb": get_page_blurb_override('content_collection/carousel/'),
     }
@@ -41,11 +48,18 @@ def page_carousel_recent(request):
 def page_carousel(request):
     step_hit_count_by_page(request.path)
     carousel = get_all_pictures_for_carousel()
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Carousel",
+        'unrestricted_user': unrestricted,
         "carousel": carousel,
         "blurb": get_page_blurb_override('content_collection/carousel/'),
     }
