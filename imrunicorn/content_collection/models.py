@@ -12,3 +12,16 @@ class Video(models.Model):
 
     class Meta:
         ordering = ('-pk', 'restricted', 'file_title', 'file_name')
+
+
+class PicturesForCarousel(models.Model):
+    caption = models.CharField(max_length=250, null="no name yet", blank="no name yet", default="no name yet")
+    picture = models.ImageField(upload_to='uploads/carousel/', null=True, blank=True)
+    link_to_external = models.CharField(max_length=250, null=True, blank=True)
+
+    def __str__(self):
+        return self.caption
+
+    class Meta:
+        ordering = ('caption', '-pk')
+

@@ -8,4 +8,8 @@ urlpatterns = [
     path('videos/', views.page_video_list, name='video_list'),
     path('videos/<int:video_pk>', views.page_latest_video_by_pk, name='video_list'),
     path('videos/latest', views.page_latest_video, name='videos_latest'),
+
+    path('carousel', views.page_carousel, name='carousel'),
+    path('carousel/recent', views.page_carousel_recent, name='carousel_recent'),
+
 ]

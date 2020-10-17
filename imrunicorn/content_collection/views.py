@@ -3,7 +3,8 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
     get_page_blurb_override, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
-from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk
+from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
+    get_recent_pictures_for_carousel, get_all_pictures_for_carousel
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 # from imrunicorn.decorators import allowed_groups
@@ -21,6 +22,34 @@ def page_blank(request):
         "blurb": get_page_blurb_override('content_collection/blank/'),
     }
     return render(request, "content_collection/blank.html", context)
+
+
+def page_carousel_recent(request):
+    step_hit_count_by_page(request.path)
+    carousel = get_recent_pictures_for_carousel()
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Carousel",
+        "carousel": carousel,
+        "blurb": get_page_blurb_override('content_collection/carousel/'),
+    }
+    return render(request, "content_collection/carousel.html", context)
+
+
+def page_carousel(request):
+    step_hit_count_by_page(request.path)
+    carousel = get_all_pictures_for_carousel()
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Carousel",
+        "carousel": carousel,
+        "blurb": get_page_blurb_override('content_collection/carousel/'),
+    }
+    return render(request, "content_collection/carousel.html", context)
 
 
 def page_latest_video_by_pk(request, video_pk=1):

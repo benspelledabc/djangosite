@@ -1,0 +1,56 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    List of videos, some may be hidden because of access.<br /><br />
+
+    <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="slide-image" src="http://placehold.it/800x200" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x400" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x500" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x600" alt="">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

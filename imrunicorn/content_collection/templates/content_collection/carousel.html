@@ -1,0 +1,79 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    Carousel pictures... mmmm<br /><br />
+
+    <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+
+                {% for item in carousel %}
+                    {% if forloop.first %}
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    {% else %}
+                        <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter}}"></li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+
+                {% for item in carousel %}
+                    {% if forloop.first %}
+                        <div class="item active">
+                            {% if item.picture.url != None %}
+                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                            {% else %}
+                                {% if item.link_to_external|first in 'http' %}
+                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% else %}
+                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            {% if item.picture.url != None %}
+                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                            {% else %}
+                                {% if item.link_to_external|first in 'http' %}
+                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% else %}
+                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+{% endblock %}
