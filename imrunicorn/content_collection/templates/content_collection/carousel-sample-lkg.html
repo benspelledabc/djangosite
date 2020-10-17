@@ -13,33 +13,51 @@
 </div>
 
 <div class="row ben_format_pretty">
-    List of videos, some may be hidden because of access.<br /><br />
+    Carousel pictures, are not restricted here.<br /><br />
 
     <div class="col-md-12">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+
+                {% for item in carousel %}
+                    {% if forloop.first %}
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    {% else %}
+                        <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter}}"></li>
+                    {% endif %}
+                {% endfor %}
             </ol>
             <div class="carousel-inner">
-                <div class="item active">
-                    <img class="slide-image" src="http://placehold.it/800x200" alt="">
-                </div>
-                <div class="item">
-                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                </div>
-                <div class="item">
-                    <img class="slide-image" src="http://placehold.it/800x400" alt="">
-                </div>
-                <div class="item">
-                    <img class="slide-image" src="http://placehold.it/800x500" alt="">
-                </div>
-                <div class="item">
-                    <img class="slide-image" src="http://placehold.it/800x600" alt="">
-                </div>
+
+                {% for item in carousel %}
+                    {% if forloop.first %}
+                        <div class="item active">
+                            {% if item.picture.url != None %}
+                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                            {% else %}
+                                {% if item.link_to_external|first in 'http' %}
+                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% else %}
+                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            {% if item.picture.url != None %}
+                                <img class="slide-image" src="{{ item.picture.url }}" alt="{{ item.caption }}">
+                            {% else %}
+                                {% if item.link_to_external|first in 'http' %}
+                                    <img class="slide-image" src="{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% else %}
+                                    <img class="slide-image" src="{{request.scheme}}://{{request.get_host}}{{ item.link_to_external }}" alt="{{ item.caption }}">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -47,8 +65,13 @@
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
+
         </div>
     </div>
+
+
+
+
 
 
 </div>
