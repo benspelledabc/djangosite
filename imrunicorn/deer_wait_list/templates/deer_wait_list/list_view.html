@@ -19,7 +19,10 @@
     entry number. This means the orders can be prioritized based on when they were requested. If orders
     are entered on the same date it's sorted by first in getting higher priority in the completion process.
 
-    <br /><br /><br /><br />
+    <br /><br />
+    <a class="dropdown-item" href="{% url 'deer_wait_list:info' %}">What flavor's and items can I choose?</a>
+
+    <hr />
 
     <ol>
         {% for order in orders %}
