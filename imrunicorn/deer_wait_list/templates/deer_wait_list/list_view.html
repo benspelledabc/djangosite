@@ -1,0 +1,49 @@
+{% extends "imrunicorn/layout.html" %}
+{% load range %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    This list has some sorting applied to it. It does <b>not</b> show completed orders/requests.
+    It sorts orders/requests that are to be completed yet sorted by the order date first, then by the
+    entry number. This means the orders can be prioritized based on when they were requested. If orders
+    are entered on the same date it's sorted by first in getting higher priority in the completion process.
+
+    <br /><br /><br /><br />
+
+    <ol>
+        {% for order in orders %}
+            <li>
+                {{ order.recipient }} - {{order.order_date}}
+                {% for value in 0|range:order.recipient.perceived_thankfulness %}
+                    <i style="color:#f5b342;" class="fas fa-star"></i>
+                {% endfor %}
+            </li>
+            <ol>
+                {% for item in order.choice_cuts.all %}
+                    <li>
+                        {% if "jerky" in item.name|lower %}
+                            {{ item }} --- [Flavor: <i>{{order.flavor}}</i>]
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+            <br />
+        {% endfor %}
+    </ol>
+
+</div>
+
+{% endblock %}

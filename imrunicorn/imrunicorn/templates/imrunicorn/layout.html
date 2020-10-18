@@ -175,8 +175,8 @@
 
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Deer Wait List</li>
-                      <li><a class="dropdown-item" href="#">View Wait List (Coming Soon)</a></li>
-                      <li><a class="dropdown-item" href="#">Info (Coming Soon)</a></li>
+                      <li><a class="dropdown-item" href="{% url 'deer_wait_list:list_view' %}">View Wait List</a></li>
+                      <li><a class="dropdown-item" href="{% url 'deer_wait_list:info' %}">Info</a></li>
 
                       {% comment %}
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts</a></li>
