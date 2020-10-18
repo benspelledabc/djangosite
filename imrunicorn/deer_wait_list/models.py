@@ -8,7 +8,7 @@ class Recipient(models.Model):
     name = models.CharField(max_length=150)
     phone = PhoneField(blank=True, help_text='Contact phone number')
     email = models.EmailField(blank=True, max_length=254)
-    perceived_thankfulness = models.IntegerField(null=True, blank=True,
+    perceived_thankfulness = models.IntegerField(null=True, default=1,
                                                  validators=[
                                                      MaxValueValidator(10),
                                                      MinValueValidator(1)])
