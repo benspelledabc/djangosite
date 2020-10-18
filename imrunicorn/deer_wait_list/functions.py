@@ -7,13 +7,25 @@ def get_remaining_orders():
         Q(order_complete=False)
     ).order_by('order_date', 'pk')
 
-    # print(result[0].recipient.perceived_thankfulness)
-
     return result
 
 
 def get_all_orders():
     result = RequestedOrder.objects.filter(
     ).order_by('order_date', 'pk')
+
+    return result
+
+
+def get_all_cuts():
+    result = MeatCut.objects.filter(
+    ).order_by('name', 'pk')
+
+    return result
+
+
+def get_all_flavors():
+    result = Flavor.objects.filter(
+    ).order_by('name', 'pk')
 
     return result

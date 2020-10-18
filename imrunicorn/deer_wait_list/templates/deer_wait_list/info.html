@@ -15,9 +15,27 @@
 <div class="row ben_format_pretty">
     In order to keep the natives at bay, we've decided to keep a list of people who want venison.
     Basically all that happens is, the person on the top of the list gets the next deer or w/e parts they want
-    of said deer.<br /><br />
+    of said deer. We can't legally sell the deer/venison, but we're open to trade or donations.<br /><br />
 
-    We can't legally sell the deer/venison, but we're open to trade or donations.
+    <a class="dropdown-item" href="{% url 'deer_wait_list:list_view' %}">View the current wait list</a>
+
+    <hr />
+
+    Cuts of meat or other items for order
+    <ul>
+        {% for cut in cuts %}
+        <li>{{cut}}</li>
+        {% endfor %}
+    </ul>
+    <br /><br />
+
+    Flavors (For jerky only at this time)
+    <ul>
+        {% for flavor in flavors %}
+        <li>{{flavor}}</li>
+        {% endfor %}
+    </ul>
+
 
 </div>
 

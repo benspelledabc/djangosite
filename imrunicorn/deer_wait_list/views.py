@@ -2,7 +2,7 @@ from django.shortcuts import render
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
-from .functions import get_all_orders, get_remaining_orders
+from .functions import get_all_orders, get_remaining_orders, get_all_flavors, get_all_cuts
 from datetime import datetime
 from django.shortcuts import render
 
@@ -21,10 +21,14 @@ def page_blank(request):
 
 def page_info(request):
     step_hit_count_by_page(request.path)
+    cuts = get_all_cuts()
+    flavors = get_all_flavors()
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
+        "cuts": cuts,
+        "flavors": flavors,
         "title": "Deer Wait List: Info",
         "blurb": get_page_blurb_override('deer_wait_list/info/'),
     }
