@@ -28,9 +28,11 @@
         {% for order in orders %}
             <li>
                 {{ order.recipient }} - {{order.order_date}}
-                {% for value in 0|range:order.recipient.perceived_thankfulness %}
-                    <i style="color:#f5b342;" class="fas fa-star"></i>
-                {% endfor %}
+                {% if unrestricted %}
+                    {% for value in 0|range:order.recipient.perceived_thankfulness %}
+                        <i style="color:#f5b342;" class="fas fa-star"></i>
+                    {% endfor %}
+                {% endif %}
             </li>
             <ol>
                 {% for item in order.choice_cuts.all %}

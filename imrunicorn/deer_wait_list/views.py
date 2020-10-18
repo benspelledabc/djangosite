@@ -38,11 +38,19 @@ def page_info(request):
 def page_list_view(request):
     step_hit_count_by_page(request.path)
     orders = get_remaining_orders()
+    # deer_wait_list_perceived_thankfulness_viewer
+
+    unrestricted = False
+    allowed_groupname_list = ['deer_wait_list_perceived_thankfulness_viewer']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "orders": orders,
+        "unrestricted": unrestricted,
         "title": "Deer Wait List: List View",
         "blurb": get_page_blurb_override('deer_wait_list/list_view/'),
     }
