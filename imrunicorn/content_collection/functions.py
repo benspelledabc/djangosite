@@ -6,9 +6,9 @@ from django.db.models import Q
 from .models import Video, PicturesForCarousel
 
 
-def get_dnd5e_by_pk(video_pk='1'):
+def get_dnd5e_by_pk(dnd5e_pk='1'):
     result = Video.objects.filter(
-        Q(pk=video_pk)
+        Q(pk=dnd5e_pk)
     )
     return result
 
