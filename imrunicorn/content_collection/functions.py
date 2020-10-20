@@ -3,7 +3,20 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Video, PicturesForCarousel
+from .models import Video, PicturesForCarousel, DAndDFifthEditionBook
+
+
+def get_dnd5e_by_pk(dnd5e_pk='1'):
+    result = DAndDFifthEditionBook.objects.filter(
+        Q(pk=dnd5e_pk)
+    )
+    return result
+
+
+def get_all_dnd5e():
+    result = DAndDFifthEditionBook.objects.filter()\
+        .order_by('-pk', '-file_title', '-file_name')
+    return result
 
 
 # Video Functions

@@ -1,0 +1,35 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    List of Dungeons &amp; Dragons (5th Edition) books, some may be hidden because of access.
+
+    <br /><br />
+        <ul>
+        {% for item in item_list %}
+            {% if item.restricted %}
+                {% if unrestricted_user %}
+                    <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
+                {% else %}
+                    <li>#{{ item.pk }} - [ Title Hidden ]</li>
+                {% endif %}
+            {% else %}
+            <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+</div>
+
+{% endblock %}
