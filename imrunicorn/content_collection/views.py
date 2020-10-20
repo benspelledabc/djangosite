@@ -29,7 +29,7 @@ def page_dnd5e_list(request):
     item_list = get_all_dnd5e()
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_dnd5e']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
