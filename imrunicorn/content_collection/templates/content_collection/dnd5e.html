@@ -17,17 +17,16 @@
 
     <br /><br />
         <ul>
-        {% for item in videos %}
+        {% for item in item_list %}
             {% if item.restricted %}
                 {% if unrestricted_user %}
-                    <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - {{ item.file_title }}</a>
+                    <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
                 {% else %}
-                    <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - [ Title Hidden ]</a>
+                    <li>#{{ item.pk }} - [ Title Hidden ]</li>
                 {% endif %}
             {% else %}
-                <li><a href="{% url 'content_collection:video_list' %}{{ item.pk }}">#{{ item.pk }} - {{ item.file_title}}</a>
+            <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
             {% endif %}
-                </li>
         {% endfor %}
         </ul>
 

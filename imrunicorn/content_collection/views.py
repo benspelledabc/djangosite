@@ -4,7 +4,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
-    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, get_dnd5e_by_pk
+    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 # from imrunicorn.decorators import allowed_groups
@@ -27,26 +27,19 @@ def page_blank(request):
 def page_dnd5e_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_dnd5e()
+
+    unrestricted = False
+    allowed_groupname_list = ['content_collection_unrestricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: D&D-5e",
         "item_list": item_list,
-        "blurb": get_page_blurb_override('content_collection/dnd5e/'),
-    }
-    return render(request, "content_collection/dnd5e.html", context)
-
-
-def page_dnd5e_list_by_pk(request, dnd5e_pk=1):
-    step_hit_count_by_page(request.path)
-    item_list = get_dnd5e_by_pk(dnd5e_pk)
-    context = {
-        "restart": get_restart_notice,
-        "copy_year": datetime.now().year,
-        'release': get_version_json(),
-        "title": "Content Collection: D&D-5e",
-        "item_list": item_list,
+        "unrestricted_user": unrestricted,
         "blurb": get_page_blurb_override('content_collection/dnd5e/'),
     }
     return render(request, "content_collection/dnd5e.html", context)
