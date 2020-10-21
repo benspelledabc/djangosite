@@ -61,7 +61,7 @@ def page_carousel_recent(request):
         "title": "Content Collection: Carousel",
         'unrestricted_user': unrestricted,
         "carousel": carousel,
-        "blurb": get_page_blurb_override('content_collection/carousel/'),
+        "blurb": get_page_blurb_override('content_collection/carousel/recent/'),
     }
     return render(request, "content_collection/carousel.html", context)
 
