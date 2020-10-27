@@ -9,9 +9,11 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
 from rest_framework.permissions import IsAuthenticated
-
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
+
+# from imrunicorn.announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
+
 
 # Create your views here.
 # uses the standards from django for CRUD
