@@ -29,7 +29,7 @@
 
             <br />
             Powder - {% if user.is_authenticated %}{{ selected_hand_load.powder.name }}{% else %} MEMBERS ONLY{% endif %}<br />
-            Powder Gr - {% if user.is_authenticated %}{{ selected_hand_load.Powder_Charge }}<i>(7,000Gr per pound, call it 6,900 for spillage)</i>
+            Powder Gr - {% if user.is_authenticated %}{{ selected_hand_load.Powder_Charge }} <i>(7,000Gr per pound, call it 6,900 for spillage)</i>
                         {% else %} MEMBERS ONLY{% endif %}<br />
             {% if user.is_staff %}Powder Lbs On-Hand - {{ selected_hand_load.powder.lbs_on_hand }}<br />{% endif %}
             {% if selected_hand_load.powder.buy_link != None %}
