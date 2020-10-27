@@ -142,6 +142,7 @@ class HandLoad(models.Model):
     Is_Sheriff_Load = models.BooleanField(default=True)
     Confirmed_Splat_Factor = models.BooleanField(default=False)
     Group_Size = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank=True)
+    Group_Picture = models.ImageField(upload_to='uploads/load_data/', null=True, blank=True)
     Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
