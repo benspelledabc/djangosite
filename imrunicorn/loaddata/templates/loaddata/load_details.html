@@ -61,6 +61,13 @@
             <br />
 
 
+            {% if selected_hand_load.Group_Picture.url != None%}
+                    Group Picture:<br />
+                    <a href="{{ selected_hand_load.Group_Picture.url }}" target="_blank"><img src="{{ selected_hand_load.Group_Picture.url }}" style="width: 30%" /></a><br />
+            {% endif %}
+
+
+
 
         {% endif %}
 
