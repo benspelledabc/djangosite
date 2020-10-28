@@ -1,9 +1,11 @@
 from imrunicorn.decorators import unauthenticated_user
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
-from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter
-from groundhog_logbook.functions import all_groundhog_hole_locations, groundhog_removal_scoreboard
-from groundhog_logbook.functions import groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex
+from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
+    all_groundhog_hole_locations, groundhog_removal_scoreboard, \
+    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, \
+    groundhog_removal_scoreboard_annual
+
 from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
@@ -118,3 +120,19 @@ def page_groundhog_removals_scoreboard(request):
         "blurb": get_page_blurb_override('groundhog_logbook/removal_scoreboard/'),
     }
     return render(request, "groundhog_logbook/groundhog_removal_scoreboard.html", context)
+
+
+def page_groundhog_removals_scoreboard_annual(request):
+    step_hit_count_by_page(request.path)
+    logs = groundhog_removal_scoreboard_annual()
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        "logs": logs,
+        'release': get_version_json(),
+        "title": "Top Groundhog Removers",
+        "blurb": get_page_blurb_override('groundhog_logbook/removal_scoreboard/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_removal_scoreboard_annual.html", context)
+
