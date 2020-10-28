@@ -10,6 +10,8 @@ urlpatterns = [
     path('locations/', views.page_all_groundhog_locations, name='all_groundhog_locations'),
     path('charts/', views.page_charts, name='page_charts'),
     path('removal_scoreboard/', views.page_groundhog_removals_scoreboard, name='groundhog_removal_scoreboard'),
+    path('removal_scoreboard_annual/', views.page_groundhog_removals_scoreboard_annual,
+         name='groundhog_removal_scoreboard_annual'),
 
     path('api/chart/', ChartData.as_view()),
 
