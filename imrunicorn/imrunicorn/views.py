@@ -141,7 +141,6 @@ def page_page_hits(request):
     page_hits = PageCounter.objects.\
         exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
 
-    # page_hits = PageCounter.objects.exclude(page_name__in=PageHideList.objects.values('page_name')).order_by('-page_hit_count')
     page_hits = PageCounter.objects.exclude(
         page_name__in=PageHideList.objects.values('page_name'),
     ).order_by('-page_hit_count')
@@ -273,7 +272,6 @@ def page_blog_add(request):
 def page_blog_read(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'add',
     }
@@ -283,8 +281,7 @@ def page_blog_read(request):
 def page_pi_endpoint(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
-        'header': 'Small holes',
+        'header': 'I like small holes...',
         'body': 'This is a lightweight endpoint to test the raspberry pi.',
     }
     return JsonResponse(context)
