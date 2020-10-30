@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.conf import settings
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
@@ -44,6 +44,7 @@ def page_greyscale_test(request):
 # Create your views here.
 def page_home(request):
     step_hit_count_by_page(request.path)
+
     try:
         all_news = get_news_sticky()
     except IndexError as ie:

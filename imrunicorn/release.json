@@ -1,9 +1,9 @@
 {
   "pi":"3.14285714285714279370154144999105483293533325195312",
-  "version": "3.142",
+  "version": "3.1428",
   "application_title": "Ben SpelledABC",
   "cut": "debug",
-  "build_date": "October 10th, 2020",
+  "build_date": "October 20th, 2020",
   "author": "Ben SpelledABC",
   "todo" : "Make the registration form easier to use and stuff, maybe. Testing in vscode now."
 }

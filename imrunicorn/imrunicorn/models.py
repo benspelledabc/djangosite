@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.cache import cache
+import datetime
+from imrunicorn import settings
 
 
 class UserProfile(models.Model):
