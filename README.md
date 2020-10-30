@@ -30,6 +30,9 @@ Don't forget to open SELinux a little to allow the proxy via gunicorn
 /var/log/nginx/nginx.vhost.error.log
 
 
+Jenkins takes care of my deployments now.
+
+
 # raw bug
 unicorn_web_1  | 2020/10/10 22:33:18 [emerg] 7#7: BIO_new_file("/opt/app/certs/selfsigned.pem") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/opt/app/certs/selfsigned.pem','r') error:2006D080:BIO routines:BIO_new_file:no such file)
 unicorn_web_1  | nginx: [emerg] BIO_new_file("/opt/app/certs/selfsigned.pem") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/opt/app/certs/selfsigned.pem','r') error:2006D080:BIO routines:BIO_new_file:no such file)
