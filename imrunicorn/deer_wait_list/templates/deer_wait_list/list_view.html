@@ -32,6 +32,11 @@
                     {% for value in 0|range:order.recipient.perceived_thankfulness %}
                         <i style="color:#f5b342;" class="fas fa-star"></i>
                     {% endfor %}
+                {% endif %}<br />
+                {% if unrestricted %}
+                    {% if order.notes|length > 0 %}
+                        Extra Notes: <i>{{ order.notes }}</i>
+                    {% endif %}
                 {% endif %}
             </li>
             <ol>

@@ -46,9 +46,9 @@ class Flavor(models.Model):
 
 class RequestedOrder(models.Model):
     order_date = models.DateField(default=date.today)
-    # completion_date = models.DateField(null=True, blank=True)
     order_complete = models.BooleanField(default=False)
     recipient = models.ForeignKey(Recipient, related_name='recipient', on_delete=models.CASCADE)
+    notes = models.TextField(blank=True, null=True)
     flavor = models.ForeignKey(Flavor, related_name='flavor', on_delete=models.CASCADE, null=True)
     choice_cuts = models.ManyToManyField(MeatCut)
 
