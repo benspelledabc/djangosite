@@ -13,6 +13,8 @@ class Harvests(models.Model):
     harvest_date = models.DateField(default=date.today)
     harvest_time = models.TimeField(null=True)
 
+    dnr_confirmation = models.CharField(blank=True, default=None, max_length=50, null=True)
+
     harvest_score = models.IntegerField(null=True, blank=True)
     bonus_for_not_unpleasant = models.BooleanField(default=False, null=True, blank=True)
     crop_damage_permit = models.BooleanField(default=False, null=True, blank=True)
