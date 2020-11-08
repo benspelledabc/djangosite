@@ -52,7 +52,7 @@ class Harvests(models.Model):
     class Meta:
         verbose_name = 'Harvest'
         verbose_name_plural = 'Harvests'
-        ordering = ('-harvest_date', 'shooter', 'shot_distance_yards')
+        ordering = ('-harvest_date', '-harvest_time', 'shooter', 'shot_distance_yards')
 
         # todo: Make this, or something similar, work for MySQL/MariaDB
         # constraints = [
