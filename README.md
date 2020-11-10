@@ -4,8 +4,7 @@
 Use it to track your own handload data, groundhog dispatching, and deer harvests.
 
 ### See it in use
-Docker Version : https://benspelledabc.me/
-Service Version: <disabled, only using docker now>
+Docker Holes : https://benspelledabc.me/
 
 ### Background
 For years I've had a website that stored my load data for reloading. I use this "known good" website setup to assist in learning a new language. I've done the site in VB.NET, C#, PHP, Java and now in Python. Each time I build the website I also try to add a new feature. This time, it's a log book of groundhog dispatching, deer harvests and a transition to using docker images to do the heavy lifting. Ben SpelledABC has decided to do the hosting for me this time in trade for learning how to do more Python also.
