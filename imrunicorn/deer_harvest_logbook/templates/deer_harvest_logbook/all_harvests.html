@@ -29,7 +29,10 @@
                     {{ news.shooter.userprofile.preferred_display_name|default:news.shooter.first_name }}
                     </a><br />
 
-                {% comment assume it was NOT a DMP if its not specifically listed as such. %}
+                {% comment %}
+                assume it was NOT a DMP if its not specifically listed as such.
+                {% endcomment %}
+
                 {% if news.crop_damage_permit == None %}
                     <b>Deer Management Permit:</b> False<br />
                 {% else %}
