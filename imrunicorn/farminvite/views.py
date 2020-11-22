@@ -56,7 +56,7 @@ def page_farm_invites_view(request):
         'contact_bad': '5%',
         'release': get_version_json(),
         "title": "Farm Range Invites",
-        "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters "
+        "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters"
                  "forms or work chat you are at risk of having your invite retracted to make room for someone else "
                  "that I can communicate with. "
                  "Your invite registration completion will update as the additional info is entered into the "
@@ -65,7 +65,46 @@ def page_farm_invites_view(request):
                  "<li>COMPLETE - I have Phone and email to reach you.</li>"
                  "<li>85% - I have your phone number to reach you.</li>"
                  "<li>66% - I have your email to reach you.</li>"
-                 "<li>5% - I only have MDShooters or work chat to reach you. <i>You're at risk of being removed from "
+                 "<li>5% - I only have MDShooters2 or work chat to reach you. <i>You're at risk of being removed from "
+                 "the invites.</i></li> "
+                 ""
+        ,
+        'all_invites': all_invites,
+        "copy_year": datetime.now().year
+        # "copy_year": all_loads.prod
+    }
+    return render(request, "farminvite/calendar_list.html", context)
+
+
+def page_farm_invites_view_lkg(request):
+    step_hit_count_by_page(request.path)
+    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
+    this_moment = datetime.now()
+    # only events not past, ordered by date, am then pm.. then secondary listings
+    all_invites = InviteListing.objects.filter(
+        Q(Show_Listing=True) &
+        Q(Cancel_Code="InviteActive") &
+        (Q(Invite_Date=this_moment.date()) |
+         Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
+
+    context = {
+        "restart": get_restart_notice,
+        'contact_good': 'COMPLETE',
+        'contact_okay': '85%',
+        'contact_poor': '66%',
+        'contact_bad': '5%',
+        'release': get_version_json(),
+        "title": "Farm Range Invites",
+        "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters_LKG "
+                 "forms or work chat you are at risk of having your invite retracted to make room for someone else "
+                 "that I can communicate with. "
+                 "Your invite registration completion will update as the additional info is entered into the "
+                 "system.<br /><br /> "
+                 "66% is fine, higher is better/easier."
+                 "<li>COMPLETE - I have Phone and email to reach you.</li>"
+                 "<li>85% - I have your phone number to reach you.</li>"
+                 "<li>66% - I have your email to reach you.</li>"
+                 "<li>5% - I only have MDShooters_LKG or work chat to reach you. <i>You're at risk of being removed from "
                  "the invites.</i></li> "
                  ""
         ,
@@ -133,47 +172,9 @@ def page_farm_check_list(request):
         'release': get_version_json(),
         "title": "What should I bring?",
         "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
-        "table_data": '<ul>'
-                      '<strong>Strongly recommended items</strong>'
-                      '<li>Ear protection<ul><li>Once mine are in, they don\'t come out for the day.</li></ul></li>'
-                      '<li>Eye protection<ul><li>Steel in the eye sucks.</li></ul></li>'
-                      '<li>Chair to sit on'
-                      '<ul><li>Being prone or standing for 4-8 hours is uncomfortable.</li></ul></li>'
-                      '<li>Shooting mat<ul><li>Keeps you out of the dirt/mud/snow and deer poop.</li></ul></li>'
-                      '<li>Firearm</li>'
-                      '<ul><li>ZEROED (or close) for your ammo.</li><li>AMMO for said firearm.</li></ul>'
-                      '<li>Snacks/Drinks for yourself.</li>'
-                      '<li>Sense of humor</li>'
-                      
-                      '<li>Targets (You want to shoot AT something?!)<ul>'
-                      '<li>Paper Targets<ul><li>Target Frame to hold targets.'
-                      '<ul><li>(Use mine with a $20 deposit.)</li></ul>'
-                      '<li>Stapler</li>'
-                      '<li>Marker to mark off hits to get the most out of your target.</li></ul>'
-                      
-                      '<li>AR500 steel plates</li>'
-                      '<ul><li>Bring your own or '
-                      'shoot my steel after ammo inspection, qualification and additional donation.</li></ul>'
-                      '<li>Plastic bottles filled with water (old soda bottles).</li>'
-                      '<li>Shotgun clays (great rifle targets at 100-600 yards)</li>'
-                      '</ul></li>'
-                      '</li></li>'
-                      
-                      
-                      
-                      '<br />'
-                      '<strong>Extras brownie points</strong>'
-                      '<li>Donations of brass (I\'ll use it or give it away to someone that can)</li>'
-                      
-                      '<br />'
-                      '<strong>What to <i>LEAVE AT HOME</i></strong>'
-                      '<li>Ego</li>'
-                      '</ul>'
-
-        ,
         "copy_year": datetime.now().year
     }
-    return render(request, "farminvite/simple_use_variables.html", context)
+    return render(request, "farminvite/what_to_bring.html", context)
 
 
 def page_request_slot(request):
@@ -221,16 +222,11 @@ def page_how_to_sign_up(request):
         "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "How to sign up",
-        "blurb": "The process to sign up is fairly simple.",
+        "blurb": "The process has changed!",
         "cash_app": "Show_QR_Code",
-        "table_data": 'Make a donation and I\'ll get back with you. '
-                      'I\'m doing a required donation first approach this time. #lessonsLearned.'
-                      '<br /><br />Email me at: <a href="mailto:Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a> '
-                      'with your CashApp donation amount and CashApp name. Mine is $BenSpelledABC.'
-        ,
         "copy_year": datetime.now().year
     }
-    return render(request, "farminvite/simple_use_variables.html", context)
+    return render(request, "farminvite/sign_up_how.html", context)
 
 
 def page_missing_contact_info(request):

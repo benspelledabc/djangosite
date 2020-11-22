@@ -7,9 +7,13 @@ from enum import Enum
 class InviteListing(models.Model):
     AM = 'AM'
     PM = 'PM'
+    D1 = 'D1'
+    N1 = 'N1'
     TIME_SLOT_CHOICES = [
         (AM, '8:00am - 11:59am'),
         (PM, '12:30pm - 4:30pm'),
+        (D1, '8:00am - 5:00pm'),
+        (N1, 'NIGHT'),
     ]
 
     Invite_Date = models.DateField(default=date.today)
@@ -39,7 +43,7 @@ class InviteListing(models.Model):
     )
 
     Invite_Secondary = models.BooleanField(default=False, blank=True, null=True)
-    MDShooters_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
+    Invite_Display_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Real_Name = models.CharField(max_length=50, default=None, blank=True, null=True)
     Phone_Number = models.CharField(max_length=20, default=None, blank=True, null=True)
     EMail = models.CharField(max_length=150, default=None, blank=True, null=True)
@@ -49,10 +53,10 @@ class InviteListing(models.Model):
     def __str__(self):
         return "%s %s (Secondary: %s) %s [Show Listing = %s]" % (
             self.Invite_Date,
-            self.MDShooters_Name,
+            self.Invite_Display_Name,
             self.Invite_Secondary,
             self.Phone_Number,
             self.Show_Listing)
 
     class Meta:
-        ordering = ('Invite_Date', 'Invite_Secondary', 'MDShooters_Name', 'Phone_Number')
+        ordering = ('Invite_Date', 'Invite_Secondary', 'Invite_Display_Name', 'Phone_Number')

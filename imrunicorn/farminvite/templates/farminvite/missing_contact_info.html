@@ -12,8 +12,6 @@
     <p class="lead">Contact info <strong>MUST</strong> be 100% now.</p>
 </div>
 
-{% if request.user|has_group:"farminvite_editor" %}
-
 <div class="row ben_format_pretty">
     <div class="col-md-12">
         {% autoescape off %}
@@ -30,7 +28,7 @@
         </th>
         </th>
         <th bgcolor="808080" style="text-align: center">
-            MDShooters Name
+            Display Name
         </th>
         <th bgcolor="808080" style="text-align: center">
             Phone On File
@@ -45,7 +43,7 @@
     {% for invite in all_invites %}
 
     {% if invite.Desired_Time_Slot == "AM" %}
-    {% if invite.MDShooters_Name != 'SLOT AVAILABLE' %}
+    {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' %}
     <tr bgcolor="#F5F5F5">
         <td id="td-ocw">{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
 
@@ -53,10 +51,10 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    {{ invite.MDShooters_Name }}
+                    {{ invite.Invite_Display_Name }}
                 </td>
                 {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
         <td id="td-ocw">{% if invite.Phone_Number %}True{% else %}<strong>False</strong>{% endif %}</td>
@@ -65,7 +63,7 @@
     {% endif %}
 
     {% else %}
-    {% if invite.MDShooters_Name != 'SLOT AVAILABLE' %}
+    {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' %}
     <tr bgcolor="#BEBEBE">
         <td id="td-sheriff">{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
 
@@ -73,10 +71,10 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    {{ invite.MDShooters_Name }}
+                    {{ invite.Invite_Display_Name }}
                 </td>
                 {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
 
@@ -94,11 +92,5 @@
 
 <br/><br/>
 
-
-{% else %}
-
-<p align="center">Even if you have an account this is viewable only by a subset of members.</p>
-
-{% endif %}
 
 {% endblock %}
