@@ -1,0 +1,100 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<br/>
+<div class="row ben_format_pretty">
+    <div align="left" class="col-md-12">
+
+        I've taken some lessons learned from the 2019 and 2020 spring invites. This time, invites are only going to
+        people I've met personally or someone will speak on their behalf. There's a lot to say about character in a
+        personal introduction. While I'm all for helping people become a better shooter I don't subscribe to the
+        'accuracy by volume' version of marksmanship. So many targets were ruined in the last invites.
+        <br/>
+        <br/>
+
+        <i>"The rifle is pretty much zeroed for 100 yards so lets try 200 or 300 yards.</i>" After being several feet
+        off at 200 yards, we checked his zero at 100 yards. He was what I later decided to call <i>Minute of
+        Elephant</i>.
+        We got him fixed up for 100 yards but then got frustrated about re-confirming at 200 instead of going
+        strait to 500 yards. I explained why I wanted him to confirm at closer targets before pushing out to 500 yards
+        right away. He did shoot 200 yards, once. Then went right out to 500 yards without telling me. It makes it
+        hard to spot hits or misses when I'm already 300 yards off because you change targets without telling me first.
+        <br/>
+        <br/>
+
+        According to a shooter I met at a members only gun range; There <strong>are</strong> shooters that are a good
+        enough shot with their rifle that they can cut the nuts off a gnat at 100 yards. I don't care if you're a
+        sniper in the service or an olympic gold medalist. You're on my property as a guest and are a <i>new to me</i>
+        shooter. I'll confirm your competence of shooting at 100 yards with <strong>EVERY GUN</strong> you bring.
+        Then move out to further ranges if appropriate. IE: I'm going to frown on shooting a 9mm glock pistol beyond 50
+        yards. This is to make sure your scope didn't get bumped and go to <i>Minute of Elephant</i>. If you add
+        <i>Minute of Elephant</i> and 8-11 MOA of elevation for a 500 yard shot, it goes right over the property line.
+        <br/>
+        <br/>
+
+        These examples boil down to <i>full sized egos</i> being attached and flapping in the wind. We all have egos,
+        but it's not safe to pull them out and show everyone around when firearms are involved.
+        <br/>
+        <br/>
+
+
+        I had 28 people sign up and several back out at the last minute. It was no big deal to them because they had
+        no commitment to the event. Meanwhile I would have already driven over an hour to get to the range. Then prep
+        for a couple hours to get the range/field ready for said guest that never shows up. I'm now asking for some
+        commitment to the event which is minimal but I'm thinking it'll minimize the number of no-shows/no-calls.
+        <br/>
+        <br/>
+        <div style="background-color: yellow">
+            <strong>Shooter registration fees are easy as follows: (covers entire invite)</strong><br/>
+            <strong>Men:</strong><i>(16y +)</i> $50<br/>
+            <strong>Women:</strong><i>(16y +)</i> $20 <br/>
+            <strong>Kids:</strong><i>(15 and under)</i> $5 (requires one adult registration &amp; limited to 200 yards)<br/>
+            <strong>Night:</strong><i>(adults only)</i> $200
+        </div>
+        <br/>
+
+        I was going to do a donation system prior to being allowed to shoot my targets but I tried that in Spring of
+        2020 and it didn't work out at all. Of the 17 people that came to the range, there was one couple that donated
+        which
+        was great. Other people forgot cash, don't carry cash etc etc. That's why there is a range fee collected before
+        the invite is even sent out. Portions of the registration may be refunded if other donations are made; Donation
+        of steel targets, 2x4 to hold said target, brass (of a caliber I reload for), etc etc. I don't want to say it
+        will guarantee a refund because I don't want someone showing up with 2 pieces of brass for a $10 refund request.
+        I also don't want to refund the entire fee then have the steel targets shot and ruined because of armor piercing
+        bullets and the list goes on. I'm sure this makes sense to everyone.
+        <br/>
+        <br/>
+
+        I'm rebuilding the site to get this all to work better, but for now pay the registration fee and e-mail me at:
+        <a href="mailto:Admin@BenSpelledABC.me">Admin@BenSpelledABC.me</a> with your CashApp name. Mine is
+        $BenSpelledABC. The email should also include a phone number to contact you. I prefer texting because it's a
+        digital trail of our conversations and I hunt year round. I don't answer the phone while hunting.
+        <br/>
+        <br/>
+
+
+        <br/>
+        {% if cash_app == "Show_QR_Code" %}
+        <br/>
+        <div align="center" class="col-md-12">
+            <p>
+
+                <a href="https://cash.app/$BenSpelledABC" target="_blank">
+                    <img height="300" src="{% static '/content/cashapp_benspelledabc.jpg' %}"/>
+                </a>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}

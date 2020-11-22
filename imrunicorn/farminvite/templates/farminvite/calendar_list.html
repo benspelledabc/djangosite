@@ -9,10 +9,8 @@
 
 <div class="jumbotron">
     <h1>{{ title }}</h1>
-    <p class="lead">Listings are now 99.9% private.</p>
+    <p class="lead">Shooting for 2021....</p>
 </div>
-
-{% if request.user|has_group:"farminvite_editor" %}
 
 <div class="row ben_format_pretty">
     <div class="col-md-12">
@@ -20,6 +18,9 @@
             {% autoescape off %}
             {{ blurb }}
             {% endautoescape %}
+        </p>
+        <p>
+            <strong>This needs some work, I'm doing it differently in 2021!</strong>
         </p>
 
         <table width="100%" border="1" align="center">
@@ -29,7 +30,7 @@
                 </th>
                 </th>
                 <th bgcolor="808080" style="text-align: center">
-                    MDShooters Name
+                    Display Name
                 </th>
                 <th bgcolor="808080" style="text-align: center">
                     Is Secondary
@@ -51,15 +52,15 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    <a href="/admin/auth/user/add/?username={{ invite.MDShooters_Name }}" target="_blank">{{ invite.MDShooters_Name }}</a>
+                    <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
                 </td>
                 {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
                 <td>{{ invite.Invite_Secondary }}</td>
 
-                {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
+                {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
                 <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
@@ -85,15 +86,15 @@
                 <td data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    <a href="/admin/auth/user/add/?username={{ invite.MDShooters_Name }}" target="_blank">{{ invite.MDShooters_Name }}</a>
+                    <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
                 </td>
                 {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.MDShooters_Name }}</td>
+                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
                 <td>{{ invite.Invite_Secondary }}</td>
 
-                {% if invite.MDShooters_Name != 'SLOT AVAILABLE' and invite.MDShooters_Name != 'Tannerite Fun In The Sun' %}
+                {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
                 {% if invite.Phone_Number and invite.EMail%}
                 <td> {{ contact_good }}</td>
                 {% elif invite.Phone_Number %}
@@ -121,11 +122,6 @@
     </div>
 </div>
 
-{% else %}
-
-<p align="center">Even if you have an account this is viewable only by a subset of members.</p>
-
-{% endif %}
 
 
 {% endblock %}
