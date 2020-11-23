@@ -65,7 +65,7 @@ def page_farm_invites_view(request):
                  "<li>COMPLETE - I have Phone and email to reach you.</li>"
                  "<li>85% - I have your phone number to reach you.</li>"
                  "<li>66% - I have your email to reach you.</li>"
-                 "<li>5% - I only have MDShooters2 or work chat to reach you. <i>You're at risk of being removed from "
+                 "<li>5% - <i>You're at risk of being removed from "
                  "the invites.</i></li> "
                  ""
         ,
