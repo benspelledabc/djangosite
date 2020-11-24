@@ -19,9 +19,6 @@
             {{ blurb }}
             {% endautoescape %}
         </p>
-        <p>
-            <strong>This needs some work, I'm doing it differently in 2021!</strong>
-        </p>
 
         <table width="100%" border="1" align="center">
             <tr bgcolor="#808080">
@@ -61,20 +58,13 @@
                 <td>{{ invite.Invite_Secondary }}</td>
 
                 {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
-                {% if invite.Phone_Number and invite.EMail%}
-                <td> {{ contact_good }}</td>
-                {% elif invite.Phone_Number %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
-                </td>
-                {% elif invite.EMail %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
-                </td>
+                    {% if invite.Paid %}
+                        <td>{{ contact_good }}</td>
+                    {% else %}
+                        <td>{{ contact_bad }}</td>
+                    {% endif %}
                 {% else %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
-                </td>
-                {% endif %}
-                {% else %}
-                <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
+                    <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
