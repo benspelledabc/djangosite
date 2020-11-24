@@ -5,10 +5,10 @@ from enum import Enum
 
 # Create your models here.
 class InviteListing(models.Model):
-    AM = 'AM'
-    PM = 'PM'
-    D1 = 'D1'
-    N1 = 'N1'
+    AM = '8:00am - 11:59am'
+    PM = '12:30pm - 4:30pm'
+    D1 = '8:00am - 5:00pm'
+    N1 = 'NIGHT'
     TIME_SLOT_CHOICES = [
         (AM, '8:00am - 11:59am'),
         (PM, '12:30pm - 4:30pm'),
@@ -19,7 +19,7 @@ class InviteListing(models.Model):
     Invite_Date = models.DateField(default=date.today)
     Show_Listing = models.BooleanField(default=False)   # False = require approvals
     Desired_Time_Slot = models.CharField(
-        max_length=2,
+        max_length=60,
         choices=TIME_SLOT_CHOICES,
         default=AM,
     )

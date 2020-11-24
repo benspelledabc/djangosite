@@ -44,9 +44,9 @@
 
             {% if all_invites != None %}
             {% for invite in all_invites %}
-            {% if invite.Desired_Time_Slot == "AM" %}
+
             <tr bgcolor="#F5F5F5">
-                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- [08:00AM - 12:01PM]</td>
+                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- {{ invite.Desired_Time_Slot }}</td>
 
                 {% if request.user|has_group:"farminvite_editor" %}
                 <td data-toggle="tooltip"
@@ -78,41 +78,6 @@
                 {% endif %}
 
             </tr>
-            {% else %}
-            <tr bgcolor="#BEBEBE">
-                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- [12:30PM - 04:30PM]</td>
-
-                {% if request.user|has_group:"farminvite_editor" %}
-                <td data-toggle="tooltip"
-                    title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
-                </td>
-                {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
-                {% endif %}
-
-                <td>{{ invite.Invite_Secondary }}</td>
-
-                {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
-                {% if invite.Phone_Number and invite.EMail%}
-                <td> {{ contact_good }}</td>
-                {% elif invite.Phone_Number %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_okay }}</strong></a>
-                </td>
-                {% elif invite.EMail %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_poor }}</strong></a>
-                </td>
-                {% else %}
-                <td><a href="{% url 'farm_invite:missing_contact_info' %}"><strong>{{ contact_bad }}</strong></a>
-                </td>
-                {% endif %}
-                {% else %}
-                <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
-                {% endif %}
-
-            </tr>
-            {% endif %}
 
             {% endfor %}
             {% endif %}
