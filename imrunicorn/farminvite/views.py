@@ -50,24 +50,15 @@ def page_farm_invites_view(request):
 
     context = {
         "restart": get_restart_notice,
-        'contact_good': 'COMPLETE',
+        'contact_good': 'Complete',
         'contact_okay': '85%',
         'contact_poor': '66%',
-        'contact_bad': '5%',
+        'contact_bad': 'Incomplete',
         'release': get_version_json(),
         "title": "Farm Range Invites",
-        "blurb": "Pay attention to the registration completion grade. If the only way to reach you is via MDShooters"
-                 "forms or work chat you are at risk of having your invite retracted to make room for someone else "
-                 "that I can communicate with. "
-                 "Your invite registration completion will update as the additional info is entered into the "
-                 "system.<br /><br /> "
-                 "66% is fine, higher is better/easier."
-                 "<li>COMPLETE - I have Phone and email to reach you.</li>"
-                 "<li>85% - I have your phone number to reach you.</li>"
-                 "<li>66% - I have your email to reach you.</li>"
-                 "<li>5% - <i>You're at risk of being removed from "
-                 "the invites.</i></li> "
-                 ""
+        "blurb": "Registration got much easier for 2021!<br /><br />"
+                 "<li>Complete - Registration fee paid and I have your contact info.</li>"
+                 "<li>Incomplete - Something is missing, reach out to me.</li>"
         ,
         'all_invites': all_invites,
         "copy_year": datetime.now().year
@@ -127,10 +118,8 @@ def page_farm_invites_view_hidden_listings(request):
 
     context = {
         "restart": get_restart_notice,
-        'contact_good': 'COMPLETE',
-        'contact_okay': '85%',
-        'contact_poor': '66%',
-        'contact_bad': '5%',
+        'contact_good': 'Complete',
+        'contact_bad': 'Incomplete',
         'release': get_version_json(),
         "title": "Invites Pending",
         # "blurb": "no blurb",
