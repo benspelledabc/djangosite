@@ -1,7 +1,11 @@
 {% extends "imrunicorn/layout.html" %}
 
 {% block extra_head %}
-
+<style>
+td.padded {
+  padding-left: 10px;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -43,10 +47,10 @@
             {% for invite in all_invites %}
 
             <tr bgcolor="#F5F5F5">
-                <td>{{ invite.Invite_Date|date:'m/d/Y' }} -- {{ invite.Desired_Time_Slot }}</td>
+                <td class="padded">{{ invite.Invite_Date|date:'m/d/Y' }} -- {{ invite.Desired_Time_Slot }}</td>
 
                 {% if request.user|has_group:"farminvite_editor" %}
-                <td data-toggle="tooltip"
+                <td class="padded" data-toggle="tooltip"
                     title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
                     <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
                     <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
@@ -55,16 +59,16 @@
                 <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
-                <td>{{ invite.Invite_Secondary }}</td>
+                <td class="padded">{{ invite.Invite_Secondary }}</td>
 
                 {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
                     {% if invite.Paid %}
-                        <td>{{ contact_good }}</td>
+                        <td class="padded">{{ contact_good }}</td>
                     {% else %}
-                        <td>{{ contact_bad }}</td>
+                        <td class="padded">{{ contact_bad }}</td>
                     {% endif %}
                 {% else %}
-                    <td><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
+                    <td class="padded"><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
                 {% endif %}
 
             </tr>
