@@ -52,12 +52,14 @@ class InviteListing(models.Model):
     Event_Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "%s %s (Secondary: %s) %s [Show Listing = %s]" % (
+        # return "%s %s (Paid: %s) [Show Listing = %s] [ID: %s]" % (
+        return '{"Invite_Date": "%s", "Paid": %s, "id": %s, "Show_Listing": %s, "Invite_Display_Name": "%s"}' % (
             self.Invite_Date,
-            self.Invite_Display_Name,
-            self.Invite_Secondary,
-            self.Phone_Number,
-            self.Show_Listing)
+            str(self.Paid).lower(),
+            self.id,
+            str(self.Show_Listing).lower(),
+            self.Invite_Display_Name
+        )
 
     class Meta:
-        ordering = ('Invite_Date', 'Invite_Secondary', 'Invite_Display_Name', 'Phone_Number')
+        ordering = ('Invite_Date', '-Paid', 'id')
