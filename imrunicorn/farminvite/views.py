@@ -57,8 +57,7 @@ def page_farm_invites_view(request):
         'contact_bad': 'Incomplete',
         'release': get_version_json(),
         "title": "Farm Range Invites",
-        "blurb": "Registration got much easier for 2021!<br /><br />"
-                 "<li>Complete - Registration fee paid and I have your contact info.</li>"
+        "blurb": "<li>Complete - Registration fee paid and I have your contact info.</li>"
                  "<li>Incomplete - Something is missing, reach out to me.</li>"
         ,
         'all_invites': all_invites,
