@@ -35,9 +35,6 @@ td.padded {
                     Display Name
                 </th>
                 <th bgcolor="808080" style="text-align: center">
-                    Is Secondary
-                </th>
-                <th bgcolor="808080" style="text-align: center">
                     Registration Completion
                 </th>
 
@@ -66,8 +63,6 @@ Invite_ID: {{ invite.id }}">
                     {% else %}
                     <td class="padded" data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                     {% endif %}
-
-                    <td class="padded">{{ invite.Invite_Secondary }}</td>
 
                     {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
                         {% if invite.Paid %}
