@@ -1,0 +1,58 @@
+
+image: docker
+
+services:
+    - docker:dind
+
+stages:
+    - test
+    - deploy
+
+test:
+    stage: test
+    only:
+        - develop
+        - master
+    script:
+        - echo Run tests in this section
+
+step-deploy-prod:
+    stage: deploy
+    only:
+        - master
+    script:
+        - sudo yum install -q -y vim epel-release
+        - sudo yum install -q -y jq
+        - sudo yum install -q -y python3-pip
+        - python3 -m venv venv
+        - . venv/bin/activate
+        - pip install -q --upgrade pip
+        - pip install -q docker-compose
+
+        # setup certs...
+        - mkdir -p certs
+        - sudo cp selfsigned.* certs/
+        - sudo chown -R gitlab-runner:gitlab-runner certs
+
+        # - docker stop djangosite_unicorn_web_1
+        - sleep 5
+
+        # its not really building atm, because its a stored docker container.
+        - docker-compose up -d --build
+
+        # shouldnt be needed
+        # need to make migrations [docker exec -it djangosite_unicorn_web_1 python imrunicorn/manage.py makemigrations]
+
+        # need to migrate [docker exec -it djangosite_unicorn_web_1 python imrunicorn/manage.py migrate]
+        - docker exec djangosite_unicorn_web_1 python imrunicorn/manage.py migrate
+
+        # need to collect static [docker exec -it djangosite_unicorn_web_1 python imrunicorn/manage.py collectstatic --no-input]
+        - docker exec djangosite_unicorn_web_1 python imrunicorn/manage.py collectstatic --no-input
+
+        # it seems to shit the bed from time to time
+        - docker-compose restart
+
+        # # comment to trigger a build.. the dirty way
+
+    environment: master
+    when: manual
