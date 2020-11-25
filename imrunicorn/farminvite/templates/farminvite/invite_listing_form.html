@@ -3,27 +3,31 @@
 
 {% block content %}
 
-    {% load static %}
+{% load static %}
 {% load humanize %}
 <h2>{{ title }}</h2>
+<br/><br/>
 <div class="row ben_format_pretty">
     <div class="col-md-12">
-        This is still a first come first serve situation but it's a bit easier to request a time slot. Only submit the form once and
-        wait for me to approve it. It won't automatically show up on the listing because I need to approve it etc etc.<br /><br />
-        The form doesn't pass in the values at the moment so please validate the date/time you're requesting. I'l fix that by the
-        end of the week.. or sooner if I can.
+        This is still a first come first serve situation but it's a bit easier to request a time slot. Only submit the
+        form once and
+        wait for me to approve it. It won't automatically show up on the listing because I need to approve it etc
+        etc.<br/><br/>
+        The form doesn't pass in the values at the moment so please validate the date/time you're requesting. I'l fix
+        that eventually.
 
     </div>
 </div>
 <hr/>
 
-<div class="row">
-    <div class="col-md-12" align="center">
+
+<div class="row ben_format_pretty">
+    <div class="col-md-4" align="center">
         <form method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
+            {% csrf_token %}
+            {{ form|crispy }}
             <button type="submit">Submit</button>
-            </form>
+        </form>
     </div>
 </div>
 
