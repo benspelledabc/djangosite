@@ -44,36 +44,42 @@ td.padded {
 
 
             {% if all_invites != None %}
-            {% for invite in all_invites %}
+                {% for invite in all_invites %}
 
-            <tr bgcolor="#F5F5F5">
-                <td class="padded">{{ invite.Invite_Date|date:'m/d/Y' }} -- {{ invite.Desired_Time_Slot }}</td>
+                <tr bgcolor="#F5F5F5">
+                    <td class="padded">{{ invite.Invite_Date|date:'m/d/Y' }} -- {{ invite.Desired_Time_Slot }}</td>
 
-                {% if request.user|has_group:"farminvite_editor" %}
-                <td class="padded" data-toggle="tooltip"
-                    title="RealName: {{ invite.Real_Name }}  --  Phone: {{ invite.Phone_Number }}  --  E-Mail: {{ invite.EMail }}">
-                    <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank"><i class="fas fa-edit"></i></a>
-                    <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
-                </td>
-                {% else %}
-                <td class="padded" data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
-                {% endif %}
-
-                <td class="padded">{{ invite.Invite_Secondary }}</td>
-
-                {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
-                    {% if invite.Paid %}
-                        <td class="padded">{{ contact_good }}</td>
+                    {% if request.user|has_group:"farminvite_editor" %}
+                    <td class="padded" data-toggle="tooltip"
+                        title="Entry Name: {{invite.Invite_Display_Name}}
+Paid: {{ invite.Paid}}
+RealName: {{ invite.Real_Name }}
+Phone: {{ invite.Phone_Number }}
+E-Mail: {{ invite.EMail }}">
+                        <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">
+                            <i class="fas fa-edit"></i></a>
+                        <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">
+                            {{ invite.Invite_Display_Name }}</a>
+                    </td>
                     {% else %}
-                        <td class="padded">{{ contact_bad }}</td>
+                    <td class="padded" data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                     {% endif %}
-                {% else %}
-                    <td class="padded"><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
-                {% endif %}
 
-            </tr>
+                    <td class="padded">{{ invite.Invite_Secondary }}</td>
 
-            {% endfor %}
+                    {% if invite.Invite_Display_Name != 'SLOT AVAILABLE' and invite.Invite_Display_Name != 'Tannerite Fun In The Sun' %}
+                        {% if invite.Paid %}
+                            <td class="padded">{{ contact_good }}</td>
+                        {% else %}
+                            <td class="padded">{{ contact_bad }}</td>
+                        {% endif %}
+                    {% else %}
+                        <td class="padded"><a href="{% url 'farm_invite:invite_listing' %}">Request Slot</a></td>
+                    {% endif %}
+
+                </tr>
+
+                {% endfor %}
             {% endif %}
 
         </table>
