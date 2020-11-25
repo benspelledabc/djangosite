@@ -12,6 +12,7 @@ from .models import InviteListing
 from announcements.get_news import get_news, get_version_json, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
 
+
 # Create your views here.
 def unused_json_farm_invites_view(request):
     step_hit_count_by_page(request.path)
