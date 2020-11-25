@@ -55,7 +55,8 @@ td.padded {
 Paid: {{ invite.Paid}}
 RealName: {{ invite.Real_Name }}
 Phone: {{ invite.Phone_Number }}
-E-Mail: {{ invite.EMail }}">
+E-Mail: {{ invite.EMail }}
+Invite_ID: {{ invite.id }}">
                         <a href="/admin/farminvite/invitelisting/{{ invite.pk }}/change/" target="_blank">
                             <i class="fas fa-edit"></i></a>
                         <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">
