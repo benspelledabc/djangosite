@@ -56,7 +56,7 @@ td.padded {
                     <a href="/admin/auth/user/add/?username={{ invite.Invite_Display_Name }}" target="_blank">{{ invite.Invite_Display_Name }}</a>
                 </td>
                 {% else %}
-                <td data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
+                <td class="padded" data-toggle="tooltip" title="Info Redacted">{{ invite.Invite_Display_Name }}</td>
                 {% endif %}
 
                 <td class="padded">{{ invite.Invite_Secondary }}</td>
