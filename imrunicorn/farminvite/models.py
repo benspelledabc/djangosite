@@ -62,4 +62,4 @@ class InviteListing(models.Model):
         )
 
     class Meta:
-        ordering = ('Invite_Date', '-Paid', 'id')
+        ordering = ('-Paid', 'id', 'Invite_Date')
