@@ -12,7 +12,7 @@ router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesVi
 # router.register('deer_wait_list-Recipient', views.DeerWaitListRecipient)
 router.register('deer_wait_list/Recipient', views.DeerWaitListRecipient)
 router.register('deer_wait_list/MeatCut', views.DeerWaitListMeatCut)
-router.register('deer_wait_list/Flavor', views.DeerWaitListMeatCut)
+router.register('deer_wait_list/Flavor', views.DeerWaitListFlavor)
 router.register('deer_wait_list/RequestedOrder', views.DeerWaitListRequestedOrder)
 
 # router.register('deer_wait_list', views.DeerWaitList)
