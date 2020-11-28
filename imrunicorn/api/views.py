@@ -1,3 +1,7 @@
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from rest_framework.response import Response
 from datetime import datetime, date
 from django.conf import settings
@@ -8,17 +12,48 @@ from rest_framework import viewsets
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
-from rest_framework.permissions import IsAuthenticated
+# from rest_framework.permissions import IsAuthenticated
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
 
-# from imrunicorn.announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
+from deer_wait_list.models import Recipient, MeatCut, Flavor, RequestedOrder
+from deer_wait_list.serializer import RecipientSerializer, MeatCutSerializer, FlavorSerializer, RequestedOrderSerializer
 
 
-# Create your views here.
-# uses the standards from django for CRUD
+# ############### Deer Wait List ###############
+class DeerWaitListRecipient(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = Recipient.objects.all()
+    serializer_class = RecipientSerializer
 
 
+class DeerWaitListMeatCut(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = MeatCut.objects.all()
+    serializer_class = MeatCutSerializer
+
+
+class DeerWaitListFlavor(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = Flavor.objects.all()
+    serializer_class = FlavorSerializer
+
+
+class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = RequestedOrder.objects.all()
+    serializer_class = FlavorSerializer
+
+
+# ############### announcements ###############
 class WhatIsNewView(viewsets.ModelViewSet):
     queryset = WhatIsNew.objects.all()
     serializer_class = WhatIsNewSerializer
