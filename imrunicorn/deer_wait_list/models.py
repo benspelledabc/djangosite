@@ -57,4 +57,4 @@ class RequestedOrder(models.Model):
 
     class Meta:
         ordering = ('order_complete', '-order_date', '-pk')
- 
+

@@ -5,11 +5,21 @@ from django.views.generic import TemplateView
 
 # similar to object based url building
 router = routers.DefaultRouter()
-router.register('what_is_new', views.WhatIsNewView)
-router.register('main_page_blurbs', views.MainPageBlurbsView)
-router.register('page_blurb_overrides', views.PageBlurbOverridesView)
+router.register('announcements/what_is_new', views.WhatIsNewView)
+router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
+router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
 
-app_name = 'api'
+# router.register('deer_wait_list-Recipient', views.DeerWaitListRecipient)
+router.register('deer_wait_list/Recipient', views.DeerWaitListRecipient)
+router.register('deer_wait_list/MeatCut', views.DeerWaitListMeatCut)
+router.register('deer_wait_list/Flavor', views.DeerWaitListMeatCut)
+router.register('deer_wait_list/RequestedOrder', views.DeerWaitListRequestedOrder)
+
+# router.register('deer_wait_list', views.DeerWaitList)
+
+# HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
+# app_name = 'api'
 urlpatterns = [
+    # path('DeerWaitListRecipient/', views.DeerWaitListRecipient, name='DeerWaitListRecipient'),
     path('', include(router.urls)),
 ]
