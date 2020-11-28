@@ -36,7 +36,10 @@ urlpatterns = [
 
     path('load_data/', include('loaddata.urls')),
     path('farm_invite/', include('farminvite.urls')),
-    path('news/', include('announcements.urls')),
+
+    # path('news/', include('announcements.urls')),
+    path('announcements/', include('announcements.urls')),
+
     path('polls/', include('polls.urls')),
     path('shooting_logbook/', include('shooting_logbook.urls')),
     path('groundhog_logbook/', include('groundhog_logbook.urls')),
