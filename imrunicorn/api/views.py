@@ -13,11 +13,41 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
 # from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
 
 from deer_wait_list.models import Recipient, MeatCut, Flavor, RequestedOrder
 from deer_wait_list.serializer import RecipientSerializer, MeatCutSerializer, FlavorSerializer, RequestedOrderSerializer
+
+from loaddata.models import Caliber, Firearm
+from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSerializer
+
+
+class Owner(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = User.objects.all()
+    serializer_class = OwnerSerializer
+
+
+# ############### loaddata ###############
+class LoadDataCaliber(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = Caliber.objects.all()
+    serializer_class = CaliberSerializer
+
+
+class LoadDataFirearm(viewsets.ModelViewSet):
+    # require user to be logged on.
+    permission_classes = (IsAuthenticated,)
+    # fetch data
+    queryset = Firearm.objects.all()
+    serializer_class = FirearmSerializer
 
 
 # ############### Deer Wait List ###############

@@ -9,13 +9,15 @@ router.register('announcements/what_is_new', views.WhatIsNewView)
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
 router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
 
-# router.register('deer_wait_list-Recipient', views.DeerWaitListRecipient)
 router.register('deer_wait_list/Recipient', views.DeerWaitListRecipient)
 router.register('deer_wait_list/MeatCut', views.DeerWaitListMeatCut)
 router.register('deer_wait_list/Flavor', views.DeerWaitListFlavor)
 router.register('deer_wait_list/RequestedOrder', views.DeerWaitListRequestedOrder)
 
-# router.register('deer_wait_list', views.DeerWaitList)
+router.register('loaddata/Owner', views.Owner)
+router.register('loaddata/Caliber', views.LoadDataCaliber)
+router.register('loaddata/Firearm', views.LoadDataFirearm)
+
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
 # app_name = 'api'
