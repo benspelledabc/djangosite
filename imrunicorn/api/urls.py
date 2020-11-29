@@ -17,6 +17,12 @@ router.register('deer_wait_list/RequestedOrder', views.DeerWaitListRequestedOrde
 router.register('loaddata/Owner', views.Owner)
 router.register('loaddata/Caliber', views.LoadDataCaliber)
 router.register('loaddata/Firearm', views.LoadDataFirearm)
+router.register('loaddata/Powder', views.LoadDataPowder)
+router.register('loaddata/Projectile', views.LoadDataProjectile)
+router.register('loaddata/Brass', views.LoadDataBrass)
+router.register('loaddata/Primer', views.LoadDataPrimer)
+router.register('loaddata/HandLoad', views.LoadDataHandLoad)
+router.register('loaddata/EstimatedDope', views.LoadDataEstimatedDope)
 
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
