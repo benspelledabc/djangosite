@@ -61,4 +61,15 @@ class EstimatedDopeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = EstimatedDope
         fields = (
-            'url', )
+            'url', 'hand_load',
+            'moa_100', 'moa_125', 'moa_150', 'moa_175',
+            'moa_200', 'moa_225', 'moa_250', 'moa_275',
+            'moa_300', 'moa_325', 'moa_350', 'moa_375',
+            'moa_400', 'moa_425', 'moa_450', 'moa_475',
+            'moa_500', 'moa_525', 'moa_550', 'moa_575',
+            'moa_600', 'moa_625', 'moa_650', 'moa_675',
+            'moa_700', 'moa_725', 'moa_750', 'moa_775',
+            'moa_800', 'moa_825', 'moa_850', 'moa_875',
+            'moa_900', 'moa_925', 'moa_950', 'moa_975',
+            'moa_1000', 'moa_1025', 'moa_1050', 'moa_1075',
+        )
