@@ -37,7 +37,7 @@ class Owner(viewsets.ModelViewSet):
 # ############### loaddata ###############
 class LoadDataCaliber(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Caliber.objects.all()
     serializer_class = CaliberSerializer
@@ -45,7 +45,7 @@ class LoadDataCaliber(viewsets.ModelViewSet):
 
 class LoadDataFirearm(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Firearm.objects.all()
     serializer_class = FirearmSerializer
@@ -53,7 +53,7 @@ class LoadDataFirearm(viewsets.ModelViewSet):
 
 class LoadDataPowder(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Powder.objects.all()
     serializer_class = PowderSerializer
@@ -61,7 +61,7 @@ class LoadDataPowder(viewsets.ModelViewSet):
 
 class LoadDataProjectile(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Projectile.objects.all()
     serializer_class = ProjectileSerializer
@@ -69,7 +69,7 @@ class LoadDataProjectile(viewsets.ModelViewSet):
 
 class LoadDataBrass(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Brass.objects.all()
     serializer_class = BrassSerializer
@@ -77,7 +77,7 @@ class LoadDataBrass(viewsets.ModelViewSet):
 
 class LoadDataPrimer(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Primer.objects.all()
     serializer_class = PrimerSerializer
@@ -93,7 +93,7 @@ class LoadDataHandLoad(viewsets.ModelViewSet):
 
 class LoadDataEstimatedDope(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = EstimatedDope.objects.all()
     serializer_class = EstimatedDopeSerializer
@@ -110,7 +110,7 @@ class DeerWaitListRecipient(viewsets.ModelViewSet):
 
 class DeerWaitListMeatCut(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = MeatCut.objects.all()
     serializer_class = MeatCutSerializer
@@ -118,7 +118,7 @@ class DeerWaitListMeatCut(viewsets.ModelViewSet):
 
 class DeerWaitListFlavor(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = Flavor.objects.all()
     serializer_class = FlavorSerializer
@@ -126,10 +126,11 @@ class DeerWaitListFlavor(viewsets.ModelViewSet):
 
 class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
     # require user to be logged on.
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # fetch data
     queryset = RequestedOrder.objects.all()
-    serializer_class = FlavorSerializer
+    # serializer_class = FlavorSerializer
+    serializer_class = RequestedOrderSerializer
 
 
 # ############### announcements ###############
