@@ -87,7 +87,7 @@ class LoadDataHandLoad(viewsets.ModelViewSet):
     # require user to be logged on.
     permission_classes = (IsAuthenticated,)
     # fetch data
-    queryset = HandLoad.objects.all()
+    queryset = HandLoad.objects.all().order_by('-id')
     serializer_class = HandLoadSerializer
 
 
@@ -140,7 +140,7 @@ class WhatIsNewViewRandomOne(viewsets.ModelViewSet):
 
 
 class WhatIsNewView(viewsets.ModelViewSet):
-    queryset = WhatIsNew.objects.all()
+    queryset = WhatIsNew.objects.all().order_by('-id')
     serializer_class = WhatIsNewSerializer
 
 
