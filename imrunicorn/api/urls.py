@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 # similar to object based url building
 router = routers.DefaultRouter()
+router.register('announcements/what_is_new_random_one', views.WhatIsNewViewRandomOne)
 router.register('announcements/what_is_new', views.WhatIsNewView)
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
 router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
