@@ -134,6 +134,11 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 
 
 # ############### announcements ###############
+class WhatIsNewViewRandomOne(viewsets.ModelViewSet):
+    queryset = WhatIsNew.objects.order_by('?')[:1]
+    serializer_class = WhatIsNewSerializer
+
+
 class WhatIsNewView(viewsets.ModelViewSet):
     queryset = WhatIsNew.objects.all()
     serializer_class = WhatIsNewSerializer

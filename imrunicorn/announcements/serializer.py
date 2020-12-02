@@ -11,7 +11,7 @@ class NewsSerializer(serializers.HyperlinkedModelSerializer):
 class WhatIsNewSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = WhatIsNew
-        fields = ('url', 'Date', 'Blurb', 'Body', 'Image_One', 'Published', 'Is_Sticky')
+        fields = ('url', 'pk', 'Date', 'Blurb', 'Body', 'Image_One', 'Published', 'Is_Sticky')
 
 
 class MainPageBlurbsSerializer(serializers.HyperlinkedModelSerializer):
