@@ -52,9 +52,9 @@ class HandLoadSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = HandLoad
         fields = (
-            'url', 'powder', 'Powder_Charge', 'firearm', 'projectile', 'brass', 'primer', 'Velocity', 'Is_Estimated',
-            'Standard_Deviation', 'Extreme_Spread', 'Is_Sheriff_Load', 'Confirmed_Splat_Factor', 'Group_Size',
-            'Group_Picture', 'Notes')
+            'id', 'url', 'powder', 'Powder_Charge', 'firearm', 'projectile', 'brass', 'primer', 'Velocity',
+            'Is_Estimated', 'Standard_Deviation', 'Extreme_Spread', 'Is_Sheriff_Load', 'Confirmed_Splat_Factor',
+            'Group_Size', 'Group_Picture', 'Notes')
 
 
 class EstimatedDopeSerializer(serializers.HyperlinkedModelSerializer):
