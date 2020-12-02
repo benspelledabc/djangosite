@@ -25,6 +25,10 @@ router.register('loaddata/Primer', views.LoadDataPrimer)
 router.register('loaddata/HandLoad', views.LoadDataHandLoad)
 router.register('loaddata/EstimatedDope', views.LoadDataEstimatedDope)
 
+router.register('groundhog_logbook/Location', views.LocationView)
+router.register('groundhog_logbook/RemovalsByLocation', views.RemovalsByLocationView)
+
+
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
 # app_name = 'api'

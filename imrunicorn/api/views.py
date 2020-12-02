@@ -25,6 +25,9 @@ from loaddata.models import Caliber, Firearm, Powder, Projectile, Brass, Primer,
 from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSerializer, PowderSerializer, \
     ProjectileSerializer, BrassSerializer, PrimerSerializer, HandLoadSerializer, EstimatedDopeSerializer
 
+from groundhog_logbook.models import Location, RemovalsByLocation
+from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
+
 
 class Owner(viewsets.ModelViewSet):
     # require user to be logged on.
@@ -152,3 +155,14 @@ class MainPageBlurbsView(viewsets.ModelViewSet):
 class PageBlurbOverridesView(viewsets.ModelViewSet):
     queryset = PageBlurbOverrides.objects.all()
     serializer_class = PageBlurbOverridesSerializer
+
+
+# ############### groundhog_logbook ###############
+class LocationView(viewsets.ModelViewSet):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+
+
+class RemovalsByLocationView(viewsets.ModelViewSet):
+    queryset = RemovalsByLocation.objects.all()
+    serializer_class = RemovalsByLocationSerializer

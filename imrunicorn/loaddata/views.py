@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 def firearm_create_view(request):
     step_hit_count_by_page(request.path)
-    data = {"restart": get_restart_notice,'Query': 'Complete',
+    data = {"restart": get_restart_notice, 'Query': 'Complete',
             'Result': 'The query completed but this is not an endpoint with data.'}
     return JsonResponse(data)
 
