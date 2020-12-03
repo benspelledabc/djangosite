@@ -29,7 +29,6 @@ router.register('groundhog_logbook/Location', views.LocationView)
 router.register('groundhog_logbook/RemovalsByLocation', views.RemovalsByLocationView)
 
 
-
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
 # app_name = 'api'
 urlpatterns = [

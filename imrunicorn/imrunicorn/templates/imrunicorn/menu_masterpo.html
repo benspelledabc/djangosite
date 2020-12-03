@@ -1,0 +1,28 @@
+<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Po <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li class="dropdown-header">Hand Load Data/Tools</li>
+
+                      <li><a href="{% url 'load_data:loads' %}">Load Data: All</a></li>
+                      <li><a href="{% url 'load_data:loads' load_type='ocw' %}">Load Data: OCW</a></li>
+                      <li><a href="{% url 'load_data:loads' load_type='sheriff' %}">Load Data: Sheriff</a></li>
+
+                    <li><a class="dropdown-item" href="{% url 'load_data:foot_pound_calculator' %}">Foot Pound Calculator</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Shooting Tips</li>
+                    <li><a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a></li>
+                      <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
+
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Misc Stuff</li>
+                    <li><a class="dropdown-item" href="{% url 'all_news' %}">News</a></li>
+                    <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
+                    <li><a href="{% url 'page_hits' %}">Page Hits</a></li>
+
+
+                  </ul>
+
+
+
+
+                </li>
