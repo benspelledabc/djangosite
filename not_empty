@@ -1,2 +1,35 @@
 this is a placeholder file
 asfd
+
+
+import smtplib
+
+port = 465  # For SSL
+smtp_server = "imap.benspelledabc.me"
+sender_email = "admin@benspelledabc.me"  # Enter your address
+# o = ['to1@gmail.com', 'to2@gmail.com']
+to = "to1@gmail.com"
+password = "pass1"
+body = "this is an email body thingy do hicky..."
+
+subject = "ball slapper"
+message = """\
+From: %s
+To: %s
+Subject: %s
+
+%s
+""" % (sender_email, to, subject, body)
+
+# replace "to" with this if you want a list    ", ".join(receiver_email)
+
+try:
+    server = smtplib.SMTP_SSL('smtp.benspelledabc.me', 465)
+    server.ehlo()
+    server.login(sender_email, password)
+    server.sendmail(sender_email, to, message)
+    server.close()
+
+    print('Email sent!')
+except Exception as ex:
+    print('Something went wrong: {0}'.format(ex))

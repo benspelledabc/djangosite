@@ -12,6 +12,8 @@ from . import forms, views
 
 # app_name = 'base_skipped_for_now'
 urlpatterns = [
+    path('api-auth/', include('rest_framework.urls')),
+
     path('greyscale', views.page_greyscale_test, name='greyscale_test'),
 
     path('admin/', admin.site.urls),
