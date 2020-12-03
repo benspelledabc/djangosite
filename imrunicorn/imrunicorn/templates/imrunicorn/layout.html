@@ -123,104 +123,16 @@
             </a>
 
         </div>
+
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <!-- <li><a href="#">Removed</a></li> -->
 
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Po <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li class="dropdown-header">Hand Load Data/Tools</li>
-
-                      <li><a href="{% url 'load_data:loads' %}">Load Data: All</a></li>
-                      <li><a href="{% url 'load_data:loads' load_type='ocw' %}">Load Data: OCW</a></li>
-                      <li><a href="{% url 'load_data:loads' load_type='sheriff' %}">Load Data: Sheriff</a></li>
-
-                    <li><a class="dropdown-item" href="{% url 'load_data:foot_pound_calculator' %}">Foot Pound Calculator</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Shooting Tips</li>
-                    <li><a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a></li>
-                      <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
-
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Misc Stuff</li>
-                    <li><a class="dropdown-item" href="{% url 'all_news' %}">News</a></li>
-                    <li><a href="{% url 'polls:index' %}">View Active Polls</a></li>
-                    <li><a href="{% url 'page_hits' %}">Page Hits</a></li>
-
-                  </ul>
-                </li>
-
-
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logbooks<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li class="dropdown-header">Groundhog Removal Logbook</li>
-
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_locations' %}"> Hole Location List</a></li>
-                      {% if user.is_authenticated %}
-                      <li><a class="dropdown-item"
-                             href="https://www.google.com/maps/d/edit?mid=1oKonLT_hz3f0q0_tMRIxC7GcoOjll455&ll=39.619590204745705%2C-77.02708839986629&z=17" target="_blank">View All On GoogleMaps</a></li>
-                      {% endif %}
-
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}"> Removals</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard' %}"> Removal Scoreboard</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard_annual' %}"> Removal Scoreboard Annual</a></li>
-
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Deer Harvest Logbook</li>
-                      <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:point_system' %}">Point System</a></li>
-                      <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:all_harvests' %}">All Harvests</a></li>
-                      <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:page_charts' %}">Harvest Charts</a></li>
-
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Deer Wait List</li>
-                      <li><a class="dropdown-item" href="{% url 'deer_wait_list:list_view' %}">View Wait List</a></li>
-                      <li><a class="dropdown-item" href="{% url 'deer_wait_list:info' %}">Info</a></li>
-
-                      {% comment %}
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard' %}"> Removal Scoreboard</a></li>
-                      {% endcomment %}
-
-                  </ul>
-                </li>
-
-                {% comment %}
-                    this should be for 'farm_invite_list_viewer'
-                {% endcomment %}
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Farm Invite/Schedule<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li class="dropdown-header">Lists and Stuff</li>
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:home' %}"> Invite List</a></li>
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:view_hidden_listings' %}"> Invite List Pending</a></li>
-                      <li><a class="dropdown-item"
-                             href="https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848"
-                             target="_blank"> Meet-up Location</a></li>
-
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> Can He Reach Me?</a></li>
-
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">More Info</li>
-                      <li><a class="dropdown-item" href="{% url 'farm_invite:how_do_i_sign_up' %}"> How do I sign up?</a></li>
-                    <li><a class="dropdown-item" href="{% url 'farm_invite:check_list' %}"> What Should I Bring?</a></li>
-                  </ul>
-                </li>
-
-
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donate<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li class="dropdown-header">Cash/Credit Donations</li>
-                    <li><a class="dropdown-item" href="{% url 'donate_cash_app' %}">Cash App (Preferred Method)</a></li>
-                    <li><a class="dropdown-item" href="{% url 'donate_steel_targets' %}">Steel Targets</a></li>
-                  </ul>
-                </li>
-
-
-                {% include 'imrunicorn/menu_user_toolbox.html' %}
+                {% include 'imrunicorn/menu_masterpo.html' %}
+                {% include 'imrunicorn/menu_logbooks.html' %}
+                {% include 'imrunicorn/menu_farminvites.html' %}
+                {% include 'imrunicorn/menu_donate.html' %}
+                {% include 'imrunicorn/menu_toolboxes.html' %}
+                {% include 'imrunicorn/menu_api.html' %}
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
@@ -237,14 +149,6 @@
     <hr/>
 
 </div>
-
-<!-- comment start
-<footer class="d-flex flex-row align-items-center footer">
-    <p class="m-auto">&copy; {{ copy_year }} - Drunken Dwarves, Irate Gnomes, and {{ release.author }} <br/>
-        Version: {{ release.version }} - Build Date: {{ release.build_date }}
-    </p>
-</footer>
--->
 
 <footer class="footer">
  <div class="container-fluid">
