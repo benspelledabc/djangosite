@@ -3,7 +3,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
     get_page_blurb_override, get_restart_notice
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
-    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, \
+    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
     groundhog_removal_scoreboard_annual
 
 from imrunicorn.functions import step_hit_count_by_page
@@ -28,7 +28,7 @@ class HomeView(View):
         return render(request, 'groundhog_graphic_charts.html', {"customers": 10})
 
 
-class ChartData(APIView):
+class ChartDataLKG(APIView):
     authentication_classes = []
     permission_classes = []
 
@@ -36,6 +36,28 @@ class ChartData(APIView):
         qs_count = User.objects.all().count()
         labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
         default_items = [qs_count, 23, 2, 3, 12, 2]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        # qs_count = User.objects.all().count()
+        total_count = groundhogs_count_by_sex()
+        male_count = groundhogs_count_by_sex("MALE")
+        female_count = groundhogs_count_by_sex("FEMALE")
+        unknown_count = groundhogs_count_by_sex("UNKNOWN")
+
+        print(male_count)
+
+        labels = ["Total", "Male", "Female", "Unknown"]
+        default_items = [total_count, male_count, female_count, unknown_count]
         data = {
                 "labels": labels,
                 "default": default_items,
