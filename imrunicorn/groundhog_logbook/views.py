@@ -23,18 +23,47 @@ from rest_framework.response import Response
 User = get_user_model()
 
 
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'groundhog_line_charts.html', {"customers": 10})
+
+
 class ChartData(APIView):
     authentication_classes = []
     permission_classes = []
 
     def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [qs_count, 23, 2, 3, 12, 2]
         data = {
-            "restart": get_restart_notice,
-            "groundhog_chart_data": groundhogs_by_hour_of_day(),
-            "website_user_count": User.objects.all().count(),
-            "extra_info": "I'm moving the data to a reusable format. Please excuse my fun...",
+                "labels": labels,
+                "default": default_items,
         }
         return Response(data)
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data)  # http response
+
+
+def page_line_charts(request):
+    step_hit_count_by_page(request.path)
+    all_news = all_groundhog_removals
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        "all_news": all_news,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/line_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_line_charts.html", context)
 
 
 # Create your views here.
