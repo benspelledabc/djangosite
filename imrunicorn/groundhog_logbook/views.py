@@ -3,7 +3,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
     get_page_blurb_override, get_restart_notice
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
-    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, \
+    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
     groundhog_removal_scoreboard_annual
 
 from imrunicorn.functions import step_hit_count_by_page
@@ -23,18 +23,70 @@ from rest_framework.response import Response
 User = get_user_model()
 
 
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'groundhog_graphic_charts.html', {"customers": 10})
+
+
+class ChartDataLKG(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [qs_count, 23, 2, 3, 12, 2]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
 class ChartData(APIView):
     authentication_classes = []
     permission_classes = []
 
     def get(self, request, format=None):
+        # qs_count = User.objects.all().count()
+        total_count = groundhogs_count_by_sex()
+        male_count = groundhogs_count_by_sex("MALE")
+        female_count = groundhogs_count_by_sex("FEMALE")
+        unknown_count = groundhogs_count_by_sex("UNKNOWN")
+
+        print(male_count)
+
+        labels = ["Total", "Male", "Female", "Unknown"]
+        default_items = [total_count, male_count, female_count, unknown_count]
         data = {
-            "restart": get_restart_notice,
-            "groundhog_chart_data": groundhogs_by_hour_of_day(),
-            "website_user_count": User.objects.all().count(),
-            "extra_info": "I'm moving the data to a reusable format. Please excuse my fun...",
+                "labels": labels,
+                "default": default_items,
         }
         return Response(data)
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data)  # http response
+
+
+def page_graphic_charts(request):
+    step_hit_count_by_page(request.path)
+    all_news = all_groundhog_removals
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        "all_news": all_news,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    # return render(request, "groundhog_logbook/groundhog_line_charts-lkg.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_charts.html", context)
 
 
 # Create your views here.
