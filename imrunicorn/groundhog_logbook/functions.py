@@ -79,3 +79,15 @@ def groundhogs_by_sex():
         .annotate(kills=Count('sex')) \
         .order_by('-kills')
     return result
+
+
+def groundhogs_count_by_sex(sex="ALL"):
+    # now we're conditionally sexy
+    if sex == "ALL":
+        result = RemovalsByLocation.objects.all().count()
+    else:
+        result = RemovalsByLocation.objects.filter(
+            Q(sex=sex)
+        ).count()
+
+    return result
