@@ -25,7 +25,7 @@ User = get_user_model()
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'groundhog_line_charts.html', {"customers": 10})
+        return render(request, 'groundhog_graphic_charts.html', {"customers": 10})
 
 
 class ChartData(APIView):
@@ -51,7 +51,7 @@ def get_data(request, *args, **kwargs):
     return JsonResponse(data)  # http response
 
 
-def page_line_charts(request):
+def page_graphic_charts(request):
     step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals
 
@@ -61,9 +61,10 @@ def page_line_charts(request):
         "all_news": all_news,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
-        "blurb": get_page_blurb_override('groundhog_logbook/line_charts/'),
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_line_charts.html", context)
+    # return render(request, "groundhog_logbook/groundhog_line_charts-lkg.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_charts.html", context)
 
 
 # Create your views here.
