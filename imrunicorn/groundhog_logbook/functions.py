@@ -71,6 +71,7 @@ def groundhogs_by_hour_of_day_by_sex():
         hour=TruncHour('removal_time')).values('hour', 'sex', ) \
         .annotate(kills_per_hour=Count('id')) \
         .order_by('hour')
+    print("FUNCTION: {0}".format(result))
     return result
 
 

@@ -2,6 +2,9 @@ from django.urls import path, include
 from . import views
 from rest_framework import routers
 from django.views.generic import TemplateView
+# from api.views import ChartData as GroundHogChartData
+from groundhog_logbook.views import ChartDataBySex
+# from api.views import ChartDataTest
 
 # similar to object based url building
 router = routers.DefaultRouter()
@@ -27,6 +30,7 @@ router.register('loaddata/EstimatedDope', views.LoadDataEstimatedDope)
 
 router.register('groundhog_logbook/Location', views.LocationView)
 router.register('groundhog_logbook/RemovalsByLocation', views.RemovalsByLocationView)
+# router.register('groundhog_logbook/chart/data/test', ChartDataTest.as_view(), basename=ChartDataTest)
 
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
