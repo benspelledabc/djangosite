@@ -2,7 +2,7 @@
 
 <script>
 {% block jquery %}
-var endpoint = '/groundhog_logbook/api/chart/by_sex/data/'
+var endpoint = '/groundhog_logbook/api/chart/by_time/data/'
 var defaultData = []
 var labels = [];
 $.ajax({
@@ -28,7 +28,7 @@ function setChart(){
     data: {
         labels: labels,
         datasets: [{
-            label: '# of Groundhog Removals (By Sex)',
+            label: '# of Groundhog Removals (By Time)',
             data: defaultData,
 
             backgroundColor: [
@@ -37,9 +37,48 @@ function setChart(){
                 'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)'
             ],
             borderColor: [
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)',

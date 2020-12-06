@@ -23,19 +23,21 @@ from rest_framework.response import Response
 User = get_user_model()
 
 
-class HomeView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'groundhog_graphic_charts.html', {"customers": 10})
-
-
-class ChartDataLKG(APIView):
+class ChartDataByTime(APIView):
     authentication_classes = []
     permission_classes = []
 
     def get(self, request, format=None):
-        qs_count = User.objects.all().count()
-        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_items = [qs_count, 23, 2, 3, 12, 2]
+        by_hour = groundhogs_by_hour_of_day()
+        labels = []
+        default_items = []
+
+        for item in by_hour:
+            labels.append(item['hour'])
+
+        for item in by_hour:
+            default_items.append(item['kills_per_hour'])
+
         data = {
                 "labels": labels,
                 "default": default_items,
@@ -43,18 +45,28 @@ class ChartDataLKG(APIView):
         return Response(data)
 
 
-class ChartData(APIView):
+def page_charts_by_time(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_time.html", context)
+
+
+class ChartDataBySex(APIView):
     authentication_classes = []
     permission_classes = []
 
     def get(self, request, format=None):
-        # qs_count = User.objects.all().count()
         total_count = groundhogs_count_by_sex()
         male_count = groundhogs_count_by_sex("MALE")
         female_count = groundhogs_count_by_sex("FEMALE")
         unknown_count = groundhogs_count_by_sex("UNKNOWN")
-
-        print(male_count)
 
         labels = ["Total", "Male", "Female", "Unknown"]
         default_items = [total_count, male_count, female_count, unknown_count]
@@ -65,27 +77,16 @@ class ChartData(APIView):
         return Response(data)
 
 
-def get_data(request, *args, **kwargs):
-    data = {
-        "sales": 100,
-        "customers": 10,
-    }
-    return JsonResponse(data)  # http response
-
-
-def page_graphic_charts(request):
+def page_charts_by_sex(request):
     step_hit_count_by_page(request.path)
-    all_news = all_groundhog_removals
 
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
-        "all_news": all_news,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    # return render(request, "groundhog_logbook/groundhog_line_charts-lkg.html", context)
     return render(request, "groundhog_logbook/groundhog_graphic_charts.html", context)
 
 
