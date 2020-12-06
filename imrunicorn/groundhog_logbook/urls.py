@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
-from .views import HomeView, ChartData, get_data
+from .views import ChartDataBySex, ChartDataByTime
+# from api.views import ChartData as GroundHogChartData
+
 
 app_name = 'groundhog_logbook'
 urlpatterns = [
@@ -14,14 +16,11 @@ urlpatterns = [
     path('removal_scoreboard_annual/', views.page_groundhog_removals_scoreboard_annual,
          name='groundhog_removal_scoreboard_annual'),
 
-    # path('', HomeView.as_view(), name="all_groundhog_removals"),
-    path('graphic_charts/', views.page_graphic_charts, name='graphic_charts'),
-    path("api/data/", get_data, name="api-data"),
-    path('api/chart/data/', ChartData.as_view()),
+    # charts by sex
+    path('charts/by_sex/', views.page_charts_by_sex, name='charts_by_sex'),
+    path('api/chart/by_sex/data/', ChartDataBySex.as_view()),
 
+    path('charts/by_time/', views.page_charts_by_time, name='charts_by_time'),
+    path('api/chart/by_time/data/', ChartDataByTime.as_view()),
 
-
-
-    # path('detail/', views.page_news_by_pk, name='news_by_pk'),
-    # path('detail/<int:news_pk>', views.page_news_by_pk, name='news_by_pk'),
 ]

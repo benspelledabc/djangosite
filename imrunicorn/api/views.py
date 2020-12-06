@@ -28,6 +28,11 @@ from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSeria
 from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
+from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
+    all_groundhog_hole_locations, groundhog_removal_scoreboard, \
+    groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
+    groundhog_removal_scoreboard_annual
+
 
 class Owner(viewsets.ModelViewSet):
     # require user to be logged on.
@@ -166,3 +171,25 @@ class LocationView(viewsets.ModelViewSet):
 class RemovalsByLocationView(viewsets.ModelViewSet):
     queryset = RemovalsByLocation.objects.all()
     serializer_class = RemovalsByLocationSerializer
+
+
+# class ChartDataTest(APIView):
+#     authentication_classes = []
+#     permission_classes = []
+#
+#     def get(self, request, format=None):
+#         # qs_count = User.objects.all().count()
+#         total_count = groundhogs_count_by_sex()
+#         male_count = groundhogs_count_by_sex("MALE")
+#         female_count = groundhogs_count_by_sex("FEMALE")
+#         unknown_count = groundhogs_count_by_sex("UNKNOWN")
+#
+#         print(male_count)
+#
+#         labels = ["Total", "Male", "Female", "Unknown"]
+#         default_items = [total_count, male_count, female_count, unknown_count]
+#         data = {
+#             "labels": labels,
+#             "default": default_items,
+#         }
+#         return Response(data)
