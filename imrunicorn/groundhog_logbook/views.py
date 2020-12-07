@@ -87,7 +87,7 @@ def page_charts_by_sex(request):
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_charts.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_sex.html", context)
 
 
 # Create your views here.
