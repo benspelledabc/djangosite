@@ -197,21 +197,24 @@ def page_loads_by_type(request, load_type='All'):
 # @allowed_groups(allowed_groupname_list=['content_collection_restricted'])
 def page_loads(request):
     step_hit_count_by_page(request.path)
-    logger.info("This is not getting logged...")
 
     all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
-        prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'), output_field=FloatField()),
+        prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+                               output_field=FloatField()),
         rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60, output_field=IntegerField())
     )
 
-    # print(all_loads[0].firearm.owner.first_name)
-    # print(all_loads[0].firearm.owner.userprofile.preferred_display_name)
+    # there's probably a better way to do this but, this works for now.
+    for load in all_loads:
+        load.has_info = False
+        has_dope = EstimatedDope.objects.all().filter(Q(hand_load=load.pk))
+        if has_dope:
+            load.has_info = True
 
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Load Data",
-        # "blurb": "Do your own research, don't use this load data. It might be a pipe bomb in your firearm.",
         "blurb": get_page_blurb_override('load_data/loads/'),
         'all_loads': all_loads,
         "copy_year": datetime.now().year
