@@ -183,6 +183,14 @@ def page_loads_by_type(request, load_type='All'):
                                   output_field=IntegerField())
         )
 
+    # there's probably a better way to do this but, this works for now.
+    for load in all_loads:
+        load.has_info = False
+        has_dope = EstimatedDope.objects.all().filter(Q(hand_load=load.pk))
+        if has_dope:
+            load.has_info = True
+
+
     context = {
         "restart": get_restart_notice,
         'release': get_version_json(),
