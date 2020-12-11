@@ -6,6 +6,7 @@ from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_re
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
     groundhog_removal_scoreboard_annual
 
+from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
@@ -132,6 +133,7 @@ def page_all_groundhog_removals(request):
     return render(request, "groundhog_logbook/all_groundhog_kills.html", context)
 
 
+@allowed_groups(allowed_groupname_list=['groundhog_hole_knowledge'])
 def page_all_groundhog_locations(request):
     step_hit_count_by_page(request.path)
     context = {
