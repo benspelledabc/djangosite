@@ -26,6 +26,8 @@ class PicturesForCarousel(models.Model):
 
     class Meta:
         ordering = ('-pk', 'caption')
+        verbose_name = 'Picture For Carousel'
+        verbose_name_plural = 'Pictures For Carousel'
 
 
 class DAndDFifthEditionBook(models.Model):
@@ -38,6 +40,8 @@ class DAndDFifthEditionBook(models.Model):
 
     class Meta:
         ordering = ('-pk', 'file_title', 'file_name')
+        verbose_name = 'D & D 5th Edition Book'
+        verbose_name_plural = 'D & D 5th Edition Book'
 
 
 class FantasyGrounds(models.Model):
@@ -49,3 +53,5 @@ class FantasyGrounds(models.Model):
 
     class Meta:
         ordering = ('-pk', 'file_title', 'file_name')
+        verbose_name = 'Fantasy Grounds'
+        verbose_name_plural = 'Fantasy Grounds'
