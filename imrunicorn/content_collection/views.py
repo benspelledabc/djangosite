@@ -4,10 +4,10 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
-    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e
+    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, get_all_fantasy_grounds
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
-# from imrunicorn.decorators import allowed_groups
+from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
 
@@ -24,22 +24,39 @@ def page_blank(request):
     return render(request, "content_collection/blank.html", context)
 
 
-def page_dnd5e_list(request):
+@allowed_groups(allowed_groupname_list=['content_collection_fantasy_grounds'])
+def page_fantasy_grounds_list(request):
     step_hit_count_by_page(request.path)
-    item_list = get_all_dnd5e()
-
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_dnd5e']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    item_list = get_all_fantasy_grounds()
 
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Content Collection: D&D-5e",
+        "title": "Fantasy Grounds",
         "item_list": item_list,
-        "unrestricted_user": unrestricted,
+        "blurb": get_page_blurb_override('content_collection/dnd5e/'),
+    }
+    return render(request, "content_collection/dnd5e.html", context)
+
+
+@allowed_groups(allowed_groupname_list=['content_collection_dnd5e'])
+def page_dnd5e_list(request):
+    step_hit_count_by_page(request.path)
+    item_list = get_all_dnd5e()
+
+    unrestricted = False
+    # allowed_groupname_list = ['content_collection_dnd5e']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "D&D-5e",
+        "item_list": item_list,
+        # "unrestricted_user": unrestricted,
         "blurb": get_page_blurb_override('content_collection/dnd5e/'),
     }
     return render(request, "content_collection/dnd5e.html", context)
@@ -50,7 +67,7 @@ def page_carousel_recent(request):
     carousel = get_recent_pictures_for_carousel()
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_carousel']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
@@ -58,7 +75,7 @@ def page_carousel_recent(request):
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Content Collection: Carousel",
+        "title": "Carousel: Recent",
         'unrestricted_user': unrestricted,
         "carousel": carousel,
         "blurb": get_page_blurb_override('content_collection/carousel/recent/'),
@@ -71,7 +88,7 @@ def page_carousel(request):
     carousel = get_all_pictures_for_carousel()
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_carousel']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
@@ -79,7 +96,7 @@ def page_carousel(request):
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Content Collection: Carousel",
+        "title": "Carousel (All)",
         'unrestricted_user': unrestricted,
         "carousel": carousel,
         "blurb": get_page_blurb_override('content_collection/carousel/'),
@@ -92,7 +109,7 @@ def page_latest_video_by_pk(request, video_pk=1):
     videos = get_video_by_pk(video_pk)
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_videos']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
@@ -113,7 +130,7 @@ def page_latest_video(request):
     videos = get_latest_video
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_videos']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
@@ -134,7 +151,7 @@ def page_video_list(request):
     videos = get_all_videos
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_videos']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
@@ -155,7 +172,7 @@ def page_videos(request):
     videos = get_all_videos
 
     unrestricted = False
-    allowed_groupname_list = ['content_collection_unrestricted']
+    allowed_groupname_list = ['content_collection_videos']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 

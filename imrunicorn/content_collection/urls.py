@@ -14,6 +14,8 @@ urlpatterns = [
     path('carousel/recent', views.page_carousel_recent, name='carousel_recent'),
 
     path('dnd5e', views.page_dnd5e_list, name='dnd5e_list'),
+    path('fantasy_grounds', views.page_fantasy_grounds_list, name='fantasy_grounds_list'),
+
     # path('dnd5e/<int:dnd5e_pk>', views.page_dnd5e_list_by_pk, name='dnd5e_list'),
 
 ]

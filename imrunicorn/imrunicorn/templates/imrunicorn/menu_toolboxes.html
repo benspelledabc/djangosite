@@ -14,26 +14,23 @@
           {% endif %}
           {% endcomment %}
 
-          <li class="dropdown-header">Content Collection: Videos</li>
+          <li class="dropdown-header">Content Collections</li>
           <li><a href="{% url 'content_collection:video_list' %}">Video List</a></li>
           <li><a href="{% url 'content_collection:videos_latest' %}">Latest Video</a></li>
-          <li role="separator" class="divider"></li>
-          <li class="dropdown-header">Content Collection: Carousel</li>
-          <li><a href="{% url 'content_collection:carousel_recent' %}">Recent</a></li>
-          <li><a href="{% url 'content_collection:carousel' %}">All</a></li>
-          <li role="separator" class="divider"></li>
-          <li class="dropdown-header">Content Collection: D&amp;D 5e</li>
-          <li><a href="{% url 'content_collection:dnd5e_list' %}">List</a></li>
-          <li role="separator" class="divider"></li>
-          <li class="dropdown-header">Content Collection: Misc</li>
+          <li><a href="{% url 'content_collection:carousel_recent' %}">Carousel (Recent)</a></li>
+          <li><a href="{% url 'content_collection:carousel' %}">Carousel (All)</a></li>
+          <li><a href="{% url 'content_collection:dnd5e_list' %}">D&amp;D 5e</a></li>
+          <li><a href="{% url 'content_collection:fantasy_grounds_list' %}">Fantasy Grounds</a></li>
           <li><a href="{% url 'content_collection:blank' %}">Misc</a></li>
-          <li role="separator" class="divider"></li>
 
+          {% comment %}
+          <li role="separator" class="divider"></li>
           <li class="dropdown-header">Status Watcher</li>
           <li><a href="{% url 'status_watcher:home' %}">View List</a></li>
           {% if user.is_staff %}
           <li><a href="{% url 'status_watcher:view_watches_reset' %}">Reset List</a></li>
           {% endif %}
+          {% endcomment %}
 
 
           {% ifequal user.groups.all.0.name "DisabledLinksViewer" %}
@@ -59,5 +56,8 @@
           <li><a class="dropdown-item" href="{% url 'days_since' %}?input_date=11/2/2019">Second</a></li>
           {% endifequal %}
 
+          {% include 'imrunicorn/menu_toolbox_api.html' %}
+
       </ul>
     </li>
+

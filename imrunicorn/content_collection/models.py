@@ -31,10 +31,21 @@ class PicturesForCarousel(models.Model):
 class DAndDFifthEditionBook(models.Model):
     file_title = models.CharField(max_length=150, default=None, blank=True, null=True)
     file_name = models.FileField(upload_to='uploads/content_collection/dnd5e_books/', null=True, blank=True)
-    restricted = models.BooleanField(default=True, null=True)
+    # restricted = models.BooleanField(default=True, null=True)
 
     def __str__(self):
-        return "#%s - [%s] %s (%s)" % (self.pk, self.restricted, self.file_title, self.file_name)
+        return "#%s - %s (%s)" % (self.pk, self.file_title, self.file_name)
 
     class Meta:
-        ordering = ('-pk', 'restricted', 'file_title', 'file_name')
+        ordering = ('-pk', 'file_title', 'file_name')
+
+
+class FantasyGrounds(models.Model):
+    file_title = models.CharField(max_length=150, default=None, blank=True, null=True)
+    file_name = models.FileField(upload_to='uploads/content_collection/FantasyGrounds/', null=True, blank=True)
+
+    def __str__(self):
+        return "#%s - %s (%s)" % (self.pk, self.file_title, self.file_name)
+
+    class Meta:
+        ordering = ('-pk', 'file_title', 'file_name')
