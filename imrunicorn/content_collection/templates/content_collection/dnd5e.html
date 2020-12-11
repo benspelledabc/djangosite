@@ -18,6 +18,9 @@
     <br /><br />
         <ul>
         {% for item in item_list %}
+            <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
+
+            {% comment %}
             {% if item.restricted %}
                 {% if unrestricted_user %}
                     <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
@@ -27,6 +30,9 @@
             {% else %}
             <li><a href="{{ item.file_name.url }}" target="_blank">#{{ item.pk }} - {{ item.file_title}}</a></li>
             {% endif %}
+            {% endcomment %}
+
+
         {% endfor %}
         </ul>
 

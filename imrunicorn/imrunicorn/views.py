@@ -18,7 +18,7 @@ def page_access_denied_groups(request):
         "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Access Denied",
-        "deny_message": "You are not in one of the groups that is allowed to see this page.",
+        "deny_message": "You are not in one of the groups that is allowed to see the page requested.",
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/access_denied.html", context)
