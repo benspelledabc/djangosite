@@ -14,6 +14,8 @@ from . import forms, views
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
+    path('qr/about/', views.page_qr_about, name='qr_about'),
+
     path('greyscale', views.page_greyscale_test, name='greyscale_test'),
 
     path('admin/', admin.site.urls),
