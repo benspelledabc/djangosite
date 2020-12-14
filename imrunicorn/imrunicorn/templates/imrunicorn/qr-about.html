@@ -1,0 +1,22 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<br/>
+<div class="row ben_format_pretty">
+    <div align="left" class="col-md-12">
+        For privacy reasons, this content should come from the database so it's not in the source code.
+        <br /><br />
+        <center><img src="{% static '/imrunicorn/content/qr-about.png' %}" height="200px" /></center>
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}

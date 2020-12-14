@@ -12,6 +12,19 @@ from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page
 
 
+def page_qr_about(request):
+    step_hit_count_by_page(request.path)
+    # return HttpResponse("Hello world 500.")
+    context = {
+        "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "QR: About",
+        "blurb": "QR Code Link",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "imrunicorn/qr-about.html", context)
+
+
 def page_access_denied_groups(request):
     step_hit_count_by_page(request.path)
     context = {
