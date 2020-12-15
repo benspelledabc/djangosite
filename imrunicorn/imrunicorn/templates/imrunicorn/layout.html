@@ -8,24 +8,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>
-
-        {% comment %}
-            This doesn't work the way i think/want because it doesn't pick up sub domains...
-        {% endcomment %}
-
         {{ title }}
         {% if release.cut != 'prod' %}
-            - {{ release.cut }}
+        - {{ release.cut }}
         {% endif%}
     </title>
 
     {% load static %}
-    <!-- <link href="{% static 'imrunicorn/content/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/> -->
-    <!-- <link href="{% static 'imrunicorn/content/bootstrap.css' %}" rel="stylesheet" type="text/css"/> -->
-    <!-- <link href="{% static 'imrunicorn/content/site.css' %}" rel="stylesheet" type="text/css"/> -->
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap files (jQuery first, then Popper.js, then Bootstrap JS) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+            type="text/javascript"></script>
 
     <style>
         div.ben_format_pretty {
@@ -48,6 +48,8 @@
             min-height: 100px;
         }
 
+
+
     </style>
 
 
@@ -56,9 +58,7 @@
 
     {% endblock %}
 
-
     <link href="{% static 'imrunicorn/favicon.ico' %}" rel="shortcut icon" type="image/png"/>
-
 
     <SCRIPT language="JavaScript">
         var grav = 32.175;
@@ -82,28 +82,309 @@
             window.document.calform.nrg04.value = fix(.5 * window.document.calform.wt04.value / 7000 / grav * window.document.calform.ve04.value * window.document.calform.ve04.value);
         }
 
+
+
     </SCRIPT>
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <script src="{% static 'imrunicorn/scripts/modernizr-2.6.2.js' %}"></script>
+    <script type="text/javascript">
+/// some script
 
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+	//////////////////////// Prevent closing from click inside dropdown
+    $(document).on('click', '.dropdown-menu', function (e) {
+      e.stopPropagation();
+    });
+
+    // make it as accordion for smaller screens
+    if ($(window).width() < 992) {
+	  	$('.dropdown-menu a').click(function(e){
+	  		e.preventDefault();
+	        if($(this).next('.submenu').length){
+	        	$(this).next('.submenu').toggle();
+	        }
+	        $('.dropdown').on('hide.bs.dropdown', function () {
+			   $(this).find('.submenu').hide();
+			})
+	  	});
+	}
+
+}); // jquery end
+
+
+    </script>
+    <style type="text/css">
+	@media (min-width: 692px){
+		.dropdown-menu .dropdown-toggle:after{
+			border-top: .3em solid transparent;
+		    border-right: 0;
+		    border-bottom: .3em solid transparent;
+		    border-left: .3em solid;
+		}
+
+		.dropdown-menu .dropdown-menu{
+			margin-left:0; margin-right: 0;
+		}
+
+		.dropdown-menu li{
+			position: relative;
+		}
+		.nav-item .submenu{
+			display: none;
+			position: absolute;
+			left:100%; top:-7px;
+		}
+		.nav-item .submenu-left{
+			right:100%; left:auto;
+		}
+
+		.dropdown-menu > li:hover{ background-color: #f1f1f1 }
+		.dropdown-menu > li:hover > .submenu{
+			display: block;
+		}
+	}
+
+
+    </style>
 </head>
 
 <body>
 
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:green;">
+
+        <a class="navbar-brand" href="/">
+            <strong>{{ release.application_title }}</i></strong>
+            {% if "dev" in release.cut %}
+            <i class="fab fa-dev">&nbsp;</i>
+            {% elif "test" in release.cut %}
+            <i style="color:red;" class="fas fa-vial">&nbsp;</i>
+            {% elif "debug" in release.cut %}
+            <i style="color:yellow" class="fas fa-bug">&nbsp;</i>
+            {% endif %}
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+
+            <ul class="navbar-nav">
+                {% comment %}
+                <li class="nav-item"><a class="nav-link" href="/qr/about"> About </a></li>
+                {% endcomment %}
+
+                {% comment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Treeview menu </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 2 &raquo </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="">Submenu item 1</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 2</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 3 &raquo </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                        <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a>
+                    </ul>
+                </li>
+                {% endcomment %}
+
+                <!-- menu MasterPo -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Master Po </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> Foot Pound Calculator </a></li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Load Data </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'load_data:loads' %}">All</a></li>
+                                <li><a class="dropdown-item" href="{% url 'load_data:loads' load_type='ocw' %}">OCW</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'load_data:loads' load_type='sheriff' %}">Sheriff</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Shooting Tips </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'shooting_logbook:six_steps' %}">6 Little Steps</a></li>
+                                <li><a class="dropdown-item" href="{% url 'shooting_logbook:reading_wind_mirage' %}">Reading Wind Mirage</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Misc Stuff </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'all_news' %}">News</a></li>
+                                <li><a class="dropdown-item" href="{% url 'polls:index' %}">Active Polls</a></li>
+                                <li><a class="dropdown-item" href="{% url 'page_hits' %}">Page Hits</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- menu MasterPo end -->
+
+                <!-- menu Logbooks -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Logbooks </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Groundhog Removals </a>
+                            <ul class="submenu dropdown-menu">
+                                {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="https://www.google.com/maps/d/edit?mid=1oKonLT_hz3f0q0_tMRIxC7GcoOjll455&ll=39.619590204745705%2C-77.02708839986629&z=17" target="_blank">View All On GoogleMaps</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}">Removals</a></li>
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_sex' %}">Charts By Sex</a></li>
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_time' %}">Charts By Time</a></li>
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}">Charts (simple)</a></li>
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard' %}">Scoreboard</a></li>
+                                <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard_annual' %}">Scoreboard (Annual)</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Deer Harvests </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:point_system' %}">Point System</a></li>
+                                <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:all_harvests' %}">All Harvests</a></li>
+                                <li><a class="dropdown-item" href="{% url 'deer_harvest_logbook:page_charts' %}">Harvest Charts</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Deer Wait List </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'deer_wait_list:list_view' %}">View Wait List</a></li>
+                                <li><a class="dropdown-item" href="{% url 'deer_wait_list:info' %}">Info</a></li>
+                            </ul>
+                        </li>
+                        {% comment %}
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 5 </a></li>
+                        {% endcomment %}
+                    </ul>
+                </li>
+                <!-- menu Logbooks end -->
+
+                <!-- menu RangeSchedules -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Range Schedules </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'farm_invite:home' %}"> Registrations </a></li>
+                        <li><a class="dropdown-item" href="{% url 'farm_invite:view_hidden_listings' %}"> Incomplete Registrations </a></li>
+                        <li><a class="dropdown-item" href=https://www.google.com/maps/place/Jiffy+Mart/@39.6056655,-77.000262,17z/data=!4m12!1m6!3m5!1s0x89c847d9d584655b:0x7994fa4a7bc83269!2sCarroll+County+Regional+Airport!8m2!3d39.6056126!4d-77.0028988!3m4!1s0x89c847c541bc5c41:0x844c85f83cf496f7!8m2!3d39.6061025!4d-76.9975848"
+                             target="_blank"> Meet-Up Location </a></li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> FAQ </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'farm_invite:missing_contact_info' %}"> "Can he reach me?" </a></li>
+                                <li><a class="dropdown-item" href="{% url 'farm_invite:how_do_i_sign_up' %}"> "How do I sign up?" </a></li>
+                                <li><a class="dropdown-item" href="{% url 'farm_invite:check_list' %}"> "What should I bring?" </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- menu RangeSchedules end -->
+
+                <!-- menu Toolboxes -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Toolboxes </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Content Collections</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'content_collection:video_list' %}">Video List</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:videos_latest' %}">Latest Video</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:carousel_recent' %}">Carousel Recent</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:carousel' %}">Carousel All</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:dnd5e_list' %}">D&amp;D 5E</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:fantasy_grounds_list' %}">Fantasy Grounds</a></li>
+                                <li><a class="dropdown-item" href="{% url 'content_collection:blank' %}">Misc</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> API Tools </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href="/api/" target="_blank">All Endpoints</a></li>
+                                <li><a class="dropdown-item" href="/api/announcements/what_is_new_random_one/" target="_blank">News (Random One)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- menu Toolboxes end -->
+
+                {% if user.is_authenticated %}
+                <form id="logoutForm" action="/logout/" method="post">{% csrf_token %}</form>
+                <li class="nav-item"><a class="nav-link" href="/admin/"> Admin</a></li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="javascript:document.getElementById('logoutForm').submit()"> Log off</a>
+                </li>
+                {% else %}
+                <!-- working logout link -->
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+
+            </ul>
+
+            {% comment %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+                <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Dropdown right </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="#"> Dropdown item 1</a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 2 </a></li>
+                        <li><a class="dropdown-item dropdown-toggle" href="#"> Dropdown item 3 </a>
+                            <ul class="submenu submenu-left dropdown-menu">
+                                <li><a class="dropdown-item" href="">Submenu item 1</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 2</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 3</a></li>
+                                <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
+                    </ul>
+                </li>
+            </ul>
+            {% endcomment %}
+
+
+        </div> <!-- navbar-collapse.// -->
+
+    </nav>
+
+    <div class="container body-content">
+        <i>Please forgive alignment issues caused by the new menu....</i>
+        <div class="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <hr/>
+    </div>
+
+</div>
+
+
+{% comment %}
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
 
@@ -126,12 +407,12 @@
 
             <a class="navbar-brand" href="/">
                 <strong>{{ release.application_title }}</i></strong>
-                {% if "dev" in release.cut  %}
-                    <i class="fab fa-dev">&nbsp;</i>
-                {% elif "test" in release.cut  %}
-                    <i style="color:red;"  class="fas fa-vial">&nbsp;</i>
+                {% if "dev" in release.cut %}
+                <i class="fab fa-dev">&nbsp;</i>
+                {% elif "test" in release.cut %}
+                <i style="color:red;" class="fas fa-vial">&nbsp;</i>
                 {% elif "debug" in release.cut %}
-                    <i style="color:yellow" class="fas fa-bug">&nbsp;</i>
+                <i style="color:yellow" class="fas fa-bug">&nbsp;</i>
                 {% endif %}
             </a>
 
@@ -143,110 +424,80 @@
                 {% include 'imrunicorn/menu_masterpo.html' %}
                 {% include 'imrunicorn/menu_logbooks.html' %}
                 {% include 'imrunicorn/menu_farminvites.html' %}
-                {% comment %} {% include 'imrunicorn/menu_donate.html' %} {% endcomment %}
                 {% include 'imrunicorn/menu_toolboxes.html' %}
-                {% comment %} {% include 'imrunicorn/menu_api.html' %}{% endcomment %}
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
         </div>
     </div>
 </div>
-
-<div class="container body-content">
-    <div class="main">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    <hr/>
-
-</div>
+{% endcomment %}
 
 <footer class="footer">
- <div class="container-fluid">
-  <div class="row text-center">
-   <div class="col-lg-12">© {{ copy_year }} - Drunken Dwarves, Irate Gnomes, and {{ release.author }}</div>
-   <div class="col-lg-12">Version: {{ release.version }} - Build Date: {{ release.build_date }}</div>
-      <div class="col-lg-14">
-          <br />
-          <span id="siteseal">
-              <br />
-              <script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=s6ZRfZaLsoE24WHV2OfHJKt76hKbS8UzH5DNTzKcLcFnH61heBtsybvUpZD7"></script>
-          </span><br />
-          <br />
-          <a href="https://www.youtube.com/channel/UClsUmOmQVad3sg9g6tPYwLQ/videos" target="_blank">
-              <img src="{% static '/imrunicorn/content/youtube.svg' %}" height="20px" /></a>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-lg-12">© {{ copy_year }} - Drunken Dwarves, Irate Gnomes, and {{ release.author }}</div>
+            <div class="col-lg-12">Version: {{ release.version }} - Build Date: {{ release.build_date }}</div>
+            <div class="col-lg-14">
+                <br/>
+                <span id="siteseal">
+              <br/>
+              <script async type="text/javascript"
+                      src="https://seal.godaddy.com/getSeal?sealID=s6ZRfZaLsoE24WHV2OfHJKt76hKbS8UzH5DNTzKcLcFnH61heBtsybvUpZD7"></script>
+          </span><br/>
+                <br/>
+                <a href="https://www.youtube.com/channel/UClsUmOmQVad3sg9g6tPYwLQ/videos" target="_blank">
+                    <img src="{% static '/imrunicorn/content/youtube.svg' %}" height="20px"/></a>
 
-          <a href="https://gunicorn.org/" target="_blank">
-              <img src="{% static '/imrunicorn/content/gunicorn.png' %}" height="20px" /></a>
+                <a href="https://gunicorn.org/" target="_blank">
+                    <img src="{% static '/imrunicorn/content/gunicorn.png' %}" height="20px"/></a>
 
-          <a href="https://mariadb.com/" target="_blank">
-              <img src="{% static '/imrunicorn/content/mariadb_logo.svg' %}" height="20px" /></a>
+                <a href="https://mariadb.com/" target="_blank">
+                    <img src="{% static '/imrunicorn/content/mariadb_logo.svg' %}" height="20px"/></a>
 
-          <a href="https://www.djangoproject.com/" target="_blank">
-              <img src="{% static '/imrunicorn/content/djangoPythonLogo.png' %}" height="20px" /></a>
+                <a href="https://www.djangoproject.com/" target="_blank">
+                    <img src="{% static '/imrunicorn/content/djangoPythonLogo.png' %}" height="20px"/></a>
 
-          <a href="https://www.jenkins.io/" target="_blank">
-              <img src="{% static '/imrunicorn/content/jenkins_cowboy.png' %}" height="20px" /></a>
+                <a href="https://www.jenkins.io/" target="_blank">
+                    <img src="{% static '/imrunicorn/content/jenkins_cowboy.png' %}" height="20px"/></a>
 
-          <br /><br />
-          <a href="https://ammoseek.com" target="_blank"><img src="https://ammoseek.com/img/AmmoSeek2A.png" height="20px" /></a>
-          <img src="{% static '/imrunicorn/content/ruger_logo.png' %}" height="20px" />
-          <img src="{% static '/imrunicorn/content/savage_arms_chief.png' %}" height="20px" />
-      </div>
-  </div>
+                <br/><br/>
+                <a href="https://ammoseek.com" target="_blank"><img src="https://ammoseek.com/img/AmmoSeek2A.png"
+                                                                    height="20px"/></a>
+                <img src="{% static '/imrunicorn/content/ruger_logo.png' %}" height="20px"/>
+                <img src="{% static '/imrunicorn/content/savage_arms_chief.png' %}" height="20px"/>
+            </div>
+        </div>
 
 
-     <br />
-  <div class="row justify-content-center text-center">
-   <div class="col-lg-4">
-    <!-- <a href="/">Terms and conditions</a> -->
-   </div>
-   <div class="col-lg-4">
-    <!-- <a href="/">Privacy policy</a> -->
-   </div>
-   <div class="col-lg-4">
-    <!-- <a href="/">Careers</a> -->
-   </div>
-  </div>
- </div>
+        <br/>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-4">
+                <!-- <a href="/">Terms and conditions</a> -->
+            </div>
+            <div class="col-lg-4">
+                <!-- <a href="/">Privacy policy</a> -->
+            </div>
+            <div class="col-lg-4">
+                <!-- <a href="/">Careers</a> -->
+            </div>
+        </div>
+    </div>
 </footer>
-
-<!--
-<script src="{% static 'imrunicorn/scripts/jquery-1.10.2.js' %}"></script>
-<script src="{% static 'imrunicorn/scripts/bootstrap.js' %}"></script>
-<script src="{% static 'imrunicorn/scripts/respond.js' %}"></script>
-<script src="{% static 'imrunicorn/js/Chart.min.js' %}"></script>
--->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<!-- removed at some point -->
-<!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
 
 
+<script>
+$(document).ready(function(){
+  {% block jquery %}{% endblock %}
+})
 
-    <script>
-    $(document).ready(function(){
-      {% block jquery %}{% endblock %}
-    })
-    </script>
 
-{% block scripts %}{% endblock %}
+</script>
+
+{% block scripts %}
+{% endblock %}
 
 </body>
 </html>
