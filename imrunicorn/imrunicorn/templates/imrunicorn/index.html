@@ -16,12 +16,15 @@
     <div align="center">
         {% if main_blurb != None %}
         {% autoescape off %}
-         {{ main_blurb }}
+        {{ main_blurb }}
         {% endautoescape %}
         {% endif %}
     </div>
+    <br /><br /><br />
+</div>
 
-    <br /><br />
+<div class="row ben_format_pretty">
+    <div class="col-md-12">
 
 {% autoescape off %}
         {% if all_news != None %}
@@ -34,32 +37,26 @@
                     {% if news.Image_One or news.Image_Two %}
                         <i style="color:blue;font-size: large" class="fas fa-camera"></i>
                     {% endif %}
-
-                        {% comment %}
-                        only include the dash if there is a picture or sticky before it.
-                        {% endcomment %}
-                    {% if news.Image_One or news.Image_Two or news.Is_Sticky %}
-                       -
-                    {% endif %}
                         <a href="{% url 'news_by_pk' %}{{ news.pk }}">{{ news.Date }} - <i>{{ news.Blurb }}</i></a>
-
-
                     </div><br/>
-                {{ news.Body|slice:":250" }}
+                {{ news.Body |slice:":250" }}
 
     {% if news.Body|length > 250 %}
-    ...
-    <br /><br />
-                <a href="{% url 'news_by_pk' %}{{ news.pk }}" class="btn btn-primary">Read Full Post</a>
+            ...
+        <br /><br />
+        <a href="{% url 'news_by_pk' %}{{ news.pk }}" class="btn btn-primary">Read Full Post</a>
     {% endif %}
 
             {% endfor %}
         {% endif %}
 {% endautoescape %}
 
+
+    </div>
 </div>
 
 
-<br /><br />
+
+<br/><br/>
 
 {% endblock %}
