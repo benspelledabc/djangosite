@@ -16,7 +16,7 @@
             <b>Manufacture:</b> {{ firearm_details.manufacture|title }}</br>
             <b>Model:</b> {{ firearm_details.model|title }}</br>
             <b>Barrel Length:</b> {{ firearm_details.barrel_length }} inches</br>
-            <b>Caliber:</b> {{ firearm_details.caliber }}</br>
+            <b>Caliber:</b> <a href="{% url 'load_data:page_caliber_detail' %}{{ firearm_details.caliber.pk }}">{{ firearm_details.caliber|upper }}</a></br>
             <b>Twist:</b> 1 per {{ firearm_details.inches_per_twist }} inches</br>
             <b>Elevation Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_elevation }}</br>
             <b>Windage Reset Clicks:</b> {{ firearm_details.clicks_from_bottom_to_zero_windage }}</br>
