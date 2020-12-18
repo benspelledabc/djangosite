@@ -17,7 +17,7 @@ class WhatIsNew(models.Model):
         return "%s %s" % (self.Date, self.Blurb)
 
     class Meta:
-        ordering = ('-Date', 'Blurb')
+        ordering = ('-Is_Sticky', '-Date', 'Blurb')
         verbose_name = 'What Is New'
         verbose_name_plural = 'What Is New'
 
