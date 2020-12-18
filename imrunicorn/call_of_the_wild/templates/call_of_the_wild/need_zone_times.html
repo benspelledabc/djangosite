@@ -1,0 +1,349 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <h2>Layton Lake District</h2><br />
+    WHITETAIL DEER<br />
+    Feeding - 5:00 - 9:30, 15:00 - 21:30<br />
+    Drinking - 12:00 - 15:30<br />
+    Resting - 9:00 - 12:30, 21:00 – 0:30, 0:00 – 5:30<br />
+<br />
+    BLACKTAIL DEER<br />
+    Feeding - 13:00 - 17:30<br />
+    Drinking - 5:00 - 9:30, 17:00 - 21:30<br />
+    Resting - 0:00- 5:30, 9:00 - 13:30, 21:00 - 0:30<br />
+<br />
+    ROOSEVELT ELK<br />
+    Feeding - 9:00 - 13:30<br />
+    Drinking - 5:00 - 9:30, 17:00 - 21:30<br />
+    Resting - 0:00 - 5:30, 13:00 - 17:30, 21:00 - 0:30<br />
+<br />
+    MOOSE<br />
+    Feeding - 5:00 - 9:30, 17:00 -21:30<br />
+    Drinking - 9:00 - 13:30<br />
+    Resting - 13:00 - 17:30, 21:00 - 0:30, 0:00 -5:30<br />
+<br />
+    BLACK BEAR<br />
+    Feeding - 0:00 - 7:30<br />
+    Drinking - 19:00 - 0:30<br />
+    Resting - 7:00 - 11:30, 11:00 - 15:30, 15:00 - 19:30<br />
+<br />
+    COYOTE<br />
+    Feeding - 3:00 - 7:30, 19:00 - 0:30<br />
+    Drinking - 0:00 - 3:30<br />
+    Resting - 7:00 - 11:30, 11:00 - 15:30, 15:00 - 19:30<br />
+<br />
+    WHITE TAILED JACKRABBIT<br />
+    Feeding - 5:00 - 11:30, 16:00 - 22:30<br />
+    Drinking - 11:00 - 14:30, 22:00 - 0:30<br />
+    Resting - 0 - 5:30, 14:00 - 16:30<br />
+<br />
+<br />
+    <h2>Hirschfelden Hunting Reserve</h2><br />
+    RED DEER<br />
+    Feeding - 13:00-17:30<br />
+    Drinking - 5:00 – 9:30, 17:00 – 21:30<br />
+    Resting - 1:00 – 5:30, 9:00 – 13:30, 21:30 – 1:30<br />
+<br />
+    WILD BOAR<br />
+    Feeding - 19:00 – 23:30, 3:00 – 7:30<br />
+    Drinking - 23:00 – 3:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+    ROE DEER<br />
+    Feeding – 5:00 – 9:30, 17:00 – 21:30<br />
+    Drinking – 13:00 – 17:30<br />
+    Resting – 0:00 – 5:30, 9 – 11:30, 21:00 – 0:30<br />
+<br />
+    FALLOW DEER<br />
+    Feeding - 5:00 – 9:30. 17:00 – 21:30<br />
+    Drinking - 9:00 – 13:30<br />
+    Resting - 0:00 – 5:30 13:00 – 17:30, 21:30 – 0:30<br />
+<br />
+    RED FOX<br />
+    Feeding - 0:00 – 3:30, 3:00 – 7:30<br />
+    Drinking - 19:00 – 0:30<br />
+    Resting 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+    EUROPEAN BISON<br />
+    Feeding - 19:00 – 23:30, 0:00 – 3:30<br />
+    Drinking - 3:00 – 7:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+<br />
+    <h2>Medved Taiga National Park</h2><br />
+    MOOSE<br />
+    Feeding - 5:00 - 9:30, 17:00 -21:30<br />
+    Drinking - 9:00 - 13:30<br />
+    Resting - 13:00 - 17:30, 21:00 - 0:30, 0:00 -5:30<br />
+<br />
+    WILD BOAR<br />
+    Feeding - 19:00 – 23:30, 3:00 – 7:30<br />
+    Drinking - 23:00 – 3:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+    REINDEER<br />
+    Feeding - 9:00 – 13:30<br />
+    Drinking - 5:00 – 9:30, 17:00 – 21:30<br />
+    Resting - 0:00 – 5:30, 13:00 – 17:30, 21:00 – 0:30<br />
+<br />
+    SIBERIAN MUSK DEER<br />
+    Feeding - 11:00 – 15:30, 19:00 – 23:30<br />
+    Drinking - 3:00 – 7:30<br />
+    Resting - 0:00 – 3:30, 7:00 – 11:30, 15:00 – 19:30<br />
+<br />
+    BROWN BEAR<br />
+    Feeding - 0:00 – 3:30, 19:00 – 0:30<br />
+    Drinking - 3:00 – 7:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 5:30, 15:00 – 19:30<br />
+<br />
+    EURASIAN LYNX<br />
+    Feeding - 0:00 – 7:30<br />
+    Drinking - 19:00 – 23:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+<br />
+    <h2>Vurhonga Savanna</h2><br />
+    LESSER KUDU<br />
+    Feeding - 4:00 - 7:30, 7:00 - 10:30, 19:00 - 0:30<br />
+    Drinking - 0 - 4:30<br />
+    Resting - 10:00 - 14:30, 14:00 - 19:30<br />
+<br />
+    SPRINGBOK<br />
+    Feeding - 4:00 - 9:30, 19:00 - 21:30, 21:00 - 0:30<br />
+    Drinking - 15:00 - 19:30<br />
+    Resting - 9:00 - 12:30, 12 - 15:30, 0:00 - 4:30<br />
+<br />
+    GEMSBOK<br />
+    Feeding - 8:00 - 14:30<br />
+    Drinking - 4:00 - 8:30, 18:00 - 21:30<br />
+    Resting - 14:00 - 18:30, 0:00 - 4:30<br />
+<br />
+    BLUE WILDEBEEST<br />
+    Feeding - 3:00 - 9:30, 16:00 - 20:300<br />
+    Drinking - 20:00 - 0:30<br />
+    Resting - 9:00 - 12:30, 12:00 - 16:30, 0:00 - 3:30<br />
+<br />
+    WARTHOG<br />
+    Feeding - 8:00 - 13:30, 20:00 - 0:30<br />
+    Drinking - 4:00 - 8:30,<br />
+    Resting - 13:00 - 16:30, 16:00 - 20:30, 0:00 - 4:30<br />
+<br />
+    CAPE BUFFALO<br />
+    Feeding - 5:00 - 8:30, 12:00 - 16:30, 22:00 - 0:30<br />
+    Drinking - 8:00 - 12:30, 19:00 - 22:30<br />
+    Resting - 0:00 - 5:30, 16:00 - 19:30<br />
+<br />
+    LION<br />
+    Feeding - 0:00 - 8:30<br />
+    Drinking - 12:00 - 15:30<br />
+    Resting - 8:00 - 12:30, 15:00 - 0:30<br />
+<br />
+    SIDE STRIPED JACKAL<br />
+    Feeding - 0:00 - 4:30, 18:00 - 22:30<br />
+    Drinking - 11:00 -15:30, 22:00 - 0:30<br />
+    Resting - 4:00 - 11:30, 15:00 - 18:30<br />
+<br />
+    SCRUB HARE<br />
+    Feeding - 4:00 - 9:30, 15:00 - 20:30<br />
+    Drinking - 0:00 - 4:30<br />
+    Resting - 9:00 - 12:30, 12:00 - 15:30, 20:00 - 0:30<br />
+<br />
+<br />
+    <h2>Parque Fernando</h2><br />
+    RED DEER<br />
+    Feeding - 13:00-17:30<br />
+    Drinking - 5:00 – 9:30, 17:00 – 21:30<br />
+    Resting - 1:00 – 5:30, 9:00 – 13:30, 21:30 – 1:30<br />
+<br />
+    MULE DEER<br />
+    Feeding - 0 – 4:30, 17:00 – 21:30<br />
+    Drinking - 9:00 – 12:30, 21:00 – 0:30<br />
+    Resting - 4:00 – 9:30, 12:00 – 17:30<br />
+<br />
+    AXIS DEER<br />
+    Feeding - 8:00 – 12:30, 21:00 – 0:30<br />
+    Drinking - 4:00 – 8:30, 18:00 – 21:30<br />
+    Resting - 12:00 – 18:30, 0:00 - 4:30<br />
+<br />
+    BLACKBUCK<br />
+    Feeding - 6:00 – 9:30, 14:00 – 17:30<br />
+    Drinking - 9:00 – 12:30, 17:00 – 19:30<br />
+    Resting - 0:00 – 6:30, 12:00 – 14:30, 19:00 – 0:30<br />
+<br />
+    WATER BUFFALO<br />
+    Feeding - 5:00 – 10:30, 17:00 – 21:30<br />
+    Drinking - 10:00 – 13:30, 21:30 – 0:30<br />
+    Resting - 0:00 – 5:30, 13:00 – 17:30<br />
+<br />
+    PUMA<br />
+    Feeding - 0:00 – 6:30<br />
+    Drinking - 6:00 – 9:30, 13:00 – 17:30, 21:00 – 00:30<br />
+    Resting - 9:00 – 13:30, 17:00 - 21:30<br />
+<br />
+    Yukon Valley<br />
+    RED FOX<br />
+    Feeding - 0:00 – 3:30, 3:00 – 7:30<br />
+    Drinking - 19:00 – 0:30<br />
+    Resting 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+    MOOSE<br />
+    Feeding - 5:00 - 9:30, 17:00 -21:30<br />
+    Drinking - 9:00 - 13:30<br />
+    Resting - 13:00 - 17:30, 21:00 - 0:30, 0:00 -5:30<br />
+<br />
+    CARIBOU<br />
+    Feeding - 9:00 – 13:30<br />
+    Drinking - 5:00 – 9:30, 17:00 – 21:30<br />
+    Resting - 0:00 – 5:30, 13:00 – 17:30, 21:00 – 0:30<br />
+<br />
+    PLAINS BISON<br />
+    Feedng - 0:00 - 3:30, 19:00 - 0:30<br />
+    Drinking - 3:00 - 7:30<br />
+    Resting - 7:00 - 11:30, 11:00 - 15:30<br />
+<br />
+    GRAY WOLF<br />
+    Feeding - 3:00 - 7:30, 19:00 - 23:30<br />
+    Drinking - 23:00 - 0:30, 0:00 - 3:30<br />
+    Resting - 7:00 - 11:30, 11:00 - 15:30, 15:00 - 19:30<br />
+<br />
+    GRIZZLY BEAR<br />
+    Feeding - 19:00 - 23:30, 23:00 - 3:00<br />
+    Drinking- 3:00 - 7:30<br />
+    Resting - 7:00 - 11:30, 11:00 - 15:30, 15:00 - 19:30<br />
+<br />
+<br />
+    <h2>Cuatro Colinas</h2><br />
+    RED DEER<br />
+    Feeding - 13:00-17:30<br />
+    Drinking - 5:00 – 9:30, 17:00 – 21:30, 0:00 - 2:30<br />
+    Resting - 2:00 – 5:30, 9:00 – 13:30, 21:30 – 0:30<br />
+<br />
+    WILD BOAR<br />
+    Feeding - 19:00 – 23:30, 3:00 – 7:30<br />
+    Drinking - 23:00 – 3:30<br />
+    Resting - 7:00 – 11:30, 11:00 – 15:30, 15:00 – 19:30<br />
+<br />
+    ROE DEER<br />
+    Feeding – 17:00 - 21:30, 2:00 - 6:30<br />
+    Drinking – 6:00 - 9:30, 13:00 - 17:30<br />
+    Resting – 9:00 - 13:30. 21:00 - 2:30<br />
+<br />
+    EUROPEAN HARE<br />
+    Feeding – 5:00 - 11:30, 16:00 - 22:30<br />
+    Drinking – 11:00 - 14:30, 22:00 - 0:30, 0:00 - 1:30<br />
+    Resting – 1:00 - 5:30, 14:00 - 16:30<br />
+<br />
+    IBERIAN MOUFLON<br />
+    Feeding – 15:00 - 19:30<br />
+    Drinking – 19:00 - 22:00, 6:00 - 9:30<br />
+    Resting – 9:00 - 15:30, 2:00 - 6:30<br />
+<br />
+    SPANISH IBEX (ALL SHARE SAME NEED ZONE TIMES)<br />
+    Feeding – 0:00 - 4:30, 17:00 - 21:30<br />
+    Drinking – 8:00 - 11:30, 21:00 - 0:30<br />
+    Resting – 11:00 - 17:30, 4:00 - 8:30<br />
+<br />
+    IBERIAN WOLF<br />
+    Feeding – 3:00 - 7:30, 19:00 - 23:30<br />
+    Drinking – 23:00 - 0:30, 0:00 - 3:30<br />
+    Resting – 7:00 - 11:30, 11:00 - 15:30, 15:00 - 19:30<br />
+<br />
+<br />
+    <h2>Silver Ridge Peaks</h2><br />
+    BLACK BEAR:<br />
+    Feeding - 5:00 - 11:30<br />
+    Drinking - 11:00 - 12:30, 15:00 - 20:30, 20:00 - 21:30<br />
+    Resting - 0:00 - 5:30, 12:00 - 15:30, 21:00 - 0:30<br />
+<br />
+    BIGHORN SHEEP:<br />
+    Feeding - 4:00 - 6:30, 8:00 - 21:30<br />
+    Drinking - 6:00 - 8:30<br />
+    Resting - 0:00 - 4:30, 21:00 - 0:30<br />
+<br />
+    MOUNTAIN GOAT<br />
+    Feeding - 0:00 - 3:30, 5:00 - 9:30, 11:00 - 13:30, 16:00 - 21:30<br />
+    Drinking - 9:00 - 11:30, 21:00 - 22:30<br />
+    Resting - 3:00 - 5:30, 13:00 - 16:30, 22:0 - 0:30<br />
+<br />
+    MOUNTAIN LION:<br />
+    Feeding - 0:00 - 6:30, 18:00 - 0:30<br />
+    Drinking - 6:00 - 8:30, 17:00 - 18:30<br />
+    Resting - 8:00 - 17:30<br />
+<br />
+    MULE DEER<br />
+    Feeding - 0:00 - 5:30, 10:00 - 14:30, 18:00 - 23:30<br />
+    Drinking - 9:00 - 10:30, 23:00 - 0:30<br />
+    Resting - 5:00 - 9:30, 14:00 - 18:30<br />
+<br />
+    PLAINS BISON:<br />
+    Feeding - 3:00 - 10:30, 17:00 - 0:30<br />
+    Drinking - 10:00 - 11:30, 16:00 - 17:30<br />
+    Resting - 0:00 - 3:30, 11:00 - 16:30<br />
+<br />
+    PRONGHORN:<br />
+    Feeding - 5:00 - 8:30, 10:00 - 19:30<br />
+    Drinking - 8:00 - 10:30, 19:00 - 21:30<br />
+    Resting - 0:00 - 5:30, 21:00 - 0:30<br />
+<br />
+    ROCKY MOUNTAIN ELK:<br />
+    Feeding - 5:00 - 17:30, 18:00 - 23:30<br />
+    Drinking - 4:00 - 5:30, 17:00 - 18:30<br />
+    Resting - 0:00 - 4:30, 23:00 - 0:30<br />
+<br />
+    TURKEY:<br />
+    Feeding - 5:00 - 15:30, 16:00 - 21:30<br />
+    Drinking - 15:00 - 16:30<br />
+    Resting - 21:00 - 0:30, 0:00 - 5:30<br />
+<br />
+<br />
+    <h2>Te Awaroa National Park</h2><br />
+    CHAMOIS:<br />
+    Feeding - 8:00 - 12:30, 15:30 - 19:00<br />
+    Drinking - 4:30 - 8:30<br />
+    Resting - 0:00 - 5:00, 12:00 - 15:30<br />
+<br />
+    FALLOW DEER:<br />
+    Feeding - 5:00 - 9:00, 14:30 - 18:00<br />
+    Drinking - 8:30 - 12:00<br />
+    Resting - 0:00 - 5:30, 11:30 - 15:00, 20:30 - 0:00<br />
+<br />
+    FERAL GOAT<br />
+    Feeding - 6:00 - 10:00, 15:30 - 19:30, 19:00 - 21:30<br />
+    Drinking - 9:30 - 13:00<br />
+    Resting - 0:00 - 6:30, 12:30 - 16:00, 21:00 - 0:00<br />
+<br />
+    FERAL PIG:<br />
+    Feeding - 6:00 - 10:30, 13:30 - 17:30, 17:00 - 21:00<br />
+    Drinking - 3:00 - 6:30<br />
+    Resting - 0:00 - 3:30, 10:00 - 14:00, 20:30 - 0:30<br />
+<br />
+    RED DEER<br />
+    Feeding - 4:30 - 8:00, 7:30 - 11:30, 14:00 - 18:30<br />
+    Drinking - 18:00 - 21:30<br />
+    Resting - 0:00 - 5:00, 11:00 - 14:30<br />
+<br />
+    SIKA DEER<br />
+    Feeding - 5:00 - 9:00, 14:00 - 18:00, 17:30 - 21:30<br />
+    Drinking - 8:30 - 12:00<br />
+    Resting - 0:00 - 5:30, 11:30 - 14:30, 21:00 - 0:00<br />
+<br />
+    TURKEY<br />
+    Feeding - 6:00 - 9:30, 9:00 - 13:00, 16:30 - 20:30<br />
+    Drinking -<br />
+    Resting - 0:00 - 6:30, 13:00 - 17:00<br />
+
+
+</div>
+
+{% endblock %}

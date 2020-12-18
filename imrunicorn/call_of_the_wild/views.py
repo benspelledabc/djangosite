@@ -20,3 +20,15 @@ def page_blank(request):
         "blurb": get_page_blurb_override('call_of_the_wild/blank/'),
     }
     return render(request, "call_of_the_wild/blank.html", context)
+
+
+def page_need_zone_times(request):
+    step_hit_count_by_page(request.path)
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Call Of The Wild: Need Zone Times",
+        "blurb": get_page_blurb_override('call_of_the_wild/need_zone_times/'),
+    }
+    return render(request, "call_of_the_wild/need_zone_times.html", context)
