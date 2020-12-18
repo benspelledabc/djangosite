@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'deer_wait_list',
     'status_watcher',
     'content_collection',
+    'call_of_the_wild',
     #'iprestrict',
 ]
 
