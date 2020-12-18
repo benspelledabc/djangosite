@@ -1,0 +1,31 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+<div class="jumbotron">
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ blurb }}</p>
+</div>
+
+
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+        <div style="text-align: left;font-family:times new roman;">
+            {% if blurb == None %}
+                no special blurb...
+            {% endif %}
+            I'll put more info in here soon.
+
+            {% if caliber_pk == None %}
+                no caliber_pk
+            {% else %}
+                caliber_pk is {{ caliber_pk }}
+            {% endif %}
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
