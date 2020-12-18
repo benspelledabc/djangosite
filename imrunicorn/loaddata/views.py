@@ -320,7 +320,6 @@ def page_firearm_detail(request, firearm_pk=None):
         return render(request, "loaddata/firearm_details.html", context)
     try:
         selected_firearm = Firearm.objects.get(pk=firearm_pk)
-
         context = {
             "restart": get_restart_notice,
             'firearm_id': firearm_pk,
@@ -342,6 +341,66 @@ def page_firearm_detail(request, firearm_pk=None):
         }
 
     return render(request, "loaddata/firearm_details.html", context)
+
+
+def page_caliber_detail(request, caliber_pk=None):
+    print("caliber details...")
+    step_hit_count_by_page(request.path)
+    if caliber_pk is None:
+        context = {
+            'caliber_pk': caliber_pk,
+            'release': get_version_json(),
+            "title": "Caliber Details",
+            "blurb": get_page_blurb_override('load_data/caliber_details/None'),
+            "copy_year": datetime.now().year,
+        }
+        return render(request, "loaddata/caliber_details.html", context)
+    try:
+        # selected_caliber = Caliber.objects.get(pk=caliber_pk)
+
+        # now get the loads, for that caliber
+        # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+        #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+        #                            output_field=FloatField()),
+        #     rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+        #                           output_field=IntegerField())
+        # )
+
+        all_loads = HandLoad.objects.filter(
+            Q(firearm__caliber__pk=caliber_pk)).order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
+            prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
+                                   output_field=FloatField()),
+            rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
+                                  output_field=IntegerField())
+        )
+
+        # there's probably a better way to do this but, this works for now.
+        for load in all_loads:
+            load.has_info = False
+            has_dope = EstimatedDope.objects.all().filter(Q(hand_load=load.pk))
+            if has_dope:
+                load.has_info = True
+
+        context = {
+            "restart": get_restart_notice,
+            'release': get_version_json(),
+            "title": "Load Data",
+            "blurb": get_page_blurb_override('load_data/loads/'),
+            'all_loads': all_loads,
+            "copy_year": datetime.now().year
+        }
+        return render(request, "loaddata/djangoad.html", context)
+
+    except ObjectDoesNotExist:
+        context = {
+            'caliber_pk': caliber_pk,
+            'release': get_version_json(),
+            "title": "Caliber Details",
+            "blurb": get_page_blurb_override('load_data/caliber_details/None'),
+            "copy_year": datetime.now().year,
+        }
+
+    return render(request, "loaddata/caliber_details.html", context)
 
 
 def sample(request):

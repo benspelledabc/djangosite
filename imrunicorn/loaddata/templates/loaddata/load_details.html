@@ -21,7 +21,7 @@
                 <strong><i>This isn't a great load, it was just put here to say its not bad and we've tried it. It's
                 like calling the ammo 'blaster' ammo.</i></strong><br /><br /><br />
             {% endif %}
-            Intended Firearm: {{ selected_hand_load.firearm|title }}<br />
+            Intended Firearm: <a href="{% url 'load_data:page_firearm_detail' %}{{ selected_hand_load.firearm.pk }}">{{ selected_hand_load.firearm|title }}</a><br />
 
             {% if selected_hand_load.Group_Size %}
             Shot Group Size: {{ selected_hand_load.Group_Size }}<br />
