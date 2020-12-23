@@ -31,6 +31,9 @@
         div.ben_format_pretty {
             max-width:80%;
             margin: auto;
+            background-color: white;
+            opacity: 0.6;
+            padding: 20px;
         }
 
         div.ben_format_pretty_border {
@@ -46,6 +49,22 @@
 
         .footer {
             min-height: 100px;
+            background-color: white;
+            opacity: 0.6;
+            padding: 20px;
+        }
+
+        .wallpapered {
+            background-color: white;
+            opacity: 0.6;
+            padding: 20px;
+        }
+
+        body {
+            background: black;
+            background-image: url('{% static '/imrunicorn/content/Grunge-Effect-Black-Wallpaper-for-Website.jpg' %}');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
     </style>
@@ -157,6 +176,7 @@
     <div class="main">
         {% block content %}
         {% endblock %}
+
     </div>
 
     <hr/>
