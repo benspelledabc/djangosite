@@ -33,6 +33,7 @@
             margin: auto;
             background-color: white;
             opacity: 0.6;
+            padding: 20px;
         }
 
         div.ben_format_pretty_border {
@@ -48,10 +49,22 @@
 
         .footer {
             min-height: 100px;
+            background-color: white;
+            opacity: 0.6;
+            padding: 20px;
+        }
+
+        .wallpapered {
+            background-color: white;
+            opacity: 0.6;
+            padding: 20px;
         }
 
         body {
-          background-image: url('{% static '/imrunicorn/content/Grunge-Effect-Black-Wallpaper-for-Website.jpg' %}');
+            background: black;
+            background-image: url('{% static '/imrunicorn/content/Grunge-Effect-Black-Wallpaper-for-Website.jpg' %}');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
     </style>
@@ -163,6 +176,7 @@
     <div class="main">
         {% block content %}
         {% endblock %}
+
     </div>
 
     <hr/>
@@ -197,7 +211,7 @@
               <img src="{% static '/imrunicorn/content/jenkins_cowboy.png' %}" height="20px" /></a>
 
           <br /><br />
-          <a href="https://ammoseek.com" target="_blank"><img src="https://ammoseek.com/img/AmmoSeek2B.png" height="20px" /></a>
+          <a href="https://ammoseek.com" target="_blank"><img src="https://ammoseek.com/img/AmmoSeek2A.png" height="20px" /></a>
           <img src="{% static '/imrunicorn/content/ruger_logo.png' %}" height="20px" />
           <img src="{% static '/imrunicorn/content/savage_arms_chief.png' %}" height="20px" />
       </div>
