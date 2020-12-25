@@ -6,44 +6,61 @@
     <p class="lead">{{ blurb }}</p>
 </div>
 <div class="row">
-   </br>
-   </br>
-   <div id="ftlbs">
-      <center>
-         <p>Foot-Pound Energy Calculator (Enter gr and fps for ft pounds)</p>
-         <FORM NAME="calform">
-            <table border="1" style="border-style: dotted; width:50%">
-               <!-- base color DAD2AC -->
-               <tr>
-                  <td align=center bgcolor="#00ff33" style="width: 33%"><b>Weight</b><br>(Grains)</td>
-                  <td align=center bgcolor="#ffff00" style="width: 33%"><b>Velocity</b> <br>(FPS)</td>
-                  <td align=center bgcolor="#ff0000" style="width: 33%"><b>Energy</b><br>(ft lbs)</td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt01" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve01" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg01" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt02" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve02" size="7" VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg02" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt03" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve03" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg03" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-               <tr>
-                  <td> <input style="width: 100%" type="text" name="wt04" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="ve04" size="7"  VALUE=" " onChange="calcit();"></td>
-                  <td> <input style="width: 100%" type="text" name="nrg04" size="8" VALUE=" " onChange="calcit();"></td>
-               </tr>
-            </table>
-         </FORM>
-      </center>
-      <p>&nbsp;</p>
-   </div>
+
+    <div class="row ben_format_pretty">
+        <div align="center">
+
+            <div id="ftlbs">
+                <center>
+                    <p>Foot-Pound Energy Calculator (Enter gr and fps for ft pounds)</p>
+                    <FORM NAME="calform">
+                        <table border="1" style="border-style: dotted; width:50%">
+                            <!-- base color DAD2AC -->
+                            <tr>
+                                <td align=center bgcolor="#00ff33" style="width: 33%"><b>Weight</b><br>(Grains)</td>
+                                <td align=center bgcolor="#ffff00" style="width: 33%"><b>Velocity</b> <br>(FPS)</td>
+                                <td align=center bgcolor="#ff0000" style="width: 33%"><b>Energy</b><br>(ft lbs)</td>
+                            </tr>
+                            <tr>
+                                <td><input style="width: 100%" type="text" name="wt01" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="ve01" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="nrg01" size="8" VALUE=" "
+                                           onChange="calcit();"></td>
+                            </tr>
+                            <tr>
+                                <td><input style="width: 100%" type="text" name="wt02" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="ve02" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="nrg02" size="8" VALUE=" "
+                                           onChange="calcit();"></td>
+                            </tr>
+                            <tr>
+                                <td><input style="width: 100%" type="text" name="wt03" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="ve03" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="nrg03" size="8" VALUE=" "
+                                           onChange="calcit();"></td>
+                            </tr>
+                            <tr>
+                                <td><input style="width: 100%" type="text" name="wt04" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="ve04" size="7" VALUE=" "
+                                           onChange="calcit();"></td>
+                                <td><input style="width: 100%" type="text" name="nrg04" size="8" VALUE=" "
+                                           onChange="calcit();"></td>
+                            </tr>
+                        </table>
+                    </FORM>
+                </center>
+                <p>&nbsp;</p>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 {% endblock %}
