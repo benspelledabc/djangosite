@@ -4,23 +4,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron wallpapered">
     <h1>Polls</h1>
     <p class="lead">Various selection of polls.</p>
 </div>
 
+
 <div class="row ben_format_pretty">
-    <div class="col-md-12" align="center">
-        Check back from time to time because the polls are set to display only polls that have started
+    <div class="col-md-12">
+        <p>Find out how to <a href="{% url 'farm_invite:how_do_i_sign_up' %}">register</a> today.</p>
+        <p>Check back from time to time because the polls are set to display only polls that have started
         and not expired. This start/stop is determined by date. In addition we're only showing the most
-        recent few polls. <br/><br/>Right now you can vote more than once on the same poll.
-        Don't be bad. Only vote once.<br/><br/><br/>
+        recent few polls. Right now you can vote more than once on the same poll.
+        Don't be bad, only vote once.</p>
     </div>
 
-
-    {% block polls_content %}
-
-    <div class="row ben_format_pretty">
+    <div class="col-md-12">
         {% if latest_poll_list %}
         <ul>
             {% for poll in latest_poll_list %}
@@ -28,10 +27,9 @@
             {% endfor %}
         </ul>
         {% else %}
-        <p>No polls are available.</p>
+        <p><strong>No polls are available.</strong></p>
         {% endif %}
     </div>
-    {% endblock %}
 
 </div>
 
