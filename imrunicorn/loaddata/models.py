@@ -33,10 +33,13 @@ class Firearm(models.Model):
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        display_name = self.owner.first_name
+        display_name = self.owner.username
         try:
             display_name = self.owner.userprofile.preferred_display_name
+            if len(display_name) == 0:
+                display_name = self.owner.username
         except ObjectDoesNotExist:
+            display_name = self.owner.username
             pass
 
         return "%s's %s %s %s" % (display_name, self.manufacture, self.model, self.caliber)
@@ -146,17 +149,34 @@ class HandLoad(models.Model):
     Group_Picture = models.ImageField(upload_to='uploads/load_data/', null=True, blank=True)
     Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
+    def get_owner(self):
+        display_name = self.firearm.owner.username
+        try:
+            display_name = self.firearm.owner.username.userprofile.preferred_display_name
+            if len(display_name) == 0:
+                display_name = self.firearm.owner.username
+        except ObjectDoesNotExist:
+            display_name = self.firearm.owner.username
+            pass
+        display_name = "{0}".format(display_name)
+
+        return display_name
+
     def __str__(self):
-        return "[PK:%s] - %sgr %s %s @ %s FPS via %sgr of %s" % (self.pk, self.projectile.WeightGR,
-                                                                 self.projectile.Manufacture,
-                                                                 self.projectile.Name,
-                                                                 self.Velocity,
-                                                                 self.Powder_Charge,
-                                                                 self.powder.name,
-                                                                 )
+        # need to make this pull the userprofile.preferred_display_name value... please?
+        owner = self.get_owner()
+
+        return "[ %s ] - %sgr %s %s @ %s FPS via %sgr of %s" % (owner, self.projectile.WeightGR,
+                                                                self.projectile.Manufacture,
+                                                                self.projectile.Name,
+                                                                self.Velocity,
+                                                                self.Powder_Charge,
+                                                                self.powder.name,
+                                                                )
 
     class Meta:
-        ordering = ('firearm', '-projectile', '-Velocity')
+        ordering = ('firearm__owner', 'projectile__Diameter', '-Velocity')
+        # ordering = ('firearm', '-projectile', '-Velocity')
 
 
 class EstimatedDope(models.Model):
