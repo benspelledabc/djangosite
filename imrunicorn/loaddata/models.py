@@ -133,6 +133,7 @@ class HandLoad(models.Model):
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
     firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
+    COAL = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=3)
     brass = models.ForeignKey(Brass, related_name='brass', on_delete=models.CASCADE, null=True)
     primer = models.ForeignKey(Primer, related_name='primer', on_delete=models.CASCADE, null=True)
     Velocity = models.IntegerField(default=2200, null=True)

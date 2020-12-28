@@ -4,13 +4,14 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
-    groundhog_removal_scoreboard_annual
+    groundhog_removal_scoreboard_annual, groundhogs_by_month
 
 from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime
+from dateutil import parser
 from django.shortcuts import render
 from django.views.generic import View
 from rest_framework import viewsets
@@ -22,6 +23,48 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 User = get_user_model()
+
+
+class ChartDataByMonth(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    # todo: this needs work and fixing...
+    def get(self, request, format=None):
+        by_month = groundhogs_by_month()
+        print("view: {0}".format(by_month))
+
+        labels = []
+        default_items = []
+
+        for item in by_month:
+            # dt = item['month']
+            # print(dt.month)
+            # print(item['month'].strftime("%B"))
+            labels.append(item['month'].strftime("%B"))
+            # labels.append(dt.month)
+
+        for item in by_month:
+            default_items.append(item['kills_per_month'])
+
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+def page_charts_by_month(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_month.html", context)
 
 
 class ChartDataByTime(APIView):

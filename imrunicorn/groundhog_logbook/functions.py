@@ -4,8 +4,18 @@ import datetime
 from django.conf import settings
 from .models import RemovalsByLocation, Location
 from django.db.models import Q, Count
-from django.db.models.functions import TruncHour
+from django.db.models.functions import TruncHour, TruncMonth
 from django.contrib.auth.models import User
+
+
+def groundhogs_by_month():
+    result = RemovalsByLocation.objects.annotate(
+        # hour=TruncHour('removal_time')).values('hour', 'sex',) \
+        month=TruncMonth('removal_date')).values('month', ) \
+        .annotate(kills_per_month=Count('id')) \
+        .order_by('month')
+
+    return result
 
 
 def all_groundhog_hole_locations():
