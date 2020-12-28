@@ -12,6 +12,7 @@ environ==1.0
 gunicorn==20.0.4
 idna==2.8
 pytz==2019.3
+python-dateutil
 PyYAML==5.3
 requests==2.22.0
 sqlparse==0.3.0
