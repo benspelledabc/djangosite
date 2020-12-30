@@ -55,24 +55,9 @@
 <div class="row ben_format_pretty">
     <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
         <div style="text-align: left;font-family:times new roman;">
-
-            This isn't really an ANNUAL <i>scoreboard</i> per say but more of a way to show who is doing the most removals. It
-            also gives me a chance to do something different code wise to get the site to display what I want.
+            This scoreboard is a rolling 365 days from today's date. As of today, that range is {{ rolling_year_date }}
+            to {{ datetime_now }}.
             <br /><br />
-            This scoreboard is a rolling 365 days from today's date (server time): {% now "D M H Y T " %}
-
-            <br /><br />
-
-
-            <div class="divTable row ben_format_pretty">
-            I'm going to add a graph that shows the number of removals by hour. For now, here's a scoreboard.
-        </div>
-
-
-
-            {% comment %}
-            This will build a little table of the top X removers.
-            {% endcomment %}
 
         <div class="divTable row ben_format_pretty">
             <div class="divTableBody">
