@@ -147,13 +147,13 @@ class HandLoad(models.Model):
     Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "[PK:%s] - %sgr %s %s @ %s FPS via %sgr of %s" % (self.pk, self.projectile.WeightGR,
-                                                                 self.projectile.Manufacture,
-                                                                 self.projectile.Name,
-                                                                 self.Velocity,
-                                                                 self.Powder_Charge,
-                                                                 self.powder.name,
-                                                                 )
+        return "%sgr %s %s @ %s FPS via %sgr of %s [ID: %s]" % (self.projectile.WeightGR,
+                                                                self.projectile.Manufacture,
+                                                                self.projectile.Name,
+                                                                self.Velocity,
+                                                                self.Powder_Charge,
+                                                                self.powder.name, self.pk,
+                                                                )
 
     class Meta:
         ordering = ('firearm', '-projectile', '-Velocity')

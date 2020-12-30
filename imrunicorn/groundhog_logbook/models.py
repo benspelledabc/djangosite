@@ -35,16 +35,18 @@ class RemovalsByLocation(models.Model):
     SUNNY = 'Sunny'
     PARTY_CLOUDY = 'Partly Cloudy'
     CLOUDY = 'Cloudy'
+    UNKNOWN = 'Unknown'
 
     cloud_level_choices = [
         (SUNNY, 'Sunny'),
         (PARTY_CLOUDY, 'Partly Cloudy'),
         (CLOUDY, 'Cloudy'),
+        (UNKNOWN, 'Unknown'),
     ]
     cloud_level = models.CharField(
         max_length=20,
         choices=cloud_level_choices,
-        default=SUNNY,
+        default=UNKNOWN,
     )
     firearm = models.ForeignKey(Firearm, related_name='groundhog_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='groundhog_logbook_hand_load', on_delete=models.CASCADE)
