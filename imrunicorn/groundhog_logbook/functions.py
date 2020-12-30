@@ -8,6 +8,18 @@ from django.db.models.functions import TruncHour, TruncMonth
 from django.contrib.auth.models import User
 
 
+def groundhogs_by_cloud_level(cloud_level="ALL"):
+    # now we're conditionally cloudy
+    if cloud_level == "ALL":
+        result = RemovalsByLocation.objects.all().count()
+    else:
+        result = RemovalsByLocation.objects.filter(
+            Q(cloud_level=cloud_level)
+        ).count()
+
+    return result
+
+
 def groundhogs_by_month():
     result = RemovalsByLocation.objects.annotate(
         # hour=TruncHour('removal_time')).values('hour', 'sex',) \

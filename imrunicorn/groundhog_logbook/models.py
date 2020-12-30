@@ -3,6 +3,7 @@ from django.db import models
 from loaddata.models import Firearm, HandLoad
 from decimal import Decimal
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Location(models.Model):
@@ -23,6 +24,30 @@ class RemovalsByLocation(models.Model):
     shooter = models.ForeignKey(User, related_name='groundhog_logbook_shooter', on_delete=models.CASCADE, null=True)
     removal_date = models.DateField(default=date.today)
     removal_time = models.TimeField(null=True)
+    estimated_temperature = models.IntegerField(
+        null=True,
+        default=-49,
+        validators=[
+            MaxValueValidator(120),
+            MinValueValidator(-50)
+        ]
+     )
+    SUNNY = 'Sunny'
+    PARTY_CLOUDY = 'Partly Cloudy'
+    CLOUDY = 'Cloudy'
+    UNKNOWN = 'Unknown'
+
+    cloud_level_choices = [
+        (SUNNY, 'Sunny'),
+        (PARTY_CLOUDY, 'Partly Cloudy'),
+        (CLOUDY, 'Cloudy'),
+        (UNKNOWN, 'Unknown'),
+    ]
+    cloud_level = models.CharField(
+        max_length=20,
+        choices=cloud_level_choices,
+        default=UNKNOWN,
+    )
     firearm = models.ForeignKey(Firearm, related_name='groundhog_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='groundhog_logbook_hand_load', on_delete=models.CASCADE)
     location = models.ForeignKey(Location, related_name='location', on_delete=models.CASCADE)
