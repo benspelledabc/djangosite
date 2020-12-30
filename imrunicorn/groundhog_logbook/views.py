@@ -10,11 +10,12 @@ from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil import parser
 from django.shortcuts import render
 from django.views.generic import View
 from rest_framework import viewsets
+from django.contrib.humanize.templatetags.humanize import ordinal
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -223,10 +224,23 @@ def page_groundhog_removals_scoreboard(request):
 def page_groundhog_removals_scoreboard_annual(request):
     step_hit_count_by_page(request.path)
     logs = groundhog_removal_scoreboard_annual()
+    last_year = datetime.now() - timedelta(days=(1*365))
+    last_year_year = last_year.strftime("%Y")
+    last_year_month = last_year.strftime("%B")
+    last_year_day = last_year.strftime("%m")
+    rolling_year_date = "{0} {1} of {2}".format(last_year_month, ordinal(last_year_day), last_year_year)
+
+    now = datetime.now()
+    now_year = now.strftime("%Y")
+    now_month = now.strftime("%B")
+    now_day = now.strftime("%m")
+    now_string = "{0} {1} of {2}".format(now_month, ordinal(now_day), now_year)
 
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
+        "rolling_year_date": rolling_year_date,
+        "datetime_now": now_string,
         "logs": logs,
         'release': get_version_json(),
         "title": "Top Groundhog Removers",
