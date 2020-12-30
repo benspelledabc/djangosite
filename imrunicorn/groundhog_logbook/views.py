@@ -113,8 +113,8 @@ class ChartDataBySex(APIView):
         female_count = groundhogs_count_by_sex("FEMALE")
         unknown_count = groundhogs_count_by_sex("UNKNOWN")
 
-        labels = ["Total", "Male", "Female", "Unknown"]
-        default_items = [total_count, male_count, female_count, unknown_count]
+        labels = ["Male", "Female", "Unknown"]
+        default_items = [male_count, female_count, unknown_count]
         data = {
                 "labels": labels,
                 "default": default_items,
