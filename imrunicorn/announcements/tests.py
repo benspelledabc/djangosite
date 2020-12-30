@@ -20,13 +20,28 @@ class MainPageBlurbsTestCase(TestCase):
     def test_can_change_item(self):
         print("--- Testing Change MainPageBlurbs")
         active = MainPageBlurbs.objects.get(pk=1)
-        print("\tChecking that Is_Active=True is True")
+        print("\tIs_Active=True is True")
         self.assertTrue(active.Is_Active)
-
-        print("\tSetting it to false now...")
+        print("\tSetting it to False")
         active.Is_Active = False
-        print("\tChecking that Is_Active=False is False")
+        print("\tIs_Active=False is False")
         self.assertFalse(active.Is_Active)
+        print("\tChecking active blurb content")
+        self.assertEqual(active.Blurb, "This Blurb is active.")
+        active.Blurb = "Content has been changed in a test."
+        print("\tChecking active blurb content after change")
+        self.assertEqual(active.Blurb, "Content has been changed in a test.")
+
+    def test_can_delete(self):
+        print("--- Testing count MainPageBlurbs")
+        records = MainPageBlurbs.objects.all()
+        print("\tRecord count is 2")
+        self.assertTrue(len(records) == 2)
+        print("\tDeleting record index 1")
+        records[1].delete()
+        records = MainPageBlurbs.objects.all()
+        print("\tRecord count is 1")
+        self.assertTrue(len(records) == 1)
 
 
 class PageBlurbOverridesTestCase(TestCase):

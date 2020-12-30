@@ -12,3 +12,10 @@ media.tar
 /imrunicorn/data/db.sqlite3
 .vscode/settings.json
 imrunicorn/disabled.pylintrc
+
+
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
