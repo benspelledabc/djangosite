@@ -230,12 +230,12 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'class': 'logging.StreamHandler',
             'formatter': 'console'
         },
         'file': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'class': 'logging.FileHandler',
             'formatter': 'file',
             'filename': os.path.join(BASE_DIR, 'data/django3.log')
@@ -243,7 +243,7 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'handlers': ['console', 'file']
         }
     }

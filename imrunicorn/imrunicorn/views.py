@@ -5,6 +5,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 import json
+from django.contrib.auth.models import User
 from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
@@ -26,7 +27,22 @@ def page_qr_about(request):
         "blurb": "QR Code Link",
         "copy_year": datetime.now().year
     }
-    email_user("admin@benspelledabc.me", "simple subject", "sample from django. i think this is the content....")
+
+    # i dont want to do it this way, for the purpose of demonstrating a paragraph seperation.
+    # body = ["This is paragraph 1.", "This is paragraph 2.", "This is paragraph 3.", "This is paragraph 4.",
+    #         "This is paragraph 5.", "This is paragraph 6.", "This is paragraph 7."]
+
+    body = []
+    body.append("There isn't much to it, but you've found a magical email! Let me know and you'll win a prize!")
+
+    # email_user("admin@benspelledabc.me", "QRCode Page Hit", body)
+    user = User.objects.get(username=request.user.username)
+    print("{0}'s address is {1}".format(user.username, user.email))
+    if len(user.email) > 2:
+        print("{0}'s address is long enough ['{1}']. Sending email.".format(user.username, user.email))
+        email_user(user.email, "Magical Email!", body)
+    else:
+        print("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
 
     return render(request, "imrunicorn/qr-about.html", context)
 
