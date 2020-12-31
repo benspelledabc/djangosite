@@ -9,34 +9,11 @@ from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
-from .functions import step_hit_count_by_page
-from django.core.mail import send_mail
+from .functions import step_hit_count_by_page, email_user
 import logging
 
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
-
-
-def email_user(email_name, email_description):
-    try:
-        subject = 'testing email in django'
-        message = ""
-        # for x in range(5):
-        #     message = "%s                            %s\n\r" % (message, "spam")
-
-        message = "%s\n\r[%s] -- %s" % (message, email_name, email_description)
-        email_from = settings.EMAIL_HOST_USER
-        # recipient_list = ['svendavison@gmail.com', 'svenisa@live.com']
-        recipient_list = ['svendavison@gmail.com']
-
-        result = send_mail(subject, message, email_from, recipient_list)
-        print("Email sent....")
-    except Exception as e:
-        print("Exception: {0}".format(e))
-        print("Email failed to send.")
-        return False
-
-    return True
 
 
 def page_qr_about(request):
@@ -49,7 +26,7 @@ def page_qr_about(request):
         "blurb": "QR Code Link",
         "copy_year": datetime.now().year
     }
-    email_user("admin@benspelledabc.me", "sample from django. i think this is the content....")
+    email_user("admin@benspelledabc.me", "simple subject", "sample from django. i think this is the content....")
 
     return render(request, "imrunicorn/qr-about.html", context)
 
