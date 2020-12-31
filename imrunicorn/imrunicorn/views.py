@@ -12,7 +12,6 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page, email_user
 import logging
-
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
 
