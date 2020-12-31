@@ -189,7 +189,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': config('PAGESIZE', default=10, cast=int)
+    'PAGE_SIZE': config('PAGESIZE', default=5, cast=int)
 }
 
 # adding ability to send email via gmail
