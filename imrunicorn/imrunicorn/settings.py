@@ -176,6 +176,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -192,15 +193,22 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': config('PAGESIZE', default=5, cast=int)
 }
 
+# this works for gmail
 # adding ability to send email via gmail
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='notARealUser@gmail.com')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='Tot@lyF@k3P@$$w0rd')
+
+# this works for my web host
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'imap.benspelledabc.me'
+EMAIL_USE_TLS = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'username@gmail.com'
-# noinspection PyInterpreter
-EMAIL_HOST_PASSWORD = 'redacted'
-# EMAIL_HOST_PASSWORD = env.str('GMAIL_PASS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='notARealUser@gmail.com')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='Tot@lyF@k3P@$$w0rd')
 
 
 STATIC_URL = '/static/'
@@ -229,12 +237,12 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'class': 'logging.StreamHandler',
             'formatter': 'console'
         },
         'file': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'class': 'logging.FileHandler',
             'formatter': 'file',
             'filename': os.path.join(BASE_DIR, 'data/django3.log')
@@ -242,7 +250,7 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'level': 'ERROR',
+            'level': 'WARN',
             'handlers': ['console', 'file']
         }
     }

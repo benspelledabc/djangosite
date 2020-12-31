@@ -5,13 +5,13 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 import json
+from django.contrib.auth.models import User
 from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
-from .functions import step_hit_count_by_page
+from .functions import step_hit_count_by_page, email_user
 import logging
-
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
 
@@ -26,6 +26,20 @@ def page_qr_about(request):
         "blurb": "QR Code Link",
         "copy_year": datetime.now().year
     }
+
+    # i dont want to do it this way, for the purpose of demonstrating a paragraph seperation.
+    # body = ["This is paragraph 1.", "This is paragraph 2.", "This is paragraph 3.", "This is paragraph 4.",
+    #         "This is paragraph 5.", "This is paragraph 6.", "This is paragraph 7."]
+
+    body = []
+    body.append("There isn't much to it, but you've found a magical email! Let me know and you'll win a prize!")
+
+    user = User.objects.get(username=request.user.username)
+    if len(user.email) > 2:
+        email_user(user.email, "Magical Email!", body)
+    else:
+        logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+
     return render(request, "imrunicorn/qr-about.html", context)
 
 
@@ -38,6 +52,17 @@ def page_access_denied_groups(request):
         "deny_message": "You are not in one of the groups that is allowed to see the page requested.",
         "copy_year": datetime.now().year
     }
+
+    body = []
+    body.append("If you believe you should have had access to a page you recently visited, please reply and let me "
+                "know.")
+
+    user = User.objects.get(username=request.user.username)
+    if len(user.email) > 2:
+        email_user(user.email, "Access Denied: Appeal Process", body)
+    else:
+        logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+
     return render(request, "imrunicorn/access_denied.html", context)
 
 
