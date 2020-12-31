@@ -213,30 +213,35 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'console': {
-            'format': '{"asctime":"%(asctime)s", "name":"%(name)-12s", "function":"%('
-                      'funcName)s", "level":"%(levelname)-8s", "message":"%(message)s"} '
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)s", "function":"%('
+                      'funcName)s", "level":"%(levelname)s", "message":"%(message)s"} '
 
         },
         'file': {
-            'format': '{"asctime":"%(asctime)s", "name":"%(name)-12s", "function":"%(funcName)s", '
-                      '"level":"%(levelname)-8s", "message":"%(message)s"} '
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)s", "function":"%(funcName)s", '
+                      '"level":"%(levelname)s", "message":"%(message)s"} '
         }
     },
     'handlers': {
         'console': {
+            'level': 'ERROR',
             'class': 'logging.StreamHandler',
             'formatter': 'console'
         },
         'file': {
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'class': 'logging.FileHandler',
+            # 'class': 'logging.handlers.RotatingFileHandler',
+            # 'maxBytes': 15728640,  # 1024 * 1024 * 15B = 15MB
+            # 'maxBytes': 256,  # 1024 / 4 = 1/4MB
+            # 'backupCount': 10,
             'formatter': 'file',
             'filename': os.path.join(BASE_DIR, 'data/django3.log')
         }
     },
     'loggers': {
         '': {
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'handlers': ['console', 'file']
         }
     }
