@@ -10,6 +10,10 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page
+import logging
+
+# This retrieves a Python logging instance (or creates it)
+logger = logging.getLogger(__name__)
 
 
 def page_qr_about(request):
@@ -56,6 +60,7 @@ def page_greyscale_test(request):
 
 # Create your views here.
 def page_home(request):
+    logger.error("Test, main page hit: page_home view!!")
     step_hit_count_by_page(request.path)
 
     try:
