@@ -20,3 +20,4 @@ htmlcov/
 coverage.xml
 *.cover
 /imrunicorn/geckodriver.log
+/imrunicorn/data/django*.log

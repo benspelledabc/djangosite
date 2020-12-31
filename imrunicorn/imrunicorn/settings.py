@@ -207,63 +207,42 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# disable and rebuild
-LOGGING_CONFIG = None
+DJANGO_LOG_LEVEL = DEBUG
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'verbose': {
-            'format': '%(levelname)s|%(asctime)s|%(name)s|%(message)s',
-            'datefmt': "%Y-%m-%d %H:%M:%S"
+        'console': {
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)s", "function":"%('
+                      'funcName)s", "level":"%(levelname)s", "message":"%(message)s"} '
+
         },
-        'verbose_busy': {
-            'format': '%(levelname)s|%(asctime)s|%(module)s|%(process)d|%(thread)d|%(message)s',
-            'datefmt': "%d/%b/%Y %H:%M:%S"
-        },
-        'simple': {
-            'format': '%(levelname)s|%(message)s'
-        },
+        'file': {
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)s", "function":"%(funcName)s", '
+                      '"level":"%(levelname)s", "message":"%(message)s"} '
+        }
     },
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'django-debug.log'),
-            # 'filename': '/tmp/django.log',
-            'formatter': 'verbose',
-            'backupCount': 10,  # keep at most 10 log files
-            'maxBytes': 5242880,  # 5*1024*1024 bytes (5MB)
+        'console': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
         },
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            # 'class': 'logging.handlers.RotatingFileHandler',
+            # 'maxBytes': 15728640,  # 1024 * 1024 * 15B = 15MB
+            # 'maxBytes': 256,  # 1024 / 4 = 1/4MB
+            # 'backupCount': 10,
+            'formatter': 'file',
+            'filename': os.path.join(BASE_DIR, 'data/django3.log')
+        }
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.db.backends': {
-            'handlers': ['file'],
+        '': {
             'level': 'ERROR',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django.template': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.security.*': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
+            'handlers': ['console', 'file']
+        }
+    }
 }
-
-# import new config
-logging.config.dictConfig(LOGGING)
