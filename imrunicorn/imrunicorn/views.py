@@ -35,14 +35,11 @@ def page_qr_about(request):
     body = []
     body.append("There isn't much to it, but you've found a magical email! Let me know and you'll win a prize!")
 
-    # email_user("admin@benspelledabc.me", "QRCode Page Hit", body)
     user = User.objects.get(username=request.user.username)
-    print("{0}'s address is {1}".format(user.username, user.email))
     if len(user.email) > 2:
-        print("{0}'s address is long enough ['{1}']. Sending email.".format(user.username, user.email))
         email_user(user.email, "Magical Email!", body)
     else:
-        print("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+        logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
 
     return render(request, "imrunicorn/qr-about.html", context)
 
