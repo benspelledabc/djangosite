@@ -52,6 +52,17 @@ def page_access_denied_groups(request):
         "deny_message": "You are not in one of the groups that is allowed to see the page requested.",
         "copy_year": datetime.now().year
     }
+
+    body = []
+    body.append("If you believe you should have had access to a page you recently visited, please reply and let me "
+                "know.")
+
+    user = User.objects.get(username=request.user.username)
+    if len(user.email) > 2:
+        email_user(user.email, "Access Denied: Appeal Process", body)
+    else:
+        logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+
     return render(request, "imrunicorn/access_denied.html", context)
 
 
