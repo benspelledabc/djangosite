@@ -4,7 +4,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
-    groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level
+    groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level, groundhogs_by_temperature
 
 from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page
@@ -26,6 +26,41 @@ from rest_framework.response import Response
 User = get_user_model()
 
 
+def page_charts_by_temperature(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_temperature.html", context)
+
+
+class ChartDataByTemperature(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        by_hour = groundhogs_by_temperature()
+        labels = []
+        default_items = []
+
+        for item in by_hour:
+            labels.append(item['estimated_temperature'])
+
+        for item in by_hour:
+            default_items.append(item['kills'])
+
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
 class ChartDataByCloudLevel(APIView):
     authentication_classes = []
     permission_classes = []
@@ -34,8 +69,8 @@ class ChartDataByCloudLevel(APIView):
         # total_count = groundhogs_by_cloud_level()
         sunny_count = groundhogs_by_cloud_level("Sunny")
         partly_cloudy_count = groundhogs_by_cloud_level("Partly Cloudy")
-        cloudy_count = groundhogs_count_by_sex("Cloudy")
-        unknown_count = groundhogs_count_by_sex("Unknown")
+        cloudy_count = groundhogs_by_cloud_level("Cloudy")
+        unknown_count = groundhogs_by_cloud_level("Unknown")
 
         labels = ["Sunny", "Partly Cloudy", "Cloudy", "Unknown"]
         default_items = [sunny_count, partly_cloudy_count, cloudy_count, unknown_count]

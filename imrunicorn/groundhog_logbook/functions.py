@@ -8,6 +8,13 @@ from django.db.models.functions import TruncHour, TruncMonth
 from django.contrib.auth.models import User
 
 
+def groundhogs_by_temperature():
+    result = RemovalsByLocation.objects.values('estimated_temperature', ) \
+        .annotate(kills=Count('estimated_temperature')) \
+        .order_by('-estimated_temperature')
+    return result
+
+
 def groundhogs_by_cloud_level(cloud_level="ALL"):
     # now we're conditionally cloudy
     if cloud_level == "ALL":
