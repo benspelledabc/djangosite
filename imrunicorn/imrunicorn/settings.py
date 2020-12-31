@@ -207,63 +207,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# disable and rebuild
-LOGGING_CONFIG = None
+DJANGO_LOG_LEVEL=DEBUG
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s|%(asctime)s|%(name)s|%(message)s',
-            'datefmt': "%Y-%m-%d %H:%M:%S"
-        },
-        'verbose_busy': {
-            'format': '%(levelname)s|%(asctime)s|%(module)s|%(process)d|%(thread)d|%(message)s',
-            'datefmt': "%d/%b/%Y %H:%M:%S"
-        },
-        'simple': {
-            'format': '%(levelname)s|%(message)s'
-        },
-    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'django-debug.log'),
-            # 'filename': '/tmp/django.log',
-            'formatter': 'verbose',
-            'backupCount': 10,  # keep at most 10 log files
-            'maxBytes': 5242880,  # 5*1024*1024 bytes (5MB)
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'data/django.log',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.db.backends': {
-            'handlers': ['file'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django.template': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.security.*': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         },
     },
 }
-
-# import new config
-logging.config.dictConfig(LOGGING)
