@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import socket
 import os
+from decouple import config, AutoConfig
+
+
 import logging
 import logging.config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -19,6 +22,8 @@ import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+config = AutoConfig(search_path=BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -184,7 +189,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': config('PAGESIZE', default=5, cast=int)
 }
 
 # adding ability to send email via gmail
@@ -231,10 +236,6 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            # 'class': 'logging.handlers.RotatingFileHandler',
-            # 'maxBytes': 15728640,  # 1024 * 1024 * 15B = 15MB
-            # 'maxBytes': 256,  # 1024 / 4 = 1/4MB
-            # 'backupCount': 10,
             'formatter': 'file',
             'filename': os.path.join(BASE_DIR, 'data/django3.log')
         }
