@@ -2,3 +2,4 @@ django-debug.log
 media/uploads/
 
 
+*.env
