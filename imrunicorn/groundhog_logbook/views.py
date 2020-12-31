@@ -50,6 +50,9 @@ class ChartDataByTemperature(APIView):
 
         for item in by_hour:
             labels.append(item['estimated_temperature'])
+            # rounded_value = int(round(item['estimated_temperature'] / 5.0) * 5.0)
+            # labels.append(rounded_value)
+            # int(round(b / 5.0) * 5.0)
 
         for item in by_hour:
             default_items.append(item['kills'])
