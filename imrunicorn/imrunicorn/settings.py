@@ -207,7 +207,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-DJANGO_LOG_LEVEL=DEBUG
+DJANGO_LOG_LEVEL = DEBUG
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -215,7 +215,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'data/django.log',
+            'filename': os.path.join(BASE_DIR, 'data/django.log')
         },
     },
     'loggers': {
