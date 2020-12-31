@@ -211,18 +211,33 @@ DJANGO_LOG_LEVEL = DEBUG
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)-12s", "function":"%('
+                      'funcName)s", "level":"%(levelname)-8s", "message":"%(message)s"} '
+
+        },
+        'file': {
+            'format': '{"asctime":"%(asctime)s", "name":"%(name)-12s", "function":"%(funcName)s", '
+                      '"level":"%(levelname)-8s", "message":"%(message)s"} '
+        }
+    },
     'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'data/django.log')
-        },
+            'formatter': 'file',
+            'filename': os.path.join(BASE_DIR, 'data/django3.log')
+        }
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
+        '': {
             'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
+            'handlers': ['console', 'file']
+        }
+    }
 }

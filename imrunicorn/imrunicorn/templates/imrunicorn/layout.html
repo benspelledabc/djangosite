@@ -127,15 +127,18 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
 
-        {% if restart.requested %}
-        <div align="center" style="background-color:red;color:yellow">
-            Restarting website quick around: <strong>{{ restart.request_time }}</strong>
-        </div>
-        {% else %}
-        <div align="center" style="background-color:red;color:yellow">
-            {{ hidden_banner }}
-        </div>
-        {% endif %}
+        {% comment %} this is no longer used, i think. {% endcomment %}
+        {% comment %}
+            {% if restart.requested %}
+            <div align="center" style="background-color:red;color:yellow">
+                Restarting website quick around: <strong>{{ restart.request_time }}</strong>
+            </div>
+            {% else %}
+            <div align="center" style="background-color:red;color:yellow">
+                {{ hidden_banner }}
+            </div>
+            {% endif %}
+        {% endcomment %}
 
         <div class="navbar-header">
             <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
