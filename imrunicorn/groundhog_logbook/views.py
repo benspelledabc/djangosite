@@ -32,7 +32,7 @@ def page_charts_by_remover(request):
     context = {
         "graph_api_node": '/groundhog_logbook/api/chart/by_remover/data/',
         "graph_header": "# of Groundhog Removals (By Remover)",
-        "graph_message": "This might work....",
+        "graph_message": "This is a total number of removals since we started tracking them.",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
@@ -69,11 +69,6 @@ class ChartDataByRemover(APIView):
             "graph_title": "# of Groundhog Removals (By Remover)"
         }
         return Response(data)
-
-
-
-
-
 
 
 def page_charts_by_temperature(request):

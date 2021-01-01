@@ -12,6 +12,8 @@ urlpatterns = [
     path('how_do_i_sign_up/', views.page_how_to_sign_up, name='how_do_i_sign_up'),
     path('k98k-is-great-m1-garand-wins-wars/', views.page_farm_invites_map, name='map_secret_sort_of'),
 
+    path('packing_list/', views.page_packing_list, name='packing_list'),
+
     # path('cash_app/', views.page_cash_app, name='cash_app'),
 
 ]
