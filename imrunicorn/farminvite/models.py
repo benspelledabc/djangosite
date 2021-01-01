@@ -1,6 +1,29 @@
 from datetime import date
 from django.db import models
 from enum import Enum
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+
+class PackingListItem(models.Model):
+    Name = models.CharField(max_length=150)
+    # Count = models.IntegerField(null=True, default=1, validators=[MaxValueValidator(9000), MinValueValidator(1)])
+
+    def __str__(self):
+        return '%s' % self.Name
+
+    class Meta:
+        ordering = ('Name',)
+
+
+class PackingList(models.Model):
+    Items = models.ManyToManyField(PackingListItem)
+    List_Date = models.DateField(default=date.today)
+
+    def __str__(self):
+        return '%s' % self.List_Date
+
+    class Meta:
+        ordering = ('-List_Date',)
 
 
 # Create your models here.

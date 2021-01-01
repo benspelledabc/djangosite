@@ -10,10 +10,31 @@ from model_utils.models import now
 from .forms import InviteListingForm
 from .models import InviteListing
 from announcements.get_news import get_news, get_version_json, get_restart_notice
+from .functions import get_packing_list
 from imrunicorn.functions import step_hit_count_by_page
 
 
-# Create your views here.
+def page_packing_list(request):
+    step_hit_count_by_page(request.path)
+    result = get_packing_list()
+
+    # print(result)
+    #
+    # for item in result:
+    #     # print(item.List_Date)
+    #     for x in item.Items.all:
+    #         print(x.Name)
+
+    context = {
+        "query_result": result,
+        'release': get_version_json(),
+        "title": "Packing List",
+        "blurb": "I started tracking my packing list as of 2021. Be patient.",
+        "copy_year": datetime.now().year
+    }
+    return render(request, "farminvite/packing_list.html", context)
+
+
 def unused_json_farm_invites_view(request):
     step_hit_count_by_page(request.path)
     context = {

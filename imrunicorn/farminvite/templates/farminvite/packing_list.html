@@ -1,0 +1,46 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">What do I normally bring?</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class="col-md-12">
+        {% autoescape off %}
+        <h4>{{ blurb }}</h4>
+        {% endautoescape %}
+    </div>
+
+    <div class="col-md-12">
+
+        <br /><br />
+
+    <ul>
+        {% for order in query_result %}
+            <li>
+                {{order.List_Date}}<br />
+            </li>
+            <ul>
+                {% for item in order.Items.all %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <br />
+        {% endfor %}
+    </ul>
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}
