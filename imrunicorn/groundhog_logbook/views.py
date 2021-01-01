@@ -30,13 +30,16 @@ def page_charts_by_temperature(request):
     step_hit_count_by_page(request.path)
 
     context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_temperature/data/',
+        "graph_header": "# of Groundhog Removals (By Temperature)",
+        "graph_message": "Temps are rounded to nearest 5 degrees.",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_temperature.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
 
 
 class ChartDataByTemperature(APIView):
@@ -50,16 +53,15 @@ class ChartDataByTemperature(APIView):
 
         for item in by_hour:
             labels.append(item['estimated_temperature'])
-            # rounded_value = int(round(item['estimated_temperature'] / 5.0) * 5.0)
-            # labels.append(rounded_value)
-            # int(round(b / 5.0) * 5.0)
 
         for item in by_hour:
             default_items.append(item['kills'])
 
         data = {
-                "labels": labels,
-                "default": default_items,
+            "labels": labels,
+            "default": default_items,
+            "endpoint": "/groundhog_logbook/api/chart/by_temperature/data/",
+            "graph_title": "# of Groundhog Removals (By Temperature)"
         }
         return Response(data)
 
@@ -88,13 +90,18 @@ def page_charts_by_cloud_level(request):
     step_hit_count_by_page(request.path)
 
     context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_cloud_level/data/',
+        "graph_header": "# of Groundhog Removals (By Cloud Level)",
+        "graph_message": "We didn't start tracking the cloud level until 2021. Data before that will be listed as "
+                         "'Unknown' unless we find a site that shows historical data for clouds at the time of day in "
+                         "question.",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_cloud_level.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
 
 
 class ChartDataByMonth(APIView):
@@ -130,13 +137,16 @@ def page_charts_by_month(request):
     step_hit_count_by_page(request.path)
 
     context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_month/data/',
+        "graph_header": "# of Groundhog Removals (By Month)",
+        "graph_message": "",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_month.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
 
 
 class ChartDataByTime(APIView):
@@ -165,13 +175,16 @@ def page_charts_by_time(request):
     step_hit_count_by_page(request.path)
 
     context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_time/data/',
+        "graph_header": "# of Groundhog Removals (By Time)",
+        "graph_message": "We're only showing by the removals by the hour.",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_time.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
 
 
 class ChartDataBySex(APIView):
@@ -197,13 +210,17 @@ def page_charts_by_sex(request):
     step_hit_count_by_page(request.path)
 
     context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_sex/data/',
+        "graph_header": "# of Groundhog Removals (By Sex)",
+        "graph_message": "Sometimes we don't check the sex because of heat or some other reason. Sometimes the "
+                         "sexy bits are blow off, these are marked as 'unknown'.",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
         "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
     }
-    return render(request, "groundhog_logbook/groundhog_graphic_sex.html", context)
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
 
 
 # Create your views here.

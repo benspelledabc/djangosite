@@ -2,7 +2,7 @@
 
 <script>
 {% block jquery %}
-var endpoint = '/groundhog_logbook/api/chart/by_time/data/'
+var endpoint = '{{ graph_api_node }}'
 var defaultData = []
 var labels = [];
 $.ajax({
@@ -28,10 +28,24 @@ function setChart(){
     data: {
         labels: labels,
         datasets: [{
-            label: '# of Groundhog Removals (By Time)',
+            label: '{{ graph_header }}',
             data: defaultData,
 
             backgroundColor: [
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
+                'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)',
                 'rgba(200, 0, 0, 1)',
@@ -84,12 +98,24 @@ function setChart(){
                 'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
+                'rgba(160,160,160,1)',
                 'rgba(160,160,160,1)'
             ],
             borderWidth: 1
-
-
-
         }]
     },
     options: {
@@ -104,15 +130,11 @@ function setChart(){
 });
 
 }
-// var ctx = document.getElementById("myChart");
-
-
 
 {% endblock %}
 </script>
 
 {% block content %}
-
 
 <div class="jumbotron wallpapered">
     <h1>{{ title }}</h1>
@@ -125,13 +147,9 @@ function setChart(){
     </p>
 </div>
 
-
 <div class="row ben_format_pretty">
     <div align="center">
-        <div>
-            I realize, now, that these charts are too hard to read on phones. They work fine on a desktop
-            but are nearly worthless on smaller devices. I'm going to fix that.
-        </div>
+        <div>{{ graph_message }}</div>
         <div class='col-sm-12'>
             <div class='col-sm-6' style="width:100%"><canvas id="myChart"></canvas></div>
         </div>
