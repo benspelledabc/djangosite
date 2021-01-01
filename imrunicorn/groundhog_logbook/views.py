@@ -26,6 +26,56 @@ from rest_framework.response import Response
 User = get_user_model()
 
 
+def page_charts_by_remover(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_remover/data/',
+        "graph_header": "# of Groundhog Removals (By Remover)",
+        "graph_message": "This might work....",
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
+
+
+class ChartDataByRemover(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        by_hour = groundhog_removal_scoreboard()
+        labels = []
+        default_items = []
+
+        for item in by_hour:
+            shooter_name = ""
+            if item['shooter__userprofile__preferred_display_name']:
+                shooter_name = item['shooter__userprofile__preferred_display_name']
+            else:
+                shooter_name = item['shooter__username']
+            labels.append(shooter_name)
+
+        for item in by_hour:
+            default_items.append(item['removals'])
+
+        data = {
+            "labels": labels,
+            "default": default_items,
+            "endpoint": "/groundhog_logbook/api/chart/by_remover/data/",
+            "graph_title": "# of Groundhog Removals (By Remover)"
+        }
+        return Response(data)
+
+
+
+
+
+
+
 def page_charts_by_temperature(request):
     step_hit_count_by_page(request.path)
 
