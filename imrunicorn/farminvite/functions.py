@@ -13,8 +13,8 @@ from .models import PackingListItem, PackingList
 logger = logging.getLogger(__name__)
 
 
-def get_packing_list():
-    result = PackingList.objects.all().order_by('-List_Date')
+def get_packing_list(list_size=1):
+    result = PackingList.objects.all().order_by('-List_Date')[:list_size]
 
     return result
 
