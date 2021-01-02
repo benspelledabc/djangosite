@@ -15,15 +15,9 @@ from imrunicorn.functions import step_hit_count_by_page
 
 
 def page_packing_list(request):
+    list_size = 10
     step_hit_count_by_page(request.path)
-    result = get_packing_list()
-
-    # print(result)
-    #
-    # for item in result:
-    #     # print(item.List_Date)
-    #     for x in item.Items.all:
-    #         print(x.Name)
+    result = get_packing_list(list_size)
 
     unrestricted = False
     allowed_groupname_list = ['packing_list_viewer']
@@ -35,7 +29,8 @@ def page_packing_list(request):
         'release': get_version_json(),
         "title": "Packing List",
         'unrestricted_user': unrestricted,
-        "blurb": "I started tracking my packing list as of 2021. Be patient.",
+        "blurb": "I started tracking my packing list as of 2021, be patient. I'm only showing a maximum of the "
+                 "last {0} times. ".format(list_size),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/packing_list.html", context)
