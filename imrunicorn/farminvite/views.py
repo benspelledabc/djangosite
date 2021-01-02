@@ -25,10 +25,16 @@ def page_packing_list(request):
     #     for x in item.Items.all:
     #         print(x.Name)
 
+    unrestricted = False
+    allowed_groupname_list = ['packing_list_viewer']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
+
     context = {
         "query_result": result,
         'release': get_version_json(),
         "title": "Packing List",
+        'unrestricted_user': unrestricted,
         "blurb": "I started tracking my packing list as of 2021. Be patient.",
         "copy_year": datetime.now().year
     }
