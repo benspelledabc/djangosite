@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class PackingListItem(models.Model):
     Name = models.CharField(max_length=150)
+    Private_Item = models.BooleanField(default=False)
     # Count = models.IntegerField(null=True, default=1, validators=[MaxValueValidator(9000), MinValueValidator(1)])
 
     def __str__(self):
