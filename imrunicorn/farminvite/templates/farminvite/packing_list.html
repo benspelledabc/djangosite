@@ -30,7 +30,15 @@
             </li>
             <ul>
                 {% for item in order.Items.all %}
-                    <li>{{ item }}</li>
+                    {% if item.Private_Item %}
+                        {% if unrestricted_user %}
+                            <li>{{ item }}</li>
+                        {% else %}
+                            <li><i>Private Item Hidden</i></li>
+                        {% endif %}
+                    {% else %}
+                        <li>{{ item }}</li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             <br />
