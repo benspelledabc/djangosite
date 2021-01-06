@@ -101,11 +101,17 @@ class RemovalsByLocation(models.Model):
         super(RemovalsByLocation, self).save(*args, **kwargs)
 
     def __str__(self):
+        name = self.shooter
+        try:
+            name = self.shooter.userprofile.preferred_display_name
+        except Exception as e:
+            name = self.shooter
         return "%s - %s (%s yards from '%s')" % (self.removal_date,
-                                                 self.shooter,
+                                                 name,
                                                  self.shot_distance_yards,
                                                  self.location.nickname)
 
     class Meta:
+        # shooter__userprofile__preferred_display_name
         ordering = ('-removal_date', 'shooter', 'shot_distance_yards')
 
