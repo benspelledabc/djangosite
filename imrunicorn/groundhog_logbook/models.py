@@ -91,7 +91,7 @@ class RemovalsByLocation(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if self.wind_speed == 0.00 and self.wind_dir == 1:
+        if self.wind_speed == 0.00 and self.wind_dir == 1 and self.estimated_temperature == -49:
             # only fetch weather if it appears to be defaults
             weather = get_weather(self)
             self.estimated_temperature = weather['temperature']
