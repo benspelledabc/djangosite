@@ -116,14 +116,25 @@ class ChartDataByCloudLevel(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        # total_count = groundhogs_by_cloud_level()
-        sunny_count = groundhogs_by_cloud_level("Sunny")
-        partly_cloudy_count = groundhogs_by_cloud_level("Partly Cloudy")
-        cloudy_count = groundhogs_by_cloud_level("Cloudy")
+        clear_sky = groundhogs_by_cloud_level("Clear Sky")
+        few_clouds = groundhogs_by_cloud_level("Few Clouds")
+        scattered_clouds = groundhogs_by_cloud_level("Scattered Clouds")
+
+        broken_clouds = groundhogs_by_cloud_level("Broken Clouds")
+        shower_rain = groundhogs_by_cloud_level("Shower/Rain")
+        rain = groundhogs_by_cloud_level("Rain")
+
+        thunderstorm = groundhogs_by_cloud_level("Thunderstorm")
+        snow = groundhogs_by_cloud_level("Snow")
+        mist = groundhogs_by_cloud_level("Mist")
+
         unknown_count = groundhogs_by_cloud_level("Unknown")
 
-        labels = ["Sunny", "Partly Cloudy", "Cloudy", "Unknown"]
-        default_items = [sunny_count, partly_cloudy_count, cloudy_count, unknown_count]
+        labels = ["Clear Sky", "Few Clouds", "Scattered Clouds",
+                  "Broken Clouds", "Shower/Rain", "Rain", "Thunderstorm",
+                  "Snow", "Mist", "Unknown"]
+        default_items = [clear_sky,few_clouds,scattered_clouds,broken_clouds,
+                         shower_rain, rain, thunderstorm, snow, mist, unknown_count]
         data = {
                 "labels": labels,
                 "default": default_items,
