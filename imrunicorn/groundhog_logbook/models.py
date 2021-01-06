@@ -32,15 +32,28 @@ class RemovalsByLocation(models.Model):
             MinValueValidator(-50)
         ]
      )
-    SUNNY = 'Sunny'
-    PARTY_CLOUDY = 'Partly Cloudy'
-    CLOUDY = 'Cloudy'
+
+    CLEAR_SKY = 'Clear Sky'
+    FEW_CLOUDS = 'Few Clouds'
+    SCATTERED_CLOUDS = 'Scattered Clouds'
+    BROKEN_CLOUDS = 'Broken Clouds'
+    SHOWER_RAIN = "Shower Rain"
+    RAIN = "Rain"
+    THUNDERSTORM = "Thunderstorm"
+    SNOW = "Snow"
+    MIST = "Mist"
     UNKNOWN = 'Unknown'
 
     cloud_level_choices = [
-        (SUNNY, 'Sunny'),
-        (PARTY_CLOUDY, 'Partly Cloudy'),
-        (CLOUDY, 'Cloudy'),
+        (CLEAR_SKY, 'Clear Sky'),
+        (FEW_CLOUDS, 'Few Clouds'),
+        (SCATTERED_CLOUDS, 'Scattered Clouds'),
+        (BROKEN_CLOUDS, 'Broken Clouds'),
+        (SHOWER_RAIN, 'Shower/Rain'),
+        (RAIN, 'Rain'),
+        (THUNDERSTORM, 'Thunderstorm'),
+        (SNOW, 'Snow'),
+        (MIST, 'Mist'),
         (UNKNOWN, 'Unknown'),
     ]
     cloud_level = models.CharField(
