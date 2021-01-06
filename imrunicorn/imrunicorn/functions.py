@@ -2,15 +2,69 @@
 # from datetime import datetime
 # from django.conf import settings
 # from django.contrib.auth.models import User
+import requests
+import os
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import PageCounter
 from django.contrib.auth.models import User
 import logging
+from decouple import config, AutoConfig
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+config = AutoConfig(search_path=BASE_DIR)
 
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
+    context = {
+        "completed": False,
+        "message": "pre-query",
+        "lat": lat,
+        "lon": lon,
+    }
+
+    try:
+        # open_weather_map_api_key = "c01389f69a2da5f476498c2bf09c37ed"
+        open_weather_map_api_key = config('OPEN_WEATHER_MAP_API_KEY', default='c01389f69a2da5f476498c2bf09c37ed')
+        url = 'http://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&units=imperial&appid={2}'.format(
+            lat, lon, open_weather_map_api_key)
+        r = requests.get(url).json()
+        # weather_icon_url = 'http://openweathermap.org/img/wn/{0}@2x.png'.format(r['weather'][0]['icon'])
+        weather_icon_url = 'http://openweathermap.org/img/wn/{0}.png'.format(r['weather'][0]['icon'])
+        print(r)
+
+        '''
+        clear sky
+        few clouds 
+        scattered clouds 
+        broken clouds 
+        shower rain 
+        rain
+        thunderstorm 
+        snow
+        mist
+        '''
+
+        context = {
+            'lat': lat,
+            'lon': lon,
+            'temperature': r['main']['temp'],
+            'feels_like': r['main']['feels_like'],
+            'wind_speed': r['wind']['speed'],
+            'wind_dir': r['wind']['deg'],
+            'description': r['weather'][0]['description'],
+            'icon': r['weather'][0]['icon'],
+            'weather_icon_url': weather_icon_url,
+            'full_response': r,
+        }
+    except Exception as e:
+        print(e)
+
+    return context
 
 
 # create an entry or step it up if there is one.

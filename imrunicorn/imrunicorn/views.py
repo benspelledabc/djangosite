@@ -10,10 +10,17 @@ from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
-from .functions import step_hit_count_by_page, email_user
+from .functions import step_hit_count_by_page, email_user, get_weather
 import logging
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def page_api_weather(request):
+    # r = get_weather(request, "Westminster, Md")
+    r = get_weather(request)
+    # print(r)
+    return JsonResponse(r)
 
 
 def page_qr_about(request):
