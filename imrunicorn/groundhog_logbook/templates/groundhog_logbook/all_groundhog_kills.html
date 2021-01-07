@@ -11,7 +11,16 @@
 
 <div class="jumbotron wallpapered">
     <h1>{{ title }}</h1>
-    <p class="lead">{{ blurb }}</p>
+    <p class="lead">{{ blurb }}blurb</p>
+    <p class="lead"><strong>Location: </strong>{{ weather.full_response.name }}<br />
+        <strong>Temp:</strong> {{ weather.temperature }} <i>(Feels Like: {{ weather.feels_like }})</i><br />
+        <strong>Wind Speed:</strong> {{ weather.wind_speed }}
+        <strong>Wind Direction:</strong>
+        <a href="https://www.sasquatchstation.com/images/dual-compass-rose.png" target="_blank">
+            {{ weather.wind_dir }}</a><br />
+        <strong>Sky:</strong> {{ weather.description }} <img src="{{ weather.weather_icon_url }}">
+
+    </p>
 </div>
 
 {% if all_news != None %}
