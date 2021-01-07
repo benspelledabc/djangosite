@@ -35,7 +35,7 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         r = requests.get(url).json()
         # weather_icon_url = 'http://openweathermap.org/img/wn/{0}@2x.png'.format(r['weather'][0]['icon'])
         weather_icon_url = 'http://openweathermap.org/img/wn/{0}.png'.format(r['weather'][0]['icon'])
-        print(r)
+        # print(r)
 
         '''
         clear sky
@@ -49,6 +49,68 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         mist
         '''
 
+        # figure out the direction
+        '''
+        0 - 15 = n
+        16 - 30 = nne
+        31 - 60 = ne
+        61 - 75 = ene
+        76 - 105 = e
+        106 - 120 = ese
+        121 - 150 = se
+        151 - 165 = sse
+        166 - 195 = s
+        196 - 210 = ssw
+        211 - 240 = sw
+        241 - 255 = wsw
+        256 - 285 = w
+        286 - 300 = wnw
+        301 - 330 = nw
+        331 - 345 = nnw
+        346 - 365 = n
+        '''
+
+        # if 10000 <= number <= 30000:
+        wind_dir_deg = r['wind']['deg']
+        wind_dir_word = "Z"
+        # print("wind direction: {0}".format(wind_dir_deg))
+        if 0 <= wind_dir_deg <= 15:
+            wind_dir_word = "North"
+        elif 16 <= wind_dir_deg <= 30:
+            wind_dir_word = "North-North-East"
+        elif 31 <= wind_dir_deg <= 60:
+            wind_dir_word = "North-East"
+        elif 61 <= wind_dir_deg <= 75:
+            wind_dir_word = "East-North-East"
+        elif 76 <= wind_dir_deg <= 105:
+            wind_dir_word = "East"
+        elif 106 <= wind_dir_deg <= 120:
+            wind_dir_word = "East-South-East"
+        elif 121 <= wind_dir_deg <= 150:
+            wind_dir_word = "South-East"
+        elif 151 <= wind_dir_deg <= 165:
+            wind_dir_word = "South-South-East"
+        elif 166 <= wind_dir_deg <= 195:
+            wind_dir_word = "South"
+        elif 196 <= wind_dir_deg <= 210:
+            wind_dir_word = "South-South-West"
+        elif 211 <= wind_dir_deg <= 240:
+            wind_dir_word = "South-West"
+        elif 241 <= wind_dir_deg <= 255:
+            wind_dir_word = "West-South-West"
+        elif 256 <= wind_dir_deg <= 285:
+            wind_dir_word = "West"
+        elif 286 <= wind_dir_deg <= 300:
+            wind_dir_word = "West-North-West"
+        elif 301 <= wind_dir_deg <= 330:
+            wind_dir_word = "North-West"
+        elif 331 <= wind_dir_deg <= 345:
+            wind_dir_word = "North-North-West"
+        elif 346 <= wind_dir_deg <= 365:
+            wind_dir_word = "North"
+        else:
+            wind_dir_word = "Divide By Zero"
+
         context = {
             'lat': lat,
             'lon': lon,
@@ -56,6 +118,7 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
             'feels_like': r['main']['feels_like'],
             'wind_speed': r['wind']['speed'],
             'wind_dir': r['wind']['deg'],
+            'wind_dir_word': wind_dir_word,
             'description': r['weather'][0]['description'],
             'icon': r['weather'][0]['icon'],
             'weather_icon_url': weather_icon_url,
