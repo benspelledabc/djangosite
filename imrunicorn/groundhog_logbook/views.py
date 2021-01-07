@@ -317,8 +317,8 @@ def page_all_groundhog_removals(request):
         "all_news": all_news,
         'release': get_version_json(),
         "title": "Groundhog Logbook",
-        "blurb": "this is a blurb that goes on the page for testing. blah blah blah.",
-        # "blurb": get_page_blurb_override('groundhog_logbook/by_shooter/'),
+        # "blurb": "this is a blurb that goes on the page for testing. blah blah blah.",
+        "blurb": get_page_blurb_override('groundhog_logbook/by_shooter/'),
     }
 
     print(weather)
