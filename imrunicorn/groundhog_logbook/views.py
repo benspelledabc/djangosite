@@ -7,7 +7,7 @@ from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_re
     groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level, groundhogs_by_temperature
 
 from imrunicorn.decorators import allowed_groups
-from imrunicorn.functions import step_hit_count_by_page
+from imrunicorn.functions import step_hit_count_by_page, get_weather
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime, timedelta
@@ -309,15 +309,19 @@ def page_charts(request):
 def page_all_groundhog_removals(request):
     step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals
-
+    weather = get_weather(request)
     context = {
+        "weather": weather,
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_news,
         'release': get_version_json(),
         "title": "Groundhog Logbook",
-        "blurb": get_page_blurb_override('groundhog_logbook/by_shooter/'),
+        "blurb": "this is a blurb that goes on the page for testing. blah blah blah.",
+        # "blurb": get_page_blurb_override('groundhog_logbook/by_shooter/'),
     }
+
+    print(weather)
     return render(request, "groundhog_logbook/all_groundhog_kills.html", context)
 
 
