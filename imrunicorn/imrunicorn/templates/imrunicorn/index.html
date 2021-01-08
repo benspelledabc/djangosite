@@ -9,7 +9,25 @@
     <h1>
         {{ title }}
     </h1>
-    <p class="lead">{{ blurb }}</p>
+    <p class="lead">
+            {% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}
+    </p>
+    <p class="lead"><strong>Location: </strong>{{ weather.full_response.name }}<br />
+        <strong>Temp:</strong> {{ weather.temperature }}&deg;F <i>(Feels Like: {{ weather.feels_like }}&deg;F)</i><br />
+        <strong>Wind Speed:</strong> {{ weather.wind_speed }}mph
+        <strong>Wind Direction:</strong>
+        {{ comment }}
+        <a href="https://www.sasquatchstation.com/images/dual-compass-rose.png" target="_blank"></a>
+        {{ endcomment }}
+
+        {{ weather.wind_dir }}&deg;
+        ({{ weather.wind_dir_word }})<br />
+        <strong>Sky:</strong> {{ weather.description }}
+    </p>
 </div>
 
 <div class="row ben_format_pretty">

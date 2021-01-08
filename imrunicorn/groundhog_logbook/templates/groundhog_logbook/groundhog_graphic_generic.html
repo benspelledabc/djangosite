@@ -139,10 +139,10 @@ function setChart(){
 <div class="jumbotron wallpapered">
     <h1>{{ title }}</h1>
     <p class="lead">
-        {% if blurb %}
+            {% if blurb|length > 0 %}
             {{ blurb }}
         {% else %}
-            More charts are coming, stay tuned!
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
         {% endif %}
     </p>
 </div>
