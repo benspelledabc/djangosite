@@ -21,7 +21,11 @@ td.padded {
         <p>Find out how to <a href="{% url 'farm_invite:how_do_i_sign_up' %}">register</a> today.<br /><br /></p>
         <p>
             {% autoescape off %}
+            {% if blurb|length > 0 %}
             {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}
             {% endautoescape %}
         </p>
 

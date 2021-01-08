@@ -92,7 +92,7 @@ def page_greyscale_test(request):
 
 # Create your views here.
 def page_home(request):
-    logger.error("Test, main page hit: page_home view!!")
+    # logger.error("Test, main page hit: page_home view!!")
     step_hit_count_by_page(request.path)
 
     try:
@@ -113,7 +113,10 @@ def page_home(request):
     title = release['application_title']
     cut = release['cut']
 
+    weather = get_weather(request)
+
     context = {
+        "weather": weather,
         "main_blurb": main_blurb,
         "restart": get_restart_notice,
         "all_news": all_news,

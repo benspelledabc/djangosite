@@ -5,7 +5,11 @@
 
 <div class="jumbotron wallpapered">
     <h1>{{ title }}</h1>
-    <p class="lead">{{ blurb }}</p>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
 </div>
 
 <br/>
