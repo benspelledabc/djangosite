@@ -4,7 +4,7 @@ from rest_framework.fields import ReadOnlyField
 from .models import Caliber, Firearm, Powder, Projectile, Brass, Primer, HandLoad, EstimatedDope
 from imrunicorn.models import UserProfile
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 # xxx_changed_from_HyperlinkedModelSerializer_to_ModelSerializer
 
@@ -13,12 +13,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = "__all__"
+        fields = ('preferred_display_name',)
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('id', 'name',)
 
 
 class OwnerSerializer(serializers.ModelSerializer):
     # owner_display_name = UserProfileSerializer()
-    # user_profile = UserProfileSerializer()
+    # user_profile = UserProfileSerializer(many=False)
+    groups = GroupSerializer(many=True)
 
     class Meta:
         model = User
