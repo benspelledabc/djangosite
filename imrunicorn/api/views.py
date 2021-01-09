@@ -28,6 +28,8 @@ from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSeria
 from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
+from imrunicorn.functions import step_hit_count_by_page, get_weather
+
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
@@ -143,6 +145,7 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 
 # ############### announcements ###############
 class WhatIsNewViewRandomOne(viewsets.ModelViewSet):
+    step_hit_count_by_page("/announcements/what_is_new_random_one")
     queryset = WhatIsNew.objects.order_by('?')[:1]
     serializer_class = WhatIsNewSerializer
 
