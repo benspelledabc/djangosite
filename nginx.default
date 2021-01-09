@@ -3,7 +3,9 @@
 server {
     listen 8020;
     server_name benspelledabc.me;
-    return 301 https://$host$request_uri;
+
+    # removing this to test something
+    # return 301 https://$host$request_uri;
 
     location / {
         proxy_pass http://127.0.0.1:8010;
