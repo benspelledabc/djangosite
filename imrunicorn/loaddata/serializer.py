@@ -30,9 +30,9 @@ class OwnerSerializer(serializers.ModelSerializer):
     # user_profile = UserProfileSerializer(many=False)
     groups = GroupSerializer(many=True)
     # profile = serializers.PrimaryKeyRelatedField(many=True, queryset=UserProfile.objects.all(), required=False)
-    profile = serializers.PrimaryKeyRelatedField(
-        queryset=UserProfile.objects.all().values('preferred_display_name')
-        , required=False)
+    # profile = serializers.PrimaryKeyRelatedField(
+    #     queryset=UserProfile.objects.all().values('preferred_display_name')
+    #     , required=False)
 
     class Meta:
         model = User
@@ -40,7 +40,7 @@ class OwnerSerializer(serializers.ModelSerializer):
                   'last_login',
                   'is_superuser',
                   'username',
-                  'profile',
+                  # 'profile',
                   # 'user_profile',
                   'first_name',
                   'last_name',
