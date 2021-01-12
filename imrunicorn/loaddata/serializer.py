@@ -9,20 +9,22 @@ from django.contrib.auth.models import User, Group
 # xxx_changed_from_HyperlinkedModelSerializer_to_ModelSerializer
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
         fields = ('preferred_display_name',)
 
 
-class GroupSerializer(serializers.ModelSerializer):
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ('id', 'name',)
 
 
+# this doesn't like HyperlinkedModelSerializer...
 class OwnerSerializer(serializers.ModelSerializer):
+    # url = serializers.HyperlinkedIdentityField(view_name="imrunicorn:user-detail")
     # owner_display_name = UserProfileSerializer()
     # user_profile = UserProfileSerializer(many=False)
     groups = GroupSerializer(many=True)
@@ -46,14 +48,14 @@ class OwnerSerializer(serializers.ModelSerializer):
         # fields = "__all__"
 
 
-class CaliberSerializer(serializers.ModelSerializer):
+class CaliberSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Caliber
         fields = "__all__"
         # fields = ('url', 'name', 'diameter', 'author_pk', 'is_approved')
 
 
-class FirearmSerializer(serializers.ModelSerializer):
+class FirearmSerializer(serializers.HyperlinkedModelSerializer):
     owner = OwnerSerializer()
     caliber = CaliberSerializer()
 
@@ -64,14 +66,14 @@ class FirearmSerializer(serializers.ModelSerializer):
         #           'clicks_from_bottom_to_zero_elevation', 'clicks_from_bottom_to_zero_windage', 'extra_info')
 
 
-class PowderSerializer(serializers.ModelSerializer):
+class PowderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Powder
         fields = "__all__"
         # fields = ('url', 'name', 'is_smokeless', 'buy_link', 'lbs_on_hand', 'author_pk', 'is_approved')
 
 
-class ProjectileSerializer(serializers.ModelSerializer):
+class ProjectileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Projectile
         fields = "__all__"
@@ -79,7 +81,7 @@ class ProjectileSerializer(serializers.ModelSerializer):
         #     'projectiles_on_hand', 'buy_link', 'author_pk', 'is_approved')
 
 
-class BrassSerializer(serializers.ModelSerializer):
+class BrassSerializer(serializers.HyperlinkedModelSerializer):
     caliber = CaliberSerializer()
 
     class Meta:
@@ -88,7 +90,7 @@ class BrassSerializer(serializers.ModelSerializer):
         # fields = ('url', 'caliber', 'manufacture', 'brass_on_hand', 'buy_link', 'author_pk', 'is_approved',)
 
 
-class PrimerSerializer(serializers.ModelSerializer):
+class PrimerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Primer
         fields = "__all__"
@@ -96,7 +98,7 @@ class PrimerSerializer(serializers.ModelSerializer):
 
 
 # class HandLoadSerializer(serializers.ModelSerializer):
-class HandLoadSerializer(serializers.ModelSerializer):
+class HandLoadSerializer(serializers.HyperlinkedModelSerializer):
     powder = PowderSerializer()
     firearm = FirearmSerializer()
     projectile = ProjectileSerializer()
@@ -112,7 +114,7 @@ class HandLoadSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class EstimatedDopeSerializer(serializers.ModelSerializer):
+class EstimatedDopeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = EstimatedDope
         fields = "__all__"
