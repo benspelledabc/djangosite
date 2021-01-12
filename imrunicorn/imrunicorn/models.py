@@ -6,7 +6,9 @@ from imrunicorn import settings
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    # this causes the harvests to break....
+    # user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # instead of 'username' or 'firstname'
     preferred_display_name = models.CharField(max_length=200)
@@ -17,6 +19,7 @@ class UserProfile(models.Model):
     # class Meta:
     #     ordering = ('preferred_display_name', '')
 
+    # adding a comment...
 
 class PageCounter(models.Model):
     page_name = models.CharField(max_length=150)
