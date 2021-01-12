@@ -12,12 +12,13 @@ class OwnerSerializer(serializers.HyperlinkedModelSerializer):
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Location
-        fields = ('id', 'url', 'nickname', 'elevation', 'latitude', 'longitude')
+        fields = ('url', 'nickname', 'elevation', 'latitude', 'longitude')
 
 
 class RemovalsByLocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = RemovalsByLocation
         fields = (
-        'id', 'url', 'shooter', 'removal_date', 'removal_time', 'firearm', 'load', 'location', 'estimated_weight_lbs',
-        'excessive_wound_cavity', 'shot_distance_yards', 'extra_info', 'kill_shot', 'kill_shot_two', 'sex')
+            'url', 'shooter', 'removal_date', 'removal_time', 'firearm', 'load', 'location',
+            'estimated_weight_lbs',
+            'excessive_wound_cavity', 'shot_distance_yards', 'extra_info', 'kill_shot', 'kill_shot_two', 'sex')

@@ -19,7 +19,6 @@ class UserProfile(models.Model):
     # class Meta:
     #     ordering = ('preferred_display_name', '')
 
-    # adding a comment...
 
 class PageCounter(models.Model):
     page_name = models.CharField(max_length=150)
