@@ -26,8 +26,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 # this doesn't like HyperlinkedModelSerializer...
 class OwnerSerializer(serializers.ModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name="imrunicorn:user-detail")
-    # owner_display_name = UserProfileSerializer()
+    # user_profile = UserProfileSerializer(required=False)
+    # last_name = UserProfileSerializer(required=False)
     # user_profile = UserProfileSerializer(many=False)
     groups = GroupSerializer(many=True)
     # profile = serializers.PrimaryKeyRelatedField(many=True, queryset=UserProfile.objects.all(), required=False)
