@@ -13,6 +13,8 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
+        read_only_fields = ('preferred_display_name',)
+        # exclude = ('',)    # user  ?
         fields = ('preferred_display_name',)
 
 
@@ -28,6 +30,10 @@ class OwnerSerializer(serializers.ModelSerializer):
     # owner_display_name = UserProfileSerializer()
     # user_profile = UserProfileSerializer(many=False)
     groups = GroupSerializer(many=True)
+    # profile = serializers.PrimaryKeyRelatedField(many=True, queryset=UserProfile.objects.all(), required=False)
+    # profile = serializers.PrimaryKeyRelatedField(
+    #     queryset=UserProfile.objects.all().values('preferred_display_name')
+    #     , required=False)
 
     class Meta:
         model = User
@@ -35,6 +41,7 @@ class OwnerSerializer(serializers.ModelSerializer):
                   'last_login',
                   'is_superuser',
                   'username',
+                  # 'profile',
                   # 'user_profile',
                   'first_name',
                   'last_name',

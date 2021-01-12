@@ -6,7 +6,7 @@ from imrunicorn import settings
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     # instead of 'username' or 'firstname'
     preferred_display_name = models.CharField(max_length=200)
