@@ -6,6 +6,8 @@ from imrunicorn import settings
 
 
 class UserProfile(models.Model):
+    # this causes the harvests to break....
+    # user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # instead of 'username' or 'firstname'
