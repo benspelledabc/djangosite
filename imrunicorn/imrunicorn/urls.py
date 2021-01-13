@@ -19,6 +19,7 @@ urlpatterns = [
     path('qr/about/', views.page_qr_about, name='qr_about'),
 
     path('greyscale', views.page_greyscale_test, name='greyscale_test'),
+    path('api-test', views.page_api_test, name='api_test'),
 
     path('admin/', admin.site.urls),
     path('', views.page_home, name='home'),

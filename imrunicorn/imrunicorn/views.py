@@ -12,8 +12,32 @@ from announcements.get_news import get_news, get_news_sticky, get_version_json, 
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page, email_user, get_weather
 import logging
+import requests
+# from django.contrib.sites.models import Site
+
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def page_api_test(request):
+    # base_url = "{0}://{1}{2}".format(request.scheme, request.get_host(), request.path)
+    base_url = "{0}://{1}".format(request.scheme, request.get_host())
+    response = requests.get('{domain}/api/announcements/what_is_new_random_one/'.format(domain=base_url))
+    geo_data = response.json()
+
+    data = geo_data['results'][0]
+
+    context = {
+        "title": "Testing API endpoints",
+        "date": data['Date'],
+        "blurb": data['Blurb'],
+        # "blurb": request.path,
+        "body": data['Body'],
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+    }
+
+    return render(request, "imrunicorn/apicall_random_news.html", context)
 
 
 def page_api_weather(request):
