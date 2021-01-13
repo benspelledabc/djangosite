@@ -1,0 +1,27 @@
+{% extends "imrunicorn/layout.html" %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<br />
+<div class="row ben_format_pretty">
+    <div class="col-md-12" align="left">
+        <strong>{{ date }}</strong> <br />
+        {% autoescape off %}
+        {{ body }}
+        {% endautoescape %}
+    </div>
+</div>
+
+<br/><br/>
+
+{% endblock %}
