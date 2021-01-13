@@ -146,7 +146,10 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 # ############### announcements ###############
 class WhatIsNewViewRandomOne(viewsets.ModelViewSet):
     step_hit_count_by_page("/announcements/what_is_new_random_one")
-    queryset = WhatIsNew.objects.order_by('?')[:1]
+    # queryset = WhatIsNew.objects.order_by('?')[:1]
+    queryset = WhatIsNew.objects.filter(
+        Q(Published=True)
+    ).order_by('?')[:1]
     serializer_class = WhatIsNewSerializer
 
 
