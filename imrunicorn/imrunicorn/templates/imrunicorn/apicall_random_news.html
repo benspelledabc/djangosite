@@ -1,0 +1,25 @@
+{% extends "imrunicorn/layout.html" %}
+{% block content %}
+{% load humanize %}
+
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+    <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
+
+        {% autoescape off %}
+        {{ body }}
+        {% endautoescape %}
+    </div>
+</div>
+
+<br /><br /><br />
+
+{% endblock %}
