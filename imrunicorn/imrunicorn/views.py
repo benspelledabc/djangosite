@@ -20,22 +20,33 @@ logger = logging.getLogger(__name__)
 
 
 def page_api_test(request):
-    # base_url = "{0}://{1}{2}".format(request.scheme, request.get_host(), request.path)
-    base_url = "{0}://{1}".format(request.scheme, request.get_host())
-    response = requests.get('{domain}/api/announcements/what_is_new_random_one/'.format(domain=base_url))
-    geo_data = response.json()
-
-    data = geo_data['results'][0]
-
     context = {
         "title": "Testing API endpoints",
-        "date": data['Date'],
-        "blurb": data['Blurb'],
-        # "blurb": request.path,
-        "body": data['Body'],
+        "date": "Error",
+        "blurb": 'Error fetching content',
+        "body": 'Error fetching content',
         "copy_year": datetime.now().year,
         'release': get_version_json(),
     }
+    try:
+        # base_url = "{0}://{1}{2}".format(request.scheme, request.get_host(), request.path)
+        base_url = "{0}://{1}".format(request.scheme, request.get_host())
+        response = requests.get('{domain}/api/announcements/what_is_new_random_one/'.format(domain=base_url))
+        geo_data = response.json()
+
+        data = geo_data['results'][0]
+
+        context = {
+            "title": "Testing API endpoints",
+            "date": data['Date'],
+            "blurb": data['Blurb'],
+            # "blurb": request.path,
+            "body": data['Body'],
+            "copy_year": datetime.now().year,
+            'release': get_version_json(),
+        }
+    except Exception as e:
+        print(e)
 
     return render(request, "imrunicorn/apicall_random_news.html", context)
 
