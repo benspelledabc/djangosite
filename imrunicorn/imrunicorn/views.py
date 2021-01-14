@@ -73,14 +73,17 @@ def page_qr_about(request):
     # body = ["This is paragraph 1.", "This is paragraph 2.", "This is paragraph 3.", "This is paragraph 4.",
     #         "This is paragraph 5.", "This is paragraph 6.", "This is paragraph 7."]
 
-    body = []
-    body.append("There isn't much to it, but you've found a magical email! Let me know and you'll win a prize!")
+    body = ["There isn't much to it, but you've found a magical email! Let me know and you'll win a prize!"]
 
-    user = User.objects.get(username=request.user.username)
-    if len(user.email) > 2:
-        email_user(user.email, "Magical Email!", body)
-    else:
-        logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+    try:
+        user = User.objects.get(username=request.user.username)
+        if len(user.email) > 2:
+            email_user(user.email, "Magical Email!", body)
+        else:
+            logger.error("{0}'s address is not long enough ['{1}']".format(user.username, user.email))
+    except Exception as e:
+        logger.error("Someone hit '{0}' and they aren't logged in. No email to send. [Exception: {1}]"
+                     .format(request.path, e))
 
     return render(request, "imrunicorn/qr-about.html", context)
 
