@@ -46,9 +46,9 @@ def page_dnd5e_list(request):
     item_list = get_all_dnd5e()
 
     unrestricted = False
-    # allowed_groupname_list = ['content_collection_dnd5e']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
+    allowed_groupname_list = ['content_collection_dnd5e_restricted']
+    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+        unrestricted = True
 
     context = {
         "restart": get_restart_notice,
@@ -56,7 +56,7 @@ def page_dnd5e_list(request):
         'release': get_version_json(),
         "title": "D&D-5e",
         "item_list": item_list,
-        # "unrestricted_user": unrestricted,
+        "unrestricted_user": unrestricted,
         "blurb": get_page_blurb_override('content_collection/dnd5e/'),
     }
     return render(request, "content_collection/dnd5e.html", context)
