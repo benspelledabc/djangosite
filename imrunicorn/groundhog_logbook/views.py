@@ -133,7 +133,7 @@ class ChartDataByCloudLevel(APIView):
         labels = ["Clear Sky", "Few Clouds", "Scattered Clouds",
                   "Broken Clouds", "Shower/Rain", "Rain", "Thunderstorm",
                   "Snow", "Mist", "Unknown"]
-        default_items = [clear_sky,few_clouds,scattered_clouds,broken_clouds,
+        default_items = [clear_sky, few_clouds, scattered_clouds, broken_clouds,
                          shower_rain, rain, thunderstorm, snow, mist, unknown_count]
         data = {
                 "labels": labels,

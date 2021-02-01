@@ -38,7 +38,7 @@ class RemovalsByLocation(models.Model):
     FEW_CLOUDS = 'Few Clouds'
     SCATTERED_CLOUDS = 'Scattered Clouds'
     BROKEN_CLOUDS = 'Broken Clouds'
-    SHOWER_RAIN = "Shower Rain"
+    SHOWER_RAIN = "Shower/Rain"
     RAIN = "Rain"
     THUNDERSTORM = "Thunderstorm"
     SNOW = "Snow"
