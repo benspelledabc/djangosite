@@ -51,6 +51,8 @@ def groundhogs_by_cloud_level(cloud_level="ALL"):
             Q(cloud_level=cloud_level)
         ).count()
 
+    print("Level: {0} Result: {1}".format(cloud_level, result))
+
     return result
 
 
