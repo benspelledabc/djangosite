@@ -47,6 +47,7 @@ def page_dnd5e_list(request):
 
     unrestricted = False
     allowed_groupname_list = ['content_collection_dnd5e_restricted']
+
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
