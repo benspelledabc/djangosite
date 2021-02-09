@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'status_watcher',
     'content_collection',
     'call_of_the_wild',
+    'activity_log',
     #'iprestrict',
 ]
 
