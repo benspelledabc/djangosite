@@ -45,3 +45,15 @@ class PageBlurbOverrides(models.Model):
     class Meta:
         ordering = ('Page_Link_From_Base', '-id')
         verbose_name_plural = "Page Blurb Overrides"
+
+
+class PageSecret(models.Model):
+    Secret = models.TextField(blank=True, null=True)  # i like big comments...
+    Page_Link_From_Base = models.CharField(max_length=250, unique=True)
+
+    def __str__(self):
+        return "[%s] - %s" % (self.id, self.Page_Link_From_Base)
+
+    class Meta:
+        ordering = ('Page_Link_From_Base', '-id')
+        verbose_name_plural = "Page Secrets"

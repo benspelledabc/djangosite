@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from announcements.get_news import get_version_json, get_page_blurb_override
+from announcements.get_news import get_version_json, get_page_blurb_override, get_page_secret
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from django.shortcuts import render
@@ -27,7 +27,8 @@ def page_task_list(request):
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Activity Log: Task List",
-        "blurb": get_page_blurb_override('activity_log/home/'),
+        "blurb": get_page_blurb_override('activity_log/task_list/'),
+        "secret": get_page_secret('activity_log/task_list/'),
         "data": data,
     }
     return render(request, "activity_log/activity_list.html", context)
