@@ -20,7 +20,7 @@ class Activity(models.Model):
         return "[cost: %s] %s" % (self.transaction_amount, self.name)
 
     class Meta:
-        ordering = ('name', 'transaction_amount')
+        ordering = ('-transaction_amount', 'name')
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
 
