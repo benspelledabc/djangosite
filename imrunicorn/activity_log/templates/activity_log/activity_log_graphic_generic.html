@@ -152,7 +152,7 @@ function setChart(){
         <div align="center">
         <div>
             <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
-            <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |
+            {% comment %} <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |{% endcomment %}
             <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
             <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a>
         </div>
