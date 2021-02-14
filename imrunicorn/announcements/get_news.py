@@ -4,7 +4,7 @@ import json
 from datetime import datetime, date, timedelta
 from django.conf import settings
 from farminvite.models import InviteListing
-from .models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
+from .models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides, PageSecret
 from django.db.models import Q
 from django.db.models import F, ExpressionWrapper
 from django.http import JsonResponse
@@ -54,6 +54,21 @@ def get_page_blurb_override(page=None):
         blurb = "Blurb Error: %s." % err
 
     return blurb
+
+
+def get_page_secret(page=None):
+    try:
+        blurb = PageSecret.objects.filter(
+            Q(Page_Link_From_Base=page)
+        ).order_by('-id')[:1]
+        blurb = blurb[0].Secret
+    except IndexError as ie:
+        blurb = ""
+    except Exception as err:
+        blurb = "Secret Error: %s." % err
+
+    return blurb
+
 
 
 def get_news():
