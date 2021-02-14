@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 from .views import ChartDataBySex, ChartDataByTime, ChartDataByMonth, ChartDataByCloudLevel, ChartDataByTemperature, \
-    ChartDataByRemover
+    ChartDataByRemover, ChartDataByYear
 # from api.views import ChartData as GroundHogChartData
 
 
@@ -26,6 +26,9 @@ urlpatterns = [
 
     path('charts/by_month/', views.page_charts_by_month, name='charts_by_month'),
     path('api/chart/by_month/data/', ChartDataByMonth.as_view()),
+
+    path('charts/by_year/', views.page_charts_by_year, name='charts_by_year'),
+    path('api/chart/by_year/data/', ChartDataByYear.as_view()),
 
     path('charts/by_cloud_level/', views.page_charts_by_cloud_level, name='charts_by_cloud_level'),
     path('api/chart/by_cloud_level/data/', ChartDataByCloudLevel.as_view()),
