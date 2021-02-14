@@ -1,0 +1,66 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
+            <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |
+            <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
+            <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    {% for record in data %}
+        {% ifchanged record.activity_log.id %}
+
+            {% if forloop.first  == False %}
+                <hr style="height:2px;border-width:0;color:gray;background-color:red" />
+            {% else %}
+                <br />
+            {% endif %}
+
+            {% comment %}
+            <b>Log Entry:</b> {{ record.activity_log.id }}<br />
+            {% endcomment %}
+            <b>Date:</b> {{ record.activity_log.date }}<br />
+            <b>Time:</b> {{ record.activity_log.time }}<br />
+            <b>Actor:</b>
+    {{ record.activity_log.actor.userprofile.preferred_display_name|default:record.activity_log.actor.username }}<br />
+
+            <b>Name:</b> {{ record.activity_log.activity.name }}<br />
+            <b>Description:</b> {{ record.activity_log.activity.description }}<br />
+            <br />
+            <b>Photo Caption:</b> {{ record.caption }}<br />
+            <b>Photo Proof:</b> <img src="{{ record.photo_proof.url }}" style="width: 30%" ><br />
+        {% else %}
+            <br /><br />
+            <b>Photo Caption:</b> {{ record.caption }}<br />
+            <b>Photo Proof:</b> <img src="{{ record.photo_proof.url }}" style="width: 30%" ><br />
+        {% endifchanged %}
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
