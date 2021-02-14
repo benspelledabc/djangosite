@@ -30,7 +30,8 @@ from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
 from activity_log.models import ActivityPhotoValidation, ActivityLog, Activity
-from activity_log.serializer import ActivitySerializer  # ActivityPhotoValidationSerializer, ActivityLogSerializer
+from activity_log.serializer import ActivitySerializer
+# ActivityPhotoValidationSerializer, ActivityLogSerializer
 
 from imrunicorn.functions import step_hit_count_by_page, get_weather
 
@@ -57,6 +58,20 @@ class ActivityLogActivity(viewsets.ModelViewSet):
     # permission_classes = (DjangoModelPermissions,)
     # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+
+
+class ActivityLogActivityAboveZero(viewsets.ModelViewSet):
+    # require user to be logged on.
+    # permission_classes = (IsAuthenticated,)
+    # fetch data
+    permission_classes = (IsAdminUser,)
+    # permission_classes = (DjangoModelPermissions,)
+    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    queryset = Activity.objects.filter(
+        Q(transaction_amount__gt=0)
+    )
+
     serializer_class = ActivitySerializer
 
 
