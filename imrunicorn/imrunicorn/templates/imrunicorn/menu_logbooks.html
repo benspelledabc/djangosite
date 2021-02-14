@@ -13,14 +13,11 @@
                       {% endcomment %}
 
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:all_groundhog_removals' %}"> Removals</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_sex' %}"> Charts By Sex</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_time' %}"> Charts By Time</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_month' %}"> Charts By Month</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_temperature' %}"> Charts By Temperature</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_cloud_level' %}"> Charts By Cloud Level</a></li>
-                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_remover' %}"> Charts By Remover</a></li>
+                      <li><a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_month' %}"> Charts</a></li>
+                      {% comment %}
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:groundhog_removal_scoreboard_annual' %}"> Removal Scoreboard Annual</a></li>
                       <li><a class="dropdown-item" href="{% url 'groundhog_logbook:page_charts' %}"> Charts (simple)</a></li>
+                      {% endcomment %}
 
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Deer Harvest Logbook</li>
@@ -33,10 +30,12 @@
                       <li><a class="dropdown-item" href="{% url 'deer_wait_list:list_view' %}">View Wait List</a></li>
                       <li><a class="dropdown-item" href="{% url 'deer_wait_list:info' %}">Info</a></li>
 
+                      {% comment %}
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Game Logbooks</li>
                       <li><a class="dropdown-item" href="{% url 'call_of_the_wild:page_need_zone_times' %}">COTW: Need Zone Times</a></li>
                       <li><a class="dropdown-item" href="{% url 'call_of_the_wild:page_trophy_stats' %}">COTW: Trophy Stats</a></li>
+                      {% endcomment %}
 
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Activity Logbooks</li>
