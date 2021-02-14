@@ -4,7 +4,8 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
-    groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level, groundhogs_by_temperature
+    groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level, groundhogs_by_temperature, \
+    groundhogs_by_year
 
 from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page, get_weather
@@ -195,6 +196,46 @@ def page_charts_by_month(request):
     context = {
         "graph_api_node": '/groundhog_logbook/api/chart/by_month/data/',
         "graph_header": "# of Groundhog Removals (By Month)",
+        "graph_message": "",
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
+
+
+class ChartDataByYear(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        by_year = groundhogs_by_year()
+        print("view: {0}".format(by_year))
+
+        labels = []
+        default_items = []
+
+        for item in by_year:
+            labels.append(item['year'].strftime("%Y"))
+
+        for item in by_year:
+            default_items.append(item['kills_per_year'])
+
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+def page_charts_by_year(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_year/data/',
+        "graph_header": "# of Groundhog Removals (By Year)",
         "graph_message": "",
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,

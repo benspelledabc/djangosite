@@ -4,7 +4,7 @@ import datetime
 from django.conf import settings
 from .models import RemovalsByLocation, Location
 from django.db.models import Q, Count
-from django.db.models.functions import TruncHour, TruncMonth
+from django.db.models.functions import TruncHour, TruncMonth, TruncYear
 from django.contrib.auth.models import User
 
 
@@ -62,6 +62,15 @@ def groundhogs_by_month():
         month=TruncMonth('removal_date')).values('month', ) \
         .annotate(kills_per_month=Count('id')) \
         .order_by('month')
+
+    return result
+
+
+def groundhogs_by_year():
+    result = RemovalsByLocation.objects.annotate(
+        year=TruncYear('removal_date')).values('year', ) \
+        .annotate(kills_per_year=Count('id')) \
+        .order_by('year')
 
     return result
 
