@@ -70,7 +70,7 @@ class ActivityLogActivityAboveZero(viewsets.ModelViewSet):
     # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Activity.objects.filter(
         Q(transaction_amount__gt=0)
-    )
+    ).order_by('?')[:1]
 
     serializer_class = ActivitySerializer
 
