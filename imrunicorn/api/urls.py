@@ -8,6 +8,8 @@ from groundhog_logbook.views import ChartDataBySex
 
 # similar to object based url building
 router = routers.DefaultRouter()
+router.register('activity_log/activity', views.ActivityLogActivity)
+
 router.register('announcements/what_is_new_random_one', views.WhatIsNewViewRandomOne)
 router.register('announcements/what_is_new', views.WhatIsNewView)
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
