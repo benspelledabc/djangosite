@@ -1,0 +1,37 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
+            {% comment %} <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |{% endcomment %}
+            <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
+            <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    Activity Log placeholder!
+</div>
+
+{% endblock %}

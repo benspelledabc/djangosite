@@ -1,0 +1,69 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
+            {% comment %} <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |{% endcomment %}
+            <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
+            <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+
+        <table align="center" border="1" width="95%">
+            <tr bgcolor="#808080">
+                <th bgcolor="808080" style="text-align: center">
+                 User
+             </th>
+                <th bgcolor="808080" style="text-align: center">
+                 Date/Time Of Activity
+             </th>
+            <th bgcolor="808080" style="text-align: center">
+                Cost
+            </th>
+            <th bgcolor="808080" style="text-align: center">
+                Description
+            </th>
+
+    {% for record in data %}
+        <tr bgcolor="#BEBEBE">
+              <td style="padding-left:10px">
+                  {{ record.actor.username }}
+              </td>
+            <td style="padding-left:10px">
+                  {{ record.date }} @ {{ record.time }}
+              </td>
+            <td style="padding-left:10px">
+                  {{ record.activity.transaction_amount }}
+              </td>
+            <td style="padding-left:10px">
+                  {{ record.activity.description }}
+              </td>
+        </tr>
+    {% endfor %}
+        </table>
+</div>
+
+{% endblock %}
