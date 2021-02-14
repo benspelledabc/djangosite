@@ -1,4 +1,5 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, DjangoModelPermissions, \
+    DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,6 +29,9 @@ from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSeria
 from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
+from activity_log.models import ActivityPhotoValidation, ActivityLog, Activity
+from activity_log.serializer import ActivitySerializer  # ActivityPhotoValidationSerializer, ActivityLogSerializer
+
 from imrunicorn.functions import step_hit_count_by_page, get_weather
 
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
@@ -42,6 +46,18 @@ class Owner(viewsets.ModelViewSet):
     # fetch data
     queryset = User.objects.all()
     serializer_class = OwnerSerializer
+
+
+# ############### activity_log ###############
+class ActivityLogActivity(viewsets.ModelViewSet):
+    # require user to be logged on.
+    # permission_classes = (IsAuthenticated,)
+    # fetch data
+    permission_classes = (IsAdminUser,)
+    # permission_classes = (DjangoModelPermissions,)
+    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
 
 
 # ############### loaddata ###############

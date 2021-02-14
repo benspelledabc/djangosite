@@ -1,0 +1,20 @@
+from rest_framework import serializers
+from .models import ActivityPhotoValidation, ActivityLog, Activity
+
+
+class ActivitySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Activity
+        fields = ('url', 'name', 'description', 'transaction_amount')
+
+
+# class ActivityPhotoValidationSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = Activity
+#         fields = ('url', 'Blurb', 'Page_Link_From_Base')
+
+
+# class ActivityLogSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = ActivityLog
+#         fields = ('url', 'Blurb', 'Page_Link_From_Base')
