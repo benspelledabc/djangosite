@@ -148,6 +148,21 @@ function setChart(){
 </div>
 
 <div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_sex' %}"> Charts By Sex</a> |
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_time' %}"> Charts By Time</a> |
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_month' %}"> Charts By Month</a> |
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_temperature' %}"> Charts By Temperature</a> |
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_cloud_level' %}"> Charts By Cloud Level</a> |
+            <a class="dropdown-item" href="{% url 'groundhog_logbook:charts_by_remover' %}"> Charts By Remover</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
     <div align="center">
         <div>{{ graph_message }}</div>
         <div class='col-sm-12'>
