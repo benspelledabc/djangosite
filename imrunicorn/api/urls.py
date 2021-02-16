@@ -5,14 +5,16 @@ from django.views.generic import TemplateView
 # from api.views import ChartData as GroundHogChartData
 from groundhog_logbook.views import ChartDataBySex
 # from api.views import ChartDataTest
+from .views import ActivityLogViewSet
 
 # similar to object based url building
 router = routers.DefaultRouter()
-router.register('activity_log/activity', views.ActivityLogActivity)
-router.register('activity_log/activity_above_zero', views.ActivityLogActivityAboveZero)
 
-router.register('announcements/what_is_new_random_one', views.WhatIsNewViewRandomOne)
+router.register('activity_log/activity', views.ActivityLogViewSet)
+
 router.register('announcements/what_is_new', views.WhatIsNewView)
+
+
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
 router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
 
@@ -40,5 +42,6 @@ router.register('groundhog_logbook/RemovalsByLocation', views.RemovalsByLocation
 # app_name = 'api'
 urlpatterns = [
     # path('DeerWaitListRecipient/', views.DeerWaitListRecipient, name='DeerWaitListRecipient'),
+    # path("activity_log", ActivityLogViewSet.as_view(), name='activity_log'),
     path('', include(router.urls)),
 ]

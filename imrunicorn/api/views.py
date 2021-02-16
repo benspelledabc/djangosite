@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, DjangoModelPermissions, \
-    DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly
+    DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -9,7 +9,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import Q
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.decorators import action
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
@@ -61,18 +62,70 @@ class ActivityLogActivity(viewsets.ModelViewSet):
     serializer_class = ActivitySerializer
 
 
-class ActivityLogActivityAboveZero(viewsets.ModelViewSet):
-    # require user to be logged on.
-    # permission_classes = (IsAuthenticated,)
-    # fetch data
+class ActivityLogViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminUser,)
-    # permission_classes = (DjangoModelPermissions,)
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
-    queryset = Activity.objects.filter(
-        Q(transaction_amount__gt=0)
-    ).order_by('?')[:1]
-
+    queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
+
+    @action(detail=False)
+    def sfw_all(self, request):
+        queryset = Activity.objects.filter(
+            Q(sfw=True))
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def tasks_all(self, request):
+        queryset = Activity.objects.filter(
+            Q(transaction_amount__gt=0))
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def rewards_all(self, request):
+        queryset = Activity.objects.filter(
+            Q(transaction_amount__lte=0))
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def random_task_all(self, request):
+        queryset = Activity.objects.filter(
+            Q(transaction_amount__gt=0)).order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def random_task_sfw(self, request):
+        queryset = Activity.objects.filter(
+            Q(transaction_amount__gt=0, sfw=True)).order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 # ############### loaddata ###############
@@ -175,18 +228,22 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 
 
 # ############### announcements ###############
-class WhatIsNewViewRandomOne(viewsets.ModelViewSet):
-    step_hit_count_by_page("/announcements/what_is_new_random_one")
-    # queryset = WhatIsNew.objects.order_by('?')[:1]
-    queryset = WhatIsNew.objects.filter(
-        Q(Published=True)
-    ).order_by('?')[:1]
-    serializer_class = WhatIsNewSerializer
-
-
 class WhatIsNewView(viewsets.ModelViewSet):
-    queryset = WhatIsNew.objects.all().order_by('-id')
+    # permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
+    queryset = WhatIsNew.objects.all()
     serializer_class = WhatIsNewSerializer
+
+    @action(detail=False)
+    def random_one(self, request):
+        queryset = WhatIsNew.objects.order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class MainPageBlurbsView(viewsets.ModelViewSet):
