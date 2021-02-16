@@ -7,6 +7,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Activity(models.Model):
     name = models.CharField(max_length=150, default=None, blank=True, null=True)
     description = models.TextField(blank=True, null=True)  # i like big comments...
+    sfw = models.BooleanField(default=False)
     transaction_amount = models.IntegerField(
         null=True,
         default=-2,
