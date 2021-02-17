@@ -72,8 +72,6 @@ def page_photo_validation(request):
     step_hit_count_by_page(request.path)
     data = activity_photo_validation()
 
-    extra = activity_scoreboard_by_user()
-
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
@@ -110,11 +108,11 @@ class ChartDataScoreByUser(APIView):
         default_items = []
 
         for item in by_hour:
-            print(item)
+            print("fix it!")
             # labels.append(item['estimated_temperature'])
 
         for item in by_hour:
-            print(item)
+            print("fix it!")
             # default_items.append(item['kills'])
 
         data = {
