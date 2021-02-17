@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from requests import Response
+from rest_framework.views import APIView
+
 from announcements.get_news import get_version_json, get_page_blurb_override, get_page_secret
+from groundhog_logbook.functions import groundhog_removal_scoreboard
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
-from .functions import activity_list, activity_scoreboard, activity_tasks_per_user, activity_photo_validation
+from .functions import activity_list, activity_scoreboard, activity_tasks_per_user, \
+    activity_photo_validation, activity_scoreboard_by_user
 
 
 @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
@@ -49,9 +54,26 @@ def page_tasks_per_user(request):
 
 
 @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+def page_current_points(request):
+    step_hit_count_by_page(request.path)
+    data = activity_tasks_per_user()
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Activity Log: Current Points",
+        "blurb": get_page_blurb_override('activity_log/current_points/'),
+        "data": data,
+    }
+    return render(request, "activity_log/tasks_per_user.html", context)
+
+
+@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
 def page_photo_validation(request):
     step_hit_count_by_page(request.path)
     data = activity_photo_validation()
+
+    extra = activity_scoreboard_by_user()
+
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
@@ -62,13 +84,43 @@ def page_photo_validation(request):
     return render(request, "activity_log/photo_validation.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
-def page_scoreboard(request):
+def page_scoreboard_by_user(request):
     step_hit_count_by_page(request.path)
+
     context = {
+        "graph_api_node": '/activity_log/api/chart/scoreboard/by_user/data/',
+        "graph_header": "# points or something (By User)",
+        "graph_message": "oh ya!",
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Activity Log: Scoreboard",
-        "blurb": get_page_blurb_override('activity_log/home/'),
+        "title": "Scoreboard Line Charts",
+        "blurb": get_page_blurb_override('activity_log/charts/scoreboard/'),
     }
     return render(request, "activity_log/activity_log_graphic_generic.html", context)
+
+
+class ChartDataScoreByUser(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        by_hour = activity_scoreboard_by_user()
+        pass
+        labels = []
+        default_items = []
+
+        for item in by_hour:
+            print(item)
+            # labels.append(item['estimated_temperature'])
+
+        for item in by_hour:
+            print(item)
+            # default_items.append(item['kills'])
+
+        data = {
+            "labels": labels,
+            "default": default_items,
+            "endpoint": "/activity_log/api/chart/scoreboard/by_user/data/",
+            "graph_title": "# of Groundhog Removals (By Temperature)"
+        }
+        return Response(data)
