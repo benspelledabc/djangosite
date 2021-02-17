@@ -20,11 +20,7 @@
 <div class="row ben_format_pretty">
         <div align="center">
         <div>
-            <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
-            {% comment %} <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |{% endcomment %}
-            <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
-            <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a> {% comment %}|
-            <a class="dropdown-item" href="{% url 'activity_log:scoreboard_by_user' %}"> Scoreboard</a>{% endcomment %}
+            {% include 'activity_log/chart_menu.html' %}
         </div>
     </div>
 </div>
@@ -39,10 +35,10 @@
                  User
              </th>
                 <th bgcolor="808080" style="text-align: center">
-                 Date/Time Of Activity
+                 Timestamp
              </th>
             <th bgcolor="808080" style="text-align: center">
-                Cost
+                KP/AP
             </th>
             <th bgcolor="808080" style="text-align: center">
                 Description
@@ -51,7 +47,7 @@
     {% for record in data %}
         <tr bgcolor="#BEBEBE">
               <td style="padding-left:10px">
-                  {{ record.actor.username }}
+                  {{ record.actor.userprofile.preferred_display_name |default:record.actor.username }}
               </td>
             <td style="padding-left:10px">
                   {{ record.date }} @ {{ record.time }}
