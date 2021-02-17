@@ -39,3 +39,10 @@ def activity_photo_validation():
         .order_by('-activity_log__date', '-activity_log__time')
 
     return result
+
+
+def activity_scoreboard_by_user():
+    result = ActivityLog.objects.all()
+    print(result)
+
+    return result
