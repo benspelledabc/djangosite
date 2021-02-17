@@ -151,11 +151,7 @@ function setChart(){
 <div class="row ben_format_pretty">
         <div align="center">
         <div>
-            <a class="dropdown-item" href="{% url 'activity_log:task_list' %}"> Task List</a> |
-            {% comment %} <a class="dropdown-item" href="{% url 'activity_log:scoreboard' %}"> Task Scoreboard</a> |{% endcomment %}
-            <a class="dropdown-item" href="{% url 'activity_log:photo_validation' %}"> Task Photo Validation</a> |
-            <a class="dropdown-item" href="{% url 'activity_log:tasks_per_user' %}"> Tasks By User</a> {% comment %}|
-            <a class="dropdown-item" href="{% url 'activity_log:scoreboard_by_user' %}"> Scoreboard</a>{% endcomment %}
+            {% include 'activity_log/chart_menu.html' %}
         </div>
     </div>
 </div>

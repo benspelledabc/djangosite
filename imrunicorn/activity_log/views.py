@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from requests import Response
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from announcements.get_news import get_version_json, get_page_blurb_override, get_page_secret
@@ -89,8 +89,8 @@ def page_scoreboard_by_user(request):
 
     context = {
         "graph_api_node": '/activity_log/api/chart/scoreboard/by_user/data/',
-        "graph_header": "# points or something (By User)",
-        "graph_message": "oh ya!",
+        "graph_header": "# points (By User)",
+        "graph_message": "(Charts are coming soon)",
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Scoreboard Line Charts",
