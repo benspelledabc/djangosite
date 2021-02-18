@@ -88,7 +88,7 @@ def page_scoreboard_by_user(request):
     context = {
         "graph_api_node": '/activity_log/api/chart/scoreboard/by_user/data/',
         "graph_header": "# points (By User)",
-        "graph_message": "(Charts are coming soon)",
+        "graph_message": "Running total (no resets)",
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Scoreboard Line Charts",
@@ -103,17 +103,17 @@ class ChartDataScoreByUser(APIView):
 
     def get(self, request, format=None):
         by_hour = activity_scoreboard_by_user()
-        pass
         labels = []
         default_items = []
 
         for item in by_hour:
-            print("fix it!")
-            # labels.append(item['estimated_temperature'])
+            if item['actor__userprofile__preferred_display_name']:
+                labels.append(item['actor__userprofile__preferred_display_name'])
+            else:
+                labels.append(item['actor__username'])
 
         for item in by_hour:
-            print("fix it!")
-            # default_items.append(item['kills'])
+            default_items.append(item['points'])
 
         data = {
             "labels": labels,

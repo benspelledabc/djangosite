@@ -42,9 +42,12 @@ def activity_photo_validation():
 
 
 def activity_scoreboard_by_user():
-    result = ActivityLog.objects.distinct().values('actor') \
+    result = ActivityLog.objects.distinct().values('actor',
+                                                   'actor__userprofile',
+                                                   'actor__userprofile__preferred_display_name',
+                                                   'actor__username',
+                                                   'actor__first_name',
+                                                   'actor__last_name') \
         .annotate(points=Sum('activity__transaction_amount')).order_by('-points')
-    # <QuerySet [{'actor': 1, 'points': 27}, {'actor': 2, 'points': 5}]>
-    # print(result)
 
     return result
