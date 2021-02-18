@@ -47,7 +47,7 @@ def page_tasks_per_user(request):
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Activity Log: Tasks Per User",
-        "blurb": get_page_blurb_override('activity_log/home/'),
+        "blurb": get_page_blurb_override('activity_log/tasks_per_user/'),
         "data": data,
     }
     return render(request, "activity_log/tasks_per_user.html", context)
