@@ -10,7 +10,9 @@ from .views import ActivityLogViewSet
 # similar to object based url building
 router = routers.DefaultRouter()
 
-router.register('activity_log/activity', views.ActivityLogViewSet)
+router.register('activity_log/activity', views.ActivityViewSet)
+router.register('activity_log/activity_log', views.ActivityLogViewSet)
+router.register('activity_log/activity_photo_validation', views.ActivityPhotoValidationViewSet)
 
 router.register('announcements/what_is_new', views.WhatIsNewView)
 

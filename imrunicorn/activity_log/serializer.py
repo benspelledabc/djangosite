@@ -10,13 +10,15 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
         # fields = ('url', 'name', 'description', 'transaction_amount')
 
 
-# class ActivityPhotoValidationSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = Activity
-#         fields = ('url', 'Blurb', 'Page_Link_From_Base')
+class ActivityPhotoValidationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ActivityPhotoValidation
+        fields = '__all__'
+        # fields = ('url', 'Blurb', 'Page_Link_From_Base')
 
 
-# class ActivityLogSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = ActivityLog
-#         fields = ('url', 'Blurb', 'Page_Link_From_Base')
+class ActivityLogSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ActivityLog
+        fields = '__all__'
+        # fields = ('url', 'Blurb', 'Page_Link_From_Base')
