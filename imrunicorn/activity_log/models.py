@@ -51,6 +51,6 @@ class ActivityPhotoValidation(models.Model):
         return "%s" % self.activity_log
 
     class Meta:
-        ordering = ('-activity_log',)
+        ordering = ('-activity_log', 'id')
         verbose_name = 'Activity Photo Validation'
         verbose_name_plural = 'Activity Photo Validations'
