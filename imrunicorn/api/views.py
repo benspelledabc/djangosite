@@ -31,8 +31,7 @@ from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
 from activity_log.models import ActivityPhotoValidation, ActivityLog, Activity
-from activity_log.serializer import ActivitySerializer
-# ActivityPhotoValidationSerializer, ActivityLogSerializer
+from activity_log.serializer import ActivitySerializer, ActivityLogSerializer, ActivityPhotoValidationSerializer
 
 from imrunicorn.functions import step_hit_count_by_page, get_weather
 
@@ -51,18 +50,19 @@ class Owner(viewsets.ModelViewSet):
 
 
 # ############### activity_log ###############
-class ActivityLogActivity(viewsets.ModelViewSet):
-    # require user to be logged on.
-    # permission_classes = (IsAuthenticated,)
-    # fetch data
+class ActivityPhotoValidationViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminUser,)
-    # permission_classes = (DjangoModelPermissions,)
-    # permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
-    queryset = Activity.objects.all()
-    serializer_class = ActivitySerializer
+    queryset = ActivityPhotoValidation.objects.all()
+    serializer_class = ActivityPhotoValidationSerializer
 
 
 class ActivityLogViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAdminUser,)
+    queryset = ActivityLog.objects.all()
+    serializer_class = ActivityLogSerializer
+
+
+class ActivityViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminUser,)
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
@@ -301,25 +301,3 @@ class LocationView(viewsets.ModelViewSet):
 class RemovalsByLocationView(viewsets.ModelViewSet):
     queryset = RemovalsByLocation.objects.all()
     serializer_class = RemovalsByLocationSerializer
-
-
-# class ChartDataTest(APIView):
-#     authentication_classes = []
-#     permission_classes = []
-#
-#     def get(self, request, format=None):
-#         # qs_count = User.objects.all().count()
-#         total_count = groundhogs_count_by_sex()
-#         male_count = groundhogs_count_by_sex("MALE")
-#         female_count = groundhogs_count_by_sex("FEMALE")
-#         unknown_count = groundhogs_count_by_sex("UNKNOWN")
-#
-#         print(male_count)
-#
-#         labels = ["Total", "Male", "Female", "Unknown"]
-#         default_items = [total_count, male_count, female_count, unknown_count]
-#         data = {
-#             "labels": labels,
-#             "default": default_items,
-#         }
-#         return Response(data)
