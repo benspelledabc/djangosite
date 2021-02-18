@@ -25,7 +25,7 @@ def activity_list():
 
 def activity_tasks_per_user():
     result = ActivityLog.objects.all() \
-        .order_by('actor', '-activity__transaction_amount', '-date', '-time')
+        .order_by('actor', '-date', '-time', '-activity__transaction_amount')
 
     # for item in result:
     #     print("{0} - {1} - {2}".format(item.activity.transaction_amount, item.actor.username, item.activity.name))
