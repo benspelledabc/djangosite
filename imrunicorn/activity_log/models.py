@@ -12,8 +12,8 @@ class Activity(models.Model):
         null=True,
         default=-2,
         validators=[
-            MaxValueValidator(20),
-            MinValueValidator(-20)
+            MaxValueValidator(100),
+            MinValueValidator(-100)
         ]
      )
 
