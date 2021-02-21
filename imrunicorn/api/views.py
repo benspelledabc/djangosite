@@ -61,6 +61,30 @@ class ActivityLogViewSet(viewsets.ModelViewSet):
     queryset = ActivityLog.objects.all()
     serializer_class = ActivityLogSerializer
 
+    @action(detail=False)
+    def approval_pending(self, request):
+        queryset = ActivityLog.objects.filter(
+            Q(approved=False))
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def approval_complete(self, request):
+        queryset = ActivityLog.objects.filter(
+            Q(approved=True))
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 class ActivityViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminUser,)
