@@ -24,25 +24,32 @@ def activity_list():
 
 
 def activity_tasks_per_user():
-    result = ActivityLog.objects.all() \
+    # result = ActivityLog.objects.all() \
+    #     .order_by('actor', '-date', '-time', '-activity__transaction_amount')
+    result = ActivityLog.objects.filter(approved=True) \
         .order_by('actor', '-date', '-time', '-activity__transaction_amount')
-
-    # for item in result:
-    #     print("{0} - {1} - {2}".format(item.activity.transaction_amount, item.actor.username, item.activity.name))
-    #     print("{0} - {1} -- {2} {3}".format(item.date, item.time, item.actor.username, item.activity.name))
 
     return result
 
 
 def activity_photo_validation():
-    result = ActivityPhotoValidation.objects.all() \
+    # result = ActivityPhotoValidation.objects.all() \
+    #     .order_by('-activity_log__date', '-activity_log__time')
+    result = ActivityPhotoValidation.objects.filter(activity_log__approved=True) \
         .order_by('-activity_log__date', '-activity_log__time')
 
     return result
 
 
 def activity_scoreboard_by_user():
-    result = ActivityLog.objects.distinct().values('actor',
+    # result = ActivityLog.objects.distinct().values('actor',
+    #                                                'actor__userprofile',
+    #                                                'actor__userprofile__preferred_display_name',
+    #                                                'actor__username',
+    #                                                'actor__first_name',
+    #                                                'actor__last_name') \
+    #     .annotate(points=Sum('activity__transaction_amount')).order_by('-points')
+    result = ActivityLog.objects.filter(approved=True).distinct().values('actor',
                                                    'actor__userprofile',
                                                    'actor__userprofile__preferred_display_name',
                                                    'actor__username',

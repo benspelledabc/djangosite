@@ -32,6 +32,7 @@ class ActivityLog(models.Model):
     date = models.DateField(default=date.today)
     time = models.TimeField(null=True)
     actor_comments = models.TextField(blank=True, null=True)  # i like big comments...
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return "[%s %s] %s - %s" % (self.date, self.time, self.actor, self.activity.name)
