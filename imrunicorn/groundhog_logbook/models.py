@@ -28,6 +28,9 @@ class RemovalPhoto(models.Model):
     def __str__(self):
         return "%s - %s - %s" % (self.id, self.photo_date, self.kill_shot.url)
 
+    class Meta:
+        ordering = ('-photo_date', '-id')
+
 
 class RemovalsByLocation(models.Model):
     shooter = models.ForeignKey(User, related_name='groundhog_logbook_shooter', on_delete=models.CASCADE, null=True)
