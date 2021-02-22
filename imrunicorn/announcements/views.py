@@ -13,6 +13,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, \
 from imrunicorn.functions import step_hit_count_by_page
 from django.shortcuts import render
 from rest_framework import viewsets
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from .serializer import NewsSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
@@ -26,11 +27,11 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 def page_all_news(request):
     step_hit_count_by_page(request.path)
-    logger.info("This is not getting logged...")
+    # logger.info("This is not getting logged...")
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
-        "all_news": get_news,
+        "all_news": get_news(request),
         'release': get_version_json(),
         "title": "All the news",
         "blurb": get_page_blurb_override('news/'),
