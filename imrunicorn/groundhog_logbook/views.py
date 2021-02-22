@@ -349,11 +349,11 @@ def page_charts(request):
 # @unauthenticated_user
 def page_all_groundhog_removals(request):
     step_hit_count_by_page(request.path)
-    all_news = all_groundhog_removals
+    all_news = all_groundhog_removals(request)
     weather = get_weather(request)
     context = {
         "weather": weather,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_news,
         'release': get_version_json(),
@@ -362,7 +362,7 @@ def page_all_groundhog_removals(request):
         "blurb": get_page_blurb_override('groundhog_logbook/by_shooter/'),
     }
 
-    print(weather)
+    # print(weather)
     return render(request, "groundhog_logbook/all_groundhog_kills.html", context)
 
 

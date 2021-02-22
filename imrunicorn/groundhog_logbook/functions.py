@@ -2,6 +2,7 @@ import json
 import datetime
 # from datetime import datetime
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import RemovalsByLocation, Location
 from django.db.models import Q, Count
 from django.db.models.functions import TruncHour, TruncMonth, TruncYear
@@ -80,10 +81,20 @@ def all_groundhog_hole_locations():
     return result
 
 
-def all_groundhog_removals():
+def all_groundhog_removals(request):
     result = RemovalsByLocation.objects.filter() \
         .order_by('-removal_date', '-removal_time', '-shot_distance_yards')
-    return result
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 5)
+
+    try:
+        result_set = paginator.page(page)
+    except PageNotAnInteger:
+        result_set = paginator.page(1)
+    except EmptyPage:
+        result_set = paginator.page(paginator.num_pages)
+
+    return result_set
 
 
 def all_groundhog_removals_by_shooter(shooter_pk='1'):
