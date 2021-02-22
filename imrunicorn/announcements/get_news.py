@@ -3,6 +3,7 @@ import json
 # import environ
 from datetime import datetime, date, timedelta
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from farminvite.models import InviteListing
 from .models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides, PageSecret
 from django.db.models import Q
@@ -70,15 +71,30 @@ def get_page_secret(page=None):
     return blurb
 
 
+def get_news(request):
+    # last known good
+    # this_moment = datetime.now()
+    # result = WhatIsNew.objects.filter(
+    #     Q(Published=True) & (Q(Date=this_moment.date())) |
+    #     Q(Published=True) & Q(Date__lt=this_moment.date())
+    # ).order_by('-Is_Sticky', '-Date', )
 
-def get_news():
     this_moment = datetime.now()
     result = WhatIsNew.objects.filter(
         Q(Published=True) & (Q(Date=this_moment.date())) |
         Q(Published=True) & Q(Date__lt=this_moment.date())
     ).order_by('-Is_Sticky', '-Date', )
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 5)
 
-    return result
+    try:
+        result_set = paginator.page(page)
+    except PageNotAnInteger:
+        result_set = paginator.page(1)
+    except EmptyPage:
+        result_set = paginator.page(paginator.num_pages)
+
+    return result_set
 
 
 def get_news_by_pk(news_pk='1'):
