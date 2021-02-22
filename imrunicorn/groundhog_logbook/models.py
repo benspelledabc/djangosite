@@ -21,6 +21,14 @@ class Location(models.Model):
         ordering = ('nickname', 'latitude', 'longitude')
 
 
+class RemovalPhoto(models.Model):
+    kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
+    photo_date = models.DateField(default=date.today)
+
+    def __str__(self):
+        return "%s - %s - %s" % (self.id, self.photo_date, self.kill_shot.url)
+
+
 class RemovalsByLocation(models.Model):
     shooter = models.ForeignKey(User, related_name='groundhog_logbook_shooter', on_delete=models.CASCADE, null=True)
     removal_date = models.DateField(default=date.today)
@@ -74,6 +82,8 @@ class RemovalsByLocation(models.Model):
     # upload the kill shot!?
     kill_shot = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
     kill_shot_two = models.ImageField(upload_to='uploads/groundhog_kill_shots/', null=True, blank=True)
+
+    removal_photos = models.ManyToManyField(RemovalPhoto, blank=True)
 
     UNKNOWN = 'UNKNOWN'
     MALE = 'MALE'
