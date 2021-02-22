@@ -18,7 +18,10 @@ PyYAML==5.3
 requests==2.22.0
 sqlparse==0.3.0
 urllib3==1.25.7
-mysqlclient==1.4.6 # doesn't work on windows but isnt needed
+# testing an upgrade of mysqlclient
+mysqlclient==2.0.3
+# mysqlclient==1.4.6 # doesn't work on windows but isnt needed
+
 PyMySQL==0.9.3 # doesn't work on windows but isnt needed
 django-ipware==2.1.0  # used to get remote ip
 django-extensions
