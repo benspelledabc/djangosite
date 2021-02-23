@@ -252,7 +252,6 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 
 
 # ############### announcements ###############
-@permission_classes([IsAuthenticatedOrReadOnly])
 class WhatIsNewView(viewsets.ModelViewSet):
     # permission_classes = (IsAdminUser,)
     permission_classes = (AllowAny,)
