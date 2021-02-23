@@ -74,6 +74,13 @@
                         <a href="{{ news.kill_shot_two.url }}" target="_blank"><img src="{{ news.kill_shot_two.url }}" style="width: 30%" /></a><br />
                 {% endif %}
 
+
+                {% for bonus_photo in news.removal_photos.all %}
+                        <b>Bonus Image: {{ forloop.counter }}</b><br />
+                        <a href="{{ bonus_photo.kill_shot.url }}" target="_blank"><img src="{{ bonus_photo.kill_shot.url }}" style="width: 30%" /></a><br />
+                {% endfor %}
+
+
                 {% if forloop.last  == False %}
                     <hr />
                 {% else %}
