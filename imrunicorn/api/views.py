@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, DjangoModelPermissions, \
-    DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly, AllowAny
+    DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -252,10 +252,9 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 
 
 # ############### announcements ###############
-@permission_classes([IsAuthenticatedOrReadOnly])
 class WhatIsNewView(viewsets.ModelViewSet):
     # permission_classes = (IsAdminUser,)
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = WhatIsNew.objects.all()
     serializer_class = WhatIsNewSerializer
 
