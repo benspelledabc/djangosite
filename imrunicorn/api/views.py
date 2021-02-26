@@ -254,7 +254,9 @@ class DeerWaitListRequestedOrder(viewsets.ModelViewSet):
 # ############### announcements ###############
 class WhatIsNewView(viewsets.ModelViewSet):
     # permission_classes = (IsAdminUser,)
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (DjangoObjectPermissions, )
+
     queryset = WhatIsNew.objects.all()
     serializer_class = WhatIsNewSerializer
 
