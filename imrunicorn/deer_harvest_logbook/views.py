@@ -3,7 +3,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from imrunicorn.functions import step_hit_count_by_page
 from deer_harvest_logbook.functions import all_harvests, all_harvests_by_shooter
 from deer_harvest_logbook.functions import harvests_by_hour_of_day, harvests_by_score, harvests_by_sex, \
-    harvests_by_month, harvests_by_year, harvests_scoreboard
+    harvests_by_month, harvests_by_year, harvests_scoreboard, harvests_by_temperature, harvests_by_cloud_level
 from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.shortcuts import render
@@ -301,3 +301,93 @@ class ChartDataByRemover(APIView):
             "graph_title": "# of Deer Removals (By Remover)"
         }
         return Response(data)
+
+
+def page_charts_by_temperature(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/deer_harvest_logbook/api/chart/by_temperature/data/',
+        "graph_header": "# of Deer Removals (By Temperature)",
+        "graph_message": "Temps are rounded to nearest 5 degrees.",
+        # "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Deer Line Charts",
+        "blurb": get_page_blurb_override('deer_harvest_logbook/graphic_charts/'),
+    }
+    return render(request, "deer_harvest_logbook/deer_graphic_generic.html", context)
+
+
+class ChartDataByTemperature(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        by_hour = harvests_by_temperature()
+        labels = []
+        default_items = []
+
+        for item in by_hour:
+            labels.append(item['estimated_temperature'])
+
+        for item in by_hour:
+            default_items.append(item['kills'])
+
+        data = {
+            "labels": labels,
+            "default": default_items,
+            "endpoint": "/deer_harvest_logbook/api/chart/by_temperature/data/",
+            "graph_title": "# of Deer Removals (By Temperature)"
+        }
+        return Response(data)
+
+
+class ChartDataByCloudLevel(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        clear_sky = harvests_by_cloud_level("Clear Sky")
+        few_clouds = harvests_by_cloud_level("Few Clouds")
+        scattered_clouds = harvests_by_cloud_level("Scattered Clouds")
+
+        broken_clouds = harvests_by_cloud_level("Broken Clouds")
+        shower_rain = harvests_by_cloud_level("Shower/Rain")
+        rain = harvests_by_cloud_level("Rain")
+
+        thunderstorm = harvests_by_cloud_level("Thunderstorm")
+        snow = harvests_by_cloud_level("Snow")
+        mist = harvests_by_cloud_level("Mist")
+
+        unknown_count = harvests_by_cloud_level("Unknown")
+
+        labels = ["Clear Sky", "Few Clouds", "Scattered Clouds",
+                  "Broken Clouds", "Shower/Rain", "Rain", "Thunderstorm",
+                  "Snow", "Mist", "Unknown"]
+        default_items = [clear_sky, few_clouds, scattered_clouds, broken_clouds,
+                         shower_rain, rain, thunderstorm, snow, mist, unknown_count]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+def page_charts_by_cloud_level(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/deer_harvest_logbook/api/chart/by_cloud_level/data/',
+        "graph_header": "# of Deer Removals (By Cloud Level)",
+        "graph_message": "We didn't start tracking the cloud level until 2021. Data before that will be listed as "
+                         "'Unknown' unless we find a site that shows historical data for clouds at the time of day in "
+                         "question.",
+        # "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Deer Line Charts",
+        "blurb": get_page_blurb_override('deer_harvest_logbook/graphic_charts/'),
+    }
+    return render(request, "deer_harvest_logbook/deer_graphic_generic.html", context)
+
