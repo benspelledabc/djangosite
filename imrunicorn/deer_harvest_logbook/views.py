@@ -60,25 +60,10 @@ def page_all_harvests(request):
     context = {
         "restart": get_restart_notice,
         "copy_year": datetime.now().year,
-        "all_news": all_harvests,
+        "all_news": all_harvests(request),
         'release': get_version_json(),
         "title": "Deer Harvest Logbook",
         "blurb": get_page_blurb_override('deer_harvest_logbook/'),
-    }
-    return render(request, "deer_harvest_logbook/all_harvests.html", context)
-
-
-
-def page_all_harvests(request):
-    step_hit_count_by_page(request.path)
-    all_removals = {}
-    context = {
-        "restart": get_restart_notice,
-        "copy_year": datetime.now().year,
-        "all_news": all_harvests,
-        'release': get_version_json(),
-        "title": "Deer Harvest Logbook",
-        "blurb": get_page_blurb_override('deer_harvest_logbook/by_shooter/'),
     }
     return render(request, "deer_harvest_logbook/all_harvests.html", context)
 

@@ -30,6 +30,9 @@ from loaddata.serializer import CaliberSerializer, FirearmSerializer, OwnerSeria
 from groundhog_logbook.models import Location, RemovalsByLocation
 from groundhog_logbook.serializer import LocationSerializer, RemovalsByLocationSerializer
 
+from deer_harvest_logbook.models import Harvests, HarvestPhoto
+from deer_harvest_logbook.serializer import HarvestsSerializer, HarvestPhotoSerializer
+
 from activity_log.models import ActivityPhotoValidation, ActivityLog, Activity
 from activity_log.serializer import ActivitySerializer, ActivityLogSerializer, ActivityPhotoValidationSerializer
 
@@ -327,3 +330,14 @@ class LocationView(viewsets.ModelViewSet):
 class RemovalsByLocationView(viewsets.ModelViewSet):
     queryset = RemovalsByLocation.objects.all()
     serializer_class = RemovalsByLocationSerializer
+
+
+# ############### deer harvest logbook ############
+class HarvestsView(viewsets.ModelViewSet):
+    queryset = Harvests.objects.all()
+    serializer_class = HarvestsSerializer
+
+
+class HarvestsPhotosView(viewsets.ModelViewSet):
+    queryset = HarvestPhoto.objects.all()
+    serializer_class = HarvestPhotoSerializer
