@@ -38,7 +38,6 @@ def update_estimated_temperature(record_id=1, new_temp=-49):
         e = RemovalsByLocation.objects.get(id=record_id)
         e.estimated_temperature = new_temp
         e.save()
-        print("Record {0} updated to new temperature of {1}.".format(record_id, new_temp))
     except Exception as e:
         print(e)
 
@@ -51,9 +50,6 @@ def groundhogs_by_cloud_level(cloud_level="ALL"):
         result = RemovalsByLocation.objects.filter(
             Q(cloud_level=cloud_level)
         ).count()
-
-    print("Level: {0} Result: {1}".format(cloud_level, result))
-
     return result
 
 
