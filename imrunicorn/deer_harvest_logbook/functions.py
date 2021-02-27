@@ -92,6 +92,53 @@ def harvests_scoreboard():
 
     return result
 
+
+def update_estimated_temperature(record_id=1, new_temp=-49):
+    try:
+        e = Harvests.objects.get(id=record_id)
+        e.estimated_temperature = new_temp
+        e.save()
+        # print("Record {0} updated to new temperature of {1}.".format(record_id, new_temp))
+    except Exception as e:
+        print(e)
+
+
+def harvests_by_temperature():
+    result = Harvests.objects.values('estimated_temperature', 'pk') \
+        .annotate(kills=Count('estimated_temperature')) \
+        .order_by('-estimated_temperature')
+
+    for item in result:
+        try:
+            temp = item["estimated_temperature"]
+            rounded_value = int(round(temp / 5.0) * 5.0)
+
+            # this isn't working so, lets do it this way for now
+            if rounded_value != temp:
+                update_estimated_temperature(item["pk"], rounded_value)
+        except Exception as e:
+            print("ERROR: {0}".format(e))
+
+    # fetching again without PK for sorting.
+    result = Harvests.objects.values('estimated_temperature') \
+        .annotate(kills=Count('estimated_temperature')) \
+        .order_by('-estimated_temperature')
+
+    return result
+
+
+def harvests_by_cloud_level(cloud_level="ALL"):
+    # now we're conditionally cloudy
+    if cloud_level == "ALL":
+        result = Harvests.objects.all().count()
+    else:
+        result = Harvests.objects.filter(
+            Q(cloud_level=cloud_level)
+        ).count()
+
+    return result
+
+
 # def harvests_by_shooter(shooter_pk='1'):
 #     result = Harvests.objects.filter(
 #         Q(shooter__pk=shooter_pk)

@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
-from .views import ChartDataByTime, ChartDataBySex, ChartDataByMonth, ChartDataByYear, ChartDataByRemover
+from .views import ChartDataByTime, ChartDataBySex, ChartDataByMonth, ChartDataByYear, \
+    ChartDataByRemover, ChartDataByTemperature, ChartDataByCloudLevel
 
 app_name = 'deer_harvest_logbook'
 urlpatterns = [
@@ -24,6 +25,12 @@ urlpatterns = [
 
     path('charts/by_year/', views.page_charts_by_year, name='charts_by_year'),
     path('api/chart/by_year/data/', ChartDataByYear.as_view()),
+
+    path('charts/by_cloud_level/', views.page_charts_by_cloud_level, name='charts_by_cloud_level'),
+    path('api/chart/by_cloud_level/data/', ChartDataByCloudLevel.as_view()),
+
+    path('charts/by_temperature/', views.page_charts_by_temperature, name='charts_by_temperature'),
+    path('api/chart/by_temperature/data/', ChartDataByTemperature.as_view()),
 
     path('charts/by_remover/', views.page_charts_by_remover, name='charts_by_remover'),
     path('api/chart/by_remover/data/', ChartDataByRemover.as_view()),
