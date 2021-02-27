@@ -28,9 +28,19 @@
             {% for news in all_news %}
                 <b>Harvest Date:</b> {{ news.harvest_date }}<br />
                 <b>Harvest Time:</b> {{ news.harvest_time }}<br />
+
+
+                {% if news.estimated_temperature > -49 %}
+                    <b>Estimated Temperature:</b> {{ news.estimated_temperature }}&deg;F<br />
+                {% else %}
+                    <b>Estimated Temperature:</b> No data<br />
+                {% endif %}
+
+                <b>Cloud Level:</b> {{ news.cloud_level }}<br />
+
                 <b>Shooter:</b>
                     <a href="{% url 'deer_harvest_logbook:all_harvests' %}{{ news.shooter.pk }}">
-                    {{ news.shooter.userprofile.preferred_display_name|default:news.shooter.first_name }}
+                    {{ news.shooter.userprofile.preferred_display_name|default:news.shooter.username }}
                     </a><br />
 
                 {% comment %}
