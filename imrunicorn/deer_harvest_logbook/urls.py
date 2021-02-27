@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import ChartDataByTime
+from .views import ChartDataByTime, ChartDataBySex, ChartDataByMonth, ChartDataByYear, ChartDataByRemover
 
 app_name = 'deer_harvest_logbook'
 urlpatterns = [
@@ -15,6 +15,19 @@ urlpatterns = [
 
     path('charts/by_time/', views.page_charts_by_time, name='charts_by_time'),
     path('api/chart/by_time/data/', ChartDataByTime.as_view()),
+
+    path('charts/by_sex/', views.page_charts_by_sex, name='charts_by_sex'),
+    path('api/chart/by_sex/data/', ChartDataBySex.as_view()),
+
+    path('charts/by_month/', views.page_charts_by_month, name='charts_by_month'),
+    path('api/chart/by_month/data/', ChartDataByMonth.as_view()),
+
+    path('charts/by_year/', views.page_charts_by_year, name='charts_by_year'),
+    path('api/chart/by_year/data/', ChartDataByYear.as_view()),
+
+    path('charts/by_remover/', views.page_charts_by_remover, name='charts_by_remover'),
+    path('api/chart/by_remover/data/', ChartDataByRemover.as_view()),
+
 
     # path('locations/', views.page_all_groundhog_locations, name='all_groundhog_locations'),
     # path('charts/', views.page_charts, name='page_charts'),
