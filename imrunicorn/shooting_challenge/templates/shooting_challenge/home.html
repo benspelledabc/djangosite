@@ -1,0 +1,40 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'shooting_challenge/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    {% if simple_info|length > 0 %}
+        {% autoescape off %}
+            {{ simple_info }}
+        {% endautoescape %}
+    {% else %}
+    <p align="center">Shooting challenges aren't supposed to be easy. We're going to start logging them from here out.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
+.
