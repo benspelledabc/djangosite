@@ -63,6 +63,8 @@ urlpatterns = [
 
     path('call_of_the_wild/', include('call_of_the_wild.urls')),
 
+    path('shooting_challenge/', include('shooting_challenge.urls')),
+
 
 
     # path('contact/', views.contact, name='contact'),

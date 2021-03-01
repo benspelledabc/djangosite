@@ -13,7 +13,7 @@ from imrunicorn.decorators import allowed_groups
 def page_blank(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Call Of The Wild: Blank",
@@ -25,7 +25,7 @@ def page_blank(request):
 def page_need_zone_times(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Call Of The Wild: Need Zone Times",
@@ -37,7 +37,7 @@ def page_need_zone_times(request):
 def page_trophy_stats(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Call Of The Wild: Trophy Stats",
