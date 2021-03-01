@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'content_collection',
     'call_of_the_wild',
     'activity_log',
+    'shooting_challenge',
     #'iprestrict',
 ]
 
