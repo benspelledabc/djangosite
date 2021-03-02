@@ -15,8 +15,6 @@ router.register('activity_log/activity_log', views.ActivityLogViewSet)
 router.register('activity_log/activity_photo_validation', views.ActivityPhotoValidationViewSet)
 
 router.register('announcements/what_is_new', views.WhatIsNewView)
-
-
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
 router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
 
@@ -41,6 +39,10 @@ router.register('groundhog_logbook/RemovalsByLocation', views.RemovalsByLocation
 
 router.register('deer_harvest_logbook/Harvests', views.HarvestsView)
 router.register('deer_harvest_logbook/HarvestsPhotos', views.HarvestsPhotosView)
+
+router.register('shooting_challenge/ChallengeEvent', views.ChallengeEventViewSet)
+router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet)
+
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
 # app_name = 'api'
