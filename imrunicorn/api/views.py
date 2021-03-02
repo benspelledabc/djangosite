@@ -36,6 +36,9 @@ from deer_harvest_logbook.serializer import HarvestsSerializer, HarvestPhotoSeri
 from activity_log.models import ActivityPhotoValidation, ActivityLog, Activity
 from activity_log.serializer import ActivitySerializer, ActivityLogSerializer, ActivityPhotoValidationSerializer
 
+from shooting_challenge.models import ChallengePhoto, ChallengeEvent
+from shooting_challenge.serializer import ChallengeEventSerializer, ChallengePhotoSerializer
+
 from imrunicorn.functions import step_hit_count_by_page, get_weather
 
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
@@ -50,6 +53,31 @@ class Owner(viewsets.ModelViewSet):
     # fetch data
     queryset = User.objects.all()
     serializer_class = OwnerSerializer
+
+
+# ############### shooting_challenge ###############
+class ChallengePhotoViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = ChallengePhoto.objects.all()
+    serializer_class = ChallengePhotoSerializer
+
+
+class ChallengeEventViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = ChallengeEvent.objects.all()
+    serializer_class = ChallengeEventSerializer
+
+    @action(detail=False)
+    def challenge_has_event_photos(self, request):
+        queryset = ChallengeEvent.objects.filter(
+            Q(challenge_photos__gt=0))   # i dont think this is the right filter
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 # ############### activity_log ###############
