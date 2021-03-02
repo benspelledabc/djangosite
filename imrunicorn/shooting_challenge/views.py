@@ -45,7 +45,11 @@ def page_2021_520y_egg_challenge(request):
                        "as 15 second penalty. Max of 10 rounds.</strong> "
                        "<br /><br />"
                        "Someone on a website pointed out that we could try eggs propped on a golf tee. Perhaps glued "
-                       "to the egg to prevent it from falling off in the mostly gentle winds in the field.",
+                       "to the egg to prevent it from falling off in the mostly gentle winds in the field."
+                       "<br /><br />"
+                       "A quick/small $10 entry fee will get you into the competition. The winner takes home 100% of "
+                       "pot after event materials cost, I'm guessing this will be about $4-10 for the eggs, the rest "
+                       "goes to the winner!",
         # "blurb": get_page_blurb_override('shooting_challenge/2021_520y_egg_challenge/'),
     }
     return render(request, "shooting_challenge/home.html", context)
