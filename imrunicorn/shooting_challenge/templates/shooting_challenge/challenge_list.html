@@ -1,0 +1,85 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'shooting_challenge/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    {% for challenge in challenges %}
+        <strong>Challenge Date</strong>: {{ challenge.challenge_date }}<br />
+        <strong>Title</strong>: {{ challenge.title }}<br />
+        <strong>Blurb</strong>: {{ challenge.blurb }}<br />
+        <strong>Simple Info</strong>: <br />{% autoescape off %}{{ challenge.simple_info }}{% endautoescape %}<br />
+
+        {% if challenge.challenge_photos.all.count > 0 %}
+            <br />
+            {% for event_photo in challenge.challenge_photos.all %}
+                    <b>Event Image: {{ forloop.counter }}</b><br />
+                    <a href="{{ event_photo.challenge_shot.url }}" target="_blank">
+                        <img src="{{ event_photo.challenge_shot.url }}" style="width: 30%" />
+                    </a><br />
+            {% endfor %}
+        {% endif %}
+
+
+        {% if forloop.last or friendlist.count == 1 %}
+            <br />
+        {% else %}
+            <hr style="height:2px;border-width:0;color:gray;background-color:red"/>
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+
+    <div align="center">
+    <p align="center">
+        {% if challenges.has_other_pages %}
+        <ul class="pagination">
+            {% if challenges.has_previous %}
+                <li><a href="?page={{ all_news.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            <li><a href="?page=1">Newest</a></li>
+            {% for l in challenges.paginator.page_range %}
+                {% if l <= challenges.number|add:5 and l >= challenges.number|add:-5 %}
+                    <li><a href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                {% endif %}
+            {% endfor %}
+            <li><a href="?page={{all_news.paginator.num_pages}}">Oldest</a></li>
+
+            {% if challenges.has_next %}
+                <li><a href="?page={{ all_news.next_page_number }}">&raquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </p>
+        </div>
+
+{% endblock %}

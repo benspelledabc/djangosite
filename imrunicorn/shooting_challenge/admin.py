@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ChallengePhoto, ChallengeEvent
 
-# Register your models here.
+admin.site.register(ChallengePhoto)
+admin.site.register(ChallengeEvent)
