@@ -37,10 +37,9 @@
 
             <br />
 
-
         <strong>Title</strong>: {{ challenge.title }}<br />
         <strong>Blurb</strong>: {{ challenge.blurb }}<br />
-    <strong>Weather</strong>:
+        <strong>Weather</strong>:
         {% if challenge.wind_speed == 0.00 and challenge.wind_dir == 1 and challenge.estimated_temperature == -49%}
             To be updated on day of event<br /><br />
         {% else %}
@@ -51,18 +50,22 @@
                 <li>Wind Dir = {{ challenge.wind_dir }}&deg;</li>
             </ul>
         {% endif %}
-        <strong>Simple Info</strong>: <br />
-            {% autoescape off %}
-                {{ challenge.simple_info |slice:":250" }}
-            {% endautoescape %}<br />
 
-        <br /><br />
+    {% comment %}
+    self.wind_speed == 0.00 and self.wind_dir == 1 and self.estimated_temperature == -49:
+    {% endcomment %}
 
 
-        {% if challenge.simple_info|length > 250 or challenge.challenge_photos.all.count > 0 %}
-        ...
-        <br/><br/>
-        <a href="{% url 'shooting_challenge:list' %}{{ challenge.pk }}" class="btn btn-primary">Read Full Challenge</a>
+        <strong>Simple Info</strong>: <br />{% autoescape off %}{{ challenge.simple_info }}{% endautoescape %}<br />
+
+        {% if challenge.challenge_photos.all.count > 0 %}
+            <br />
+            {% for event_photo in challenge.challenge_photos.all %}
+                    <b>Event Image: {{ forloop.counter }}</b><br />
+                    <a href="{{ event_photo.challenge_shot.url }}" target="_blank">
+                        <img src="{{ event_photo.challenge_shot.url }}" style="width: 30%" />
+                    </a><br />
+            {% endfor %}
         {% endif %}
 
 
