@@ -7,7 +7,7 @@ from content_collection.functions import get_all_videos, get_latest_video, get_v
     get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, get_all_fantasy_grounds
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
-from .functions import get_shooting_challenges
+from .functions import get_shooting_challenges, get_shooting_challenges_by_id
 
 
 def page_home(request):
@@ -15,10 +15,23 @@ def page_home(request):
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Shooting Challenge: Blank",
+        "title": "Shooting Challenges",
         "blurb": get_page_blurb_override('shooting_challenge/home/'),
     }
     return render(request, "shooting_challenge/home.html", context)
+
+
+def page_shooting_challenges_list_by_pk(request, challenge_pk='1'):
+    step_hit_count_by_page(request.path)
+    challenges = get_shooting_challenges_by_id(challenge_pk)
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Shooting Challenges",
+        "blurb": get_page_blurb_override('shooting_challenge/list/'),
+        "challenges": challenges,
+    }
+    return render(request, "shooting_challenge/challenge_list_by_id.html", context)
 
 
 # we'll make this a model update later.. for now its just hard coded... shhhhh
@@ -28,7 +41,7 @@ def page_shooting_challenges_list(request):
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Shooting Challenge",
+        "title": "Shooting Challenges",
         "blurb": get_page_blurb_override('shooting_challenge/list/'),
         "challenges": challenges,
     }

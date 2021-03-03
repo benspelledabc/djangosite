@@ -28,3 +28,9 @@ def get_shooting_challenges(request):
         result_set = paginator.page(paginator.num_pages)
 
     return result_set
+
+
+def get_shooting_challenges_by_id(challenge_pk='1'):
+    result = ChallengeEvent.objects.filter(id=challenge_pk)
+    # print(result)
+    return result
