@@ -34,7 +34,7 @@ def page_charts_by_remover(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_remover/data/',
         "graph_header": "# of Groundhog Removals (By Remover)",
         "graph_message": "This is a total number of removals since we started tracking them.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -79,7 +79,7 @@ def page_charts_by_temperature(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_temperature/data/',
         "graph_header": "# of Groundhog Removals (By Temperature)",
         "graph_message": "Temps are rounded to nearest 5 degrees.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -152,7 +152,7 @@ def page_charts_by_cloud_level(request):
         "graph_message": "We didn't start tracking the cloud level until 2021. Data before that will be listed as "
                          "'Unknown' unless we find a site that shows historical data for clouds at the time of day in "
                          "question.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -192,7 +192,7 @@ def page_charts_by_month(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_month/data/',
         "graph_header": "# of Groundhog Removals (By Month)",
         "graph_message": "",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -232,7 +232,7 @@ def page_charts_by_year(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_year/data/',
         "graph_header": "# of Groundhog Removals (By Year)",
         "graph_message": "",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -270,7 +270,7 @@ def page_charts_by_time(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_time/data/',
         "graph_header": "# of Groundhog Removals (By Time)",
         "graph_message": "We're only showing by the removals by the hour.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -306,7 +306,7 @@ def page_charts_by_sex(request):
         "graph_header": "# of Groundhog Removals (By Sex)",
         "graph_message": "Sometimes we don't check the sex because of heat or some other reason. Sometimes the "
                          "sexy bits are blow off, these are marked as 'unknown'.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -324,7 +324,7 @@ def page_charts(request):
     logs_sexy = groundhogs_by_sex()
     logs_sexy_hour = groundhogs_by_hour_of_day_by_sex()
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "logs": logs,
         "logs_sexy": logs_sexy,
@@ -365,7 +365,7 @@ def page_all_groundhog_removals(request):
 def page_all_groundhog_locations(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "list_of_holes": all_groundhog_hole_locations(),
         'release': get_version_json(),
@@ -380,7 +380,7 @@ def page_all_groundhog_removals_by_shooter_pk(request, shooter_pk=1):
     all_news = all_groundhog_removals_by_shooter(shooter_pk)
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_news,
         'release': get_version_json(),
@@ -395,7 +395,7 @@ def page_groundhog_removals_scoreboard(request):
     logs = groundhog_removal_scoreboard()
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "logs": logs,
         'release': get_version_json(),
@@ -421,7 +421,7 @@ def page_groundhog_removals_scoreboard_annual(request):
     now_string = "{0} {1} of {2}".format(now_month, ordinal(now_day), now_year)
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "rolling_year_date": rolling_year_date,
         "datetime_now": now_string,
@@ -464,7 +464,7 @@ def page_charts_by_caliber(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_caliber/data/',
         "graph_header": "# of Groundhog Removals (By Caliber)",
         "graph_message": "",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",
@@ -504,7 +504,7 @@ def page_charts_by_distance(request):
         "graph_api_node": '/groundhog_logbook/api/chart/by_distance/data/',
         "graph_header": "# of Groundhog Removals (By Distance)",
         "graph_message": "Rounded in 5 yard increments if under 400 yards.",
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Groundhog Line Charts",

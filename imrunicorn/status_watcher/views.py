@@ -13,7 +13,7 @@ def page_view_watches_reset(request):
     users_in_group = Group.objects.get(name="restricted-group").user_set.all()
     if request.user not in users_in_group:
         context = {
-            "restart": get_restart_notice,
+            # "restart": get_restart_notice,
             'release': get_version_json(),
             "title": "Status Watcher",
             "blurb": "You're not allowed access to this resource at this time.",
@@ -30,7 +30,7 @@ def page_view_watches_reset(request):
         item.save()
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Status Watcher",
         # "blurb": "This page is a place holder for what's to come soon.",
@@ -53,7 +53,7 @@ def page_view_watches(request):
         item.save()
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Status Watcher",
         # "blurb": "This page is a place holder for what's to come soon.",
@@ -105,7 +105,7 @@ def page_view_watches_lkg(request):
     step_hit_count_by_page(request.path)
     watches = get_watch_list()
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Status Watcher",
         # "blurb": "This page is a place holder for what's to come soon.",
