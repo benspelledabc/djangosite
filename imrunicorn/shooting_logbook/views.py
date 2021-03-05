@@ -9,7 +9,7 @@ def page_six_steps_of_firing_a_shot(request):
     step_hit_count_by_page(request.path)
     # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
@@ -24,7 +24,7 @@ def page_six_steps_of_firing_a_shot(request):
 def page_reading_wind_mirage(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Reading Wind Mirage",
         # "blurb": "This page is a place holder for what's to come soon.",
@@ -37,7 +37,7 @@ def page_reading_wind_mirage(request):
 def sample(request):
     step_hit_count_by_page(request.path)
     data = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'Query': 'Complete',
         'Result': 'The query completed but this is not an endpoint with data.'
     }

@@ -21,7 +21,7 @@ User = get_user_model()
 #     logs_sexy = harvests_by_sex()
 #     logs_by_score = harvests_by_score()
 #     context = {
-#         "restart": get_restart_notice,
+#         # "restart": get_restart_notice,
 #         "copy_year": datetime.now().year,
 #         "logs": logs,
 #         "logs_sexy": logs_sexy,

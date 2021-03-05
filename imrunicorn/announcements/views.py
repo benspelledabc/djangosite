@@ -42,7 +42,7 @@ def page_all_news(request):
 def json_all_news_json(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "name": "peter griffin",
         "channel": "fox",
     }
@@ -53,7 +53,7 @@ def page_news_by_pk(request, news_pk='1'):
     step_hit_count_by_page(request.path)
     blurb_page = '/news/detail/' + str(news_pk)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "news_pk": get_news_by_pk(news_pk),
         'release': get_version_json(),

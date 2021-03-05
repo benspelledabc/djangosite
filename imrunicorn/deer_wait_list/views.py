@@ -10,7 +10,7 @@ from django.shortcuts import render
 def page_blank(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Deer Wait List: Blank",
@@ -24,7 +24,7 @@ def page_info(request):
     cuts = get_all_cuts()
     flavors = get_all_flavors()
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "cuts": cuts,
@@ -46,7 +46,7 @@ def page_list_view(request):
         unrestricted = True
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "orders": orders,

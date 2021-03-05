@@ -15,7 +15,7 @@ from imrunicorn.decorators import allowed_groups
 # Create your views here.
 def page_blank(request):
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Blank",
@@ -30,7 +30,7 @@ def page_fantasy_grounds_list(request):
     item_list = get_all_fantasy_grounds()
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Fantasy Grounds",
@@ -52,7 +52,7 @@ def page_dnd5e_list(request):
         unrestricted = True
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "D&D-5e",
@@ -73,7 +73,7 @@ def page_carousel_recent(request):
         unrestricted = True
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Carousel: Recent",
@@ -94,7 +94,7 @@ def page_carousel(request):
         unrestricted = True
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Carousel (All)",
@@ -116,7 +116,7 @@ def page_latest_video_by_pk(request, video_pk=1):
 
     context = {
         "videos": videos,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,
@@ -137,7 +137,7 @@ def page_latest_video(request):
 
     context = {
         "videos": videos,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Videos: Latest",
@@ -158,7 +158,7 @@ def page_video_list(request):
 
     context = {
         "videos": videos,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,
@@ -179,7 +179,7 @@ def page_videos(request):
 
     context = {
         "videos": videos,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,

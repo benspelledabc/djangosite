@@ -36,7 +36,7 @@ def admintool_restart_gunicorn(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Gunicorn",
         # "blurb": "I moved the calculator to its own page.",
@@ -68,7 +68,7 @@ def admintool_restart_nginx(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Nginx",
         # "blurb": "I moved the calculator to its own page.",
@@ -100,7 +100,7 @@ def admintool_restart_gunicorn_and_nginx(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Restart Gunicorn & Nginx",
         # "blurb": "I moved the calculator to its own page.",
@@ -132,7 +132,7 @@ def admintool_cancel_restarts(request):
         # return JsonResponse({"status": "failed", "output": str(e)})
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "AdminTool: Cancel All Restarts",
         # "blurb": "I moved the calculator to its own page.",
@@ -181,7 +181,7 @@ def dir_delete(request):
 def no_request_found(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'body': 'no_request_found',
         'header': 'no_request_found view',
     }
