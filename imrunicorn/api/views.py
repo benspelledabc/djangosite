@@ -274,6 +274,54 @@ class Accounts(viewsets.ModelViewSet):
         serializer = self.get_serializer(recent_users, many=True)
         return Response(serializer.data)
 
+    @action(detail=False)
+    def active(self, request):
+        recent_users = User.objects.filter(Q(is_active=True))
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def inactive(self, request):
+        recent_users = User.objects.filter(Q(is_active=False))
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def staff(self, request):
+        recent_users = User.objects.filter(Q(is_staff=True))
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def superusers(self, request):
+        recent_users = User.objects.filter(Q(is_superuser=True))
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
 
 class LoadDataHandLoad(viewsets.ModelViewSet):
     # require user to be logged on.
