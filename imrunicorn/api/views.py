@@ -9,13 +9,14 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import Q
 from django.shortcuts import render
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
 from rest_framework.decorators import action
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
 # from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from imrunicorn.serializer import UserSerializer, UserProfileSerializer
 
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
@@ -232,12 +233,64 @@ class LoadDataPrimer(viewsets.ModelViewSet):
     serializer_class = PrimerSerializer
 
 
+class Accounts(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    @action(detail=False)
+    def recent_users(self, request):
+        recent_users = User.objects.filter(Q(last_login__isnull=False)).order_by('-last_login')
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def never_logged_in(self, request):
+        recent_users = User.objects.filter(Q(last_login__isnull=True))
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+
+
 class LoadDataHandLoad(viewsets.ModelViewSet):
     # require user to be logged on.
     permission_classes = (IsAuthenticated,)
+
     # fetch data
     queryset = HandLoad.objects.all().order_by('-id')
     serializer_class = HandLoadSerializer
+
+    @action(detail=False)
+    def by_powder_id(self, request, powder_id=1):
+        # Q(transaction_amount__gt=0)).order_by('?')[:1]
+        # queryset = HandLoad.objects.all().order_by('powder')
+        powder_id = self.request.query_params.get('powder_id', None)
+
+        if powder_id is not None:
+            powder_id = int(powder_id)
+            queryset = HandLoad.objects.filter(Q(powder=powder_id))
+        else:
+            queryset = HandLoad.objects.all().order_by("powder")
+
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class LoadDataEstimatedDope(viewsets.ModelViewSet):
