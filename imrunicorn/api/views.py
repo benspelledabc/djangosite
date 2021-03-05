@@ -251,6 +251,18 @@ class Accounts(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False)
+    def recent_users_reverse(self, request):
+        recent_users = User.objects.filter(Q(last_login__isnull=False)).order_by('last_login')
+
+        page = self.paginate_queryset(recent_users)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(recent_users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
     def never_logged_in(self, request):
         recent_users = User.objects.filter(Q(last_login__isnull=True))
 
@@ -261,7 +273,6 @@ class Accounts(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(recent_users, many=True)
         return Response(serializer.data)
-
 
 
 class LoadDataHandLoad(viewsets.ModelViewSet):
