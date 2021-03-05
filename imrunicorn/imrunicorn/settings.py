@@ -79,7 +79,8 @@ INSTALLED_APPS = [
     'call_of_the_wild',
     'activity_log',
     'shooting_challenge',
-    #'iprestrict',
+    'rest_framework_swagger',
+    # 'iprestrict',
 ]
 
 MIDDLEWARE = [
@@ -192,7 +193,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': config('PAGESIZE', default=5, cast=int)
+    'PAGE_SIZE': config('PAGESIZE', default=5, cast=int),
 }
 
 # this works for gmail
