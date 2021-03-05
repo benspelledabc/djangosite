@@ -5,7 +5,7 @@ from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_re
     all_groundhog_hole_locations, groundhog_removal_scoreboard, \
     groundhogs_by_hour_of_day, groundhogs_by_hour_of_day_by_sex, groundhogs_by_sex, groundhogs_count_by_sex, \
     groundhog_removal_scoreboard_annual, groundhogs_by_month, groundhogs_by_cloud_level, groundhogs_by_temperature, \
-    groundhogs_by_year
+    groundhogs_by_year, groundhogs_by_caliber, groundhogs_by_distance
 
 from imrunicorn.decorators import allowed_groups
 from imrunicorn.functions import step_hit_count_by_page, get_weather
@@ -168,17 +168,12 @@ class ChartDataByMonth(APIView):
     # todo: this needs work and fixing...
     def get(self, request, format=None):
         by_month = groundhogs_by_month()
-        print("view: {0}".format(by_month))
 
         labels = []
         default_items = []
 
         for item in by_month:
-            # dt = item['month']
-            # print(dt.month)
-            # print(item['month'].strftime("%B"))
             labels.append(item['month'].strftime("%B"))
-            # labels.append(dt.month)
 
         for item in by_month:
             default_items.append(item['kills_per_month'])
@@ -437,3 +432,82 @@ def page_groundhog_removals_scoreboard_annual(request):
     }
     return render(request, "groundhog_logbook/groundhog_removal_scoreboard_annual.html", context)
 
+
+class ChartDataByCaliber(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    # todo: this needs work and fixing...
+    def get(self, request, format=None):
+        by_month = groundhogs_by_caliber()
+
+        labels = []
+        default_items = []
+
+        for item in by_month:
+            labels.append(item['firearm__caliber__name'])
+
+        for item in by_month:
+            default_items.append(item['removals'])
+
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+def page_charts_by_caliber(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_caliber/data/',
+        "graph_header": "# of Groundhog Removals (By Caliber)",
+        "graph_message": "",
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
+
+
+class ChartDataByDistance(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    # todo: this needs work and fixing...
+    def get(self, request, format=None):
+        by_month = groundhogs_by_distance()
+
+        labels = []
+        default_items = []
+
+        for item in by_month:
+            labels.append(item['shot_distance_yards'])
+
+        for item in by_month:
+            default_items.append(item['kills'])
+
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+
+
+def page_charts_by_distance(request):
+    step_hit_count_by_page(request.path)
+
+    context = {
+        "graph_api_node": '/groundhog_logbook/api/chart/by_distance/data/',
+        "graph_header": "# of Groundhog Removals (By Distance)",
+        "graph_message": "Rounded in 5 yard increments if under 400 yards.",
+        "restart": get_restart_notice,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Groundhog Line Charts",
+        "blurb": get_page_blurb_override('groundhog_logbook/graphic_charts/'),
+    }
+    return render(request, "groundhog_logbook/groundhog_graphic_generic.html", context)
