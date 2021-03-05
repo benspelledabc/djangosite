@@ -7,8 +7,8 @@ from django.conf import settings
 from announcements.get_news import get_news, get_version_json
 from django.conf import settings
 from django.conf.urls.static import static
-
 from . import forms, views
+
 
 # app_name = 'base_skipped_for_now'
 urlpatterns = [

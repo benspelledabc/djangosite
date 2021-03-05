@@ -10,6 +10,7 @@ from .views import ActivityLogViewSet
 # similar to object based url building
 router = routers.DefaultRouter()
 
+
 router.register('activity_log/activity', views.ActivityViewSet)
 router.register('activity_log/activity_log', views.ActivityLogViewSet)
 router.register('activity_log/activity_photo_validation', views.ActivityPhotoValidationViewSet)
@@ -42,6 +43,8 @@ router.register('deer_harvest_logbook/HarvestsPhotos', views.HarvestsPhotosView)
 
 router.register('shooting_challenge/ChallengeEvent', views.ChallengeEventViewSet)
 router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet)
+
+router.register('accounts', views.Accounts)
 
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
