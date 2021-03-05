@@ -23,7 +23,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # default password for resets? "pbkdf2_sha256$180000$zj8vzjUxyqWJ$+KjTF7Xf9HSFK0HQ5pmwQb0Hf1D/n4/i96U7p3JzLkc="
-# old wow password for Dark Assention coms
+# old wow password for Dark Ascension coms
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     # groups = GroupSerializer(many=True)
     # profile = UserProfileSerializer()
