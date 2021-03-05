@@ -166,3 +166,46 @@ def groundhogs_count_by_sex(sex="ALL"):
         ).count()
 
     return result
+
+
+def groundhogs_by_caliber():
+    result = RemovalsByLocation.objects.distinct().values('firearm__caliber__name') \
+                 .annotate(removals=Count('firearm')).order_by('-removals')[:30]
+
+    print(result)
+
+    return result
+
+
+def groundhogs_by_distance():
+    result = RemovalsByLocation.objects.values('shot_distance_yards', 'pk') \
+        .annotate(kills=Count('shot_distance_yards')) \
+        .order_by('-shot_distance_yards')
+
+    for item in result:
+        try:
+            temp = item["shot_distance_yards"]
+            rounded_value = round(temp / 5) * 5
+
+            # only round the values if the range is under 400 yards
+            if rounded_value != temp:
+                if rounded_value < 400:
+                    update_estimated_distance(item["pk"], rounded_value)
+        except Exception as e:
+            print("ERROR: {0}".format(e))
+
+    # fetching again without PK for sorting.
+    result = RemovalsByLocation.objects.values('shot_distance_yards') \
+        .annotate(kills=Count('shot_distance_yards')) \
+        .order_by('-shot_distance_yards')
+
+    return result
+
+
+def update_estimated_distance(record_id=1, new_shot_distance_yards=-49):
+    try:
+        e = RemovalsByLocation.objects.get(id=record_id)
+        e.shot_distance_yards = new_shot_distance_yards
+        e.save()
+    except Exception as e:
+        print(e)
