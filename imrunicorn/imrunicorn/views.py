@@ -62,7 +62,7 @@ def page_qr_about(request):
     step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "QR: About",
         "blurb": "QR Code Link",
@@ -91,7 +91,7 @@ def page_qr_about(request):
 def page_access_denied_groups(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Access Denied",
         "deny_message": "You are not in one of the groups that is allowed to see the page requested.",
@@ -119,7 +119,7 @@ def page_greyscale_test(request):
     step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Donate: Steel Targets",
         "blurb": "Steel targets are a resource that needs to be replaced over time.",
@@ -159,7 +159,7 @@ def page_home(request):
     context = {
         "weather": weather,
         "main_blurb": main_blurb,
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         "all_news": all_news,
         'release': release,
         "title": title,
@@ -174,7 +174,7 @@ def page_home(request):
 def handler403(request, exception):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Access Denied",
         "subtitle": "Friendly 403 error message.",
@@ -188,7 +188,7 @@ def handler403(request, exception):
 def handler404(request, exception):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (404)",
@@ -205,7 +205,7 @@ def handler500(request):
     step_hit_count_by_page(request.path)
     # return HttpResponse("Hello world 500.")
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Page Not Found",
         "blurb": "The requested page wasn't found. (500)",
@@ -219,7 +219,7 @@ def page_cash_app(request):
     # return HttpResponse("Hello world 500.")
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "cash_app": "Show_QR_Code",
         "title": "Donate: Cash App",
@@ -240,7 +240,7 @@ def page_page_hits(request):
     ).order_by('-page_hit_count')
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Hot Pages",
         "blurb": "See what others are looking at.",
@@ -253,7 +253,7 @@ def page_page_hits(request):
 def page_donate_steel_targets(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Donate: Steel Targets",
         "blurb": "Steel targets are a resource that needs to be replaced over time.",
@@ -279,7 +279,7 @@ def page_days_since(request):
     cached_result = batf_data['cached_result']
 
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         # 'batf_data': total_batf['check_cashed'],
         'cached_result': cached_result,
         'batf_check_cashed': check_cashed,
@@ -356,7 +356,7 @@ def fetch_estimated_batf_days():
 def page_blog_add(request):
     step_hit_count_by_page(request.path)
     context = {
-        "restart": get_restart_notice,
+        # "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'add',
     }
