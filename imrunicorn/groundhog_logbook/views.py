@@ -503,7 +503,7 @@ def page_charts_by_distance(request):
     context = {
         "graph_api_node": '/groundhog_logbook/api/chart/by_distance/data/',
         "graph_header": "# of Groundhog Removals (By Distance)",
-        "graph_message": "Rounded in 5 yard increments if under 400 yards.",
+        "graph_message": "Rounded in 25 yard increments if under 400 yards.",
         # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),

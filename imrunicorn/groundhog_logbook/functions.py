@@ -185,7 +185,7 @@ def groundhogs_by_distance():
     for item in result:
         try:
             temp = item["shot_distance_yards"]
-            rounded_value = round(temp / 5) * 5
+            rounded_value = round(temp / 25) * 25
 
             # only round the values if the range is under 400 yards
             if rounded_value != temp:
