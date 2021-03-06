@@ -24,6 +24,7 @@ mysqlclient==2.0.3
 PyMySQL==0.9.3 # doesn't work on windows but isnt needed
 django-ipware==2.1.0  # used to get remote ip
 django-extensions
+django-debug-toolbar
 Pillow
 django-phone-field==1.8.1
 django-iprestrict==1.7.0

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
+import debug_toolbar
 from datetime import datetime
 from django.conf import settings
 # from . import forms, views
@@ -12,6 +13,7 @@ from . import forms, views
 
 # app_name = 'base_skipped_for_now'
 urlpatterns = [
+    path('__debug__/', include(debug_toolbar.urls)),
     path('api-auth/', include('rest_framework.urls')),
 
     path('api/weather/', views.page_api_weather, name='page_api_weather'),

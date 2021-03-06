@@ -18,7 +18,9 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 class RemovalsByLocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = RemovalsByLocation
-        fields = (
-            'url', 'shooter', 'removal_date', 'removal_time', 'firearm', 'load', 'location',
-            'estimated_weight_lbs',
-            'excessive_wound_cavity', 'shot_distance_yards', 'extra_info', 'kill_shot', 'kill_shot_two', 'sex')
+        fields = "__all__"
+        # fields = (
+        #     'url', 'shooter', 'removal_date', 'removal_time', 'firearm', 'load', 'location',
+        #     'estimated_weight_lbs',
+        #     'excessive_wound_cavity', 'shot_distance_yards', 'yards_ran', 'extra_info', 'kill_shot',
+        #     'kill_shot_two', 'sex')
