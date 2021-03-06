@@ -85,10 +85,12 @@
                     <b>Foothold Trapped:</b> </i>{{ news.foot_hold_trapped }} - <i style="color:red;" class="fas fa-compress-arrows-alt"></i><br />
                 {%  endif %}
 
+
                 {% if news.excessive_wound_cavity %}
                     <b>Excessive Wound Cavity:</b> </i>{{ news.excessive_wound_cavity }} - <i style="color:red;" class="fas fa-biohazard"></i><br />
                 {%  endif %}
                 <b>Shot Distance Yards:</b> {{ news.shot_distance_yards }}<br />
+                <b>Yards Ran:</b> {{ news.yards_ran }}<br />
 
             {% if news.extra_info %}
             <b>Extra Info:</b><br /> {% autoescape off %}{{ news.extra_info }}{% endautoescape %}</br>

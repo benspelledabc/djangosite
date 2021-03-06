@@ -38,6 +38,7 @@ class Harvests(models.Model):
     estimated_weight_lbs = models.DecimalField(max_digits=5, decimal_places=2, default=100.25)
     # excessive_wound_cavity = models.BooleanField(default=False)
     shot_distance_yards = models.DecimalField(max_digits=4, decimal_places=0, default=200)
+    yards_ran = models.DecimalField(max_digits=4, decimal_places=1, default=0)
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
     kill_shot = models.ImageField(upload_to='uploads/deer_shots/', null=True, blank=True)
     kill_shot_two = models.ImageField(upload_to='uploads/deer_shots/', null=True, blank=True)
