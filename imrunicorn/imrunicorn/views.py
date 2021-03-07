@@ -52,9 +52,7 @@ def page_api_test(request):
 
 
 def page_api_weather(request):
-    # r = get_weather(request, "Westminster, Md")
     r = get_weather(request)
-    # print(r)
     return JsonResponse(r)
 
 
@@ -169,6 +167,20 @@ def page_home(request):
         "copy_year": datetime.now().year
     }
     return render(request, "imrunicorn/index.html", context)
+
+
+def page_test_layout(request):
+    step_hit_count_by_page(request.path)
+    context = {
+        # "restart": get_restart_notice,
+        'release': get_version_json(),
+        "title": "Testing Error Page",
+        "subtitle": "Friendly 403 error message.",
+        "fullbody": "",
+        "copy_year": datetime.now().year
+    }
+    # return render(request, "errors/403-denied.html", context)
+    return render(request, "errors/403-denied.html", context)
 
 
 def handler403(request, exception):
