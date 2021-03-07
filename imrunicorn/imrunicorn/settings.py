@@ -41,13 +41,6 @@ IS_PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['benspelledabc.me', 'localhost', '127.0.0.1', '*']
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-    '192.168.1.*',
-    '192.168.2.*',
-    '108.31.244.143',
-]
-
 # RESTRICT_IPS = True
 # in settings.py (will override the above environment variable)
 # ALLOWED_IPS = ['192.168.2.0/24', '192.168.0.1', '192.168.0.2', '192.168.0.3']
@@ -69,7 +62,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_createsuperuserwithpassword',
     'django_extensions',
-    'debug_toolbar',
     'crispy_forms',
     'phone_field',
     'imrunicorn',
@@ -93,7 +85,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
