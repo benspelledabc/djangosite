@@ -1,6 +1,6 @@
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
-from imrunicorn.functions import step_hit_count_by_page
+from imrunicorn.functions import step_hit_count_by_page, get_weather
 from deer_harvest_logbook.functions import all_harvests, all_harvests_by_shooter
 from deer_harvest_logbook.functions import harvests_by_hour_of_day, harvests_by_score, harvests_by_sex, \
     harvests_by_month, harvests_by_year, harvests_scoreboard, harvests_by_temperature, harvests_by_cloud_level
@@ -79,10 +79,12 @@ def page_point_system_show_points(request):
 
 def page_all_harvests(request):
     step_hit_count_by_page(request.path)
+    weather = get_weather(request)
     context = {
         # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_harvests(request),
+        "weather": weather,
         'release': get_version_json(),
         "title": "Deer Harvest Logbook",
         "blurb": get_page_blurb_override('deer_harvest_logbook/'),
