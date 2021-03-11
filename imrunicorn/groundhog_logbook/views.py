@@ -1,3 +1,4 @@
+import calendar
 from imrunicorn.decorators import unauthenticated_user
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
@@ -173,7 +174,8 @@ class ChartDataByMonth(APIView):
         default_items = []
 
         for item in by_month:
-            labels.append(item['month'].strftime("%B"))
+            month_number = item['month']
+            labels.append(calendar.month_name[month_number])
 
         for item in by_month:
             default_items.append(item['kills_per_month'])
