@@ -46,8 +46,17 @@
                     <b>Estimated Temperature:</b> No data<br />
                 {% endif %}
 
-                <b>Wind Speed:</b> {{ news.wind_speed }} mph<br />
-                <b>Wind Direction:</b> {{ news.wind_dir }}&deg;<br />
+                {% if news.wind_speed > -0.00 %}
+                    <b>Wind Speed:</b> {{ news.wind_speed }} mph<br />
+                {% else %}
+                    <b>Wind Speed:</b> No Data<br />
+                {% endif %}
+
+                {% if news.wind_dir > -1 %}
+                    <b>Wind Direction:</b> {{ news.wind_dir }} &deg;<br />
+                {% else %}
+                    <b>Wind Direction:</b> No Data<br />
+                {% endif %}
 
                 <b>Cloud Level:</b> {{ news.cloud_level }}<br />
 
