@@ -74,7 +74,7 @@ class RemovalsByLocation(models.Model):
         default=UNKNOWN,
     )
     wind_speed = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-    wind_dir = models.IntegerField(default=1)
+    wind_dir = models.IntegerField(default=-1)
     firearm = models.ForeignKey(Firearm, related_name='groundhog_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='groundhog_logbook_hand_load', on_delete=models.CASCADE)
     location = models.ForeignKey(Location, related_name='location', on_delete=models.CASCADE)
