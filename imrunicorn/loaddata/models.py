@@ -33,9 +33,12 @@ class Firearm(models.Model):
     extra_info = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        display_name = self.owner.first_name
+        display_name = self.owner.username
         try:
-            display_name = self.owner.userprofile.preferred_display_name
+            if len(self.owner.first_name) > 0:
+                display_name = self.owner.first_name
+            if len(self.owner.userprofile.preferred_display_name) > 0:
+                display_name = self.owner.userprofile.preferred_display_name
         except ObjectDoesNotExist:
             pass
 

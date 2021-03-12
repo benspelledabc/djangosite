@@ -7,7 +7,7 @@ from .views import ChartDataBySex, ChartDataByTime, ChartDataByMonth, ChartDataB
 
 app_name = 'groundhog_logbook'
 urlpatterns = [
-    path('', views.page_all_groundhog_removals, name='all_groundhog_removals'),
+    path('', views.page_all_groundhog_removals, name='all_groundhog_removals_base'),
 
     path('by_shooter/', views.page_all_groundhog_removals, name='all_groundhog_removals'),
     path('by_shooter/<int:shooter_pk>', views.page_all_groundhog_removals_by_shooter_pk, name='all_groundhog_removals'),

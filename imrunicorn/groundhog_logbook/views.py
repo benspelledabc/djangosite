@@ -380,10 +380,12 @@ def page_all_groundhog_locations(request):
 def page_all_groundhog_removals_by_shooter_pk(request, shooter_pk=1):
     step_hit_count_by_page(request.path)
     all_news = all_groundhog_removals_by_shooter(shooter_pk)
+    weather = get_weather(request)
 
     context = {
         # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
+        "weather": weather,
         "all_news": all_news,
         'release': get_version_json(),
         "title": "Groundhog Logbook",
