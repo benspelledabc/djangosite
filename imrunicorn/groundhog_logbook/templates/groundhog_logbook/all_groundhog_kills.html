@@ -63,7 +63,13 @@
                     <b>Wind Direction:</b> No Data<br />
                 {% endif %}
 
-                <b>Cloud Level:</b> {{ news.cloud_level }}<br />
+                <b>Cloud Level:</b> {{ news.cloud_level }}
+                {% if news.weather_icon_url == None %}
+                    <!-- moar comments -->
+                {% else %}
+                    <img src="{{ news.weather_icon_url }}" height="23px"/>
+                {% endif %}
+                <br />
 
 
                 <b>Shooter:</b>
