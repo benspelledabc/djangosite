@@ -75,6 +75,8 @@ class RemovalsByLocation(models.Model):
     )
     wind_speed = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     wind_dir = models.IntegerField(default=-1)
+    wind_dir_word = models.CharField(max_length=40, null=True, blank=True)
+    # wind_dir_word = models.CharField(max_length=40, null=True, blank=True)
     firearm = models.ForeignKey(Firearm, related_name='groundhog_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='groundhog_logbook_hand_load', on_delete=models.CASCADE)
     location = models.ForeignKey(Location, related_name='location', on_delete=models.CASCADE)
@@ -106,13 +108,14 @@ class RemovalsByLocation(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if self.wind_speed == 0.00 and self.wind_dir == 1 and self.estimated_temperature == -49:
+        if self.wind_speed == 0.00 and self.wind_dir == -1 and self.estimated_temperature == -49:
             # only fetch weather if it appears to be defaults
             weather = get_weather(self)
             self.estimated_temperature = weather['temperature']
             self.cloud_level = weather['description']
             self.wind_speed = weather['wind_speed']
             self.wind_dir = weather['wind_dir']
+            self.wind_dir_word = weather['wind_dir_word']
         super(RemovalsByLocation, self).save(*args, **kwargs)
 
     def __str__(self):
