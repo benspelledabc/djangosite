@@ -53,7 +53,12 @@
                 {% endif %}
 
                 {% if news.wind_dir > -1 %}
-                    <b>Wind Direction:</b> {{ news.wind_dir }}&deg; ({{ news.wind_dir_word }})<br />
+                    <b>Wind Direction:</b> {{ news.wind_dir }}&deg;
+                    {% if news.wind_dir_word == None %}
+                        <!-- no wind direction recorded at entry time -->
+                    {% else %}
+                        ({{ news.wind_dir_word }})
+                    {% endif %}<br />
                 {% else %}
                     <b>Wind Direction:</b> No Data<br />
                 {% endif %}
