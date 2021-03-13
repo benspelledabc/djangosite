@@ -108,7 +108,7 @@ class Brass(models.Model):
             return "%s %s" % (self.caliber, self.manufacture)
 
     class Meta:
-        ordering = ('caliber__diameter', 'caliber__name', 'manufacture')
+        ordering = ('-caliber__diameter', 'caliber__name', 'manufacture')
         verbose_name = 'Brass'
         verbose_name_plural = 'Brass'
 
