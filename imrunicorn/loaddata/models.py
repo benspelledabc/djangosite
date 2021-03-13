@@ -45,7 +45,7 @@ class Firearm(models.Model):
         return "%s's %s %s %s" % (display_name, self.manufacture, self.model, self.caliber)
 
     class Meta:
-        ordering = ('owner', 'caliber', 'manufacture', 'model')
+        ordering = ('-caliber__diameter', 'owner', 'manufacture', 'model')
 
 
 class Powder(models.Model):
@@ -70,7 +70,8 @@ class Powder(models.Model):
 class Projectile(models.Model):
     Manufacture = models.CharField(max_length=150, default=None, blank=True, null=True)
     Name = models.CharField(max_length=150, default=None, blank=True, null=True)
-    WeightGR = models.DecimalField(max_digits=5, decimal_places=1)
+    # WeightGR = models.DecimalField(max_digits=5, decimal_places=1)
+    WeightGR = models.IntegerField(default=1, null=True)
     Diameter = models.DecimalField(max_digits=5, decimal_places=3)
     Ballistic_Coefficient = models.DecimalField(max_digits=5, decimal_places=4, default=0.24)
     # might exceed database length limits
@@ -81,12 +82,12 @@ class Projectile(models.Model):
 
     def __str__(self):
         if self.is_approved:
-            return "%s %s %s" % (self.WeightGR, self.Manufacture, self.Name)
+            return "[%s] %sgr %s %s" % (self.Diameter, self.WeightGR, self.Manufacture, self.Name)
         else:
-            return "%s %s %s (Pending Approval)" % (self.WeightGR, self.Manufacture, self.Name)
+            return "[%s] %sgr %s %s (Pending Approval)" % (-self.Diameter, -self.WeightGR, self.Manufacture, self.Name)
 
     class Meta:
-        ordering = ('WeightGR', 'Manufacture')
+        ordering = ('-Diameter', '-WeightGR')
 
 
 class Brass(models.Model):
@@ -108,6 +109,8 @@ class Brass(models.Model):
 
     class Meta:
         ordering = ('caliber', 'manufacture')
+        verbose_name = 'Brass'
+        verbose_name_plural = 'Brass'
 
 
 class Primer(models.Model):
@@ -150,16 +153,17 @@ class HandLoad(models.Model):
     Notes = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "%sgr %s %s @ %s FPS via %sgr of %s [ID: %s]" % (self.projectile.WeightGR,
-                                                                self.projectile.Manufacture,
-                                                                self.projectile.Name,
-                                                                self.Velocity,
-                                                                self.Powder_Charge,
-                                                                self.powder.name, self.pk,
-                                                                )
+        return "[%s] %sgr %s %s @ %s FPS via %sgr of %s" % (self.projectile.Diameter,
+                                                            self.projectile.WeightGR,
+                                                            self.projectile.Manufacture,
+                                                            self.projectile.Name,
+                                                            self.Velocity,
+                                                            self.Powder_Charge,
+                                                            self.powder.name
+                                                            )
 
     class Meta:
-        ordering = ('firearm', '-projectile', '-Velocity')
+        ordering = ('-projectile__Diameter', '-projectile__WeightGR', '-Velocity')
 
 
 class EstimatedDope(models.Model):
