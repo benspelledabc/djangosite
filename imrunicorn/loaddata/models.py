@@ -17,7 +17,7 @@ class Caliber(models.Model):
             return "%s (Pending Approval)" % self.name
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('diameter', 'name')
 
 
 class Firearm(models.Model):
@@ -108,7 +108,7 @@ class Brass(models.Model):
             return "%s %s" % (self.caliber, self.manufacture)
 
     class Meta:
-        ordering = ('caliber', 'manufacture')
+        ordering = ('caliber__diameter', 'caliber__name', 'manufacture')
         verbose_name = 'Brass'
         verbose_name_plural = 'Brass'
 
