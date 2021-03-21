@@ -55,3 +55,15 @@ class FantasyGrounds(models.Model):
         ordering = ('-pk', 'file_title', 'file_name')
         verbose_name = 'Fantasy Grounds'
         verbose_name_plural = 'Fantasy Grounds'
+
+
+class RandomInsult(models.Model):
+    insult = models.TextField(blank=True, null=True)  # i like big comments...
+
+    def __str__(self):
+        return "[%s] %s" % (self.pk, self.insult)
+
+    class Meta:
+        ordering = ('-pk', 'insult')
+        verbose_name = 'Random Insult'
+        verbose_name_plural = 'Random Insults'

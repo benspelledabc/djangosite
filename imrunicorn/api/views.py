@@ -40,6 +40,9 @@ from activity_log.serializer import ActivitySerializer, ActivityLogSerializer, A
 from shooting_challenge.models import ChallengePhoto, ChallengeEvent
 from shooting_challenge.serializer import ChallengeEventSerializer, ChallengePhotoSerializer
 
+from content_collection.models import RandomInsult
+from content_collection.serializer import RandomInsultSerializer
+
 from imrunicorn.functions import step_hit_count_by_page, get_weather
 
 from groundhog_logbook.functions import all_groundhog_removals, all_groundhog_removals_by_shooter, \
@@ -54,6 +57,13 @@ class Owner(viewsets.ModelViewSet):
     # fetch data
     queryset = User.objects.all()
     serializer_class = OwnerSerializer
+
+
+# ############### content_collection ###############
+class ContentCollectionInsultsViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = RandomInsult.objects.all()
+    serializer_class = RandomInsultSerializer
 
 
 # ############### shooting_challenge ###############
