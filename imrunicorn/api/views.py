@@ -65,6 +65,17 @@ class ContentCollectionInsultsViewSet(viewsets.ModelViewSet):
     queryset = RandomInsult.objects.all()
     serializer_class = RandomInsultSerializer
 
+    @action(detail=False)
+    def random_insult(self, request):
+        queryset = RandomInsult.objects.order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 # ############### shooting_challenge ###############
 class ChallengePhotoViewSet(viewsets.ModelViewSet):
