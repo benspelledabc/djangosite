@@ -61,7 +61,7 @@ class RandomInsult(models.Model):
     insult = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
-        return "[%s] %s" % ('pk', 'insult')
+        return "[%s] %s" % (self.pk, self.insult)
 
     class Meta:
         ordering = ('-pk', 'insult')
