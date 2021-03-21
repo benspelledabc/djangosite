@@ -19,6 +19,8 @@ router.register('announcements/what_is_new', views.WhatIsNewView)
 router.register('announcements/main_page_blurbs', views.MainPageBlurbsView)
 router.register('announcements/page_blurb_overrides', views.PageBlurbOverridesView)
 
+router.register('content_collection/insults', views.ContentCollectionInsultsViewSet)
+
 router.register('deer_wait_list/Recipient', views.DeerWaitListRecipient)
 router.register('deer_wait_list/MeatCut', views.DeerWaitListMeatCut)
 router.register('deer_wait_list/Flavor', views.DeerWaitListFlavor)
