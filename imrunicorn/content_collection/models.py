@@ -58,7 +58,7 @@ class FantasyGrounds(models.Model):
 
 
 class RandomInsult(models.Model):
-    insult = models.TextField(blank=True, null=True)  # i like big comments...
+    insult = models.TextField(unique=True, blank=True, null=True)  # i like big comments...
 
     def __str__(self):
         return "[%s] %s" % (self.pk, self.insult)
