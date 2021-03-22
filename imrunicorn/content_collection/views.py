@@ -2,6 +2,8 @@ import urllib
 
 import requests
 from django.shortcuts import render
+from rest_framework.parsers import JSONParser
+
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
@@ -13,6 +15,7 @@ from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
+from .serializer import RandomInsultSerializer
 
 
 def leach_insult(request):
@@ -23,24 +26,52 @@ def leach_insult(request):
     testing = content_parts[1]
     testing_bits = testing.split("</p>")
     output = testing_bits[0]
+    my_obj = {'insult': output}
+    status_code_message = ""
+    try:
+        insult_serializer = RandomInsultSerializer(data=my_obj)
+        if insult_serializer.is_valid():
+            insult_serializer.save()
+            status_code_message = "Saved newly generated insult to database."
+    except Exception as ex:
+        print(ex)
+
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Insult",
+        "insult": output,
+        "status_code_message": status_code_message,
+        "blurb": get_page_blurb_override('content_collection/insult/'),
+    }
+    return render(request, "content_collection/insult.html", context)
+
+
+def leach_insult_buff_ugly(request):
+    url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
+    page = urllib.request.urlopen(url)
+    content = page.read().decode()
+    content_parts = content.split("</p><p>OR</p><p>")
+    testing = content_parts[1]
+    testing_bits = testing.split("</p>")
+    output = testing_bits[0]
 
     # todo: this also shouldn't be hard coded, but i'll deal with it for now
     url = 'http://benspelledabc.me/api/content_collection/insults/'
+    url = 'http://127.0.0.1:8000/api/content_collection/insults/'
     my_obj = {'insult': output}
 
     print(output)
     status_code_message = "General Error..."
     try:
         # todo: clean this up a bit.. i dont want the user/pass in the code but its there as an example
-        # x = requests.post(url, data=my_obj, auth=('fakeuser', 'fakePasswrd'))
-        x = requests.post(url, data=my_obj)
+        x = requests.post(url, data=my_obj, auth=('username', 'password'))
         if x.status_code == 201:
-            status_code_message = "Posted: {0}".format(output)
+            status_code_message = "Posted a thing!"
         else:
             status_code_message = "Failed to post, I was probably a duplicate."
 
     except Exception as ex:
-        print(ex.message)
         status_code_message = "Something went wrong!"
 
     context = {
@@ -48,7 +79,7 @@ def leach_insult(request):
         'release': get_version_json(),
         "title": "Content Collection: Insult",
         "insult": output,
-        "status_code": status_code_message,
+        "status_code_message": status_code_message,
         "blurb": get_page_blurb_override('content_collection/insult/'),
     }
     return render(request, "content_collection/insult.html", context)
