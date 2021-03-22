@@ -17,8 +17,11 @@
 </div>
 
 <div class="row ben_format_pretty">
-    {{ insult }}<br /><br />
-    <a href="/api/content_collection/insults/" target="_blank">Insults (API LIST)</a>
+    <strong>{{ insult }}</strong><br /><br />
+    View the <a href="/api/content_collection/insults/" target="_blank">insult list</a> (API LIST)
+    {% if status_code_message|length > 0 %}
+        <br /><br /><i>{{ status_code_message }}</i>
+    {% endif %}
 </div>
 
 {% endblock %}
