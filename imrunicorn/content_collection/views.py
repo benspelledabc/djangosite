@@ -19,13 +19,18 @@ from .serializer import RandomInsultSerializer
 
 
 def leach_insult(request):
-    url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
-    page = urllib.request.urlopen(url)
-    content = page.read().decode()
-    content_parts = content.split("</p><p>OR</p><p>")
-    testing = content_parts[1]
-    testing_bits = testing.split("</p>")
-    output = testing_bits[0]
+    output = "I failed to get data."
+    try:
+        url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
+        page = urllib.request.urlopen(url)
+        content = page.read().decode()
+        content_parts = content.split("</p><p>OR</p><p>")
+        testing = content_parts[1]
+        testing_bits = testing.split("</p>")
+        output = testing_bits[0]
+    except Exception as ex:
+        print("Exception: {0}".format(ex))
+
     my_obj = {'insult': output}
     status_code_message = ""
     try:
