@@ -2,6 +2,9 @@
 # from datetime import datetime
 # from django.conf import settings
 # from django.contrib.auth.models import User
+import datetime
+import time
+
 import requests
 import os
 from django.db.models import Q
@@ -34,6 +37,7 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         url = 'http://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&units=imperial&appid={2}'.format(
             lat, lon, open_weather_map_api_key)
         r = requests.get(url).json()
+        # print(r)
         # weather_icon_url = 'http://openweathermap.org/img/wn/{0}@2x.png'.format(r['weather'][0]['icon'])
         weather_icon_url = 'http://openweathermap.org/img/wn/{0}.png'.format(r['weather'][0]['icon'])
         # print(r)
@@ -112,12 +116,26 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         else:
             wind_dir_word = "Divide By Zero"
 
+        # convert that time for readability!
+        sunrise = r['sys']['sunrise']
+        sunrise = time.ctime(sunrise)
+        sunrise = sunrise.split(' ')
+
+        sunset = r['sys']['sunset']
+        sunset = time.ctime(sunset)
+        sunset = sunset.split(' ')
+
         context = {
             'lat': lat,
             'lon': lon,
+            'sunrise': sunrise[3],
+            'sunset': sunset[3],
             'temperature': r['main']['temp'],
             'feels_like': r['main']['feels_like'],
+            'pressure': r['main']['pressure'],
+            'humidity': r['main']['humidity'],
             'wind_speed': r['wind']['speed'],
+            'wind_speed_gust': r['wind']['gust'],
             'wind_dir': r['wind']['deg'],
             'wind_dir_word': wind_dir_word,
             'description': r['weather'][0]['description'],
