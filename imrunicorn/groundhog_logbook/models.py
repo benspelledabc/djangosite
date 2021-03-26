@@ -14,6 +14,12 @@ class Location(models.Model):
     latitude = models.DecimalField(max_digits=12, decimal_places=7, default=39.575230, null=True)
     longitude = models.DecimalField(max_digits=12, decimal_places=7, default=-76.996040, null=True)
 
+    def get_lat(self):
+        return self.latitude
+
+    def get_long(self):
+        return self.longitude
+
     def __str__(self):
         return "%s (%s LAT , %s LONG)" % (self.nickname, self.latitude, self.longitude)
 
@@ -110,7 +116,8 @@ class RemovalsByLocation(models.Model):
     def save(self, *args, **kwargs):
         if self.wind_speed == 0.00 and self.wind_dir == -1 and self.estimated_temperature == -49:
             # only fetch weather if it appears to be defaults
-            weather = get_weather(self)
+            # weather = get_weather(self)
+            weather = get_weather(self, self.location.latitude, self.location.longitude)
             self.estimated_temperature = weather['temperature']
             self.cloud_level = weather['description']
             self.wind_speed = weather['wind_speed']

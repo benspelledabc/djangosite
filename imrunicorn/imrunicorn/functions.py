@@ -19,7 +19,8 @@ config = AutoConfig(search_path=BASE_DIR)
 logger = logging.getLogger(__name__)
 
 
-def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
+# def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
+def get_weather(request, lat='36.998944', lon='-109.045298'):  # 4 corners usa for testing
     context = {
         "completed": False,
         "message": "pre-query",
