@@ -26,13 +26,10 @@ class Harvests(models.Model):
     shooter = models.ForeignKey(User, related_name='deer_harvest_logbook_shooter', on_delete=models.CASCADE, null=True)
     harvest_date = models.DateField(default=date.today)
     harvest_time = models.TimeField(null=True)
-
     dnr_confirmation = models.CharField(blank=True, default=None, max_length=50, null=True)
-
     harvest_score = models.IntegerField(null=True, blank=True)
     bonus_for_not_unpleasant = models.BooleanField(default=False, null=True, blank=True)
     crop_damage_permit = models.BooleanField(default=False, null=True, blank=True)
-
     firearm = models.ForeignKey(Firearm, related_name='deer_harvest_logbook_firearm', on_delete=models.CASCADE)
     load = models.ForeignKey(HandLoad, related_name='deer_harvest_logbook_hand_load', on_delete=models.CASCADE)
     estimated_weight_lbs = models.DecimalField(max_digits=5, decimal_places=2, default=100.25)
@@ -101,7 +98,8 @@ class Harvests(models.Model):
     def save(self, *args, **kwargs):
         if self.wind_speed == 0.00 and self.wind_dir == 1 and self.estimated_temperature == -49:
             # only fetch weather if it appears to be defaults
-            weather = get_weather(self)
+            weather = get_weather(self, 39.619718, -77.023989)
+            # weather = get_weather(self, self.location.latitude, self.location.longitude)
             self.estimated_temperature = weather['temperature']
             self.cloud_level = weather['description']
             self.wind_speed = weather['wind_speed']
