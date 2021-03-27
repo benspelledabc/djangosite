@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,8 +12,11 @@ from imrunicorn.decorators import allowed_groups
 from .functions import activity_list, activity_scoreboard, activity_tasks_per_user, \
     activity_photo_validation, activity_scoreboard_by_user
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import DjangoModelPermissions
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+
+# @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
 def page_blank(request):
     step_hit_count_by_page(request.path)
     context = {
@@ -24,7 +28,7 @@ def page_blank(request):
     return render(request, "activity_log/home.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+@permission_required('activity_log.view_activity', login_url='/login', raise_exception=True)
 def page_task_list(request):
     step_hit_count_by_page(request.path)
     data = activity_list()
@@ -37,6 +41,22 @@ def page_task_list(request):
         "data": data,
     }
     return render(request, "activity_log/activity_list.html", context)
+
+
+@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+def page_task_list_last_known_good(request):
+    step_hit_count_by_page(request.path)
+    data = activity_list()
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Activity Log: Task List",
+        "blurb": get_page_blurb_override('activity_log/task_list/'),
+        "secret": get_page_secret('activity_log/task_list/'),
+        "data": data,
+    }
+    return render(request, "activity_log/activity_list.html", context)
+
 
 
 @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
