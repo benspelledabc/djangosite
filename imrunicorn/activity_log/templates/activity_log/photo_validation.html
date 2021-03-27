@@ -64,4 +64,32 @@
 
 </div>
 
+<div align="center">
+    {% if data.has_other_pages %}
+    <ul class="pagination">
+        {% if data.has_previous %}
+            <li><a href="?page={{ all_news.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+        <li><a href="?page=1">Newest</a></li>
+        {% for l in data.paginator.page_range %}
+            {% if l <= data.number|add:5 and l >= data.number|add:-5 %}
+                <li><a href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+            {% endif %}
+        {% endfor %}
+        <li><a href="?page={{all_news.paginator.num_pages}}">Oldest</a></li>
+
+        {% if data.has_next %}
+            <li><a href="?page={{ all_news.next_page_number }}">&raquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+
+
+
 {% endblock %}
