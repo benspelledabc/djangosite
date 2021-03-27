@@ -58,8 +58,8 @@ def page_task_list_last_known_good(request):
     return render(request, "activity_log/activity_list.html", context)
 
 
-
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+# @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+@permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_tasks_per_user(request):
     step_hit_count_by_page(request.path)
     data = activity_tasks_per_user()
@@ -73,7 +73,8 @@ def page_tasks_per_user(request):
     return render(request, "activity_log/tasks_per_user.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+# @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+@permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_current_points(request):
     step_hit_count_by_page(request.path)
     data = activity_tasks_per_user()
@@ -87,7 +88,8 @@ def page_current_points(request):
     return render(request, "activity_log/tasks_per_user.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+# @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
+@permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_photo_validation(request):
     step_hit_count_by_page(request.path)
     data = activity_photo_validation()
@@ -102,6 +104,7 @@ def page_photo_validation(request):
     return render(request, "activity_log/photo_validation.html", context)
 
 
+@permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_scoreboard_by_user(request):
     step_hit_count_by_page(request.path)
 
