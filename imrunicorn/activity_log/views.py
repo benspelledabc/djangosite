@@ -77,7 +77,7 @@ def page_current_points(request):
 @permission_required('activity_log.view_activityphotovalidation', login_url='/login', raise_exception=True)
 def page_photo_validation(request):
     step_hit_count_by_page(request.path)
-    data = activity_photo_validation()
+    data = activity_photo_validation(request)
 
     context = {
         "copy_year": datetime.now().year,
