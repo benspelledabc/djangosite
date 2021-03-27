@@ -25,11 +25,21 @@ def activity_list():
     return result
 
 
-def activity_tasks_per_user():
+def activity_tasks_per_user(request):
     result = ActivityLog.objects.filter(approved=True) \
         .order_by('actor', '-date', '-time', '-activity__transaction_amount')
 
-    return result
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 5)
+
+    try:
+        result_set = paginator.page(page)
+    except PageNotAnInteger:
+        result_set = paginator.page(1)
+    except EmptyPage:
+        result_set = paginator.page(paginator.num_pages)
+
+    return result_set
 
 
 def activity_photo_validation(request):
@@ -37,7 +47,7 @@ def activity_photo_validation(request):
         .order_by('-activity_log__date', '-activity_log__time')
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(result, 3)
+    paginator = Paginator(result, 5)
 
     try:
         result_set = paginator.page(page)

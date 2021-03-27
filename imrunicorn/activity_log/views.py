@@ -47,7 +47,7 @@ def page_task_list(request):
 @permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_tasks_per_user(request):
     step_hit_count_by_page(request.path)
-    data = activity_tasks_per_user()
+    data = activity_tasks_per_user(request)
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
