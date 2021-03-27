@@ -21,7 +21,11 @@
         <strong>Sunset:</strong> {{ weather.sunset }}<br />
         <strong>Temp:</strong> {{ weather.temperature }}&deg;F <i>(Feels Like: {{ weather.feels_like }}&deg;F)</i><br />
         <strong>Pressure:</strong> {{ weather.pressure }}mb <strong>Humidity:</strong> {{ weather.humidity }}&percnt; <br />
-        <strong>Wind Speed:</strong> {{ weather.wind_speed }}mph <i>(Gust: {{ weather.wind_speed_gust }}mph)</i><br />
+        <strong>Wind Speed:</strong> {{ weather.wind_speed }} mph
+        {% if weather.wind_speed_gust > 0 %}
+            <i>(<strong>Gusts:</strong> {{ weather.wind_speed_gust }} mph)</i>
+        {% endif %}
+        <br />
         <strong>Wind Direction:</strong>
         {{ comment }}
         <a href="https://www.sasquatchstation.com/images/dual-compass-rose.png" target="_blank"></a>
