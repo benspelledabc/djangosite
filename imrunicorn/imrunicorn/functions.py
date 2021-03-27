@@ -40,7 +40,7 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         # print(r)
         # weather_icon_url = 'http://openweathermap.org/img/wn/{0}@2x.png'.format(r['weather'][0]['icon'])
         weather_icon_url = 'http://openweathermap.org/img/wn/{0}.png'.format(r['weather'][0]['icon'])
-        print(r)
+        # print(r)
 
         '''
         clear sky
@@ -124,6 +124,13 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
         sunset = r['sys']['sunset']
         sunset = time.ctime(sunset)
         sunset = sunset.split(' ')
+        
+        wind_speed_gust = 0
+        try:
+            wind_speed_gust = r['wind']['gust']
+        except Exception as e:
+            wind_speed_gust = 0
+            print("Weather json output doesn't have GUST info this time. ({0})".format(e))
 
         context = {
             'lat': lat,
@@ -135,7 +142,7 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
             'pressure': r['main']['pressure'],
             'humidity': r['main']['humidity'],
             'wind_speed': r['wind']['speed'],
-            # 'wind_speed_gust': r['wind']['gust'],     # gust isn't always in the dataset!
+            'wind_speed_gust': wind_speed_gust,     # gust isn't always in the dataset!
             'wind_dir': r['wind']['deg'],
             'wind_dir_word': wind_dir_word,
             'description': r['weather'][0]['description'],
