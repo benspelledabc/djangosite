@@ -43,21 +43,6 @@ def page_task_list(request):
     return render(request, "activity_log/activity_list.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
-def page_task_list_last_known_good(request):
-    step_hit_count_by_page(request.path)
-    data = activity_list()
-    context = {
-        "copy_year": datetime.now().year,
-        'release': get_version_json(),
-        "title": "Activity Log: Task List",
-        "blurb": get_page_blurb_override('activity_log/task_list/'),
-        "secret": get_page_secret('activity_log/task_list/'),
-        "data": data,
-    }
-    return render(request, "activity_log/activity_list.html", context)
-
-
 # @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
 @permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
 def page_tasks_per_user(request):
@@ -89,7 +74,7 @@ def page_current_points(request):
 
 
 # @allowed_groups(allowed_groupname_list=['activity_log_viewer', 'activity_log_tasker'])
-@permission_required('activity_log.view_activitylog', login_url='/login', raise_exception=True)
+@permission_required('activity_log.view_activityphotovalidation', login_url='/login', raise_exception=True)
 def page_photo_validation(request):
     step_hit_count_by_page(request.path)
     data = activity_photo_validation()
