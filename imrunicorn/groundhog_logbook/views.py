@@ -1,4 +1,7 @@
 import calendar
+
+from django.contrib.auth.decorators import permission_required
+
 from imrunicorn.decorators import unauthenticated_user
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
@@ -363,7 +366,8 @@ def page_all_groundhog_removals(request):
     return render(request, "groundhog_logbook/all_groundhog_kills.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['groundhog_hole_knowledge'])
+# @allowed_groups(allowed_groupname_list=['groundhog_hole_knowledge'])
+@permission_required('groundhog_logbook.view_location', login_url='/login', raise_exception=True)
 def page_all_groundhog_locations(request):
     step_hit_count_by_page(request.path)
     context = {

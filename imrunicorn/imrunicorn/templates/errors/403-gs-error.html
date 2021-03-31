@@ -29,9 +29,15 @@
                 <div class="mx-auto text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Ben SpelledABC</h1>
                     <h3 class="mx-auto my-0 text-uppercase">Access Denied</h3>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">I'm messing around with locking things out. Sorry
-                    it appears you didn't make the list or it still needs work.</h2>
-                    <a class="btn btn-primary js-scroll-trigger" href="http://benspelledabc.me" target="_blank">Get Started</a>
+
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                        {% if exception %}
+                            <p>{{ exception }}</p>
+                        {% else %}
+                            <p>Sorry it appears you didn't make the list for access to this resource.</p>
+                        {% endif %}
+                    </h2>
+                    <a class="btn btn-primary js-scroll-trigger" href="http://benspelledabc.me" target="_blank">me.go(127.0.0.1)</a>
                 </div>
             </div>
         </header>
