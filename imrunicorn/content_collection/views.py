@@ -1,6 +1,7 @@
 import urllib
 
 import requests
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from rest_framework.parsers import JSONParser
 
@@ -102,7 +103,8 @@ def page_blank(request):
     return render(request, "content_collection/blank.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['content_collection_fantasy_grounds'])
+# @allowed_groups(allowed_groupname_list=['content_collection_fantasy_grounds'])
+@permission_required('content_collection.view_fantasygrounds', login_url='/login', raise_exception=True)
 def page_fantasy_grounds_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_fantasy_grounds()
@@ -118,7 +120,8 @@ def page_fantasy_grounds_list(request):
     return render(request, "content_collection/dnd5e.html", context)
 
 
-@allowed_groups(allowed_groupname_list=['content_collection_dnd5e'])
+# @allowed_groups(allowed_groupname_list=['content_collection_dnd5e'])
+@permission_required('content_collection.view_DAndDFifthEditionBook', login_url='/login', raise_exception=True)
 def page_dnd5e_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_dnd5e()
@@ -141,6 +144,7 @@ def page_dnd5e_list(request):
     return render(request, "content_collection/dnd5e.html", context)
 
 
+@permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
 def page_carousel_recent(request):
     step_hit_count_by_page(request.path)
     carousel = get_recent_pictures_for_carousel()
@@ -162,6 +166,7 @@ def page_carousel_recent(request):
     return render(request, "content_collection/carousel.html", context)
 
 
+@permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
 def page_carousel(request):
     step_hit_count_by_page(request.path)
     carousel = get_all_pictures_for_carousel()
@@ -183,6 +188,7 @@ def page_carousel(request):
     return render(request, "content_collection/carousel.html", context)
 
 
+@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_latest_video_by_pk(request, video_pk=1):
     step_hit_count_by_page(request.path)
     videos = get_video_by_pk(video_pk)
@@ -204,6 +210,7 @@ def page_latest_video_by_pk(request, video_pk=1):
     return render(request, "content_collection/videos.html", context)
 
 
+@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_latest_video(request):
     step_hit_count_by_page(request.path)
     videos = get_latest_video
@@ -225,6 +232,7 @@ def page_latest_video(request):
     return render(request, "content_collection/videos.html", context)
 
 
+@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_video_list(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos
@@ -246,6 +254,7 @@ def page_video_list(request):
     return render(request, "content_collection/video_list.html", context)
 
 
+@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_videos(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos

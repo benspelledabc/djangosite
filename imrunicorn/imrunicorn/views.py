@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
@@ -185,12 +186,14 @@ def page_test_layout(request):
 
 def handler403(request, exception):
     step_hit_count_by_page(request.path)
+
     context = {
         # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Access Denied",
         "subtitle": "Friendly 403 error message.",
         "fullbody": "",
+        # 'exception': exception,
         "copy_year": datetime.now().year
     }
     # return render(request, "errors/403-denied.html", context)
