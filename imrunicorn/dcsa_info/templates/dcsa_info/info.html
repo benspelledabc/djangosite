@@ -1,4 +1,5 @@
 {% extends "imrunicorn/layout.html" %}
+{% load static %}
 
 {% block extra_head %}
 
@@ -23,7 +24,23 @@
 <br />
 
 <div class="row ben_format_pretty">
-    I'll be adding content to this section soon... check back later.
+    As of 3/31/2021 you use <a href="{% static '/dcsa_info/DCSA_Form_335_-_Adjudications_Records_Request_Form.pdf' %}" target="_blank">this form</a>
+    to request FOIA/PA info. FOIA is a query about someone else's info, PA is about your own info.<br />
+    <br />
+    Fill it out, include photo copies of identification, etc etc. For the request itself, you may want to consider
+    <a href="{% url 'dcsa_info:coming_soon' %}">one of these</a> that have example requests.<br />
+    <br />
+    When you send in the request, you can send it snail mail (or certified mail) or even e-mail. With COVID in mind,
+    the people working the ticket might be working from alternate locations or under a lower staff. Consider that when
+    sending your request.<br />
+    <br />
+    Privacy act requests, unlike FOIA requests, are not subject to the statutory 20 business day processing time.
+    Requests are processed FIFO. First in, being when the responding agency receives the request.
+    They are not processed based on ease of request.<br />
+    <br />
+    As more info or guidance becomes available, we'll post it here to keep things easy to follow.
+
+
 </div>
 
 {% endblock %}
