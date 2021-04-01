@@ -6,6 +6,7 @@ app_name = 'dcsa_info'
 urlpatterns = [
     path('', views.page_blank, name='blank'),
     path('info/', views.page_info, name='info'),
+    path('success_example/', views.page_success_example, name='success_example'),
     path('coming_soon/', views.page_coming_soon, name='coming_soon'),
 
     path('charts/by_year/', views.page_charts_by_year, name='charts_by_year'),
