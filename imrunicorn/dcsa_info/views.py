@@ -21,6 +21,17 @@ def page_blank(request):
     return render(request, "dcsa_info/blank.html", context)
 
 
+def page_success_example(request):
+    step_hit_count_by_page(request.path)
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "DCSA Info: Success Examples",
+        "blurb": get_page_blurb_override('dcsa_info/success_example/'),
+    }
+    return render(request, "dcsa_info/success_examples.html", context)
+
+
 def page_info(request):
     step_hit_count_by_page(request.path)
     context = {
