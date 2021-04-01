@@ -1,0 +1,30 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            With the 'recent' changes to requesting FOIA/PA info, I've decided to lay out an easy to
+        follow guideline here.
+        {% endif %}</p>
+</div>
+
+
+{% include 'dcsa_info/menu.html' %}
+
+<br />
+
+<div class="row ben_format_pretty">
+    This is <strong>just a placeholder</strong> for a link that's coming soon. Have some lorum ipsum text.<br /><br />
+    {% lorem 4 p %}
+</div>
+
+{% endblock %}

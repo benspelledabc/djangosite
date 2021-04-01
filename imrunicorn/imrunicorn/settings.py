@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'call_of_the_wild',
     'activity_log',
     'shooting_challenge',
+    'dcsa_info',
     # 'rest_framework_swagger',
     # 'iprestrict',
 ]
