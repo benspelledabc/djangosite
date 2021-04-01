@@ -40,6 +40,7 @@ urlpatterns = [
     path('content_collection/', include('content_collection.urls')),
     path('call_of_the_wild/', include('call_of_the_wild.urls')),
     path('shooting_challenge/', include('shooting_challenge.urls')),
+    path('dcsa_info/', include('dcsa_info.urls')),
 
 
     # path('contact/', views.contact, name='contact'),
