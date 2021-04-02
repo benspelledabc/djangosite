@@ -2,6 +2,7 @@ import urllib
 
 import requests
 from django.contrib.auth.decorators import permission_required
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.parsers import JSONParser
 
@@ -10,13 +11,35 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
-    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, get_all_fantasy_grounds
+    get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, \
+    get_all_fantasy_grounds, get_all_insults
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
 from .serializer import RandomInsultSerializer
+
+
+def insult_list_all(request):
+    # return HttpResponse("hello world")
+
+    # get the list of todos
+    # response = requests.get('https://jsonplaceholder.typicode.com/todos/')
+    # transfer the response to json objects
+    # todos = response.json()   # send todos in context... BAM
+
+    insults = get_all_insults
+
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Insult",
+        "insults": insults,
+        "blurb": get_page_blurb_override('content_collection/insult/'),
+    }
+    return render(request, "content_collection/insult_list_all.html", context)
+
 
 
 def leach_insult(request):

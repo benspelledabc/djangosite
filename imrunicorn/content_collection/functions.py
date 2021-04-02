@@ -3,7 +3,12 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds
+from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult
+
+
+def get_all_insults():
+    result = RandomInsult.objects.all()
+    return result
 
 
 def get_all_fantasy_grounds():
