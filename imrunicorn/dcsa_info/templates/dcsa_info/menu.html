@@ -4,8 +4,13 @@
             <a class="dropdown-item" href="{% url 'dcsa_info:info' %}"> Info Page</a> |
             <a class="dropdown-item" href="{% url 'dcsa_info:charts_by_month' %}"> By Month</a> |
             <a class="dropdown-item" href="{% url 'dcsa_info:charts_by_year' %}"> By Year</a> |
+            <a class="dropdown-item" href="{% url 'dcsa_info:all_examples' %}"> All Examples</a> |
+            <a class="dropdown-item" href="{% url 'dcsa_info:success_examples' %}"> Success Examples</a>
+
+            {% comment %}
             <a class="dropdown-item" href="{% url 'dcsa_info:coming_soon' %}"> Response Times For Ticket*</a> |
             <a class="dropdown-item" href="{% url 'dcsa_info:coming_soon' %}"> Response Times For Result*</a>
+            {% endcomment %}
         </div>
     </div>
 </div>
