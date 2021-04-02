@@ -25,10 +25,17 @@ logger = logging.getLogger(__name__)
 # def get_weather(request, lat='36.998944', lon='-109.045298'):  # 4 corners usa for testing
 def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
     context = {
-        "completed": False,
-        "message": "pre-query",
-        "lat": lat,
-        "lon": lon,
+        'lat': '39.620863010825495',
+        'lon': '-77.02896921045372',
+        'temperature': '115',
+        'feels_like': '114',
+        'wind_speed': '223',
+        'wind_dir': '14',
+        'wind_dir_word': 'North',
+        'description': 'pre-fetch values',
+        'icon': '007',
+        'weather_icon_url': 'https://google.com',
+        'full_response': 'empty placeholder',
     }
 
     try:
