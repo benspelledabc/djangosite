@@ -34,5 +34,8 @@ class RequestTimeline(models.Model):
 
     class Meta:
         ordering = ('-request_date', '-pk', 'requester_alias')
+        permissions = [
+            ("ticket_number_viewer", "Can view ticket numbers"),
+        ]
 
 
