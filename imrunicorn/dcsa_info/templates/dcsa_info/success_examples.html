@@ -41,7 +41,12 @@
                 <strong>Request Date:</strong> {{ news.request_date }}<br />
                 <strong>Requester Alias:</strong> {{ news.requester_alias }}<br />
                 <strong>Ticket Number Received:</strong> {{ news.ticket_number_received }}<br />
-                <strong>Ticket Number:</strong> {{ news.ticket_number }}<br />
+                <strong>Ticket Number:</strong>
+                {% if perms.dcsa_info.ticket_number_viewer %}
+                    {{ news.ticket_number }}<br />
+                {% else %}
+                    <i>Restricted (Requires: ticket_number_viewer)</i><br />
+                {% endif %}
                 <strong>Result Date:</strong> {{ news.result_date }}<br />
                 <strong>Received Info Requested:</strong> {{ news.received_pa_info_requested }}<br />
                 <strong>Info Requested:</strong><br />
