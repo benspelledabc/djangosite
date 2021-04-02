@@ -26,7 +26,9 @@
 <div class="row ben_format_pretty">
     We are just starting off tracking these requests. Therefore, for now, we are showing all requests not only the ones
     that have netted the results requested. You'll have to filter those yourself for now or
-    <a href="{% url 'dcsa_info:success_examples' %}">click here</a>.
+    <a href="{% url 'dcsa_info:success_examples' %}">click here</a>. Also, records that are listed as False for
+    "Received Info Requested" needs some work. It should be three choices: True, False, Null. For now, check to see
+    if the request has a result date first. If there is no result date, "False" is to be treated as Null.
 </div>
 
 <br />
