@@ -18,7 +18,10 @@
 
 <div class="row ben_format_pretty">
     <strong>{{ insult }}</strong><br /><br />
-    View the <a href="/api/content_collection/insults/" target="_blank">insult list</a> (API LIST)
+
+    View the <a href="{% url 'content_collection:insult_list_all' %}">insult list</a><br />
+    View the <a href="/api/content_collection/insults/" target="_blank">insult list</a> (API LIST)<br />
+
     {% if status_code_message|length > 0 %}
         <br /><br /><i>{{ status_code_message }}</i>
     {% endif %}
