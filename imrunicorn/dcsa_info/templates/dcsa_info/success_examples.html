@@ -43,11 +43,18 @@
                 <strong>Ticket Number Received:</strong> {{ news.ticket_number_received }}<br />
                 <strong>Ticket Number:</strong> {{ news.ticket_number }}<br />
                 <strong>Result Date:</strong> {{ news.result_date }}<br />
-                <strong>Recieved Info Requested:</strong> {{ news.received_pa_info_requested }}<br />
-                {% autoescape off %}
-                    <strong>Info Requested:</strong> {{ news.request_text }}<br />
-                {% endautoescape %}
-
+                <strong>Received Info Requested:</strong> {{ news.received_pa_info_requested }}<br />
+                <strong>Info Requested:</strong><br />
+                    {% autoescape off %}
+                        <div style="margin-left: 30px;">
+                            {% if news.request_text|length > 0 %}
+                                {{ news.request_text }}
+                            {% else %}
+                                Not logged for this request.
+                            {% endif %}
+                        </div>
+                    {% endautoescape %}
+                <br />
 
                 {% if forloop.last  == False %}
                     <hr />
@@ -56,7 +63,7 @@
                 {% endif %}
 
             {% empty %}
-                <center>We don't have a log of any requests that recieved the results they requested.</center>
+                <center>We don't have a log of any requests that received the results they requested.</center>
 
             {% endfor %}
 
