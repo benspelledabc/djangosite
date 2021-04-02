@@ -7,7 +7,8 @@ from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGr
 
 
 def get_all_insults():
-    result = RandomInsult.objects.all()
+    result = RandomInsult.objects.all()\
+    .order_by('-pk')
     return result
 
 
