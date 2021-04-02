@@ -45,7 +45,11 @@
                 {% if perms.dcsa_info.ticket_number_viewer %}
                     {{ news.ticket_number }}<br />
                 {% else %}
-                    <i>Restricted (Requires: ticket_number_viewer)</i><br />
+                    {% if news.ticket_number %}
+                        <i>Restricted (Requires: ticket_number_viewer)</i><br />
+                    {% else %}
+                        No ticket number at this time.<br />
+                    {% endif %}
                 {% endif %}
                 <strong>Result Date:</strong> {{ news.result_date }}<br />
                 <strong>Received Info Requested:</strong> {{ news.received_pa_info_requested }}<br />
