@@ -27,3 +27,26 @@ def requests_by_month():
         .order_by('month')
 
     return result
+
+
+# todo: needs a filter for None|False value... not just an 'else'
+def requests_all(request, desired_results="All"):
+    if desired_results == "All":
+        result = RequestTimeline.objects.all()\
+            .order_by('-request_date')
+    else:
+        result = RequestTimeline.objects.filter(
+            Q(received_pa_info_requested=desired_results))\
+            .order_by('-request_date')
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 5)
+
+    try:
+        result_set = paginator.page(page)
+    except PageNotAnInteger:
+        result_set = paginator.page(1)
+    except EmptyPage:
+        result_set = paginator.page(paginator.num_pages)
+
+    return result_set

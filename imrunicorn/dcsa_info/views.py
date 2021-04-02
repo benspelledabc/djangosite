@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, get_version_json, \
     get_page_blurb_override, get_restart_notice
 from imrunicorn.functions import step_hit_count_by_page
-from .functions import requests_by_year, requests_by_month
+from .functions import requests_by_year, requests_by_month, requests_all
 from datetime import datetime
 from django.shortcuts import render
 
@@ -21,13 +21,32 @@ def page_blank(request):
     return render(request, "dcsa_info/blank.html", context)
 
 
-def page_success_example(request):
+def page_all_examples(request):
     step_hit_count_by_page(request.path)
+    # todo: Eventually, we'll make this True instead of All. It's also setup for False, which should really be pending.
+    all_news = requests_all(request, "All")
+
     context = {
+        "all_news": all_news,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "DCSA Info: All Examples",
+        "blurb": get_page_blurb_override('dcsa_info/success_examples/'),
+    }
+    return render(request, "dcsa_info/success_examples.html", context)
+
+
+def page_success_examples(request):
+    step_hit_count_by_page(request.path)
+    # todo: Eventually, we'll make this True instead of All. It's also setup for False, which should really be pending.
+    all_news = requests_all(request, "True")
+
+    context = {
+        "all_news": all_news,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "DCSA Info: Success Examples",
-        "blurb": get_page_blurb_override('dcsa_info/success_example/'),
+        "blurb": get_page_blurb_override('dcsa_info/success_examples/'),
     }
     return render(request, "dcsa_info/success_examples.html", context)
 
