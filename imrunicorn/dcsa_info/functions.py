@@ -39,6 +39,13 @@ def requests_all(request, desired_results="All"):
             Q(received_pa_info_requested=desired_results))\
             .order_by('-request_date')
 
+    # todo: hijack 'received_pa_info_requested' for True|False to Null if 'result_date' is null?
+
+    for item in result:
+        if item.result_date is None:
+            item.received_pa_info_requested = "Pending Result"
+            item.result_date = "Pending Result"
+
     page = request.GET.get('page', 1)
     paginator = Paginator(result, 5)
 
