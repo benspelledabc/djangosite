@@ -13,6 +13,7 @@ class Location(models.Model):
     elevation = models.DecimalField(max_digits=5, decimal_places=0, default=764, null=True)
     latitude = models.DecimalField(max_digits=12, decimal_places=7, default=39.575230, null=True)
     longitude = models.DecimalField(max_digits=12, decimal_places=7, default=-76.996040, null=True)
+    hole_location_picture = models.ImageField(upload_to='uploads/groundhog_hole_locations/', null=True, blank=True)
 
     def get_lat(self):
         return self.latitude
