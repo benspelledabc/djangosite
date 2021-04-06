@@ -172,10 +172,11 @@ def page_carousel_recent(request):
     step_hit_count_by_page(request.path)
     carousel = get_recent_pictures_for_carousel()
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_carousel']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    unrestricted = True
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_carousel']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         # "restart": get_restart_notice,
@@ -194,10 +195,11 @@ def page_carousel(request):
     step_hit_count_by_page(request.path)
     carousel = get_all_pictures_for_carousel()
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_carousel']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    unrestricted = True
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_carousel']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         # "restart": get_restart_notice,
