@@ -41,7 +41,6 @@ def insult_list_all(request):
     return render(request, "content_collection/insult_list_all.html", context)
 
 
-
 def leach_insult(request):
     output = "I failed to get data."
     try:
@@ -127,10 +126,13 @@ def page_blank(request):
 
 
 # @allowed_groups(allowed_groupname_list=['content_collection_fantasy_grounds'])
-@permission_required('content_collection.view_fantasygrounds', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_fantasygrounds', login_url='/login', raise_exception=True)
 def page_fantasy_grounds_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_fantasy_grounds()
+
+    perm_check = request.user.has_perm('content_collection.view_fantasygrounds')
+    unrestricted = perm_check
 
     context = {
         # "restart": get_restart_notice,
@@ -144,16 +146,18 @@ def page_fantasy_grounds_list(request):
 
 
 # @allowed_groups(allowed_groupname_list=['content_collection_dnd5e'])
-@permission_required('content_collection.view_DAndDFifthEditionBook', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_DAndDFifthEditionBook', login_url='/login', raise_exception=True)
 def page_dnd5e_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_dnd5e()
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_dnd5e_restricted']
+    perm_check = request.user.has_perm('content_collection.view_danddfiftheditionbook')
+    unrestricted = perm_check
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_dnd5e_restricted']
 
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         # "restart": get_restart_notice,
@@ -167,12 +171,13 @@ def page_dnd5e_list(request):
     return render(request, "content_collection/dnd5e.html", context)
 
 
-@permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
 def page_carousel_recent(request):
     step_hit_count_by_page(request.path)
     carousel = get_recent_pictures_for_carousel()
 
-    unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
+    unrestricted = perm_check
     # unrestricted = False
     # allowed_groupname_list = ['content_collection_carousel']
     # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
@@ -190,12 +195,13 @@ def page_carousel_recent(request):
     return render(request, "content_collection/carousel.html", context)
 
 
-@permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_PicturesForCarousel', login_url='/login', raise_exception=True)
 def page_carousel(request):
     step_hit_count_by_page(request.path)
     carousel = get_all_pictures_for_carousel()
 
-    unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
+    unrestricted = perm_check
     # unrestricted = False
     # allowed_groupname_list = ['content_collection_carousel']
     # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
@@ -213,15 +219,18 @@ def page_carousel(request):
     return render(request, "content_collection/carousel.html", context)
 
 
-@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_latest_video_by_pk(request, video_pk=1):
     step_hit_count_by_page(request.path)
     videos = get_video_by_pk(video_pk)
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_videos']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_video')
+    unrestricted = perm_check
+
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_videos']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         "videos": videos,
@@ -235,15 +244,17 @@ def page_latest_video_by_pk(request, video_pk=1):
     return render(request, "content_collection/videos.html", context)
 
 
-@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_latest_video(request):
     step_hit_count_by_page(request.path)
     videos = get_latest_video
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_videos']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_video')
+    unrestricted = perm_check
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_videos']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         "videos": videos,
@@ -257,15 +268,17 @@ def page_latest_video(request):
     return render(request, "content_collection/videos.html", context)
 
 
-@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_video_list(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_videos']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_video')
+    unrestricted = perm_check
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_videos']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         "videos": videos,
@@ -279,15 +292,17 @@ def page_video_list(request):
     return render(request, "content_collection/video_list.html", context)
 
 
-@permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
+# @permission_required('content_collection.view_Video', login_url='/login', raise_exception=True)
 def page_videos(request):
     step_hit_count_by_page(request.path)
     videos = get_all_videos
 
-    unrestricted = False
-    allowed_groupname_list = ['content_collection_videos']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    perm_check = request.user.has_perm('content_collection.view_video')
+    unrestricted = perm_check
+    # unrestricted = False
+    # allowed_groupname_list = ['content_collection_videos']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
 
     context = {
         "videos": videos,
