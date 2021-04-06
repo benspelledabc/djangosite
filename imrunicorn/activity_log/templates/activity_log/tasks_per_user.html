@@ -43,6 +43,9 @@
             <th bgcolor="808080" style="text-align: center">
                 Description
             </th>
+            <th bgcolor="808080" style="text-align: center">
+                Comments
+            </th>
 
     {% for record in data %}
         <tr bgcolor="#BEBEBE">
@@ -57,6 +60,9 @@
               </td>
             <td style="padding-left:10px">
                   {{ record.activity.description }}
+              </td>
+            <td style="padding-left:10px">
+                  {{ record.actor_comments }}
               </td>
         </tr>
     {% endfor %}
