@@ -8,8 +8,13 @@ from imrunicorn.functions import step_hit_count_by_page
 def page_six_steps_of_firing_a_shot(request):
     step_hit_count_by_page(request.path)
     # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
+
+    # any permission check will cache the current set of permissions
+    perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
+
     context = {
         # "restart": get_restart_notice,
+        'perm_check': perm_check,
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
