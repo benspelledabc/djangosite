@@ -10,6 +10,8 @@ import os
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.dateparse import parse_date
+
 from .models import PageCounter
 from django.contrib.auth.models import User
 import logging
@@ -20,6 +22,21 @@ config = AutoConfig(search_path=BASE_DIR)
 
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
+    # https://api.sunrise-sunset.org/json?lat=39.6212340&lng=-77.0276600
+    # end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}&formatted=0".format(lat, lng)
+    end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}".format(lat, lng)
+    response = requests.get(end_point)
+    result = response.json()
+
+    output = {
+        "sunrise": result['results']['sunrise'],
+        "sunset": result['results']['sunset'],
+    }
+
+    return output
 
 
 # def get_weather(request, lat='36.998944', lon='-109.045298'):  # 4 corners usa for testing
