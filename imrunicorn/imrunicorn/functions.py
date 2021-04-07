@@ -22,6 +22,15 @@ config = AutoConfig(search_path=BASE_DIR)
 logger = logging.getLogger(__name__)
 
 
+def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
+    # https://api.sunrise-sunset.org/json?lat=39.6212340&lng=-77.0276600
+    # end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}&formatted=0".format(lat, lng)
+    end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}".format(lat, lng)
+    response = requests.get(end_point)
+    result = response.json()
+    return result
+
+
 # def get_weather(request, lat='36.998944', lon='-109.045298'):  # 4 corners usa for testing
 def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
     context = {

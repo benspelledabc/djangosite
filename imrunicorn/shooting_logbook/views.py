@@ -2,7 +2,7 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
 from announcements.get_news import get_news, get_version_json, get_page_blurb_override, get_restart_notice
-from imrunicorn.functions import step_hit_count_by_page
+from imrunicorn.functions import step_hit_count_by_page, get_sunrise_sunset
 
 
 def page_six_steps_of_firing_a_shot(request):
@@ -10,11 +10,14 @@ def page_six_steps_of_firing_a_shot(request):
     # http://appleseedshoot.blogspot.com/2008/03/six-steps-of-firing-shot.html
 
     # any permission check will cache the current set of permissions
-    perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
+    # perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
+    sun_info = get_sunrise_sunset()
 
     context = {
         # "restart": get_restart_notice,
-        'perm_check': perm_check,
+        "sun_info": sun_info['results'],
+        'sunrise': sun_info['results']['sunrise'],
+        # 'perm_check': perm_check,
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
