@@ -15,9 +15,11 @@ def page_six_steps_of_firing_a_shot(request):
 
     context = {
         # "restart": get_restart_notice,
-        "sun_info": sun_info['results'],
-        'sunrise': sun_info['results']['sunrise'],
+        # "sun_info": sun_info['results'],
+        # 'sunrise': sun_info['results']['sunrise'],
         # 'perm_check': perm_check,
+        'sunrise': sun_info["sunrise"],
+        'sunset': sun_info["sunset"],
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
