@@ -57,7 +57,15 @@
         {% endif %}</p>
 </div>
 
-{% if user.is_authenticated %}
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'loaddata/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+<br />
 
 <div class="row ben_format_pretty">
     <div align="center">
@@ -94,16 +102,5 @@
     </div>
     </div>
 </div>
-{% else %}
-<div class="row ben_format_pretty">
-    <div align="center">
-        <div class='post-body entry-content' id='post-body-3156955225064661913' itemprop='description articleBody'>
-            <div style="text-align: left;font-family:times new roman;">
-                You must be logged in to edit stuff.
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
 
 {% endblock %}

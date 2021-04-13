@@ -10,7 +10,6 @@ from django.shortcuts import render
 def page_blank(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Deer Wait List: Blank",
@@ -24,7 +23,6 @@ def page_info(request):
     cuts = get_all_cuts()
     flavors = get_all_flavors()
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "cuts": cuts,
@@ -38,15 +36,14 @@ def page_info(request):
 def page_list_view(request):
     step_hit_count_by_page(request.path)
     orders = get_remaining_orders()
-    # deer_wait_list_perceived_thankfulness_viewer
 
+    # todo: fix up the permissions to prevent group name requirements
     unrestricted = False
     allowed_groupname_list = ['deer_wait_list_perceived_thankfulness_viewer']
     if request.user.groups.filter(name__in=allowed_groupname_list).exists():
         unrestricted = True
 
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "orders": orders,

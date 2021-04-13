@@ -39,7 +39,6 @@ def page_packing_list(request):
 def unused_json_farm_invites_view(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'body': 'no body to share',
         'header': 'farm invites view',
     }
@@ -49,11 +48,9 @@ def unused_json_farm_invites_view(request):
 def unused_page_farm_invites_view(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
-        # "blurb": get_page_blurb_override('news/'),
         "table_data": 'Shake it like it\'s going out of style!',
         "copy_year": datetime.now().year
     }
@@ -62,9 +59,7 @@ def unused_page_farm_invites_view(request):
 
 def page_farm_invites_view(request):
     step_hit_count_by_page(request.path)
-    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
-    # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=True) &
         Q(Cancel_Code="InviteActive") &
@@ -72,7 +67,6 @@ def page_farm_invites_view(request):
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
-        # "restart": get_restart_notice,
         'contact_good': 'Complete',
         'contact_okay': '85%',
         'contact_poor': '66%',
@@ -84,16 +78,13 @@ def page_farm_invites_view(request):
         ,
         'all_invites': all_invites,
         "copy_year": datetime.now().year
-        # "copy_year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 
 
 def page_farm_invites_view_lkg(request):
     step_hit_count_by_page(request.path)
-    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
-    # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=True) &
         Q(Cancel_Code="InviteActive") &
@@ -101,7 +92,6 @@ def page_farm_invites_view_lkg(request):
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
-        # "restart": get_restart_notice,
         'contact_good': 'COMPLETE',
         'contact_okay': '85%',
         'contact_poor': '66%',
@@ -123,28 +113,23 @@ def page_farm_invites_view_lkg(request):
         ,
         'all_invites': all_invites,
         "copy_year": datetime.now().year
-        # "copy_year": all_loads.prod
     }
     return render(request, "farminvite/calendar_list.html", context)
 
 
 def page_farm_invites_view_hidden_listings(request):
     step_hit_count_by_page(request.path)
-    # all_invites = InviteListing.objects.all().order_by('Invite_Date', 'Invite_Secondary')
     this_moment = datetime.now()
-    # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Show_Listing=False) &
         (Q(Invite_Date=this_moment.date()) |
          Q(Invite_Date__gt=this_moment.date()))).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
-        # "restart": get_restart_notice,
         'contact_good': 'Complete',
         'contact_bad': 'Incomplete',
         'release': get_version_json(),
         "title": "Invites Pending",
-        # "blurb": "no blurb",
         'all_invites': all_invites,
         "copy_year": datetime.now().year
     }
@@ -154,7 +139,6 @@ def page_farm_invites_view_hidden_listings(request):
 def page_farm_invites_map(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
@@ -166,7 +150,6 @@ def page_farm_invites_map(request):
 def page_farm_invites_map_fake(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
@@ -179,7 +162,6 @@ def page_farm_invites_map_fake(request):
 def page_farm_check_list(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "What should I bring?",
         "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
@@ -191,7 +173,6 @@ def page_farm_check_list(request):
 def page_request_slot(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Request Slot",
         "blurb": "Email Me To Request Slot",
@@ -215,9 +196,7 @@ def page_request_slot(request):
 
 def page_cash_app(request):
     step_hit_count_by_page(request.path)
-    # return HttpResponse("Hello world 500.")
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Donate: Cash App",
         "blurb": "Cash app is our preferred method of payment.",
@@ -230,7 +209,6 @@ def page_cash_app(request):
 def page_how_to_sign_up(request):
     step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "How to sign up",
         "blurb": "The process has changed!",
@@ -243,14 +221,11 @@ def page_how_to_sign_up(request):
 def page_missing_contact_info(request):
     step_hit_count_by_page(request.path)
     this_moment = datetime.now()
-    # only events not past, ordered by date, am then pm.. then secondary listings
     all_invites = InviteListing.objects.filter(
         Q(Invite_Date=this_moment.date()) |
         Q(Invite_Date__gt=this_moment.date())).order_by('Invite_Date', 'Invite_Secondary', 'Desired_Time_Slot', )
 
     context = {
-        # "roll_list": queryset,
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         "title": "Registration Completion Guideline",
         "blurb": "Please provide some contact info if you show up on this list as having it missing. Failure to do so "
@@ -279,7 +254,6 @@ def page_invite_listing(request):
             form.save()
 
     context = {
-        # "restart": get_restart_notice,
         'release': get_version_json(),
         'form': InviteListingForm(),
         "copy_year": datetime.now().year
