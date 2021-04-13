@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.conf import settings
+from django.contrib.auth.decorators import permission_required
 from django.db.models import F, FloatField, ExpressionWrapper, TextField, IntegerField
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -20,10 +21,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+@permission_required('load_data.create_firearm', login_url='/login', raise_exception=True)
 def firearm_create_view(request):
     step_hit_count_by_page(request.path)
-    data = {# "restart": get_restart_notice, 'Query': 'Complete',
-            'Result': 'The query completed but this is not an endpoint with data.'}
+    data = {
+            'Result': 'The query completed but this is not an endpoint with data.'
+    }
     return JsonResponse(data)
 
 
@@ -34,6 +37,7 @@ def docker_update_test(request):
     return JsonResponse(data)
 
 
+@permission_required('load_data.create_projectile', login_url='/login', raise_exception=True)
 def projectile_create_view(request):
     step_hit_count_by_page(request.path)
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
@@ -62,6 +66,7 @@ def projectile_create_view(request):
     return render(request, "loaddata/projectile_create.html", context)
 
 
+@permission_required('load_data.create_powder', login_url='/login', raise_exception=True)
 def powder_create_view(request):
     step_hit_count_by_page(request.path)
     # data = {'Query': 'Complete', 'Result': 'The query completed but this is not an endpoint with data.'}
@@ -91,6 +96,7 @@ def powder_create_view(request):
     return render(request, "loaddata/powder_create.html", context)
 
 
+@permission_required('load_data.create_caliber', login_url='/login', raise_exception=True)
 def caliber_create_view(request):
     step_hit_count_by_page(request.path)
     form = CaliberForm(request.POST or None)
@@ -190,7 +196,6 @@ def page_loads_by_type(request, load_type='All'):
         if has_dope:
             load.has_info = True
 
-
     context = {
         # "restart": get_restart_notice,
         'release': get_version_json(),
@@ -245,14 +250,6 @@ def page_loads_details(request, load_pk=None):
 
     if load_pk is None:
         return render(request, "loaddata/load_details.html", context)
-
-        # selected_firearm = Firearm.objects.get(pk=firearm_pk)
-        # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
-        #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
-        #                            output_field=FloatField()),
-        #     rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
-        #                           output_field=IntegerField())
-        # )
 
     try:
         selected_hand_load = HandLoad.objects.get(pk=load_pk)
@@ -356,16 +353,6 @@ def page_caliber_detail(request, caliber_pk=None):
         }
         return render(request, "loaddata/caliber_details.html", context)
     try:
-        # selected_caliber = Caliber.objects.get(pk=caliber_pk)
-
-        # now get the loads, for that caliber
-        # all_loads = HandLoad.objects.all().order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
-        #     prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
-        #                            output_field=FloatField()),
-        #     rps=ExpressionWrapper(F('Velocity') * 720 / F('firearm__inches_per_twist') / 60,
-        #                           output_field=IntegerField())
-        # )
-
         all_loads = HandLoad.objects.filter(
             Q(firearm__caliber__pk=caliber_pk)).order_by('Is_Sheriff_Load', '-prod', '-projectile__Diameter').annotate(
             prod=ExpressionWrapper(F('projectile__WeightGR') * 0.5 / 7000 / 32.127 * F('Velocity') * F('Velocity'),
@@ -401,6 +388,17 @@ def page_caliber_detail(request, caliber_pk=None):
         }
 
     return render(request, "loaddata/caliber_details.html", context)
+
+
+def home_create_view(request):
+    step_hit_count_by_page(request.path)
+    context = {
+        'release': get_version_json(),
+        "title": "C.R.U.D. Home",
+        "blurb": get_page_blurb_override('load_data/toolbox/create_home/'),
+        "copy_year": datetime.now().year,
+    }
+    return render(request, "loaddata/create_home.html", context)
 
 
 def sample(request):

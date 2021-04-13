@@ -29,6 +29,7 @@ def insult_list_all(request):
     # transfer the response to json objects
     # todos = response.json()   # send todos in context... BAM
 
+    step_hit_count_by_page(request.path)
     insults = get_all_insults
 
     context = {
@@ -42,6 +43,7 @@ def insult_list_all(request):
 
 
 def leach_insult(request):
+    step_hit_count_by_page(request.path)
     output = "I failed to get data."
     try:
         url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
@@ -75,48 +77,21 @@ def leach_insult(request):
     return render(request, "content_collection/insult.html", context)
 
 
-def leach_insult_buff_ugly(request):
-    url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
-    page = urllib.request.urlopen(url)
-    content = page.read().decode()
-    content_parts = content.split("</p><p>OR</p><p>")
-    testing = content_parts[1]
-    testing_bits = testing.split("</p>")
-    output = testing_bits[0]
-
-    # todo: this also shouldn't be hard coded, but i'll deal with it for now
-    url = 'http://benspelledabc.me/api/content_collection/insults/'
-    url = 'http://127.0.0.1:8000/api/content_collection/insults/'
-    my_obj = {'insult': output}
-
-    print(output)
-    status_code_message = "General Error..."
-    try:
-        # todo: clean this up a bit.. i dont want the user/pass in the code but its there as an example
-        x = requests.post(url, data=my_obj, auth=('username', 'password'))
-        if x.status_code == 201:
-            status_code_message = "Posted a thing!"
-        else:
-            status_code_message = "Failed to post, I was probably a duplicate."
-
-    except Exception as ex:
-        status_code_message = "Something went wrong!"
-
+def page_home(request):
+    step_hit_count_by_page(request.path)
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
-        "title": "Content Collection: Insult",
-        "insult": output,
-        "status_code_message": status_code_message,
-        "blurb": get_page_blurb_override('content_collection/insult/'),
+        "title": "Content Collection: Home",
+        "blurb": get_page_blurb_override('content_collection/home/'),
     }
-    return render(request, "content_collection/insult.html", context)
+    return render(request, "content_collection/home.html", context)
 
 
 # Create your views here.
 def page_blank(request):
+    step_hit_count_by_page(request.path)
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Blank",
@@ -135,7 +110,6 @@ def page_fantasy_grounds_list(request):
     unrestricted = perm_check
 
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Fantasy Grounds",
@@ -153,14 +127,8 @@ def page_dnd5e_list(request):
 
     perm_check = request.user.has_perm('content_collection.view_danddfiftheditionbook')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_dnd5e_restricted']
-
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "D&D-5e",
@@ -178,13 +146,8 @@ def page_carousel_recent(request):
 
     perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_carousel']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Carousel: Recent",
@@ -202,13 +165,8 @@ def page_carousel(request):
 
     perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_carousel']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Carousel (All)",
@@ -227,14 +185,8 @@ def page_latest_video_by_pk(request, video_pk=1):
     perm_check = request.user.has_perm('content_collection.view_video')
     unrestricted = perm_check
 
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_videos']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
-
     context = {
         "videos": videos,
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,
@@ -251,14 +203,9 @@ def page_latest_video(request):
 
     perm_check = request.user.has_perm('content_collection.view_video')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_videos']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
         "videos": videos,
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Videos: Latest",
@@ -275,14 +222,9 @@ def page_video_list(request):
 
     perm_check = request.user.has_perm('content_collection.view_video')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_videos']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
         "videos": videos,
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,
@@ -299,14 +241,9 @@ def page_videos(request):
 
     perm_check = request.user.has_perm('content_collection.view_video')
     unrestricted = perm_check
-    # unrestricted = False
-    # allowed_groupname_list = ['content_collection_videos']
-    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-    #     unrestricted = True
 
     context = {
         "videos": videos,
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         'unrestricted_user': unrestricted,
