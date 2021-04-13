@@ -1,4 +1,6 @@
 # Project exclude paths
+db.json
+db_no-auth.json
 imrunicorn/venv/
 /venv/
 .pyc*
