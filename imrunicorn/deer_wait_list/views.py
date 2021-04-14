@@ -37,11 +37,8 @@ def page_list_view(request):
     step_hit_count_by_page(request.path)
     orders = get_remaining_orders()
 
-    # todo: fix up the permissions to prevent group name requirements
-    unrestricted = False
-    allowed_groupname_list = ['deer_wait_list_perceived_thankfulness_viewer']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    perm_check = request.user.has_perm('deer_wait_list.view_thankfulness')
+    unrestricted = perm_check
 
     context = {
         "copy_year": datetime.now().year,

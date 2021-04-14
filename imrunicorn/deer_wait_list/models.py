@@ -18,6 +18,9 @@ class Recipient(models.Model):
 
     class Meta:
         ordering = ('name', )
+        permissions = (
+            ("view_thankfulness", "Can View Thankfulness"),
+        )
 
 
 class MeatCut(models.Model):
