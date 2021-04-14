@@ -20,9 +20,12 @@ def page_packing_list(request):
     result = get_packing_list(list_size)
 
     unrestricted = False
-    allowed_groupname_list = ['packing_list_viewer']
-    if request.user.groups.filter(name__in=allowed_groupname_list).exists():
-        unrestricted = True
+    # allowed_groupname_list = ['packing_list_viewer']
+    # if request.user.groups.filter(name__in=allowed_groupname_list).exists():
+    #     unrestricted = True
+
+    perm_check = request.user.has_perm('farminvite.view_packinglist')
+    unrestricted = perm_check
 
     context = {
         "query_result": result,
