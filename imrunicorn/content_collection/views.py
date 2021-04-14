@@ -120,7 +120,7 @@ def page_fantasy_grounds_list(request):
 
 
 # @allowed_groups(allowed_groupname_list=['content_collection_dnd5e'])
-# @permission_required('content_collection.view_DAndDFifthEditionBook', login_url='/login', raise_exception=True)
+@permission_required('content_collection.view_danddfiftheditionbook', login_url='/login', raise_exception=True)
 def page_dnd5e_list(request):
     step_hit_count_by_page(request.path)
     item_list = get_all_dnd5e()
