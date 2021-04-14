@@ -137,6 +137,7 @@ class Primer(models.Model):
 class HandLoad(models.Model):
     powder = models.ForeignKey(Powder, default=1, on_delete=models.CASCADE)
     Powder_Charge = models.DecimalField(max_digits=5, decimal_places=1)
+    # todo: add a field for if it's over charged or not. this .... might be helpful later.
     firearm = models.ForeignKey(Firearm, related_name='firearm', on_delete=models.CASCADE, null=True)
     projectile = models.ForeignKey(Projectile, related_name='bullet', on_delete=models.CASCADE)
     COAL = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=3)
