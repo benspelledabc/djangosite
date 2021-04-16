@@ -1,0 +1,44 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            This might take a bit to load, thank you for your patience.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'content_collection/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="row ben_format_pretty">
+    Not to worry, there are more buzz words coming for management reasons.<br /><br /><br />
+
+    {% for word in words %}
+
+        <strong>{{ word.pk }}:</strong> {{ word.word_or_phrase }}<br />
+
+        {% if forloop.last  == True %}
+            <br />
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+{% endblock %}
