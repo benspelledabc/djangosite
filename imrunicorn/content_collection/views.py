@@ -12,13 +12,31 @@ from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
     get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, \
-    get_all_fantasy_grounds, get_all_insults, get_all_secrets
+    get_all_fantasy_grounds, get_all_insults, get_all_secrets, get_all_buzz_words_or_phrases
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
 from .serializer import RandomInsultSerializer
+
+
+def buzz_words_or_phrases_list_all(request):
+    step_hit_count_by_page(request.path)
+    words = get_all_buzz_words_or_phrases()
+
+    new_entries = words['new_entries']
+
+    word_list = words['result']
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Buzz Words (or Phrases)",
+        "words": word_list,
+        "new_words_or_phrases": new_entries,
+        "blurb": get_page_blurb_override('content_collection/buzz_words_or_phrases_list_all/'),
+    }
+    return render(request, "content_collection/buzz_words_or_phrases_list_all.html", context)
 
 
 @permission_required('content_collection.view_secrets', login_url='/login', raise_exception=True)

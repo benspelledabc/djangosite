@@ -80,3 +80,15 @@ class Secret(models.Model):
         ordering = ('-pk', )
         verbose_name = 'Secret'
         verbose_name_plural = 'Secrets'
+
+
+class BuzzWordOrPhrase(models.Model):
+    word_or_phrase = models.CharField(max_length=150, unique=True)
+
+    def __str__(self):
+        return "[%s] %s" % (self.pk, self.word_or_phrase)
+
+    class Meta:
+        ordering = ('-pk', )
+        verbose_name = 'Buzzword or Phrase'
+        verbose_name_plural = 'Buzzwords or Phrases'

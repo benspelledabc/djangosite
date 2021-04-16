@@ -1,9 +1,68 @@
 import json
+import urllib
 from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult, Secret
+
+from .serializer import BuzzWordOrPhraseSerializer
+from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult, Secret, \
+    BuzzWordOrPhrase
+
+
+def save_buzzword(list_to_save):
+    saved_entries = 0
+    for word in list_to_save:
+        entry = {'word_or_phrase': word}
+        try:
+            serializer = BuzzWordOrPhraseSerializer(data=entry)
+            if serializer.is_valid():
+                serializer.save()
+                saved_entries += 1
+                # print("Saved: {0}".format(word))
+        except Exception as ex:
+            print(ex)
+    return saved_entries
+
+
+def leach_buzzword():
+    html_bytes = ""
+    html = ""
+    added = 0
+    try:
+        word_list = []
+        url = "https://www.robietherobot.com/buzzword.htm"
+        with urllib.request.urlopen('https://www.robietherobot.com/buzzword.htm') as response:
+            html_bytes = response.read()
+        html = str(html_bytes)
+        content_parts = html.split('<td rowspan="5" align="center"><br>')
+
+        for i in range(1, 6):
+            item_parts = content_parts[i].split("<p>")
+            for item in range(1, len(item_parts) - 1):
+                filtered = item_parts[item].split("</p>")
+                word_list.append(filtered[0])
+
+        added = save_buzzword(word_list)
+    except Exception as ex:
+        print("Exception: {0}".format(ex))
+
+    return added
+
+
+def get_all_buzz_words_or_phrases():
+    new_entries = 0
+    try:
+        new_entries = leach_buzzword()
+    except Exception as e:
+        print(e)
+
+    result = BuzzWordOrPhrase.objects.all()\
+        .order_by('-pk')
+
+    rval = {"result": result, "new_entries": new_entries}
+    return rval
+    # return result
 
 
 def get_all_secrets():

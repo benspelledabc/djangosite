@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('secrets_list_all', views.secrets_list_all, name='secrets_list_all'),
 
+    path('buzz_words_or_phrases_list_all', views.buzz_words_or_phrases_list_all, name='buzz_words_or_phrases_list_all'),
+
     # path('dnd5e/<int:dnd5e_pk>', views.page_dnd5e_list_by_pk, name='dnd5e_list'),
 
 ]
