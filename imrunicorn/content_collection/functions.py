@@ -22,11 +22,13 @@ def save_buzzword(list_to_save):
                 # print("Saved: {0}".format(word))
         except Exception as ex:
             print(ex)
+    return saved_entries
 
 
 def leach_buzzword():
     html_bytes = ""
     html = ""
+    added = 0
     try:
         word_list = []
         url = "https://www.robietherobot.com/buzzword.htm"
@@ -41,20 +43,25 @@ def leach_buzzword():
                 filtered = item_parts[item].split("</p>")
                 word_list.append(filtered[0])
 
-        save_buzzword(word_list)
+        added = save_buzzword(word_list)
     except Exception as ex:
         print("Exception: {0}".format(ex))
-    pass
+
+    return added
 
 
 def get_all_buzz_words_or_phrases():
+    new_entries = 0
     try:
-        leach_buzzword()
+        new_entries = leach_buzzword()
     except Exception as e:
         print(e)
 
     result = BuzzWordOrPhrase.objects.all()\
         .order_by('-pk')
+    # i want to add 'new_entries' to this result so i can identify how many are new
+
+    print("pause")
     return result
 
 
