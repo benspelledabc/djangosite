@@ -44,6 +44,76 @@ def insult_list_all(request):
 
 def leach_insult(request):
     step_hit_count_by_page(request.path)
+    insult_one = "I failed to get data."
+    insult_two = "I failed to get data."
+    try:
+        url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
+        page = urllib.request.urlopen(url)
+        content = page.read().decode()
+        content_parts = content.split("</p><p>OR</p><p>")
+
+        # get insult one
+        core_part_one = content_parts[0]
+        insult_one = core_part_one[core_part_one.rindex('<p>')+4:]
+
+        # get the second insult on the page
+        core_part_two = content_parts[1]
+        core_part_two_bits = core_part_two.split("</p>")
+        insult_two = core_part_two_bits[0]
+
+    except Exception as ex:
+        print("Exception: {0}".format(ex))
+
+    # save the insults
+    saved_insult_count = 0
+
+    # save the first insult
+    insult = {'insult': insult_one}
+    status_code_message = ""
+    try:
+        insult_serializer = RandomInsultSerializer(data=insult)
+        if insult_serializer.is_valid():
+            insult_serializer.save()
+            status_code_message = "Saved newly generated insult to database."
+            saved_insult_count += 1
+    except Exception as ex:
+        print(ex)
+
+    # save the second insult
+    insult = {'insult': insult_two}
+    status_code_message = ""
+    try:
+        insult_serializer = RandomInsultSerializer(data=insult)
+        if insult_serializer.is_valid():
+            insult_serializer.save()
+            status_code_message = "Saved newly generated insult to database."
+            saved_insult_count += 1
+    except Exception as ex:
+        print(ex)
+
+    # insult = [insult_one, insult_two]
+    if saved_insult_count == 0:
+        status_code_message = ""
+    elif saved_insult_count == 1:
+        status_code_message = "Saved newly generated insult to database."
+    elif saved_insult_count == 2:
+        status_code_message = "Saved two newly generated insults to database."
+    else:
+        status_code_message = "Something went terribly wrong."
+
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Insult",
+        "insult": insult_two,
+        "status_code_message": status_code_message,
+        "blurb": get_page_blurb_override('content_collection/insult/'),
+    }
+    return render(request, "content_collection/insult.html", context)
+
+
+def leach_insult_lkg(request):
+    step_hit_count_by_page(request.path)
     output = "I failed to get data."
     try:
         url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
@@ -53,6 +123,8 @@ def leach_insult(request):
         testing = content_parts[1]
         testing_bits = testing.split("</p>")
         output = testing_bits[0]
+        print(content)
+        print("hello world.")
     except Exception as ex:
         print("Exception: {0}".format(ex))
 
