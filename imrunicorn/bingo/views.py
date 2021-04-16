@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from announcements.get_news import get_version_json, get_page_blurb_override
 from imrunicorn.functions import step_hit_count_by_page
+from content_collection.functions import leach_buzzword
 from datetime import datetime
 from .functions import get_bingo_card_buzz_words
 
@@ -18,6 +19,8 @@ def page_home(request):
 
 def page_buzz_words_or_phrases(request):
     step_hit_count_by_page(request.path)
+    # lets hit the leach every time this page loads
+    leach_buzzword()
     values = get_bingo_card_buzz_words()
     print(values)
     context = {
