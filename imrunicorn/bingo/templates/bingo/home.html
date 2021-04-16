@@ -1,0 +1,37 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'bingo/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="row ben_format_pretty">
+    <center>
+    Bingo is easy enough to play. Listen to whoever you decide is going to be the 'caller' and check off the items as
+    they come up on your card. If you get BINGO, make sure to stand up and yell BINGO as soon as you realize it!
+        </center>
+</div>
+
+{% endblock %}

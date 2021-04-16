@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'activity_log',
     'shooting_challenge',
     'dcsa_info',
+    'bingo',
     # 'rest_framework_swagger',
     # 'iprestrict',
 ]

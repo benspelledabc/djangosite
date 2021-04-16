@@ -1,0 +1,101 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+      text-align: center;
+      cellpadding: 50px;
+      font-size: 20px;
+    }
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'bingo/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="row ben_format_pretty" align="center">
+    {{ card_intent }}
+</div>
+<br />
+
+<div class="row ben_format_pretty">
+
+    <div align="center">
+        <table style="width:100%">
+        <tr>
+
+            <td><strong style="font-size: 35px;">B</strong></td>
+            <td><strong style="font-size: 35px;">I</strong></td>
+            <td><strong style="font-size: 35px;">N</strong></td>
+            <td><strong style="font-size: 35px;">G</strong></td>
+            <td><strong style="font-size: 35px;">O</strong></td>
+        </tr>
+        <tr>
+            <td>{{ values.0.word_or_phrase }}</td>
+            <td>{{ values.1.word_or_phrase }}</td>
+            <td>{{ values.2.word_or_phrase }}</td>
+            <td>{{ values.3.word_or_phrase }}</td>
+            <td>{{ values.4.word_or_phrase }}</td>
+        </tr>
+        <tr>
+            <td>{{ values.5.word_or_phrase }}</td>
+            <td>{{ values.6.word_or_phrase }}</td>
+            <td>{{ values.7.word_or_phrase }}</td>
+            <td>{{ values.8.word_or_phrase }}</td>
+            <td>{{ values.9.word_or_phrase }}</td>
+        </tr>
+        <tr>
+            <td>{{ values.10.word_or_phrase }}</td>
+            <td>{{ values.11.word_or_phrase }}</td>
+            <td>{{ values.12.word_or_phrase }}</td>
+            <td>{{ values.13.word_or_phrase }}</td>
+            <td>{{ values.14.word_or_phrase }}</td>
+        </tr>
+        <tr>
+            <td>{{ values.15.word_or_phrase }}</td>
+            <td>{{ values.16.word_or_phrase }}</td>
+            <td>{{ values.17.word_or_phrase }}</td>
+            <td>{{ values.18.word_or_phrase }}</td>
+            <td>{{ values.19.word_or_phrase }}</td>
+        </tr>
+        <tr>
+            <td>{{ values.20.word_or_phrase }}</td>
+            <td>{{ values.21.word_or_phrase }}</td>
+            <td>{{ values.22.word_or_phrase }}</td>
+            <td>{{ values.23.word_or_phrase }}</td>
+            <td>{{ values.24.word_or_phrase }}</td>
+        </tr>
+</table>
+    </div>
+
+</div>
+
+{% endblock %}
