@@ -59,9 +59,10 @@ def get_all_buzz_words_or_phrases():
 
     result = BuzzWordOrPhrase.objects.all()\
         .order_by('-pk')
-    # i want to add 'new_entries' to this result so i can identify how many are new
 
-    return result
+    rval = {"result": result, "new_entries": new_entries}
+    return rval
+    # return result
 
 
 def get_all_secrets():

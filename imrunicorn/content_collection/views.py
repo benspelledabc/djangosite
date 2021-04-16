@@ -23,13 +23,17 @@ from .serializer import RandomInsultSerializer
 
 def buzz_words_or_phrases_list_all(request):
     step_hit_count_by_page(request.path)
-    words = get_all_buzz_words_or_phrases
+    words = get_all_buzz_words_or_phrases()
 
+    new_entries = words['new_entries']
+
+    word_list = words['result']
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Buzz Words (or Phrases)",
-        "words": words,
+        "words": word_list,
+        "new_words_or_phrases": new_entries,
         "blurb": get_page_blurb_override('content_collection/buzz_words_or_phrases_list_all/'),
     }
     return render(request, "content_collection/buzz_words_or_phrases_list_all.html", context)
