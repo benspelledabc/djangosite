@@ -28,7 +28,18 @@
 
 
 <div class="row ben_format_pretty">
-    Not to worry, there are more buzz words coming for management reasons.<br /><br /><br />
+    Not to worry, there are more buzz words coming for management reasons.
+
+    {% if new_words_or_phrases > 0 %}
+        We were able to find {{ new_words_or_phrases }} more
+            {% if new_words_or_phrases > 1 %}
+                buzzwords
+            {% else %}
+                buzzword
+            {% endif %}
+        just now, so the list has been updated to reflect that.
+    {% endif %}
+    <br /><br /><br />
 
     {% for word in words %}
 
