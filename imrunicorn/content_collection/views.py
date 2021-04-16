@@ -101,48 +101,13 @@ def leach_insult(request):
     else:
         status_code_message = "Something went terribly wrong."
 
-    context = {
-        "copy_year": datetime.now().year,
-        'release': get_version_json(),
-        "title": "Content Collection: Insult",
-        "insult": insult_two,
-        "status_code_message": status_code_message,
-        "blurb": get_page_blurb_override('content_collection/insult/'),
-    }
-    return render(request, "content_collection/insult.html", context)
-
-
-def leach_insult_lkg(request):
-    step_hit_count_by_page(request.path)
-    output = "I failed to get data."
-    try:
-        url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
-        page = urllib.request.urlopen(url)
-        content = page.read().decode()
-        content_parts = content.split("</p><p>OR</p><p>")
-        testing = content_parts[1]
-        testing_bits = testing.split("</p>")
-        output = testing_bits[0]
-        print(content)
-        print("hello world.")
-    except Exception as ex:
-        print("Exception: {0}".format(ex))
-
-    my_obj = {'insult': output}
-    status_code_message = ""
-    try:
-        insult_serializer = RandomInsultSerializer(data=my_obj)
-        if insult_serializer.is_valid():
-            insult_serializer.save()
-            status_code_message = "Saved newly generated insult to database."
-    except Exception as ex:
-        print(ex)
+    insults = [insult_one, insult_two]
 
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Insult",
-        "insult": output,
+        "insults": insults,
         "status_code_message": status_code_message,
         "blurb": get_page_blurb_override('content_collection/insult/'),
     }
