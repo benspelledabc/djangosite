@@ -27,6 +27,6 @@ def page_buzz_words_or_phrases(request):
         "values": values,
         "card_intent": "Take this buzz word card with you to your next meeting and play a game of Bingo instead of "
                        "sleeping.",
-        "blurb": get_page_blurb_override('bingo/home/'),
+        "blurb": get_page_blurb_override('bingo/buzz_word/'),
     }
     return render(request, "bingo/bingo_card.html", context)
