@@ -3,12 +3,18 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult
+from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult, Secret
+
+
+def get_all_secrets():
+    result = Secret.objects.all()\
+        .order_by('-pk')
+    return result
 
 
 def get_all_insults():
     result = RandomInsult.objects.all()\
-    .order_by('-pk')
+        .order_by('-pk')
     return result
 
 

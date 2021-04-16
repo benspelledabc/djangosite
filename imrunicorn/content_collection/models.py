@@ -67,3 +67,16 @@ class RandomInsult(models.Model):
         ordering = ('-pk', 'insult')
         verbose_name = 'Random Insult'
         verbose_name_plural = 'Random Insults'
+
+
+class Secret(models.Model):
+    title = models.CharField(max_length=150)
+    message = models.TextField(blank=True, null=True)  # i like big comments...
+
+    def __str__(self):
+        return "[%s] %s" % (self.pk, self.title)
+
+    class Meta:
+        ordering = ('-pk', )
+        verbose_name = 'Secret'
+        verbose_name_plural = 'Secrets'

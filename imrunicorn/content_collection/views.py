@@ -12,13 +12,28 @@ from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
     get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, \
-    get_all_fantasy_grounds, get_all_insults
+    get_all_fantasy_grounds, get_all_insults, get_all_secrets
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
 from .serializer import RandomInsultSerializer
+
+
+@permission_required('content_collection.view_secrets', login_url='/login', raise_exception=True)
+def secrets_list_all(request):
+    step_hit_count_by_page(request.path)
+    secrets = get_all_secrets
+
+    context = {
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        "title": "Content Collection: Secrets",
+        "secrets": secrets,
+        "blurb": get_page_blurb_override('content_collection/secrets_list_all/'),
+    }
+    return render(request, "content_collection/secrets_list_all.html", context)
 
 
 def insult_list_all(request):
@@ -41,6 +56,9 @@ def insult_list_all(request):
     }
     return render(request, "content_collection/insult_list_all.html", context)
 
+
+# todo: make a buzzword generator!
+# https://www.robietherobot.com/buzzword.htm
 
 def leach_insult(request):
     step_hit_count_by_page(request.path)

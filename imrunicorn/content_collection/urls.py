@@ -19,6 +19,8 @@ urlpatterns = [
     path('insult', views.leach_insult, name='insult'),
     path('insult_list_all', views.insult_list_all, name='insult_list_all'),
 
+    path('secrets_list_all', views.secrets_list_all, name='secrets_list_all'),
+
     # path('dnd5e/<int:dnd5e_pk>', views.page_dnd5e_list_by_pk, name='dnd5e_list'),
 
 ]
