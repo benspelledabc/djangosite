@@ -30,7 +30,7 @@
 
     <style>
         div.ben_format_pretty {
-            max-width:80%;
+            max-width:95%;
             margin: auto;
             background-color: white;
             opacity: 0.9;
@@ -39,7 +39,7 @@
         }
 
         div.ben_format_pretty_border {
-            max-width:80%;
+            max-width:95%;
             margin: auto;
             border: 3px solid #73AD21;
         }
@@ -126,20 +126,7 @@
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-
-        {% comment %} this is no longer used, i think. {% endcomment %}
-        {% comment %}
-            {% if restart.requested %}
-            <div align="center" style="background-color:red;color:yellow">
-                Restarting website quick around: <strong>{{ restart.request_time }}</strong>
-            </div>
-            {% else %}
-            <div align="center" style="background-color:red;color:yellow">
-                {{ hidden_banner }}
-            </div>
-            {% endif %}
-        {% endcomment %}
+    <div class="container" style='width: 95%'>
 
         <div class="navbar-header">
             <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
@@ -167,9 +154,7 @@
                 {% include 'imrunicorn/menu_masterpo.html' %}
                 {% include 'imrunicorn/menu_logbooks.html' %}
                 {% include 'imrunicorn/menu_farminvites.html' %}
-                {% comment %} {% include 'imrunicorn/menu_donate.html' %} {% endcomment %}
                 {% include 'imrunicorn/menu_toolboxes.html' %}
-                {% comment %} {% include 'imrunicorn/menu_api.html' %}{% endcomment %}
 
             </ul>
             {% include 'imrunicorn/loginpartial.html' %}
@@ -177,7 +162,7 @@
     </div>
 </div>
 
-<div class="container body-content">
+<div class="container body-content" style='width: 95%'>
     <div class="main">
         {% block content %}
         {% endblock %}
