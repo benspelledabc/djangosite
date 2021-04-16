@@ -44,33 +44,70 @@ def insult_list_all(request):
 
 def leach_insult(request):
     step_hit_count_by_page(request.path)
-    output = "I failed to get data."
+    insult_one = "I failed to get data."
+    insult_two = "I failed to get data."
     try:
         url = "https://www.kassoon.com/dnd/vicious-mockery-insult-generator/"
         page = urllib.request.urlopen(url)
         content = page.read().decode()
         content_parts = content.split("</p><p>OR</p><p>")
-        testing = content_parts[1]
-        testing_bits = testing.split("</p>")
-        output = testing_bits[0]
+
+        # get insult one
+        core_part_one = content_parts[0]
+        insult_one = core_part_one[core_part_one.rindex('<p>')+4:]
+
+        # get the second insult on the page
+        core_part_two = content_parts[1]
+        core_part_two_bits = core_part_two.split("</p>")
+        insult_two = core_part_two_bits[0]
+
     except Exception as ex:
         print("Exception: {0}".format(ex))
 
-    my_obj = {'insult': output}
+    # save the insults
+    saved_insult_count = 0
+
+    # save the first insult
+    insult = {'insult': insult_one}
     status_code_message = ""
     try:
-        insult_serializer = RandomInsultSerializer(data=my_obj)
+        insult_serializer = RandomInsultSerializer(data=insult)
         if insult_serializer.is_valid():
             insult_serializer.save()
             status_code_message = "Saved newly generated insult to database."
+            saved_insult_count += 1
     except Exception as ex:
         print(ex)
+
+    # save the second insult
+    insult = {'insult': insult_two}
+    status_code_message = ""
+    try:
+        insult_serializer = RandomInsultSerializer(data=insult)
+        if insult_serializer.is_valid():
+            insult_serializer.save()
+            status_code_message = "Saved newly generated insult to database."
+            saved_insult_count += 1
+    except Exception as ex:
+        print(ex)
+
+    # insult = [insult_one, insult_two]
+    if saved_insult_count == 0:
+        status_code_message = ""
+    elif saved_insult_count == 1:
+        status_code_message = "Saved newly generated insult to database."
+    elif saved_insult_count == 2:
+        status_code_message = "Saved two newly generated insults to database."
+    else:
+        status_code_message = "Something went terribly wrong."
+
+    insults = [insult_one, insult_two]
 
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Content Collection: Insult",
-        "insult": output,
+        "insults": insults,
         "status_code_message": status_code_message,
         "blurb": get_page_blurb_override('content_collection/insult/'),
     }
