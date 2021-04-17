@@ -18,7 +18,8 @@
     </p>
     <p class="lead"><strong>Location: </strong>{{ weather.full_response.name }}<br />
         <strong>Sunrise:</strong> {{ sun_info.sunrise }} am
-        <strong>Sunset:</strong> {{ sun_info.sunset }} pm<br />
+        <strong>Sunset:</strong> {{ sun_info.sunset }} pm
+        <strong>Daylight Savings Time:</strong> {{ sun_info.daylight_savings }}<br />
         <strong>Temp:</strong> {{ weather.temperature }}&deg;F <i>(Feels Like: {{ weather.feels_like }}&deg;F)</i><br />
         <strong>Pressure:</strong> {{ weather.pressure }}mb <strong>Humidity:</strong> {{ weather.humidity }}&percnt; <br />
         <strong>Wind Speed:</strong> {{ weather.wind_speed }} mph

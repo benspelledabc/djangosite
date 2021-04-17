@@ -86,6 +86,7 @@ def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
     output = {
         "sunrise": sunrise_final,
         "sunset": sunset_final,
+        "daylight_savings": is_dst(now),
     }
 
     return output
