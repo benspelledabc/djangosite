@@ -25,7 +25,31 @@ config = AutoConfig(search_path=BASE_DIR)
 logger = logging.getLogger(__name__)
 
 
+
+def is_dst_sample(date_time, time_zone):
+    return_value = False
+    try:
+        # aware_dt = time_zone.localize(date_time)
+        # return_value = aware_dt.dst() != datetime.timedelta(0, 0)
+        return_value = date_time.dst() != datetime.timedelta(0, 0)
+    except Exception as ex:
+        print(ex)
+
+    return return_value
+
+
+def is_dst(date_time):
+    return_value = False
+    try:
+        return_value = date_time.dst() != datetime.timedelta(0, 0)
+    except Exception as ex:
+        print(ex)
+    return return_value
+
+
 def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
+    now = datetime.datetime.now()
+
     # https://api.sunrise-sunset.org/json?lat=39.6212340&lng=-77.0276600
     # end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}&formatted=0".format(lat, lng)
     end_point = "https://api.sunrise-sunset.org/json?lat={0}&lng={1}".format(lat, lng)
@@ -38,7 +62,11 @@ def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
     timezone_date_time_obj = timezone.localize(date_time_obj)
     target_time_zone = pytz.timezone('America/New_York')
     target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
-    sunrise_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+
+    if is_dst(now):
+        sunrise_final = "{0}:{1}".format(target_date_with_timezone.hour + 1, target_date_with_timezone.minute)
+    else:
+        sunrise_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
 
     date_time_str = result['results']['sunset']
     date_time_obj = dt.datetime.strptime(date_time_str, '%H:%M:%S %p')
@@ -46,7 +74,14 @@ def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
     timezone_date_time_obj = timezone.localize(date_time_obj)
     target_time_zone = pytz.timezone('America/New_York')
     target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
-    sunset_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+    sunset_final = "{0}:{1}".format(target_date_with_timezone.hour + 1, target_date_with_timezone.minute)
+
+    if is_dst(now):
+        sunset_final = "{0}:{1}".format(target_date_with_timezone.hour + 1, target_date_with_timezone.minute)
+        print("{0} is daylight savings time.".format(now))
+    else:
+        sunset_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+        print("{0} is daylight standard time.".format(now))
 
     output = {
         "sunrise": sunrise_final,
@@ -171,7 +206,6 @@ def get_weather(request, lat='39.620863010825495', lon='-77.02896921045372'):
             wind_speed_gust = r['wind']['gust']
         except Exception as e:
             wind_speed_gust = 0
-            print("Weather json output doesn't have GUST info this time. ({0})".format(e))
 
         context = {
             'lat': lat,
