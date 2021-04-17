@@ -4,7 +4,8 @@
 # from django.contrib.auth.models import User
 import datetime
 import time
-
+import datetime as dt
+import pytz
 import requests
 import os
 from django.db.models import Q
@@ -31,9 +32,25 @@ def get_sunrise_sunset(lat='39.6212340', lng='-77.0276600'):
     response = requests.get(end_point)
     result = response.json()
 
+    date_time_str = result['results']['sunrise']
+    date_time_obj = dt.datetime.strptime(date_time_str, '%H:%M:%S %p')
+    timezone = pytz.timezone('GMT')
+    timezone_date_time_obj = timezone.localize(date_time_obj)
+    target_time_zone = pytz.timezone('America/New_York')
+    target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
+    sunrise_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+
+    date_time_str = result['results']['sunset']
+    date_time_obj = dt.datetime.strptime(date_time_str, '%H:%M:%S %p')
+    timezone = pytz.timezone('GMT')
+    timezone_date_time_obj = timezone.localize(date_time_obj)
+    target_time_zone = pytz.timezone('America/New_York')
+    target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
+    sunset_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+
     output = {
-        "sunrise": result['results']['sunrise'],
-        "sunset": result['results']['sunset'],
+        "sunrise": sunrise_final,
+        "sunset": sunset_final,
     }
 
     return output

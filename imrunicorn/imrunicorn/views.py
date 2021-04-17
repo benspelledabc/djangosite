@@ -11,7 +11,7 @@ from .models import PageCounter, PageHideList
 from announcements.get_news import get_news, get_news_sticky, get_version_json, \
     get_page_blurb_override, get_restart_notice, get_main_page_blurb
 from imrunicorn.decorators import unauthenticated_user, allowed_groups
-from .functions import step_hit_count_by_page, email_user, get_weather
+from .functions import step_hit_count_by_page, email_user, get_weather, get_sunrise_sunset
 import logging
 import requests
 # from django.contrib.sites.models import Site
@@ -154,9 +154,11 @@ def page_home(request):
     cut = release['cut']
 
     weather = get_weather(request)
+    sun_info = get_sunrise_sunset()
 
     context = {
         "weather": weather,
+        "sun_info": sun_info,
         "main_blurb": main_blurb,
         # "restart": get_restart_notice,
         "all_news": all_news,

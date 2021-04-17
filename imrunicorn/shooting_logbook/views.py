@@ -1,3 +1,5 @@
+import datetime as dt
+import pytz
 from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -11,19 +13,36 @@ def page_six_steps_of_firing_a_shot(request):
 
     # any permission check will cache the current set of permissions
     # perm_check = request.user.has_perm('content_collection.view_picturesforcarousel')
-    sun_info = get_sunrise_sunset()
+    # sun_info = get_sunrise_sunset()
+
+    # # convert sunrise stuff
+    # sunrise = sun_info["sunrise"]
+    # date_time_str = sunrise
+    # date_time_obj = dt.datetime.strptime(date_time_str, '%H:%M:%S %p')
+    # # timezone = pytz.timezone('America/New_York')
+    # timezone = pytz.timezone('GMT')
+    # timezone_date_time_obj = timezone.localize(date_time_obj)
+    # target_time_zone = pytz.timezone('America/New_York')
+    # target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
+    # sunrise_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
+    #
+    # # convert sunset stuff
+    # sunrise = sun_info["sunset"]
+    # date_time_str = sunrise
+    # date_time_obj = dt.datetime.strptime(date_time_str, '%H:%M:%S %p')
+    # # timezone = pytz.timezone('America/New_York')
+    # timezone = pytz.timezone('GMT')
+    # timezone_date_time_obj = timezone.localize(date_time_obj)
+    # target_time_zone = pytz.timezone('America/New_York')
+    # target_date_with_timezone = timezone_date_time_obj.astimezone(target_time_zone)
+    # sunset_final = "{0}:{1}".format(target_date_with_timezone.hour, target_date_with_timezone.minute)
 
     context = {
-        # "restart": get_restart_notice,
-        # "sun_info": sun_info['results'],
-        # 'sunrise': sun_info['results']['sunrise'],
-        # 'perm_check': perm_check,
-        'sunrise': sun_info["sunrise"],
-        'sunset': sun_info["sunset"],
+        # 'sunrise': sun_info['sunrise'],
+        # 'sunset': sun_info['sunset'],
         "show_lorem": False,
         'release': get_version_json(),
         "title": "6 steps of firing a shot",
-        # "blurb": "This page is a place holder for what's to come soon.",
         "blurb": get_page_blurb_override('shooting_logbook/six_steps/'),
         "table_data": '',
         "copy_year": datetime.now().year
