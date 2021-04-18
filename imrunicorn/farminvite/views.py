@@ -9,7 +9,7 @@ from django.shortcuts import render
 from model_utils.models import now
 from .forms import InviteListingForm
 from .models import InviteListing
-from announcements.get_news import get_news, get_version_json, get_restart_notice
+from announcements.get_news import get_news, get_version_json, get_restart_notice, get_page_blurb_override
 from .functions import get_packing_list
 from imrunicorn.functions import step_hit_count_by_page
 
@@ -134,6 +134,7 @@ def page_farm_invites_view_hidden_listings(request):
         'release': get_version_json(),
         "title": "Invites Pending",
         'all_invites': all_invites,
+        "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/calendar_list.html", context)
@@ -145,6 +146,7 @@ def page_farm_invites_map(request):
         'release': get_version_json(),
         "title": "Farm Invite: Map",
         "table_data": 'Shake it like it\'s going out of style!',
+        # "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/farm_map.html", context)
@@ -157,6 +159,7 @@ def page_farm_invites_map_fake(request):
         "title": "Coming Soon",
         "blurb": "This page is a place holder for what's to come soon.",
         "table_data": 'Shake it like it\'s going out of style!',
+        # "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/fake_map.html", context)
@@ -167,7 +170,8 @@ def page_farm_check_list(request):
     context = {
         'release': get_version_json(),
         "title": "What should I bring?",
-        "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
+        # "blurb": "Pre-pack your car/truck it helps to prevent forgetting things.",
+        "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/what_to_bring.html", context)
@@ -204,6 +208,7 @@ def page_cash_app(request):
         "title": "Donate: Cash App",
         "blurb": "Cash app is our preferred method of payment.",
         "full_body": "",
+        # "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/donate_cash_app.html", context)
@@ -216,6 +221,7 @@ def page_how_to_sign_up(request):
         "title": "How to sign up",
         "blurb": "The process has changed!",
         "cash_app": "Show_QR_Code",
+        # "blurb": get_page_blurb_override('/farm_invite/pending/'),
         "copy_year": datetime.now().year
     }
     return render(request, "farminvite/sign_up_how.html", context)
