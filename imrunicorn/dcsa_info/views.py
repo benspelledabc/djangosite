@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 import calendar
 from rest_framework.views import APIView
@@ -21,6 +22,7 @@ def page_blank(request):
     return render(request, "dcsa_info/blank.html", context)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_all_examples(request):
     step_hit_count_by_page(request.path)
     # todo: Eventually, we'll make this True instead of All. It's also setup for False, which should really be pending.
@@ -36,6 +38,7 @@ def page_all_examples(request):
     return render(request, "dcsa_info/success_examples.html", context)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_success_examples(request):
     step_hit_count_by_page(request.path)
     # todo: Eventually, we'll make this True instead of All. It's also setup for False, which should really be pending.
@@ -51,6 +54,7 @@ def page_success_examples(request):
     return render(request, "dcsa_info/success_examples.html", context)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_info(request):
     step_hit_count_by_page(request.path)
     context = {
@@ -62,6 +66,7 @@ def page_info(request):
     return render(request, "dcsa_info/info.html", context)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_coming_soon(request):
     step_hit_count_by_page(request.path)
     context = {
@@ -98,6 +103,7 @@ class ChartDataByYear(APIView):
         return Response(data)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_charts_by_year(request):
     step_hit_count_by_page(request.path)
 
@@ -138,6 +144,7 @@ class ChartDataByMonth(APIView):
         return Response(data)
 
 
+@permission_required('dcsa_info.view_requesttimeline', login_url='/login', raise_exception=True)
 def page_charts_by_month(request):
     step_hit_count_by_page(request.path)
 
