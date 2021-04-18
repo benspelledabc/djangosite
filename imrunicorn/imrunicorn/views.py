@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from django.conf import settings
+from django.contrib.auth.decorators import permission_required
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, FloatField, ExpressionWrapper
 from django.http import JsonResponse, HttpResponse
@@ -247,6 +248,7 @@ def page_cash_app(request):
     return render(request, "imrunicorn/donate_cash_app.html", context)
 
 
+@permission_required('imrunicorn.view_pagecounter', login_url='/login', raise_exception=True)
 def page_page_hits(request):
     step_hit_count_by_page(request.path)
     page_hits = PageCounter.objects.\
