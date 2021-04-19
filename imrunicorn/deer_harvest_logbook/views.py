@@ -11,26 +11,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-
 User = get_user_model()
-
-
-# def page_charts(request):
-#     step_hit_count_by_page(request.path)
-#     logs = harvests_by_hour_of_day()
-#     logs_sexy = harvests_by_sex()
-#     logs_by_score = harvests_by_score()
-#     context = {
-#         # "restart": get_restart_notice,
-#         "copy_year": datetime.now().year,
-#         "logs": logs,
-#         "logs_sexy": logs_sexy,
-#         "logs_sexy_hour": logs_by_score,
-#         'release': get_version_json(),
-#         "title": "Harvest Charts",
-#         "blurb": get_page_blurb_override('deer_harvest_logbook/charts/'),
-#     }
-#     return render(request, "deer_harvest_logbook/harvest_charts.html", context)
 
 
 def page_charts(request):
@@ -39,7 +20,6 @@ def page_charts(request):
     logs_sexy = harvests_by_sex()
     logs_by_score = harvests_by_score()
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "logs": logs,
         "logs_sexy": logs_sexy,
@@ -80,13 +60,16 @@ def page_point_system_show_points(request):
 def page_all_harvests(request):
     step_hit_count_by_page(request.path)
     weather = get_weather(request)
+    perm_check = request.user.has_perm('deer_harvest_logbook.view_deermanagementpermit')
+    unrestricted_user = perm_check
+
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_harvests(request),
         "weather": weather,
         'release': get_version_json(),
         "title": "Deer Harvest Logbook",
+        "unrestricted_user": unrestricted_user,
         "blurb": get_page_blurb_override('deer_harvest_logbook/'),
     }
     return render(request, "deer_harvest_logbook/all_harvests.html", context)
@@ -94,14 +77,15 @@ def page_all_harvests(request):
 
 def page_all_harvests_by_shooter_pk(request, shooter_pk=1):
     step_hit_count_by_page(request.path)
-    # all_news = all_groundhog_removals_by_shooter(shooter_pk)
+    perm_check = request.user.has_perm('deer_harvest_logbook.view_deermanagementpermit')
+    unrestricted_user = perm_check
     all_news = all_harvests
     context = {
-        # "restart": get_restart_notice,
         "copy_year": datetime.now().year,
         "all_news": all_news,
         'release': get_version_json(),
         "title": "Deer Harvest Logbook",
+        "unrestricted_user": unrestricted_user,
         "blurb": get_page_blurb_override('deer_harvest_logbook/by_shooter/'),
     }
     return render(request, "deer_harvest_logbook/all_harvests.html", context)

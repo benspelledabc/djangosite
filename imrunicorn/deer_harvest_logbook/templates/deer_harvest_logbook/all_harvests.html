@@ -61,10 +61,12 @@
                 assume it was NOT a DMP if its not specifically listed as such.
                 {% endcomment %}
 
-                {% if news.crop_damage_permit == None %}
-                    <b>Deer Management Permit:</b> False<br />
-                {% else %}
-                    <b>Deer Management Permit:</b> {{ news.crop_damage_permit }}<br />
+                {% if news.deer_management_permit_id != None %}
+                    {% if unrestricted_user %}
+                        <b>Deer Management Permit:</b> {{ news.deer_management_permit_id.permit_id }}<br />
+                    {% else %}
+                        <b>Deer Management Permit:</b> True<br />
+                    {% endif %}
                 {% endif %}
 
 
