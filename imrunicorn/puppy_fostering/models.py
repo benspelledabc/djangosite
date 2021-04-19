@@ -38,7 +38,8 @@ class Puppy(models.Model):
         (MALE, 'Male'),
         (FEMALE, 'Female'),
     ]
-    cloud_level = models.CharField(
+
+    sex = models.CharField(
         max_length=20,
         choices=puppy_sex_choices,
         default=MALE,
