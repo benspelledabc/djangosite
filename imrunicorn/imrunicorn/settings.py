@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'shooting_challenge',
     'dcsa_info',
     'bingo',
+    'puppy_fostering',
     # 'rest_framework_swagger',
     # 'iprestrict',
 ]

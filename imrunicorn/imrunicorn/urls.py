@@ -42,6 +42,7 @@ urlpatterns = [
     path('shooting_challenge/', include('shooting_challenge.urls')),
     path('dcsa_info/', include('dcsa_info.urls')),
     path('bingo/', include('bingo.urls')),
+    path('puppy_fostering/', include('puppy_fostering.urls')),
 
 
     # path('contact/', views.contact, name='contact'),
