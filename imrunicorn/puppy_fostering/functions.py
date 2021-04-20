@@ -10,6 +10,16 @@ from django.db.models.functions import ExtractMonth
 from django.contrib.auth.models import User
 
 
+def momma_pics(momma_id="All"):
+    if momma_id == "All":
+        result = Momma.objects.all()
+    else:
+        result = Momma.objects.filter(
+            Q(id=momma_id)
+        )
+    return result
+
+
 def puppies_by_sex(sex="Both"):
     if sex == "Both":
         result = Puppy.objects.all()

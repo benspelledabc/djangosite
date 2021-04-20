@@ -1,0 +1,54 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'puppy_fostering/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <p align="center">
+        We have decided to open our home to puppies that need foster homes.
+    </p>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <p align="center">
+        {% for record in dataset %}
+            <b>Momma Name</b> {{ record.nickname }}<br /><br />
+
+            {% for photo in record.momma_photos.all %}
+                {% comment %} {{ forloop.counter }} {% endcomment %}
+                    <b>Photo ID:</b> {{ photo.id }}<b> Photo Date:</b> {{ photo.photo_date }}<br />
+                    <a href="{{ photo.momma_shot.url }}" target="_blank"><img src="{{ photo.momma_shot.url }}" style="width: 30%" /></a><br />
+            {% endfor %}
+
+        {% endfor %}
+    </p>
+</div>
+
+
+{% endblock %}
+.
