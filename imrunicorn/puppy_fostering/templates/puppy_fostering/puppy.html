@@ -1,0 +1,70 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'puppy_fostering/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <p align="center">
+        The sorting order isn't great. I'll fix it soon enough.
+    </p>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <div>
+        {% for record in dataset %}
+            <b>Puppy Name</b>: {{ record.puppy.nickname }}<br />
+            <b>Birth Date</b>: {{ record.puppy.birth_date }}<br />
+            <b>Sex</b>: {{ record.puppy.sex }}<br />
+            <b>Mommy Name</b>: {{ record.puppy.momma }}<br /><br />
+
+            <b>Photo/Note Date</b>: {{ record.note_date }}<br />
+
+            {% if record.note != "" %}
+                <b>Note</b>: {{ record.note }}<br />
+            {% else %}
+                <b>Note</b>: None<br />
+            {% endif %}
+
+            <a href="{{ record.puppy_shot.url }}"><img src="{{ record.puppy_shot.url }}" width="200px" /></a><br />
+
+
+
+
+            {% if forloop.last  == False %}
+                <hr style="height:2px;border-width:0;color:gray;background-color:red" />
+            {% else %}
+                <br />
+            {% endif %}
+
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+.

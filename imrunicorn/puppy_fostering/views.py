@@ -4,7 +4,7 @@ from announcements.get_news import get_news, get_news_sticky, get_news_by_pk, ge
 from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from django.shortcuts import render
-from .functions import momma_pics, puppies_by_sex, puppies_by_momma
+from .functions import momma_pics, puppies_by_sex, puppies_by_momma, all_puppy_pics
 
 
 def page_home(request):
@@ -37,10 +37,12 @@ def page_momma_pics(request):
 
 def page_puppy_pics(request):
     step_hit_count_by_page(request.path)
+    puppy_pics = all_puppy_pics()
     context = {
         "copy_year": datetime.now().year,
         'release': get_version_json(),
         "title": "Puppy Fostering: Puppy Pics",
+        "dataset": puppy_pics,
         "blurb": get_page_blurb_override('puppy_fostering/puppy_pics/'),
     }
-    return render(request, "puppy_fostering/home.html", context)
+    return render(request, "puppy_fostering/puppy.html", context)

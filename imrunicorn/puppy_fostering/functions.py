@@ -26,7 +26,7 @@ def puppies_by_sex(sex="Both"):
     else:
         result = Puppy.objects.filter(
             Q(sex=sex)
-        )
+        ).order_by('momma')
     return result
 
 
@@ -36,5 +36,11 @@ def puppies_by_momma(momma="All"):
     else:
         result = Puppy.objects.filter(
             Q(momma=momma)
-        )
+        ).order_by('momma')
+    return result
+
+
+def all_puppy_pics():
+    # result = PuppyNotes.objects.all().order_by('puppy__momma')
+    result = PuppyNotes.objects.all().order_by('puppy__momma')
     return result
