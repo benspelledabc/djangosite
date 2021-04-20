@@ -29,6 +29,11 @@
 <div class="row ben_format_pretty">
     <p align="center">
         We have decided to open our home to puppies that need foster homes.
+        {% if secrets %}
+            <br />
+            <br />
+            {{ secrets }}
+        {% endif %}
     </p>
 </div>
 
