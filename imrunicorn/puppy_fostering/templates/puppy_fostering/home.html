@@ -32,7 +32,10 @@
         {% if secrets %}
             <br />
             <br />
+        {% autoescape off %}
             {{ secrets }}
+        {% endautoescape %}
+
         {% endif %}
     </p>
 </div>
