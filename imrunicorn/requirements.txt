@@ -29,3 +29,4 @@ django-phone-field==1.8.1
 django-iprestrict==1.7.0
 django-ip-restriction==1.1.1
 django-createsuperuserwithpassword==2.0.0
+glom

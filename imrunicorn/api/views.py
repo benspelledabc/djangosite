@@ -1,7 +1,9 @@
+from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, DjangoModelPermissions, \
     DjangoObjectPermissions, DjangoModelPermissionsOrAnonReadOnly, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from glom import glom
 
 from rest_framework.response import Response
 from datetime import datetime, date
@@ -16,6 +18,10 @@ from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.decorators import permission_required
 # from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+
+from .serializer import DockerHubWebhookSerializer
+from .models import DockerHubWebhook
+
 from imrunicorn.serializer import UserSerializer, UserProfileSerializer
 
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
@@ -92,7 +98,7 @@ class ChallengeEventViewSet(viewsets.ModelViewSet):
     @action(detail=False)
     def challenge_has_event_photos(self, request):
         queryset = ChallengeEvent.objects.filter(
-            Q(challenge_photos__gt=0))   # i dont think this is the right filter
+            Q(challenge_photos__gt=0))  # i dont think this is the right filter
         result = self.paginate_queryset(queryset)
         if result is not None:
             serializer = self.get_serializer(result, many=True)
@@ -502,3 +508,27 @@ class HarvestsView(viewsets.ModelViewSet):
 class HarvestsPhotosView(viewsets.ModelViewSet):
     queryset = HarvestPhoto.objects.all()
     serializer_class = HarvestPhotoSerializer
+
+
+# ############### Docker Hook ############
+# @permission_required('api.change_dockerhubwebhook', login_url='/login', raise_exception=True)
+@permission_classes([IsAuthenticated])
+@api_view(['POST'])
+# @permission_classes([AllowAny])
+def docker_hub_webhook(request):
+    step_hit_count_by_page(request.path)
+    if request.method == 'POST':
+
+        data_of_value = {'push_data': request.data.get('push_data'),
+                         'repository': request.data.get('repository'),
+                         'repo_name': glom(request.data, "repository.repo_name"),
+                         'tag': glom(request.data, "push_data.tag"),
+                         'pusher': glom(request.data, "push_data.pusher")
+                         }
+
+        # serializer = DockerHubWebhookSerializer(data=request.data)
+        serializer = DockerHubWebhookSerializer(data=data_of_value)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

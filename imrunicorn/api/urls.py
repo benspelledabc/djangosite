@@ -48,6 +48,9 @@ router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet
 
 router.register('accounts', views.Accounts)
 
+# /api/docker/hook
+# router.register('docker_hub_hook', views.docker_hub_webhook)
+
 
 # HyperlinkedModelSerializer doesn't like namespace addressing for the 'url' to work
 # app_name = 'api'
@@ -55,4 +58,5 @@ urlpatterns = [
     # path('DeerWaitListRecipient/', views.DeerWaitListRecipient, name='DeerWaitListRecipient'),
     # path("activity_log", ActivityLogViewSet.as_view(), name='activity_log'),
     path('', include(router.urls)),
+    path('docker_hub_hook/', views.docker_hub_webhook, name='docker_hub_webhook'),
 ]
