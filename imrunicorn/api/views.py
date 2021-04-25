@@ -512,7 +512,7 @@ class HarvestsPhotosView(viewsets.ModelViewSet):
 
 # ############### Docker Hook ############
 # @permission_required('api.change_dockerhubwebhook', login_url='/login', raise_exception=True)
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def docker_hub_webhook(request):
     step_hit_count_by_page(request.path)
