@@ -514,7 +514,6 @@ class HarvestsPhotosView(viewsets.ModelViewSet):
 # @permission_required('api.change_dockerhubwebhook', login_url='/login', raise_exception=True)
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
-# @permission_classes([AllowAny])
 def docker_hub_webhook(request):
     step_hit_count_by_page(request.path)
     if request.method == 'POST':
@@ -526,7 +525,6 @@ def docker_hub_webhook(request):
                          'pusher': glom(request.data, "push_data.pusher")
                          }
 
-        # serializer = DockerHubWebhookSerializer(data=request.data)
         serializer = DockerHubWebhookSerializer(data=data_of_value)
         if serializer.is_valid():
             serializer.save()
