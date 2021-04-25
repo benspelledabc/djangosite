@@ -511,22 +511,26 @@ class HarvestsPhotosView(viewsets.ModelViewSet):
 
 
 # ############### Docker Hook ############
-# @permission_required('api.change_dockerhubwebhook', login_url='/login', raise_exception=True)
-# @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def docker_hub_webhook(request):
     step_hit_count_by_page(request.path)
-    if request.method == 'POST':
+    perm_check = request.user.has_perm('api.change_dockerhubwebhook')
+    if perm_check:
+        if request.method == 'POST':
+            try:
+                data_of_value = {'push_data': request.data.get('push_data'),
+                                 'repository': request.data.get('repository'),
+                                 'repo_name': glom(request.data, "repository.repo_name"),
+                                 'tag': glom(request.data, "push_data.tag"),
+                                 'pusher': glom(request.data, "push_data.pusher")
+                                 }
 
-        data_of_value = {'push_data': request.data.get('push_data'),
-                         'repository': request.data.get('repository'),
-                         'repo_name': glom(request.data, "repository.repo_name"),
-                         'tag': glom(request.data, "push_data.tag"),
-                         'pusher': glom(request.data, "push_data.pusher")
-                         }
-
-        serializer = DockerHubWebhookSerializer(data=data_of_value)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                serializer = DockerHubWebhookSerializer(data=data_of_value)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as ex:
+                return JsonResponse({"status": "error", "exception": ex})
+    else:
+        return JsonResponse({"access": "denied", "permission_required": "api.change_dockerhubwebhook"})
