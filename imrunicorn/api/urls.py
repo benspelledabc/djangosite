@@ -1,5 +1,6 @@
 from django.urls import path, include
 from . import views
+from content_collection import views as c_views
 from rest_framework import routers
 from django.views.generic import TemplateView
 # from api.views import ChartData as GroundHogChartData
@@ -59,4 +60,5 @@ urlpatterns = [
     # path("activity_log", ActivityLogViewSet.as_view(), name='activity_log'),
     path('', include(router.urls)),
     path('docker_hub_hook/', views.docker_hub_webhook, name='docker_hub_webhook'),
+    path('sensor_reading/', c_views.sensor_readings, name='sensor_readings'),
 ]
