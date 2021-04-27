@@ -1,5 +1,8 @@
 import urllib
-
+from rest_framework.response import Response
+from rest_framework import viewsets, generics, status
+from rest_framework.decorators import api_view, permission_classes
+from django.http import JsonResponse
 import requests
 from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse
@@ -18,7 +21,7 @@ from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
 # @allowed_groups(allowed_groupname_list=['admin_tools_members'])
 # request.user.groups.filter(name__in=allowed_groupname_list).exists()
-from .serializer import RandomInsultSerializer
+from .serializer import RandomInsultSerializer, SensorReadingsSerializer
 
 
 def buzz_words_or_phrases_list_all(request):
@@ -324,3 +327,37 @@ def page_videos(request):
         "blurb": get_page_blurb_override('content_collection/videos/'),
     }
     return render(request, "content_collection/videos.html", context)
+
+
+# ############### Raspberry Pi Hook ############
+@api_view(['POST'])
+def sensor_readings(request):
+    step_hit_count_by_page(request.path)
+    perm_check = request.user.has_perm('content_collection.change_sensorreadings')
+    # perm_check = True
+
+    # sensor_location = models.CharField(max_length=150)
+    # sensor_model = models.CharField(max_length=150, default="DHT22")
+    # celsius = models.DecimalField(max_digits=5, decimal_places=2, default=1.21)
+    # fahrenheit = models.DecimalField(max_digits=5, decimal_places=2, default=5.56)
+    # humidity = models.DecimalField(max_digits=4, decimal_places=2, default=7.62)
+
+    if perm_check:
+        if request.method == 'POST':
+            try:
+                data_of_value = {'sensor_location': request.data.get('sensor_location'),
+                                 'sensor_model': request.data.get('sensor_model'),
+                                 'celsius': request.data.get('celsius'),
+                                 'fahrenheit': request.data.get('fahrenheit'),
+                                 'humidity': request.data.get('humidity')
+                                 }
+
+                serializer = SensorReadingsSerializer(data=data_of_value)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as ex:
+                return JsonResponse({"status": "error", "exception": ex})
+    else:
+        return JsonResponse({"access": "denied", "permission_required": "content_collection.change_sensorreadings"})
