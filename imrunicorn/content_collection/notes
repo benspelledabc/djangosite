@@ -16,3 +16,7 @@ while True:
     else:
         print("Failed to retrieve data from humidity sensor")
 
+
+
+
+# https://www.youtube.com/watch?v=Bk2wHmkxx34
