@@ -356,8 +356,8 @@ def sensor_readings(request):
         else:
             return JsonResponse({"access": "denied", "permission_required": "content_collection.change_sensorreadings"})
     else:
-        # assume its a get
-        queryset = SensorReadings.objects.all().order_by('-read_datetime')
+        # assume its a get, limit it to 30 for now until pagination is fixed
+        queryset = SensorReadings.objects.all().order_by('-read_datetime')[:30]
         serializer = SensorReadingsSerializer(queryset, many=True, context=request)
         return Response(serializer.data)
 
