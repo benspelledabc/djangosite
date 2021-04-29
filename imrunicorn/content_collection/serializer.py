@@ -18,4 +18,4 @@ class SensorReadingsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SensorReadings
         # fields = "__all__"
-        fields = ('sensor_location', 'sensor_model', 'celsius', 'fahrenheit', 'humidity')
+        fields = ('read_datetime', 'sensor_location', 'sensor_model', 'celsius', 'fahrenheit', 'humidity')
