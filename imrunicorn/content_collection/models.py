@@ -110,3 +110,18 @@ class SensorReadings(models.Model):
         ordering = ('-read_datetime', )
         verbose_name = 'Sensor Reading'
         verbose_name_plural = 'Sensor Readings'
+
+
+class ArduinoUnoSketch(models.Model):
+    sketch_datetime = models.DateTimeField(auto_now_add=True, blank=True)
+    title = models.CharField(max_length=150)
+    intent = models.TextField(blank=True, null=True)  # i like big comments...
+    sketch = models.TextField(blank=True, null=True)  # i like big comments...
+
+    def __str__(self):
+        return "%s - %s" % (self.sketch_datetime, self.title)
+
+    class Meta:
+        ordering = ('-sketch_datetime', )
+        verbose_name = 'Sketch'
+        verbose_name_plural = 'Sketches'
