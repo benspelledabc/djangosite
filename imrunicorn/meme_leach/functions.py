@@ -1,5 +1,9 @@
 from datetime import datetime
 import requests
+from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
+from django.db.models import Q
+
+from .models import LeachedMeme, LeachedMemePreview
 from .serializer import LeachedMemePreviewSerializer, LeachedMemeSerializer
 
 
@@ -31,7 +35,9 @@ def leach_save_if_new(meme_to_save):
 
 
 def leach_post(link_only=False):
-    url = "https://meme-api.herokuapp.com/gimme/"
+    # url = "https://meme-api.herokuapp.com/gimme/"
+    # lets look at whats popular right now
+    url = "https://meme-api.herokuapp.com/gimme/popular"
     result = requests.get(url).json()
     leach_save_if_new(result)
 
@@ -50,3 +56,20 @@ def leach_post_subreddit(subreddit, link_only=False):
         return result['url']
     else:
         return result
+
+
+def get_meme_list(request, nsfw=False):
+    result = LeachedMeme.objects.filter(
+        Q(nsfw=nsfw)
+    ).order_by('-pk')
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 25)
+    try:
+        result_set = paginator.page(page)
+    except PageNotAnInteger:
+        result_set = paginator.page(1)
+    except EmptyPage:
+        result_set = paginator.page(paginator.num_pages)
+
+    return result_set
