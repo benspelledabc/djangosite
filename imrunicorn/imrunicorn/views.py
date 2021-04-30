@@ -15,6 +15,7 @@ from imrunicorn.decorators import unauthenticated_user, allowed_groups
 from .functions import step_hit_count_by_page, email_user, get_weather, get_sunrise_sunset
 import logging
 import requests
+from content_collection.functions import get_latest_sensor_reading
 # from django.contrib.sites.models import Site
 
 # This retrieves a Python logging instance (or creates it)
@@ -133,7 +134,6 @@ def page_greyscale_test(request):
 
 # Create your views here.
 def page_home(request):
-    # logger.error("Test, main page hit: page_home view!!")
     step_hit_count_by_page(request.path)
 
     try:
@@ -156,9 +156,13 @@ def page_home(request):
 
     weather = get_weather(request)
     sun_info = get_sunrise_sunset()
+    latest_sensor_reading = get_latest_sensor_reading()
+    # print("sensor_reading[0].fahrenheit: {0}".format(sensor_reading[0].fahrenheit))
+    # print("latest_sensor_reading.fahrenheit: {0}".format(latest_sensor_reading.fahrenheit))
 
     context = {
         "weather": weather,
+        "latest_sensor_reading": latest_sensor_reading,
         "sun_info": sun_info,
         "main_blurb": main_blurb,
         # "restart": get_restart_notice,
