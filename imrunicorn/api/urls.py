@@ -10,7 +10,8 @@ from .views import ActivityLogViewSet
 
 # similar to object based url building
 router = routers.DefaultRouter()
-
+# router.get_api_root_view().cls.__name__ = "BenSpelledABC: API"
+# router.get_api_root_view().cls.__doc__ = "Becoming the backbone to wonderland."
 
 router.register('activity_log/activity', views.ActivityViewSet)
 router.register('activity_log/activity_log', views.ActivityLogViewSet)
@@ -48,6 +49,8 @@ router.register('shooting_challenge/ChallengeEvent', views.ChallengeEventViewSet
 router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet)
 
 router.register('accounts', views.Accounts)
+
+# router.register('sensor_reading', c_views.sensor_readings)
 
 # /api/docker/hook
 # router.register('docker_hub_hook', views.docker_hub_webhook)
