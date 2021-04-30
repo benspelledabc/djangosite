@@ -30,7 +30,9 @@
     <center>
         {% for item in sketch %}
             {% if unrestricted_user %}
+                {% autoescape off %}
                 {{ item.intent }}
+                {% endautoescape %}
             {% else %}
                 Access to this sketch requires special permissions (<i>{{ special_permission }}</i>) which you are
                 not part of as <strong>{{user}}</strong>.
