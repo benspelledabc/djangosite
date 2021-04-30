@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 from content_collection import views as c_views
+# from meme_leach import views as meme_leach_views
 from rest_framework import routers
 from django.views.generic import TemplateView
 # from api.views import ChartData as GroundHogChartData
@@ -51,6 +52,7 @@ router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet
 router.register('accounts', views.Accounts)
 
 router.register('meme_leach', views.MemeLeachViewSet)
+# router.register('meme_leach/<str:subreddit>', views.MemeLeachViewSet.random_meme_by_subreddit_name)
 
 # router.register('sensor_reading', c_views.sensor_readings)
 
@@ -66,4 +68,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('docker_hub_hook/', views.docker_hub_webhook, name='docker_hub_webhook'),
     path('sensor_reading/', c_views.sensor_readings, name='sensor_readings'),
+
+    path('meme_leach/<str:subreddit>', views.random_meme_by_subreddit),
 ]
