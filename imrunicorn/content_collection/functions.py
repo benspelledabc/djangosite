@@ -7,7 +7,7 @@ from django.db.models import Q
 
 from .serializer import BuzzWordOrPhraseSerializer
 from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult, Secret, \
-    BuzzWordOrPhrase
+    BuzzWordOrPhrase, SensorReadings
 
 
 def save_buzzword(list_to_save):
@@ -127,3 +127,17 @@ def get_recent_pictures_for_carousel():
     result = PicturesForCarousel.objects.filter()\
         .order_by('-pk')[0:3]
     return result
+
+
+# todo: This should take input so we can check several sensors with a single function but i only have one right now
+def get_latest_sensor_reading():
+    result = SensorReadings.objects.all() \
+                 .order_by('-pk')[0:1]
+    if result:
+        return result[0]
+    else:
+        return '{"status": "error"}'
+    # print("sensor_reading[0].fahrenheit: {0}".format(sensor_reading[0].fahrenheit))
+    # result = SensorReadings.objects.all()\
+    #     .order_by('-pk')[0:1]
+    # return result
