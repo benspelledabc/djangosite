@@ -1,0 +1,108 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+#NSFWdiv {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: yellow;
+  margin-top: 20px;
+}
+
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'meme_leach/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <p align="center">
+        {% if meme.nsfw %}
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';" >&times;</span>
+                <strong>NOT SAFE FOR WORK</strong> This post has been flagged as NSFW, proceed with caution.
+            </div>
+
+            <center><button id="NSFWdivBtn" onclick="myFunction()">Show Me</button></center>
+
+            <div id="NSFWdiv" style="display:none">
+                <strong>Sub-reddit:</strong> {{ meme.subreddit }}<br />
+                <strong>Title:</strong> {{ meme.title }}<br />
+                <strong>Meme:</strong><br />
+                <a href="{{ meme.url }}" target="_blank"><img src="{{ meme.url }}" width="200px" /></a><br />
+            </div>
+
+
+
+        {% else %}
+            <strong>Sub-reddit:</strong> {{ meme.subreddit }}<br />
+            <strong>Title:</strong> {{ meme.title }}<br />
+            <strong>Meme:</strong><br />
+            <a href="{{ meme.url }}" target="_blank"><img src="{{ meme.url }}" width="200px" /></a><br />
+        {% endif %}
+    </p>
+</div>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("NSFWdiv");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    if (document.getElementById("NSFWdivBtn").innerText == "Show Me"){
+        document.getElementById("NSFWdivBtn").innerText = 'Hide It';
+    }else{
+        document.getElementById("NSFWdivBtn").innerText = "Show Me"
+    }
+
+}
+</script>
+
+{% endblock %}
+.

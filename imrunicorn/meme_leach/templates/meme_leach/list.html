@@ -1,0 +1,77 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'meme_leach/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row ben_format_pretty">
+    <p>
+        {% for meme in memes %}
+            {% if not meme.nsfw %}
+                Title: {{ meme.title }}<br />
+                URL: <a href="{{ meme.url }}" target="_blank">{{ meme.url }}</a><br />
+                <a href="{{ meme.url }}" target="_blank"><img src="{{ meme.url }}" width="200px" /></a>
+            {% else %}
+                not safe for work...<br />
+            {% endif %}
+
+                {% if forloop.last  == False %}
+                    <hr style="height:2px;border-width:0;color:gray;background-color:red" />
+                {% else %}
+                    <br />
+                {% endif %}
+        {% endfor %}
+    </p>
+</div>
+
+
+    <div align="center">
+        {% if memes.has_other_pages %}
+        <ul class="pagination">
+            {% if memes.has_previous %}
+                <li><a href="?page={{ memes.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            <li><a href="?page=1">Newest</a></li>
+            {% for l in memes.paginator.page_range %}
+                {% if l <= memes.number|add:5 and l >= memes.number|add:-5 %}
+                    <li><a href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                {% endif %}
+            {% endfor %}
+            <li><a href="?page={{memes.paginator.num_pages}}">Oldest</a></li>
+
+            {% if memes.has_next %}
+                <li><a href="?page={{ memes.next_page_number }}">&raquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+        </div>
+
+
+{% endblock %}
