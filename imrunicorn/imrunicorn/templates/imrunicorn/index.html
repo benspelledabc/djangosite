@@ -34,7 +34,12 @@
 
         {{ weather.wind_dir }}&deg;
         ({{ weather.wind_dir_word }})<br />
-        <strong>Sky:</strong> {{ weather.description }}
+        <strong>Sky:</strong> {{ weather.description }}<br /><br />
+
+        <strong>Sensor Readings (stickers)</strong><br />
+        <strong>Fahrenheit</strong>: {{ latest_sensor_reading.fahrenheit }}&deg;F
+        <strong>Celsius</strong>: {{ latest_sensor_reading.celsius }}&deg;C
+        <strong>Humidity</strong>: {{ latest_sensor_reading.humidity }}&percnt;
     </p>
 </div>
 
