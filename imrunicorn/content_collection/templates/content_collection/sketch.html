@@ -1,0 +1,54 @@
+{% extends "imrunicorn/layout.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron wallpapered">
+    <h1>{{ title }}</h1>
+    <p class="lead">{% if blurb|length > 0 %}
+            {{ blurb }}
+        {% else %}
+            The robot that lives at this website is AFK and hasn't picked a page blurb yet.
+        {% endif %}</p>
+</div>
+
+
+<div class="row ben_format_pretty">
+        <div align="center">
+        <div>
+            {% include 'content_collection/chart_menu.html' %}
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="row ben_format_pretty">
+    <center>
+        {% for item in sketch %}
+            {% if unrestricted_user %}
+                {{ item.intent }}
+            {% else %}
+                Access to this sketch requires special permissions (<i>{{ special_permission }}</i>) which you are
+                not part of as <strong>{{user}}</strong>.
+            {% endif %}
+        {% endfor %}
+    </center>
+</div>
+
+{% if unrestricted_user %}
+    <br />
+    <div class="row ben_format_pretty">
+        I need to work on the formatting of the code block, but the base is there for now.
+        {% for item in sketch %}
+            <pre><code>
+                {{ item.sketch }}
+            </code></pre>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

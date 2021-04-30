@@ -25,4 +25,7 @@ urlpatterns = [
 
     # path('dnd5e/<int:dnd5e_pk>', views.page_dnd5e_list_by_pk, name='dnd5e_list'),
 
+    path('sketches/', views.page_sketch_list, name='sketches'),
+    path('sketches/<int:sketch_pk>', views.page_sketch_by_pk, name='sketches'),
+
 ]

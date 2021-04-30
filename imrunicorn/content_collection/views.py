@@ -15,7 +15,9 @@ from imrunicorn.functions import step_hit_count_by_page
 from datetime import datetime
 from content_collection.functions import get_all_videos, get_latest_video, get_video_by_pk, \
     get_recent_pictures_for_carousel, get_all_pictures_for_carousel, get_all_dnd5e, \
-    get_all_fantasy_grounds, get_all_insults, get_all_secrets, get_all_buzz_words_or_phrases
+    get_all_fantasy_grounds, get_all_insults, get_all_secrets, get_all_buzz_words_or_phrases, get_sketch_by_pk, \
+    get_all_sketches
+
 # from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from imrunicorn.decorators import allowed_groups
@@ -361,3 +363,49 @@ def sensor_readings(request):
         serializer = SensorReadingsSerializer(queryset, many=True, context=request)
         return Response(serializer.data)
 
+
+def page_sketch_by_pk(request, sketch_pk=1):
+    step_hit_count_by_page(request.path)
+    sketch = get_sketch_by_pk(sketch_pk)
+
+    blurb = get_page_blurb_override('content_collection/videos/')   # default blurb override
+    unrestricted = False
+    has_permission = False
+    special_permission = 'Content_Collection.View_ArduinoUnoSketch'
+    has_permission = request.user.has_perm(special_permission.lower())
+
+    if sketch[0].restricted:
+        if has_permission:
+            unrestricted = True
+            blurb = sketch[0].title
+    else:
+        unrestricted = True
+
+    context = {
+        "sketch": sketch,
+        "special_permission": special_permission,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        'unrestricted_user': unrestricted,
+        "title": "Sketch: #{sketch_pk}".format(sketch_pk=sketch_pk),
+        "blurb": blurb,
+    }
+    return render(request, "content_collection/sketch.html", context)
+
+
+def page_sketch_list(request):
+    step_hit_count_by_page(request.path)
+    sketches = get_all_sketches
+
+    perm_check = request.user.has_perm('content_collection.view_arduinounosketch')
+    unrestricted = perm_check
+
+    context = {
+        "sketches": sketches,
+        "copy_year": datetime.now().year,
+        'release': get_version_json(),
+        'unrestricted_user': unrestricted,
+        "title": "Sketch List",
+        "blurb": get_page_blurb_override('content_collection/sketches/'),
+    }
+    return render(request, "content_collection/sketches_list.html", context)
