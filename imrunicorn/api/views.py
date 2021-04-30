@@ -24,6 +24,10 @@ from .models import DockerHubWebhook
 
 from imrunicorn.serializer import UserSerializer, UserProfileSerializer
 
+from meme_leach.models import LeachedMeme, LeachedMemePreview
+from meme_leach.serializer import LeachedMemeSerializer, LeachedMemePreviewSerializer
+from meme_leach.functions import leach_post, leach_post_subreddit
+
 from announcements.models import WhatIsNew, MainPageBlurbs, PageBlurbOverrides
 from announcements.serializer import WhatIsNewSerializer, MainPageBlurbsSerializer, PageBlurbOverridesSerializer
 
@@ -74,6 +78,60 @@ class ContentCollectionInsultsViewSet(viewsets.ModelViewSet):
     @action(detail=False)
     def random_insult(self, request):
         queryset = RandomInsult.objects.order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+# ############### meme_leach ###############
+class MemeLeachViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = LeachedMeme.objects.all().order_by('-pk')
+    serializer_class = LeachedMemeSerializer
+
+    @action(detail=False)
+    def random_meme(self, request):
+        unused_result = leach_post()
+        queryset = LeachedMeme.objects.order_by('?')[:1]
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def random_meme_nsfw(self, request):
+        # just a general leach
+        unused_result = leach_post()
+        queryset = LeachedMeme.objects.filter(
+            Q(nsfw=True)
+        ).order_by('?')[:1]
+
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def random_meme_by_subreddit(self, request):
+        subreddit = request.query_params.get('id')
+        if subreddit is None:
+            subreddit = "none"
+
+        unused_result = leach_post_subreddit(subreddit)
+        queryset = LeachedMeme.objects.filter(
+            Q(subreddit=subreddit.lower())
+        ).order_by('?')[:1]
+
         result = self.paginate_queryset(queryset)
         if result is not None:
             serializer = self.get_serializer(result, many=True)

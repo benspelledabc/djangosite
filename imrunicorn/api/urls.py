@@ -50,6 +50,8 @@ router.register('shooting_challenge/ChallengePhoto', views.ChallengePhotoViewSet
 
 router.register('accounts', views.Accounts)
 
+router.register('meme_leach', views.MemeLeachViewSet)
+
 # router.register('sensor_reading', c_views.sensor_readings)
 
 # /api/docker/hook
