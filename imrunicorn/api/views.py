@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, DjangoModel
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from glom import glom
+from django.core import serializers
+from django.http import HttpResponse
 
 from rest_framework.response import Response
 from datetime import datetime, date
@@ -106,12 +108,28 @@ class MemeLeachViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False)
-    def random_meme_nsfw(self, request):
+    def meme_not_safe_for_work(self, request):
         # just a general leach
         unused_result = leach_post()
         queryset = LeachedMeme.objects.filter(
             Q(nsfw=True)
-        ).order_by('?')[:1]
+        ).order_by('-pk')
+
+        result = self.paginate_queryset(queryset)
+        if result is not None:
+            serializer = self.get_serializer(result, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def meme_safe_for_work(self, request):
+        # just a general leach
+        unused_result = leach_post()
+        queryset = LeachedMeme.objects.filter(
+            Q(nsfw=False)
+        ).order_by('-pk')
 
         result = self.paginate_queryset(queryset)
         if result is not None:
@@ -139,6 +157,21 @@ class MemeLeachViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def random_meme_by_subreddit(request, subreddit):
+    unused_result = leach_post_subreddit(subreddit)
+    if subreddit == 'popular':
+        # this is always the last one just added
+        # queryset = LeachedMeme.objects.all().order_by('-pk')[:1]
+        queryset = LeachedMeme.objects.all().order_by('?')[:1]
+    else:
+        queryset = LeachedMeme.objects.filter(
+            Q(subreddit=subreddit.lower())
+        ).order_by('?')[:1]
+    qs_json = serializers.serialize('json', queryset)
+    return HttpResponse(qs_json, content_type='application/json')
 
 
 # ############### shooting_challenge ###############
