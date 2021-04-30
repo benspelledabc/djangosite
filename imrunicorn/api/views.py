@@ -89,7 +89,7 @@ class ContentCollectionInsultsViewSet(viewsets.ModelViewSet):
 
 # ############### meme_leach ###############
 class MemeLeachViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
     queryset = LeachedMeme.objects.all().order_by('-pk')
     serializer_class = LeachedMemeSerializer
 
