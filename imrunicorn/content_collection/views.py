@@ -368,7 +368,7 @@ def page_sketch_by_pk(request, sketch_pk=1):
     step_hit_count_by_page(request.path)
     sketch = get_sketch_by_pk(sketch_pk)
 
-    blurb = get_page_blurb_override('content_collection/videos/')   # default blurb override
+    blurb = get_page_blurb_override('content_collection/sketches/')   # default blurb override
     unrestricted = False
     has_permission = False
     special_permission = 'Content_Collection.View_ArduinoUnoSketch'
@@ -378,8 +378,11 @@ def page_sketch_by_pk(request, sketch_pk=1):
         if has_permission:
             unrestricted = True
             blurb = sketch[0].title
+        else:
+            blurb = "Sketch title hidden due to access reasons."
     else:
         unrestricted = True
+        blurb = sketch[0].title
 
     context = {
         "sketch": sketch,
