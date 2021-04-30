@@ -117,6 +117,7 @@ class ArduinoUnoSketch(models.Model):
     title = models.CharField(max_length=150)
     intent = models.TextField(blank=True, null=True)  # i like big comments...
     sketch = models.TextField(blank=True, null=True)  # i like big comments...
+    restricted = models.BooleanField(default=False, null=True)
 
     def __str__(self):
         return "%s - %s" % (self.sketch_datetime, self.title)

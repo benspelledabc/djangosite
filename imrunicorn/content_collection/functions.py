@@ -7,7 +7,7 @@ from django.db.models import Q
 
 from .serializer import BuzzWordOrPhraseSerializer
 from .models import Video, PicturesForCarousel, DAndDFifthEditionBook, FantasyGrounds, RandomInsult, Secret, \
-    BuzzWordOrPhrase, SensorReadings
+    BuzzWordOrPhrase, SensorReadings, ArduinoUnoSketch
 
 
 def save_buzzword(list_to_save):
@@ -93,6 +93,20 @@ def get_dnd5e_by_pk(dnd5e_pk='1'):
 def get_all_dnd5e():
     result = DAndDFifthEditionBook.objects.filter()\
         .order_by('-pk', '-file_title', '-file_name')
+    return result
+
+
+# sketch functions
+def get_sketch_by_pk(sketch_pk='1'):
+    result = ArduinoUnoSketch.objects.filter(
+        Q(pk=sketch_pk)
+    )
+    return result
+
+
+def get_all_sketches():
+    result = ArduinoUnoSketch.objects.filter()\
+        .order_by('-pk')
     return result
 
 
