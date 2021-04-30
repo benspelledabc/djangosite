@@ -303,6 +303,13 @@ class Accounts(viewsets.ModelViewSet):
 
     @action(detail=False)
     def active(self, request):
+        """
+            Returns a list of all **active** accounts in the system.
+
+            For more details on how accounts are activated please [see here][ref].
+
+            [ref]: https://bfy.tw/Qq2V
+        """
         recent_users = User.objects.filter(Q(is_active=True))
 
         page = self.paginate_queryset(recent_users)

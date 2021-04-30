@@ -364,6 +364,36 @@ def sensor_readings(request):
         return Response(serializer.data)
 
 
+def sensor_readings_test(request):
+    step_hit_count_by_page(request.path)
+    perm_check = request.user.has_perm('content_collection.change_sensorreadings')
+
+    if request.method == 'POST':
+        if perm_check:
+            try:
+                data_of_value = {'sensor_location': request.data.get('sensor_location'),
+                                 'sensor_model': request.data.get('sensor_model'),
+                                 'celsius': request.data.get('celsius'),
+                                 'fahrenheit': request.data.get('fahrenheit'),
+                                 'humidity': request.data.get('humidity')
+                                 }
+
+                serializer = SensorReadingsSerializer(data=data_of_value)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as ex:
+                return JsonResponse({"status": "error", "exception": ex})
+        else:
+            return JsonResponse({"access": "denied", "permission_required": "content_collection.change_sensorreadings"})
+    else:
+        # assume its a get, limit it to 30 for now until pagination is fixed
+        queryset = SensorReadings.objects.all().order_by('-read_datetime')[:30]
+        serializer = SensorReadingsSerializer(queryset, many=True, context=request)
+        return Response(serializer.data)
+
+
 def page_sketch_by_pk(request, sketch_pk=1):
     step_hit_count_by_page(request.path)
     sketch = get_sketch_by_pk(sketch_pk)
