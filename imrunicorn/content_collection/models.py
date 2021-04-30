@@ -123,5 +123,5 @@ class ArduinoUnoSketch(models.Model):
 
     class Meta:
         ordering = ('-sketch_datetime', )
-        verbose_name = 'Sketch'
-        verbose_name_plural = 'Sketches'
+        verbose_name = 'Arduino Uno Sketch'
+        verbose_name_plural = 'Arduino Uno Sketches'
