@@ -43,6 +43,7 @@ urlpatterns = [
     path('dcsa_info/', include('dcsa_info.urls')),
     path('bingo/', include('bingo.urls')),
     path('puppy_fostering/', include('puppy_fostering.urls')),
+    path('meme_leach/', include('meme_leach.urls')),
 
 
     # path('contact/', views.contact, name='contact'),

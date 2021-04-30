@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'dcsa_info',
     'bingo',
     'puppy_fostering',
+    'meme_leach',
     # 'rest_framework_swagger',
     # 'iprestrict',
 ]
