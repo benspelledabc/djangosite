@@ -16,6 +16,7 @@ class MommaPhoto(models.Model):
 class Momma(models.Model):
     nickname = models.CharField(max_length=150, default=None, blank=True, null=True)
     momma_photos = models.ManyToManyField(MommaPhoto, blank=True)
+    note = models.TextField(blank=True, null=True)  # i like big comments...
 
     def __str__(self):
         return "%s" % self.nickname
