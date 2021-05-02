@@ -37,7 +37,8 @@
 <div class="row ben_format_pretty">
     <p align="center">
         {% for record in dataset %}
-            <b>Momma Name</b> {{ record.nickname }}<br /><br />
+            <b>Momma Name</b> {{ record.nickname }}<br />
+            <b>Momma Notes</b><br />{% autoescape off %}{{ record.note }}{% endautoescape %}<br /><br />
 
             {% for photo in record.momma_photos.all %}
                 {% comment %} {{ forloop.counter }} {% endcomment %}
